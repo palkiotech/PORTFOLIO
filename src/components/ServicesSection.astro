@@ -1,0 +1,119 @@
+---
+import { servicesData } from '../data/services';
+---
+
+<section id="soluciones" class="py-20 relative overflow-hidden bg-white border-b border-slate-200" data-navbar-theme="light">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    
+    <!-- Section Header -->
+    <div class="max-w-3xl mx-auto text-center mb-12">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-900 text-xs font-mono font-bold mb-3 shadow-2xs">
+        <span>✦ 0.4 INFRAESTRUCTURA Y SISTEMAS A MEDIDA</span>
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-3">
+        Infraestructura y Sistemas <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-amber-500 to-yellow-600">para Escalar tu Negocio</span>
+      </h2>
+      <p class="text-slate-600 text-xs sm:text-sm leading-relaxed max-w-2xl mx-auto">
+        Desarrollamos soluciones integrales sin plantillas infladas: plataformas web ultrarrápidas, agentes de IA 24/7 y hardware inteligente con código transferido.
+      </p>
+    </div>
+
+    <!-- Compact Services Grid (3 Columns on Large Screens) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+      {servicesData.map((svc) => (
+        <div class={`rounded-2xl p-6 transition-all flex flex-col justify-between border relative overflow-hidden bg-white hover:-translate-y-1 ${svc.featured ? 'border-amber-400 shadow-sm ring-1 ring-amber-400/20' : 'border-slate-200 hover:border-amber-300 shadow-2xs'}`}>
+          
+          {svc.featured && (
+            <div class="absolute top-0 right-0 bg-gradient-to-r from-amber-500 to-yellow-600 text-slate-950 text-[9px] font-mono font-black uppercase px-3 py-0.5 rounded-bl-lg tracking-wider">
+              Popular
+            </div>
+          )}
+
+          <div>
+            <!-- Badge & Timeline Row -->
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-[11px] font-mono font-bold uppercase tracking-wider text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-200">
+                {svc.badge}
+              </span>
+              <span class="text-[11px] font-mono text-slate-400">
+                ⏱ {svc.timeline}
+              </span>
+            </div>
+
+            <!-- Title & Subtitle -->
+            <h3 class="text-base font-extrabold text-slate-900 mb-2 leading-snug">
+              {svc.title}
+            </h3>
+
+            <p class="text-slate-600 text-xs leading-relaxed mb-4 line-clamp-2">
+              {svc.subtitle}
+            </p>
+
+            <!-- 3 Concise Highlight Bullets -->
+            <ul class="space-y-1.5 mb-5 text-[11px] text-slate-600">
+              {svc.deliverables.slice(0, 3).map((item) => (
+                <li class="flex items-start gap-2">
+                  <svg class="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class="line-clamp-1">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- Footer: Tech & Direct View Link -->
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-between gap-2">
+            <div class="flex flex-wrap gap-1 max-w-[55%]">
+              {svc.techStack.slice(0, 2).map((tech) => (
+                <span class="text-[9px] font-mono text-slate-600 bg-slate-100 px-2 py-0.5 rounded border border-slate-200 truncate">
+                  {tech}
+                </span>
+              ))}
+              {svc.techStack.length > 2 && (
+                <span class="text-[9px] font-mono text-slate-400 self-center">+{svc.techStack.length - 2}</span>
+              )}
+            </div>
+
+            <div class="flex items-center gap-1.5 shrink-0">
+              {svc.id === 'nfc-qr-smart-solutions' ? (
+                <a 
+                  href="/nfc-qr"
+                  class="inline-flex items-center gap-1 text-[11px] font-bold px-3 py-1.5 rounded-lg bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 transition-colors whitespace-nowrap"
+                >
+                  <span>Vista NFC ↗</span>
+                </a>
+              ) : (
+                <a 
+                  href={`/servicios#${svc.id}`}
+                  class="inline-flex items-center gap-1 text-[11px] font-bold px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors whitespace-nowrap"
+                >
+                  <span>Detalles ↗</span>
+                </a>
+              )}
+              <a 
+                href="/#contacto"
+                class="inline-flex items-center gap-1 text-[11px] font-black px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-amber-500 hover:text-slate-950 text-white transition-all shadow-2xs whitespace-nowrap"
+              >
+                <span>Cotizar</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      ))}
+    </div>
+
+    <!-- Bottom Bar: Link to Dedicated Detailed Services Page -->
+    <div class="text-center">
+      <a 
+        href="/servicios"
+        class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-50 hover:bg-amber-50 border border-slate-200 hover:border-amber-400 text-slate-800 hover:text-amber-900 font-bold text-xs transition-all shadow-2xs"
+      >
+        <span>Ver Catálogo Completo de 6 Soluciones con Entregables SOW & Criterios de Aceptación</span>
+        <span class="text-amber-600 font-bold">→</span>
+      </a>
+    </div>
+
+  </div>
+</section>

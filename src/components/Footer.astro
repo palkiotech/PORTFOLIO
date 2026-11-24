@@ -1,0 +1,105 @@
+---
+import { companyData } from '../data/company';
+---
+
+<footer data-navbar-theme="dark" class="bg-[#060608] border-t border-[#1a1a20] pt-16 pb-12 text-zinc-400 text-xs">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-[#1a1a20]">
+      
+      <!-- Brand Column -->
+      <div class="md:col-span-2">
+        <div class="flex items-center gap-3.5 mb-4">
+          <img 
+            src="/images/palkiotech-emblem.png" 
+            alt="PalkioTech" 
+            class="h-11 w-auto object-contain drop-shadow" 
+          />
+          <div class="flex flex-col">
+            <span class="font-black text-xl text-white tracking-tight leading-none">
+              PALKIO<span class="text-amber-400">TECH</span>
+            </span>
+            <span class="text-[9px] font-mono tracking-[0.2em] font-bold text-amber-400/90 uppercase mt-1">
+              INNOVATION &bull; ENGINEERING &bull; TECHNOLOGY
+            </span>
+          </div>
+        </div>
+        <p class="text-xs text-zinc-400 max-w-md leading-relaxed mb-4">
+          {companyData.subheadline}
+        </p>
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#101014] border border-[#22222a] text-[11px] font-mono text-emerald-400 mb-4">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span>Sistemas Operativos & Monitoreados (99.9% Uptime)</span>
+        </div>
+
+        <!-- Direct Contact Info -->
+        <div class="pt-3 border-t border-[#1a1a20] space-y-1.5 text-xs font-mono">
+          <div class="flex items-center gap-2 text-zinc-300">
+            <span class="text-emerald-400 font-bold">📱 WhatsApp:</span>
+            <a 
+              href={`https://api.whatsapp.com/send?phone=${companyData.whatsappNumber}`} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="hover:text-amber-400 transition-colors font-bold text-white"
+            >
+              {companyData.phoneDisplay}
+            </a>
+          </div>
+          <div class="flex items-center gap-2 text-zinc-300">
+            <span class="text-amber-400 font-bold">✉️ Correo:</span>
+            <a 
+              href={`mailto:${companyData.email}`} 
+              class="hover:text-amber-400 transition-colors font-bold text-white"
+            >
+              {companyData.email}
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Demo Products Column -->
+      <div>
+        <h4 class="font-bold text-white text-xs font-mono uppercase tracking-wider mb-4">Productos en Vivo</h4>
+        <ul class="space-y-2.5 font-medium">
+          <li><a href="/demos/catalogo-retail" target="_blank" class="hover:text-amber-400 transition-colors flex items-center gap-1.5"><span>Tienda & Catálogo Retail</span> <span class="text-[10px] text-emerald-400 font-mono">Demo ↗</span></a></li>
+          <li><a href="/demos/crm-operaciones" target="_blank" class="hover:text-amber-400 transition-colors flex items-center gap-1.5"><span>Mini-CRM & Pipeline</span> <span class="text-[10px] text-amber-400 font-mono">Demo ↗</span></a></li>
+          <li><a href="/demos/clinica-salud" target="_blank" class="hover:text-amber-400 transition-colors flex items-center gap-1.5"><span>Web Médica & Citas IA</span> <span class="text-[10px] text-amber-300 font-mono">Demo ↗</span></a></li>
+          <li><a href="/demos/appclimate" target="_blank" class="hover:text-amber-400 transition-colors flex items-center gap-1.5"><span>App Móvil: ClimaRoute</span> <span class="text-[10px] text-amber-400 font-mono">Demo ↗</span></a></li>
+          <li><a href="/nfc-qr" class="hover:text-amber-400 transition-colors flex items-center gap-1.5"><span>PalkioTag™ (Stands Google 5★ & NFC)</span> <span class="text-[10px] text-amber-400 font-mono">Nuevo ✦</span></a></li>
+          <li><a href="/casos" class="hover:text-amber-400 transition-colors flex items-center gap-1.5"><span>Casos de Éxito Reales (7)</span> <span class="text-[10px] text-emerald-400 font-mono">Web ↗</span></a></li>
+          <li><a href="/#soluciones" class="hover:text-amber-400 transition-colors">Modernización POS & ETL</a></li>
+        </ul>
+      </div>
+
+      <!-- Navigation & Engineering Column -->
+      <div>
+        <h4 class="font-bold text-white text-xs font-mono uppercase tracking-wider mb-4">Ingeniería & Empresa</h4>
+        <ul class="space-y-2.5 font-medium">
+          <li><a href="/servicios" class="hover:text-amber-400 transition-colors">Catálogo de Soluciones SOW</a></li>
+          <li><a href="/blueprint" class="hover:text-amber-400 transition-colors">Metodología de 5 Fases</a></li>
+          <li><a href="/casos" class="hover:text-amber-400 transition-colors">Casos de Éxito de Producción</a></li>
+          <li><a href="/faq" class="hover:text-amber-400 transition-colors">Preguntas Frecuentes (FAQ)</a></li>
+          <li><a href="/faq#equipo" class="hover:text-amber-400 transition-colors">Equipo & Cultura</a></li>
+          <li><a href="/#contacto" class="hover:text-amber-400 transition-colors">Agendar Diagnóstico</a></li>
+          <li class="pt-2 border-t border-[#1a1a20]">
+            <a href="/blueprint" class="hover:text-amber-300 transition-colors flex items-center gap-1.5 font-mono text-[11px] text-amber-400">
+              <span class="text-amber-400">✦</span>
+              <span>Blueprint & Estándar Técnico</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-zinc-500">
+      <p>© {new Date().getFullYear()} PalkioTech. Todos los derechos reservados. Desarrollado con Astro 5 & Edge CDN.</p>
+      <div class="flex items-center gap-6">
+        <span>Bogotá · Cobertura Internacional</span>
+        <span>Código 100% Propietario del Cliente</span>
+      </div>
+    </div>
+
+  </div>
+</footer>

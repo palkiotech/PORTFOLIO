@@ -1,0 +1,1907 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+// Catálogo enriquecido con fotografías de nivel comercial, fichas técnicas y stock real
+const catalogProducts = [
+  {
+    id: "prod-01",
+    sku: "BOT-LYR-01",
+    name: "Ficus Lyrata Gigante en Maceta Cerámica Nórdica",
+    category: "Plantas de Interior",
+    price: 48.0,
+    originalPrice: 62.0,
+    stock: 7,
+    rating: 4.9,
+    reviews: 38,
+    badge: "Más Vendido",
+    image: "https://images.unsplash.com/photo-1597055181300-e3633a917c9c?auto=format&fit=crop&w=800&q=80",
+    shortDesc: "Planta escultural de hojas anchas tipo violín. Purifica el ambiente y aporta elegancia arquitectónica.",
+    specs: {
+      altura: "110 – 125 cm",
+      iluminacion: "Luz indirecta brillante",
+      riego: "Cada 8-10 días (cuando el sustrato seque)",
+      dificultad: "Intermedia",
+      incluye: "Maceta cerámica blanca esmaltada con plato de drenaje"
+    }
+  },
+  {
+    id: "prod-02",
+    sku: "BOT-MON-02",
+    name: "Monstera Deliciosa (Costilla de Adán)",
+    category: "Plantas de Interior",
+    price: 36.5,
+    originalPrice: 45.0,
+    stock: 12,
+    rating: 5.0,
+    reviews: 64,
+    badge: "Tendencia",
+    image: "https://images.unsplash.com/photo-1614594975525-e45190c55d0b?auto=format&fit=crop&w=800&q=80",
+    shortDesc: "Icónica planta tropical de hojas perforadas. Crecimiento vigoroso y alta resistencia en salas e interiores.",
+    specs: {
+      altura: "65 – 80 cm",
+      iluminacion: "Media a brillante filtrada",
+      riego: "1 vez por semana",
+      dificultad: "Fácil / Principiante",
+      incluye: "Tutor de musgo orgánico + Maceta geotextil de diseño"
+    }
+  },
+  {
+    id: "prod-03",
+    sku: "BOT-SAN-03",
+    name: "Sansevieria Laurentii (Lengua de Suegra)",
+    category: "Plantas de Interior",
+    price: 26.0,
+    originalPrice: null,
+    stock: 19,
+    rating: 4.8,
+    reviews: 52,
+    badge: "Indestructible",
+    image: "https://images.unsplash.com/photo-1509423350716-97f9360b4e09?auto=format&fit=crop&w=800&q=80",
+    shortDesc: "Certificada por la NASA como una de las mejores purificadoras de toxinas. Tolera baja luz y descuidos de riego.",
+    specs: {
+      altura: "50 – 65 cm",
+      iluminacion: "Tolera desde baja luz hasta sol tamizado",
+      riego: "Cada 15 a 20 días",
+      dificultad: "Muy Fácil",
+      incluye: "Maceta cilíndrica de gres con base de madera de pino"
+    }
+  },
+  {
+    id: "prod-04",
+    sku: "DEC-MAC-04",
+    name: "Maceta Nórdica Autorregable en Gres Mineral 28cm",
+    category: "Macetas de Diseño",
+    price: 24.0,
+    originalPrice: 30.0,
+    stock: 25,
+    rating: 4.9,
+    reviews: 29,
+    badge: "Diseño Exclusivo",
+    image: "https://images.unsplash.com/photo-1485955900006-10f4d324d411?auto=format&fit=crop&w=800&q=80",
+    shortDesc: "Sistema de mecha hidropónica que suministra agua gradualmente a las raíces durante hasta 3 semanas continuas.",
+    specs: {
+      diametro: "28 cm boca / 26 cm altura",
+      material: "Gres mineral con acabado mate hidrofóbico",
+      capacidad: "Depósito de 1.8 Litros",
+      dificultad: "Apta para interiores y balcones",
+      incluye: "Indicador óptico de nivel de agua flotante"
+    }
+  },
+  {
+    id: "prod-05",
+    sku: "ACC-HUM-05",
+    name: "Humidificador Ultrasónico para Botánica 650ml",
+    category: "Accesorios Botánicos",
+    price: 32.5,
+    originalPrice: 42.0,
+    stock: 14,
+    rating: 4.9,
+    reviews: 41,
+    badge: "Oferta",
+    image: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=800&q=80",
+    shortDesc: "Mantiene la humedad relativa perfecta (60-70%) que requieren plantas tropicales para evitar puntas marrones.",
+    specs: {
+      autonomia: "Hasta 14 horas de vapor continuo frío",
+      cobertura: "Área de 25 m²",
+      conexion: "USB Tipo C (Bajo consumo 5W)",
+      sensor: "Autoapagado de seguridad cuando se agota el agua",
+      incluye: "Filtro cerámico de repuesto + Cable trenzado de 1.5m"
+    }
+  },
+  {
+    id: "prod-06",
+    sku: "ACC-KIT-06",
+    name: "Kit Profesional de Jardinería en Acero Inoxidable",
+    category: "Accesorios Botánicos",
+    price: 22.0,
+    originalPrice: null,
+    stock: 31,
+    rating: 4.7,
+    reviews: 19,
+    badge: "Garantía de por Vida",
+    image: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=800&q=80",
+    shortDesc: "Herramientas de precisión ergonómicas con mangos de madera tratada para trasplantes y podas limpias.",
+    specs: {
+      piezas: "Pala de trasplante graduada, rastrillo de mano y tijera bypass",
+      material: "Acero al manganeso inoxidable forjado",
+      mango: "Madera de nogal tratada con cera de abejas",
+      dificultad: "Uso doméstico y profesional",
+      incluye: "Funda de lona enrollable para almacenamiento"
+    }
+  },
+  {
+    id: "prod-07",
+    sku: "INS-SUS-07",
+    name: "Sustrato Premium Aroid & Tropical 6 Litros",
+    category: "Sustratos & Abonos",
+    price: 11.5,
+    originalPrice: 15.0,
+    stock: 48,
+    rating: 5.0,
+    reviews: 73,
+    badge: "Fórmula Propia",
+    image: "https://images.unsplash.com/photo-1463936575829-25148e1db1b8?auto=format&fit=crop&w=800&q=80",
+    shortDesc: "Mezcla ultra aireada que previene la pudrición de raíces en Monsteras, Philodendrons y Anthuriums.",
+    specs: {
+      composicion: "Corteza de pino compostada, perlita gruesa, fibra de coco y humus",
+      ph: "Ligeramente ácido equilibrado (6.0 – 6.5)",
+      peso: "2.4 kg / 6 Litros de volumen",
+      dificultad: "Listo para usar directamente",
+      incluye: "Bolsa resellable con válvula desgasificadora"
+    }
+  },
+  {
+    id: "prod-08",
+    sku: "INS-FER-08",
+    name: "Bioestimulante Foliar & Fortalecedor Orgánico 500ml",
+    category: "Sustratos & Abonos",
+    price: 14.0,
+    originalPrice: null,
+    stock: 27,
+    rating: 4.8,
+    reviews: 33,
+    badge: "100% Orgánico",
+    image: "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=800&q=80",
+    shortDesc: "Estimula la emisión de hojas nuevas y aporta brillo natural sin químicos residuales nocivos.",
+    specs: {
+      activos: "Extracto concentrado de algas Ascophyllum nodosum y aminoácidos",
+      aplicacion: "Pulverización foliar cada 15 días en temporada activa",
+      presentacion: "Frasco pulverizador con atomizador microgota",
+      seguridad: "Inofensivo para mascotas y niños",
+      incluye: "Guía impresa de nutrición vegetal"
+    }
+  }
+];
+
+// Cursos, Talleres y Masterclasses Botánicas (Productos de Alto Margen)
+const storeWorkshops = [
+  {
+    id: "cur-01",
+    sku: "CUR-PRO-01",
+    title: "Masterclass Pro: Propagación y Cuidado de Monsteras & Aroids",
+    category: "Curso Online en Vivo",
+    modality: "Virtual en Vivo + Grabación de por Vida",
+    date: "Próximo Sábado · 10:00 AM (2.5 Horas)",
+    price: 29.0,
+    originalPrice: 45.0,
+    spotsLeft: 5,
+    instructor: "Bióloga Camila Duarte",
+    image: "https://images.unsplash.com/photo-1545241047-6083a3684587?auto=format&fit=crop&w=800&q=80",
+    badge: "¡Últimos 5 Cupos!",
+    description: "Aprende cortes nodales seguros, enraizamiento en agua y perlita, y la fórmula exacta de sustrato para evitar plagas.",
+    includes: [
+      "Sesión de preguntas en vivo de 40 minutos",
+      "E-book descargable en PDF con guía de fertilización",
+      "Acceso al grupo privado de WhatsApp de seguimiento"
+    ]
+  },
+  {
+    id: "cur-02",
+    sku: "CUR-TER-02",
+    title: "Taller Presencial: Creación de Terrarios & Microclimas",
+    category: "Workshop Presencial en Showroom",
+    modality: "Presencial Sede Chicó Norte, Bogotá",
+    date: "Sábado 15 de Noviembre · 3:00 PM (3 Horas)",
+    price: 55.0,
+    originalPrice: 70.0,
+    spotsLeft: 4,
+    instructor: "Santiago Palacios (Paisajista)",
+    image: "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=800&q=80",
+    badge: "Incluye Kit Completo",
+    description: "Diseña y construye tu propio ecosistema vegetal cerrado en botella de cristal con musgos, fitonias y piedras volcánicas.",
+    includes: [
+      "Kit físico con recipiente de vidrio soplado de 25cm",
+      "Plantas tropicales miniatura, sustrato y carbón activo",
+      "Brunch botánico y herramientas de precisión para llevar a casa"
+    ]
+  },
+  {
+    id: "cur-03",
+    sku: "CUR-HUE-03",
+    title: "Curso Digital: Huertos Urbanos y Aromáticas en Balcones",
+    category: "Curso Grabado a Tu Ritmo",
+    modality: "4 Módulos en Video HD + Soporte",
+    date: "Acceso Inmediato Tras el Pago",
+    price: 19.5,
+    originalPrice: 28.0,
+    spotsLeft: 30,
+    instructor: "Ing. Agrónomo Javier Silva",
+    image: "https://images.unsplash.com/photo-1592417817098-8f3d6910985b?auto=format&fit=crop&w=800&q=80",
+    badge: "100% Práctico",
+    description: "Aprende a cultivar albahaca, romero, tomates cherry y menta en macetas pequeñas sin necesidad de jardín.",
+    includes: [
+      "18 lecciones en video paso a paso",
+      "Calendario lunar de siembra y trasplante",
+      "Certificado digital de finalización"
+    ]
+  }
+];
+
+// Testimonios Reales de Clientes
+const customerReviews = [
+  {
+    name: "Valentina Echeverri",
+    city: "Bogotá D.C.",
+    role: "Cliente Frecuente",
+    avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
+    rating: 5,
+    date: "Hace 3 días",
+    comment: "Pedí el Ficus Lyrata y el sustrato por la mañana y a las 3 PM ya estaba en mi apartamento perfectamente empacado con soporte térmico. Poder pagar en línea y que la confirmación llegue al WhatsApp es comodísimo."
+  },
+  {
+    name: "Dr. Andrés Quintero",
+    city: "Medellín",
+    role: "Comprador Verificado",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
+    rating: 5,
+    date: "La semana pasada",
+    comment: "Compré el Workshop de Terrarios para asistir con mi esposa. La experiencia fue increíble y la atención del equipo por WhatsApp resolvió todas las dudas previas al taller en 2 minutos."
+  },
+  {
+    name: "Mariana Sotomayor",
+    city: "Chía, Cundinamarca",
+    role: "Diseñadora de Interiores",
+    avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=200&q=80",
+    rating: 5,
+    date: "Hace 2 semanas",
+    comment: "Las macetas autorregables cambiaron la vida de las oficinas que decoro. El catálogo carga en un parpadeo y la pasarela de Nequi funciona sin ninguna fricción."
+  }
+];
+
+// Preguntas Frecuentes de la Tienda
+const storeFaqs = [
+  {
+    q: "¿Cómo garantizan que las plantas vivas lleguen en perfecto estado en el envío?",
+    a: "Contamos con un protocolo de empaque bioseguro: fijamos el cepellón con malla biodegradable hidrófila y utilizamos cajas ventiladas reforzadas para evitar vuelcos durante el transporte urbano. Además, cuentan con garantía de reposición de 30 días si presentan algún problema."
+  },
+  {
+    q: "¿Cómo accedo a los cursos y talleres una vez realizado el pago?",
+    a: "Al completar el pago por pasarela o WhatsApp, nuestro sistema te envía de inmediato al chat el enlace directo de acceso al aula virtual, las credenciales del grupo y el kit digital en PDF. Si el taller es presencial, recibirás tu código QR de pase de entrada."
+  },
+  {
+    q: "¿Qué medios de pago aceptan?",
+    a: "Aceptamos tarjetas de crédito y débito (Visa, Mastercard, Amex) con cifrado SSL bancario, transferencias Nequi y PSE Bancolombia, o pago en efectivo / datáfono contra entrega al recibir tu pedido en domicilio."
+  }
+];
+---
+
+<Layout 
+  title="Estudio Botánico Pro | E-Commerce, Talleres & WhatsApp Checkout | PalkioTech"
+  description="Plataforma e-commerce completa con catálogo de plantas, venta de cursos y talleres, pasarela de pago en línea, testimonios y checkout directo a WhatsApp."
+>
+  <!-- Top Demo Disclaimer Header -->
+  <div class="bg-slate-900 text-white text-xs py-2.5 px-4 font-mono sticky top-0 z-50 shadow-md border-b border-slate-800">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <img src="/images/palkiotech-emblem.png" alt="PalkioTech" class="w-4 h-4 object-contain" />
+        <span class="font-bold text-white">PALKIOTECH E-COMMERCE & ACADEMY ENGINE:</span>
+        <span class="text-slate-300 hidden md:inline">Tienda Web Completa, Cursos & Pasarela SSL con WhatsApp Sync</span>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="/#demos" class="text-amber-400 hover:text-white underline transition-colors">
+          ← Volver al Portafolio
+        </a>
+        <a href="/#contacto" class="bg-gradient-to-r from-amber-500 via-amber-600 to-yellow-600 hover:from-amber-600 hover:to-yellow-700 text-slate-950 font-black px-3.5 py-1.5 rounded text-[11px] transition-all">
+          Cotizar Este Sistema
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Store Brand Navigation Header -->
+  <header class="bg-white border-b border-slate-200 sticky top-10 z-40 shadow-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+      
+      <!-- Brand Logo -->
+      <a href="/demos/catalogo-retail" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-emerald-700 text-white flex items-center justify-center font-bold text-lg shadow-sm group-hover:scale-105 transition-transform">
+          🌿
+        </div>
+        <div>
+          <span class="font-extrabold text-lg tracking-tight text-slate-900 block leading-tight">
+            ESTUDIO BOTÁNICO
+          </span>
+          <span class="text-xs text-slate-500 font-medium">
+            Selección Botánica & Academia Viva
+          </span>
+        </div>
+      </a>
+
+      <!-- Navigation Links -->
+      <nav class="hidden lg:flex items-center gap-6 text-xs font-semibold text-slate-600">
+        <a href="#catalogo" class="hover:text-emerald-700 transition-colors">Catálogo de Plantas</a>
+        <a href="#cursos" class="hover:text-emerald-700 transition-colors flex items-center gap-1.5">
+          <span>Talleres & Cursos</span>
+          <span class="bg-emerald-100 text-emerald-800 text-[10px] px-1.5 py-0.2 rounded font-mono font-bold">Nuevo</span>
+        </a>
+        <a href="#testimonios" class="hover:text-emerald-700 transition-colors">Opiniones</a>
+        <a href="#contacto-tienda" class="hover:text-emerald-700 transition-colors">Sede & Contacto</a>
+      </nav>
+
+      <!-- Search Bar -->
+      <div class="relative flex-1 max-w-xs hidden xl:block">
+        <input 
+          id="live-search-input"
+          type="text" 
+          placeholder="Buscar plantas o cursos (<10ms)..." 
+          class="w-full bg-slate-50 border border-slate-300 rounded-xl pl-9 pr-3 py-2 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-emerald-600 focus:bg-white transition-all font-mono"
+        />
+        <svg class="w-4 h-4 text-slate-400 absolute left-3 top-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+        </svg>
+      </div>
+
+      <!-- Header CTAs -->
+      <div class="flex items-center gap-3">
+        <!-- Coupon Pill -->
+        <div class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-mono">
+          <span class="font-bold">Cupón 10%:</span>
+          <span class="bg-white px-1.5 py-0.5 rounded border border-emerald-300 font-bold select-all">PALKIO10</span>
+        </div>
+
+        <!-- Cart Trigger Button -->
+        <button 
+          id="btn-cart-trigger"
+          class="inline-flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-emerald-700 text-white text-xs font-bold transition-all relative shadow-sm"
+        >
+          <svg class="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+          </svg>
+          <span class="hidden sm:inline">Mi Pedido</span>
+          <span id="nav-cart-badge" class="w-5 h-5 rounded-full bg-emerald-500 text-slate-950 font-mono text-[10px] font-extrabold flex items-center justify-center">0</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Store Hero Banner -->
+  <section class="bg-gradient-to-r from-emerald-900 via-teal-950 to-slate-900 text-white py-14 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 items-center relative z-10">
+      
+      <div class="md:col-span-8">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-mono font-bold mb-4 border border-emerald-500/30">
+          <span>✦ TIENDA BOTÁNICA, ACADEMIA & PASARELA DE PAGO SSL</span>
+        </div>
+        <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight mb-4">
+          Naturaleza viva, diseño y educación botánica para tu hogar.
+        </h1>
+        <p class="text-sm sm:text-base text-emerald-100/90 leading-relaxed max-w-2xl mb-6">
+          Compra especies botánicas de colección o inscríbete a nuestras masterclasses virtuales y presenciales. Paga en línea de inmediato o contra entrega con despacho a WhatsApp.
+        </p>
+        <div class="flex flex-wrap items-center gap-6 text-xs text-emerald-200 font-mono">
+          <span class="flex items-center gap-1.5">💳 Pasarela SSL Cifrada (Tarjetas / Nequi / PSE)</span>
+          <span class="flex items-center gap-1.5">🎓 Masterclasses con Certificado</span>
+          <span class="flex items-center gap-1.5">💬 Despacho instantáneo a WhatsApp</span>
+        </div>
+      </div>
+
+      <div class="md:col-span-4 flex flex-col gap-3">
+        <div class="p-5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-center">
+          <span class="text-[11px] font-mono uppercase tracking-wider text-emerald-300 block mb-1">Tecnología de la Tienda</span>
+          <span class="text-3xl font-extrabold font-mono text-white block mb-0.5">< 25 ms</span>
+          <p class="text-xs text-emerald-100">Carga reactiva instantánea y checkout en 4 pasos.</p>
+        </div>
+        <div class="p-3 rounded-xl bg-emerald-950/60 border border-emerald-800/40 text-center text-xs text-emerald-200 font-mono">
+          📦 Envío gratis en órdenes superiores a $50 USD
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Filter Bar: Categories & Sorting -->
+  <div id="catalogo" class="bg-white border-b border-slate-200 sticky top-30 z-30 shadow-2xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      
+      <!-- Category Tabs -->
+      <div class="flex items-center gap-2 overflow-x-auto pb-1 sm:pb-0 scrollbar-none" id="store-cat-filters">
+        <button class="cat-pill active text-xs font-bold px-3.5 py-1.5 rounded-lg bg-slate-900 text-white transition-all shrink-0" data-cat="all">
+          Todos los Productos ({catalogProducts.length})
+        </button>
+        <button class="cat-pill text-xs font-bold px-3.5 py-1.5 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all shrink-0" data-cat="Plantas de Interior">
+          Plantas de Interior
+        </button>
+        <button class="cat-pill text-xs font-bold px-3.5 py-1.5 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all shrink-0" data-cat="Macetas de Diseño">
+          Macetas
+        </button>
+        <button class="cat-pill text-xs font-bold px-3.5 py-1.5 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all shrink-0" data-cat="Accesorios Botánicos">
+          Accesorios
+        </button>
+        <button class="cat-pill text-xs font-bold px-3.5 py-1.5 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all shrink-0" data-cat="Sustratos & Abonos">
+          Sustratos & Abonos
+        </button>
+      </div>
+
+      <!-- Sorting Select -->
+      <div class="flex items-center gap-2 shrink-0">
+        <span class="text-xs text-slate-500 font-medium">Ordenar:</span>
+        <select id="sort-select" class="bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-800 rounded-lg px-2.5 py-1.5 focus:outline-none focus:border-emerald-600">
+          <option value="default">Recomendados</option>
+          <option value="price-asc">Precio: Menor a Mayor</option>
+          <option value="price-desc">Precio: Mayor a Menor</option>
+          <option value="rating">Mejor Calificados (★)</option>
+        </select>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Main Product Grid Section -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="products-catalog-grid">
+      {catalogProducts.map((p) => (
+        <div 
+          class="catalog-item bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs hover:shadow-md hover:border-slate-300 transition-all flex flex-col justify-between group"
+          data-id={p.id}
+          data-category={p.category}
+          data-name={p.name.toLowerCase()}
+          data-price={p.price}
+          data-rating={p.rating}
+        >
+          <div>
+            <!-- Image Frame -->
+            <div class="relative h-56 bg-slate-100 overflow-hidden cursor-pointer btn-open-quickview" data-id={p.id}>
+              <img 
+                src={p.image} 
+                alt={p.name}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              />
+              {p.badge && (
+                <span class="absolute top-3 left-3 text-[10px] font-mono font-bold text-emerald-800 bg-white/95 backdrop-blur-xs px-2.5 py-1 rounded-md shadow-xs border border-emerald-200">
+                  {p.badge}
+                </span>
+              )}
+              <span class="absolute bottom-3 right-3 text-[10px] font-mono font-bold bg-slate-900/80 text-white px-2 py-0.5 rounded backdrop-blur-xs">
+                Stock: {p.stock}
+              </span>
+            </div>
+
+            <!-- Details -->
+            <div class="p-5 pb-2">
+              <span class="text-[11px] font-mono font-semibold text-slate-500 uppercase tracking-wider block mb-1">
+                {p.category}
+              </span>
+              
+              <h3 class="text-sm font-bold text-slate-900 leading-snug mb-2 group-hover:text-emerald-700 transition-colors cursor-pointer btn-open-quickview" data-id={p.id}>
+                {p.name}
+              </h3>
+
+              <div class="flex items-center gap-2 mb-2 text-xs">
+                <span class="text-amber-500 font-bold font-mono">★ {p.rating}</span>
+                <span class="text-slate-400 font-mono">({p.reviews} reseñas)</span>
+              </div>
+
+              <p class="text-xs text-slate-600 line-clamp-2 leading-relaxed mb-3">
+                {p.shortDesc}
+              </p>
+            </div>
+          </div>
+
+          <!-- Bottom Card Bar -->
+          <div class="p-5 pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
+            <div>
+              <span class="text-lg font-extrabold text-slate-900 font-mono block leading-none">
+                ${p.price.toFixed(2)} <span class="text-[10px] font-normal text-slate-500">USD</span>
+              </span>
+              {p.originalPrice && (
+                <span class="text-xs text-slate-400 font-mono line-through">
+                  ${p.originalPrice.toFixed(2)}
+                </span>
+              )}
+            </div>
+
+            <div class="flex items-center gap-1.5">
+              <button 
+                class="btn-open-quickview text-slate-600 hover:text-slate-900 p-2 rounded-xl border border-slate-200 hover:bg-slate-50 transition-colors"
+                title="Ficha Técnica Rápida"
+                data-id={p.id}
+              >
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                </svg>
+              </button>
+
+              <button 
+                class="btn-catalog-add text-xs font-bold px-3 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white transition-all shadow-xs flex items-center gap-1"
+                data-id={p.id}
+                data-name={p.name}
+                data-price={p.price}
+                data-img={p.image}
+              >
+                <span>+ Agregar</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </main>
+
+  <!-- ========================================================================= -->
+  <!-- SECCIÓN NUEVA: TALLERES & CURSOS BOTÁNICOS (PRODUCTOS DIGITALES / SERVICIO) -->
+  <!-- ========================================================================= -->
+  <section id="cursos" class="bg-gradient-to-b from-slate-50 to-white py-16 px-4 sm:px-6 lg:px-8 border-t border-slate-200">
+    <div class="max-w-7xl mx-auto">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
+        <div>
+          <span class="text-xs font-mono font-bold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full border border-emerald-200 inline-block mb-3">
+            ✦ ACADEMIA BOTÁNICA & WORKSHOPS
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+            Talleres, Cursos y Masterclasses Prácticas
+          </h2>
+          <p class="text-sm text-slate-600 mt-1 max-w-xl">
+            Aprende a reproducir plantas raras, diseñar terrarios y nutrir tus sustratos. Modalidad online en vivo o presencial en nuestro showroom.
+          </p>
+        </div>
+        <div class="text-xs font-mono text-slate-500">
+          🎓 Certificado de asistencia + Material descargable incluido
+        </div>
+      </div>
+
+      <!-- Courses Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {storeWorkshops.map((w) => (
+          <div class="rounded-3xl bg-white border border-slate-200 overflow-hidden shadow-xs hover:shadow-md transition-all flex flex-col justify-between group">
+            <div>
+              <!-- Course Banner -->
+              <div class="relative h-48 bg-slate-100 overflow-hidden">
+                <img src={w.image} alt={w.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <span class="absolute top-3 left-3 text-[10px] font-mono font-bold text-slate-950 bg-amber-400 px-2.5 py-1 rounded-md shadow-xs">
+                  {w.badge}
+                </span>
+                <span class="absolute bottom-3 right-3 text-[10px] font-mono font-bold bg-slate-900/80 text-white px-2 py-0.5 rounded backdrop-blur-xs">
+                  {w.modality}
+                </span>
+              </div>
+
+              <!-- Content -->
+              <div class="p-6">
+                <div class="flex items-center justify-between text-xs font-mono text-slate-500 mb-2">
+                  <span>{w.category}</span>
+                  <span class="text-emerald-700 font-bold">{w.date}</span>
+                </div>
+
+                <h3 class="text-base font-bold text-slate-900 leading-snug mb-2">
+                  {w.title}
+                </h3>
+
+                <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                  {w.description}
+                </p>
+
+                <!-- What it includes list -->
+                <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-100 mb-4 text-xs space-y-1.5">
+                  <span class="text-[11px] font-mono font-bold text-slate-700 block mb-1">Tu Inscripción Incluye:</span>
+                  {w.includes.map(inc => (
+                    <div class="flex items-start gap-2 text-slate-600 text-[11px]">
+                      <span class="text-emerald-600 font-bold">✓</span>
+                      <span>{inc}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div class="flex items-center gap-2 text-xs text-slate-500 pt-2 border-t border-slate-100">
+                  <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                  <span>Instructor: <strong class="text-slate-800">{w.instructor}</strong></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Price & Enroll CTA -->
+            <div class="p-6 pt-3 border-t border-slate-100 flex items-center justify-between bg-slate-50/50">
+              <div>
+                <span class="text-xl font-extrabold text-slate-900 font-mono block leading-none">
+                  ${w.price.toFixed(2)} <span class="text-xs font-normal text-slate-500">USD</span>
+                </span>
+                {w.originalPrice && (
+                  <span class="text-xs text-slate-400 font-mono line-through">
+                    ${w.originalPrice.toFixed(2)}
+                  </span>
+                )}
+              </div>
+
+              <button 
+                class="btn-enroll-course text-xs font-bold px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-emerald-600 hover:text-white text-white transition-all shadow-xs flex items-center gap-1.5"
+                data-id={w.id}
+                data-name={w.title}
+                data-price={w.price}
+                data-img={w.image}
+              >
+                <span>Inscribirme Ahora</span>
+                <span>→</span>
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- SECCIÓN: TESTIMONIOS REALES & SOCIAL PROOF -->
+  <!-- ========================================================================= -->
+  <section id="testimonios" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <span class="text-xs font-mono font-bold text-blue-700 bg-blue-50 px-3 py-1 rounded-full border border-blue-200 inline-block mb-3">
+        ✦ EXPERIENCIA DE CLIENTES
+      </span>
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">
+        Opiniones Verificadas de Compradores
+      </h2>
+      <p class="text-slate-600 text-sm mt-1">
+        Más de 2,400 plantas entregadas y 850 alumnos formados en nuestra academia.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {customerReviews.map((rev) => (
+        <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-xs flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-1 text-amber-400 text-sm mb-3">
+              {'★'.repeat(rev.rating)}
+              <span class="text-xs font-mono text-slate-400 ml-2 font-semibold">{rev.date}</span>
+            </div>
+            <p class="text-xs text-slate-700 leading-relaxed mb-6 italic">
+              "{rev.comment}"
+            </p>
+          </div>
+
+          <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+            <img src={rev.avatar} alt={rev.name} class="w-10 h-10 rounded-full object-cover border border-slate-200" />
+            <div>
+              <span class="text-xs font-bold text-slate-900 block leading-tight">{rev.name}</span>
+              <span class="text-[11px] text-emerald-700 font-medium">{rev.city} · {rev.role}</span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- SECCIÓN: PREGUNTAS FRECUENTES DE LA TIENDA -->
+  <!-- ========================================================================= -->
+  <section class="py-14 px-4 sm:px-6 lg:px-8 bg-slate-50 border-t border-slate-200">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-10">
+        <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900">
+          Preguntas Frecuentes sobre Compras y Envíos
+        </h2>
+        <p class="text-xs text-slate-500 mt-1">
+          Garantía de frescura, tiempos de despacho y acceso a las clases.
+        </p>
+      </div>
+
+      <div class="space-y-3">
+        {storeFaqs.map((faq) => (
+          <details class="group bg-white rounded-xl border border-slate-200 p-5 [&_summary::-webkit-details-marker]:hidden hover:border-slate-300 transition-all shadow-2xs">
+            <summary class="flex items-center justify-between cursor-pointer focus:outline-none">
+              <h3 class="text-xs sm:text-sm font-bold text-slate-900 group-hover:text-emerald-700 transition-colors pr-4">
+                {faq.q}
+              </h3>
+              <span class="w-6 h-6 rounded-lg bg-slate-100 text-slate-600 flex items-center justify-center shrink-0 group-open:rotate-180 transition-transform text-xs">
+                ▼
+              </span>
+            </summary>
+            <p class="text-xs text-slate-600 leading-relaxed mt-3 pt-3 border-t border-slate-100">
+              {faq.a}
+            </p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- FOOTER COMERCIAL COMPLETO (INFORMACIÓN DE CONTACTO & SEDES) -->
+  <!-- ========================================================================= -->
+  <footer id="contacto-tienda" class="bg-slate-900 text-slate-400 text-xs pt-16 pb-12 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-slate-800">
+        
+        <!-- Column 1: Store Brand & Bio -->
+        <div class="md:col-span-1">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-9 h-9 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-bold text-base shadow-sm">
+              🌿
+            </div>
+            <span class="font-extrabold text-base text-white tracking-tight">
+              ESTUDIO BOTÁNICO
+            </span>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed mb-4">
+            Showroom botánico especializado en diseño biofílico para hogares, oficinas y academias. Envíos urbanos en 24 horas y soporte técnico para tus plantas.
+          </p>
+          <div class="text-[11px] font-mono text-emerald-400">
+            ● Tienda Física & Envíos Activos Hoy
+          </div>
+        </div>
+
+        <!-- Column 2: Showroom & Hours -->
+        <div>
+          <h4 class="font-bold text-white text-xs font-mono uppercase tracking-wider mb-4">Sedes & Horarios</h4>
+          <ul class="space-y-2.5">
+            <li class="flex items-start gap-2">
+              <span class="text-emerald-400">📍</span>
+              <span><strong>Sede Showroom:</strong> Cra 11 # 94-25, Chicó Norte, Bogotá D.C.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-emerald-400">⏱</span>
+              <span><strong>Lunes a Sábado:</strong> 8:00 AM – 7:00 PM</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-emerald-400">⏱</span>
+              <span><strong>Domingos y Festivos:</strong> 10:00 AM – 5:00 PM</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Contact Channels & WhatsApp -->
+        <div>
+          <h4 class="font-bold text-white text-xs font-mono uppercase tracking-wider mb-4">Atención al Cliente</h4>
+          <ul class="space-y-2.5">
+            <li>
+              <a href="https://api.whatsapp.com/send?phone=573124567890" target="_blank" class="flex items-center gap-2 hover:text-white transition-colors text-emerald-400 font-bold">
+                <span>💬 WhatsApp Asesor:</span>
+                <span>+57 312 456 7890</span>
+              </a>
+            </li>
+            <li class="flex items-center gap-2">
+              <span>✉️ Correo:</span>
+              <span class="text-slate-300">pedidos@estudiobotanico.co</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <span>💳 NIT:</span>
+              <span class="text-slate-300 font-mono">901.428.192-4 (Régimen Común)</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <span>🔒 Pasarela:</span>
+              <span class="text-slate-300">Cifrado Bancario SSL 256-Bit</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Newsletter Box -->
+        <div>
+          <h4 class="font-bold text-white text-xs font-mono uppercase tracking-wider mb-3">Club Botánico</h4>
+          <p class="text-xs text-slate-400 mb-3">
+            Suscríbete para recibir guías mensuales de riego y acceso anticipado a cupos de talleres.
+          </p>
+          <div class="flex items-center gap-1.5">
+            <input type="email" placeholder="tu@correo.com" class="bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 flex-1" />
+            <button class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-3 py-2 rounded-lg text-xs transition-colors">
+              Unirme
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Credits -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-500">
+        <p>© {new Date().getFullYear()} Estudio Botánico S.A.S. Todos los derechos reservados.</p>
+        <div class="flex items-center gap-4 text-slate-400">
+          <span class="font-mono text-emerald-400">Engine e-commerce desarrollado por PalkioTech</span>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- FLOATING WHATSAPP SUPPORT BUTTON (DYNAMIC & AUTO-HIDING ON CHECKOUT) -->
+  <a 
+    id="store-floating-wa"
+    href="https://api.whatsapp.com/send?text=Hola%20Estudio%20Bot%C3%A1nico,%20tengo%20una%20pregunta%20sobre%20las%20plantas%20o%20talleres"
+    target="_blank"
+    class="fixed bottom-6 right-6 z-40 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600 text-white pl-3.5 pr-4.5 py-2.5 rounded-full shadow-2xl shadow-emerald-950/25 flex items-center gap-3 transition-all duration-300 hover:scale-105 border border-emerald-400/30 group"
+    title="Hablar con un Asesor Botánico en Vivo por WhatsApp"
+  >
+    <div class="relative flex items-center justify-center">
+      <span class="absolute -top-0.5 -right-0.5 flex h-2.5 w-2.5">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-300 opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400 border border-white"></span>
+      </span>
+      <div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
+        <svg class="w-5 h-5 fill-current text-white" viewBox="0 0 24 24">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+        </svg>
+      </div>
+    </div>
+    <div class="flex flex-col text-left">
+      <span class="text-[9px] font-mono text-emerald-200 uppercase tracking-wider font-bold leading-none">Asesoría Botánica</span>
+      <span class="text-xs font-bold font-sans text-white leading-tight">Chat en WhatsApp</span>
+    </div>
+  </a>
+
+  <!-- QUICK VIEW PRODUCT MODAL (FICHA TÉCNICA) -->
+  <div id="product-modal-backdrop" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 hidden transition-opacity"></div>
+  <div id="product-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-slate-200 relative p-6 sm:p-8">
+      
+      <button id="btn-close-modal" class="absolute top-5 right-5 text-slate-400 hover:text-slate-700 w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-sm">
+        ✕
+      </button>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 items-start">
+        <div class="rounded-2xl overflow-hidden bg-slate-100 border border-slate-200 aspect-square">
+          <img id="modal-img" src="" alt="" class="w-full h-full object-cover" />
+        </div>
+
+        <div>
+          <span id="modal-cat" class="text-xs font-mono font-bold text-emerald-700 uppercase tracking-wider block mb-1"></span>
+          <h2 id="modal-title" class="text-lg sm:text-xl font-bold text-slate-900 mb-2 leading-tight"></h2>
+          
+          <div class="flex items-center gap-2 mb-4 text-xs font-mono">
+            <span id="modal-rating" class="text-amber-500 font-bold"></span>
+            <span id="modal-sku" class="text-slate-400"></span>
+          </div>
+
+          <div class="text-2xl font-extrabold text-slate-900 font-mono mb-4">
+            <span id="modal-price"></span>
+            <span class="text-xs font-normal text-slate-500 font-sans">USD / IVA incluido</span>
+          </div>
+
+          <p id="modal-desc" class="text-xs text-slate-600 leading-relaxed mb-6"></p>
+
+          <!-- Specs Table -->
+          <div class="bg-slate-50 rounded-xl p-3.5 border border-slate-200 mb-6 text-xs space-y-2" id="modal-specs-container">
+            <!-- Injected dynamically -->
+          </div>
+
+          <!-- Add to cart row -->
+          <div class="flex items-center gap-3">
+            <div class="flex items-center border border-slate-300 rounded-xl bg-slate-50">
+              <button id="modal-qty-minus" class="px-3 py-2 text-slate-600 hover:text-slate-900 font-bold">-</button>
+              <span id="modal-qty-val" class="px-2 font-mono font-bold text-xs text-slate-900">1</span>
+              <button id="modal-qty-plus" class="px-3 py-2 text-slate-600 hover:text-slate-900 font-bold">+</button>
+            </div>
+
+            <button 
+              id="modal-btn-add" 
+              class="flex-1 py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-sm transition-all"
+            >
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+              </svg>
+              <span>Añadir al Carrito</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MULTI-STEP ADVANCED CHECKOUT DRAWER WITH PAYMENT GATEWAY -->
+  <div id="checkout-drawer-backdrop" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-[60] hidden transition-opacity"></div>
+  <div id="checkout-drawer" class="fixed top-0 right-0 bottom-0 w-full max-w-lg bg-white shadow-2xl z-[70] transform translate-x-full transition-transform duration-300 flex flex-col justify-between">
+    
+    <!-- Drawer Header & Stepper Indicator -->
+    <div class="p-5 border-b border-slate-200 bg-slate-50">
+      <div class="flex items-center justify-between mb-3">
+        <h3 class="text-base font-extrabold text-slate-900 flex items-center gap-2">
+          <span>Checkout & Pagos PalkioTech</span>
+          <span class="text-xs font-mono text-blue-700 font-bold bg-blue-100 px-2 py-0.5 rounded">Pasarela SSL</span>
+        </h3>
+        <button id="btn-close-drawer" class="text-slate-400 hover:text-slate-700 p-1 text-lg font-bold">
+          ✕
+        </button>
+      </div>
+
+      <!-- Step Badges -->
+      <div class="grid grid-cols-4 gap-1.5 text-center text-[10px] font-mono font-bold">
+        <div id="step-badge-1" class="py-1.5 rounded-lg bg-emerald-600 text-white">1. Carrito</div>
+        <div id="step-badge-2" class="py-1.5 rounded-lg bg-slate-200 text-slate-600">2. Envío</div>
+        <div id="step-badge-3" class="py-1.5 rounded-lg bg-slate-200 text-slate-600">3. Pago</div>
+        <div id="step-badge-4" class="py-1.5 rounded-lg bg-slate-200 text-slate-600">4. Confirmación</div>
+      </div>
+    </div>
+
+    <!-- DRAWER STEP 1: CART ITEMS -->
+    <div id="drawer-step-1" class="p-6 overflow-y-auto flex-1 space-y-4">
+      <div id="cart-items-container" class="space-y-3">
+        <!-- Rendered by JS -->
+      </div>
+
+      <!-- Coupon Input Box -->
+      <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 pt-3">
+        <label class="block text-xs font-semibold text-slate-700 mb-1.5">¿Tienes un cupón de descuento?</label>
+        <div class="flex items-center gap-2">
+          <input 
+            id="coupon-input" 
+            type="text" 
+            placeholder="Prueba: PALKIO10" 
+            class="flex-1 bg-white border border-slate-300 rounded-lg px-3 py-1.5 text-xs uppercase font-mono text-slate-800 focus:outline-none focus:border-emerald-600"
+          />
+          <button id="btn-apply-coupon" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-900 text-white text-xs font-bold rounded-lg transition-colors">
+            Aplicar
+          </button>
+        </div>
+        <span id="coupon-feedback" class="text-[11px] font-mono mt-1 block"></span>
+      </div>
+
+      <!-- Price Breakdown -->
+      <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs space-y-2 font-mono">
+        <div class="flex justify-between text-slate-600">
+          <span>Subtotal Productos / Talleres:</span>
+          <span id="summary-subtotal" class="font-bold text-slate-900">$0.00 USD</span>
+        </div>
+        <div id="row-discount" class="flex justify-between text-emerald-700 font-bold hidden">
+          <span>Descuento Cupón (10%):</span>
+          <span id="summary-discount">-$0.00 USD</span>
+        </div>
+        <div class="flex justify-between text-slate-600">
+          <span>Envío a Domicilio:</span>
+          <span id="summary-shipping" class="text-emerald-700 font-bold">GRATIS</span>
+        </div>
+        <div class="pt-2 border-t border-slate-200 flex justify-between text-sm font-extrabold text-slate-900 font-mono">
+          <span>Total a Pagar:</span>
+          <span id="summary-total" class="text-emerald-700">$0.00 USD</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- DRAWER STEP 2: SHIPPING / CUSTOMER DATA -->
+    <div id="drawer-step-2" class="p-6 overflow-y-auto flex-1 space-y-4 hidden">
+      <h4 class="text-xs font-mono uppercase tracking-wider text-slate-500 font-bold">
+        Datos de Entrega & Facturación
+      </h4>
+
+      <div>
+        <label class="block text-xs font-semibold text-slate-700 mb-1">Nombre Completo *</label>
+        <input id="ship-name" type="text" placeholder="Ej: Marcela Gómez" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-xs text-slate-800 focus:outline-none focus:border-emerald-600" />
+      </div>
+
+      <div>
+        <label class="block text-xs font-semibold text-slate-700 mb-1">Número de WhatsApp (Para confirmar entrega y pago) *</label>
+        <input id="ship-phone" type="tel" placeholder="Ej: +57 312 456 7890" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-xs text-slate-800 focus:outline-none focus:border-emerald-600 font-mono" />
+      </div>
+
+      <div class="grid grid-cols-2 gap-3">
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Ciudad *</label>
+          <input id="ship-city" type="text" value="Bogotá D.C." class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-xs text-slate-800 focus:outline-none focus:border-emerald-600" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Barrio / Sector</label>
+          <input id="ship-neighborhood" type="text" placeholder="Ej: Usaquén" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-xs text-slate-800 focus:outline-none focus:border-emerald-600" />
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-xs font-semibold text-slate-700 mb-1">Dirección Exacta (Calle, Carrera, Apto, Edificio) *</label>
+        <input id="ship-address" type="text" placeholder="Ej: Calle 116 # 15-28, Torre B Apto 502" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-xs text-slate-800 focus:outline-none focus:border-emerald-600" />
+      </div>
+
+      <div>
+        <label class="block text-xs font-semibold text-slate-700 mb-1">Instrucciones Especiales para el Repartidor</label>
+        <textarea id="ship-notes" rows="2" placeholder="Ej: Dejar en portería o llamar antes de subir..." class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-xs text-slate-800 focus:outline-none focus:border-emerald-600 resize-none"></textarea>
+      </div>
+    </div>
+
+    <!-- DRAWER STEP 3: PAYMENT GATEWAY INTERFACE -->
+    <div id="drawer-step-3" class="p-6 overflow-y-auto flex-1 space-y-5 hidden">
+      <div class="flex items-center justify-between">
+        <h4 class="text-xs font-mono uppercase tracking-wider text-slate-500 font-bold">
+          Selecciona tu Método de Pago
+        </h4>
+        <span class="text-[11px] font-mono text-emerald-700 font-bold">Total: <span id="gateway-total-badge">$0.00 USD</span></span>
+      </div>
+
+      <!-- Payment Method Selector Tabs -->
+      <div class="grid grid-cols-3 gap-2">
+        <button id="tab-pay-card" class="pay-method-tab active p-3 rounded-xl border border-blue-600 bg-blue-50/70 text-slate-900 text-xs font-bold flex flex-col items-center gap-1 transition-all">
+          <span class="text-base">💳</span>
+          <span>Tarjeta</span>
+          <span class="text-[9px] font-mono text-blue-700 font-normal">Pasarela en Línea</span>
+        </button>
+
+        <button id="tab-pay-nequi" class="pay-method-tab p-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-600 text-xs font-bold flex flex-col items-center gap-1 hover:bg-slate-100 transition-all">
+          <span class="text-base">📲</span>
+          <span>Nequi / PSE</span>
+          <span class="text-[9px] font-mono text-slate-400 font-normal">Transferencia</span>
+        </button>
+
+        <button id="tab-pay-whatsapp" class="pay-method-tab p-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-600 text-xs font-bold flex flex-col items-center gap-1 hover:bg-slate-100 transition-all">
+          <span class="text-base">💬</span>
+          <span>WhatsApp</span>
+          <span class="text-[9px] font-mono text-slate-400 font-normal">Contra Entrega</span>
+        </button>
+      </div>
+
+      <!-- VIEW A: CREDIT / DEBIT CARD GATEWAY FORM -->
+      <div id="view-pay-card" class="space-y-3.5 p-4 rounded-2xl bg-slate-50 border border-slate-200">
+        <div class="flex items-center justify-between pb-2 border-b border-slate-200">
+          <span class="text-xs font-bold text-slate-900">Pasarela Cifrada (Stripe / Wompi)</span>
+          <div class="flex items-center gap-1.5 text-[10px] font-mono text-slate-500">
+            <span class="bg-blue-600 text-white font-bold px-1.5 py-0.5 rounded text-[9px]">VISA</span>
+            <span class="bg-rose-600 text-white font-bold px-1.5 py-0.5 rounded text-[9px]">MC</span>
+            <span class="bg-amber-600 text-white font-bold px-1.5 py-0.5 rounded text-[9px]">AMEX</span>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-[11px] font-semibold text-slate-700 mb-1">Nombre en la Tarjeta</label>
+          <input id="card-holder" type="text" placeholder="Ej: MARCELA GOMEZ" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-xs uppercase text-slate-800 font-mono focus:outline-none focus:border-blue-600" />
+        </div>
+
+        <div>
+          <label class="block text-[11px] font-semibold text-slate-700 mb-1">Número de Tarjeta</label>
+          <div class="relative">
+            <input id="card-number" type="text" maxlength="19" placeholder="4532 8921 4412 8901" class="w-full bg-white border border-slate-300 rounded-lg pl-3 pr-10 py-2 text-xs text-slate-800 font-mono focus:outline-none focus:border-blue-600" />
+            <span id="card-type-icon" class="absolute right-3 top-2 text-xs font-mono font-bold text-blue-700">💳</span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-[11px] font-semibold text-slate-700 mb-1">Vencimiento (MM/AA)</label>
+            <input id="card-expiry" type="text" maxlength="5" placeholder="12/28" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-xs text-slate-800 font-mono text-center focus:outline-none focus:border-blue-600" />
+          </div>
+          <div>
+            <label class="block text-[11px] font-semibold text-slate-700 mb-1">Código CVC / CVV</label>
+            <input id="card-cvc" type="password" maxlength="4" placeholder="•••" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-xs text-slate-800 font-mono text-center focus:outline-none focus:border-blue-600" />
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2 pt-1 text-[10px] text-slate-500 font-mono">
+          <span>🔒 Cifrado bancario TLS 1.3 · Tokenización segura</span>
+        </div>
+      </div>
+
+      <!-- VIEW B: NEQUI & PSE SIMULATOR -->
+      <div id="view-pay-nequi" class="space-y-4 p-4 rounded-2xl bg-purple-50/50 border border-purple-200 hidden">
+        <div class="text-center">
+          <span class="text-xs font-mono font-bold text-purple-900 block mb-1">Paga con Nequi o Bancolombia a la Mano</span>
+          <p class="text-xs text-slate-600 mb-3">Escanea el código QR desde tu app o transfiere al número corporativo:</p>
+          
+          <!-- Mock QR Code Box -->
+          <div class="w-36 h-36 mx-auto bg-white p-2 rounded-xl border border-purple-300 shadow-sm flex flex-col items-center justify-center mb-3">
+            <div class="grid grid-cols-5 gap-1 w-full h-full p-2 bg-slate-900 rounded">
+              <div class="bg-white col-span-2 row-span-2"></div>
+              <div class="bg-purple-400"></div>
+              <div class="bg-white col-span-2 row-span-2"></div>
+              <div class="bg-white"></div>
+              <div class="bg-purple-300"></div>
+              <div class="bg-white col-span-2 row-span-2"></div>
+              <div class="bg-purple-200"></div>
+              <div class="bg-white col-span-2 row-span-2"></div>
+            </div>
+          </div>
+
+          <div class="inline-block bg-white px-3 py-1.5 rounded-lg border border-purple-200 font-mono text-xs text-purple-900 font-bold mb-2">
+            Nequi / Llave: 312 456 7890
+          </div>
+          <span class="text-[11px] text-slate-500 block">Titular: Estudio Botánico S.A.S · NIT: 901.428.192</span>
+        </div>
+      </div>
+
+      <!-- VIEW C: WHATSAPP DIRECT / CONTRA ENTREGA -->
+      <div id="view-pay-whatsapp" class="space-y-3 p-4 rounded-2xl bg-emerald-50/50 border border-emerald-200 hidden">
+        <div class="text-center py-2">
+          <span class="text-3xl block mb-2">💬</span>
+          <h5 class="text-xs font-bold text-emerald-950 mb-1">Acordar Pago y Entrega por WhatsApp</h5>
+          <p class="text-xs text-slate-600 leading-relaxed max-w-xs mx-auto">
+            Puedes pagar en efectivo cuando el repartidor llegue a tu dirección, o solicitar un datáfono inalámbrico para pagar con tarjeta en mostrador.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- PROCESSING PAYMENT OVERLAY (SPINNER) -->
+    <div id="payment-processing-overlay" class="p-8 flex-1 flex flex-col items-center justify-center text-center space-y-4 hidden">
+      <div class="relative w-16 h-16">
+        <div class="w-16 h-16 rounded-full border-4 border-blue-200 border-t-blue-600 animate-spin"></div>
+      </div>
+      <div>
+        <h4 class="text-base font-bold text-slate-900 mb-1">Procesando Transacción Segura...</h4>
+        <p class="text-xs text-slate-500 font-mono">Conectando con la pasarela bancaria y verificando fondos</p>
+      </div>
+      <div class="inline-block bg-slate-100 text-slate-600 px-3 py-1 rounded text-xs font-mono">
+        Token Cifrado: #TXN-VERIFY-9281
+      </div>
+    </div>
+
+    <!-- DRAWER STEP 4: ORDER & PAYMENT SUCCESS CONFIRMATION -->
+    <div id="drawer-step-4" class="p-6 overflow-y-auto flex-1 space-y-4 hidden">
+      
+      <!-- Success Badge Banner -->
+      <div id="success-banner" class="p-5 rounded-2xl bg-emerald-50 border border-emerald-200 text-center">
+        <span class="w-12 h-12 rounded-full bg-emerald-600 text-white font-bold flex items-center justify-center mx-auto mb-2 text-xl shadow-xs">✓</span>
+        <h4 id="success-title" class="text-base font-extrabold text-slate-900 mb-0.5">¡Pago Aprobado con Éxito!</h4>
+        <span id="receipt-order-id" class="text-xs font-mono font-bold text-emerald-800">#ORD-9482</span>
+      </div>
+
+      <!-- Digital Receipt -->
+      <div class="rounded-xl border border-slate-200 p-4 text-xs space-y-2 bg-slate-50 font-sans">
+        <div class="flex items-center justify-between border-b border-slate-200 pb-2 mb-2 font-mono">
+          <span class="font-bold text-slate-900">Comprobante de Transacción</span>
+          <span id="receipt-txn-badge" class="bg-emerald-100 text-emerald-800 text-[10px] px-2 py-0.5 rounded font-bold">100% Pagado</span>
+        </div>
+        <p><strong class="text-slate-700">N° Transacción:</strong> <span id="receipt-txn-id" class="font-mono text-slate-900">TXN-74892182</span></p>
+        <p><strong class="text-slate-700">Código de Autorización:</strong> <span id="receipt-auth-code" class="font-mono text-slate-900">#AUTH-938201</span></p>
+        <p><strong class="text-slate-700">Cliente:</strong> <span id="receipt-name"></span></p>
+        <p><strong class="text-slate-700">Teléfono:</strong> <span id="receipt-phone"></span></p>
+        <p><strong class="text-slate-700">Destino / Modalidad:</strong> <span id="receipt-address"></span></p>
+        <p><strong class="text-slate-700">Método Utilizado:</strong> <span id="receipt-payment-method" class="font-semibold text-slate-900"></span></p>
+        <p><strong class="text-slate-700">Monto Total:</strong> <span id="receipt-total" class="font-mono font-extrabold text-emerald-700 text-sm"></span></p>
+      </div>
+
+      <p class="text-[11px] text-slate-500 text-center leading-relaxed">
+        Haz clic en el botón inferior para abrir WhatsApp con el comprobante adjunto y programar la entrega o recibir tu acceso al curso.
+      </p>
+    </div>
+
+    <!-- Drawer Footer Actions -->
+    <div class="p-5 border-t border-slate-200 bg-slate-50 flex items-center justify-between gap-3">
+      <button id="btn-drawer-back" class="px-4 py-2.5 rounded-xl border border-slate-300 text-slate-700 hover:bg-slate-200 text-xs font-bold hidden">
+        ← Volver
+      </button>
+
+      <!-- Step 1 Next Button -->
+      <button id="btn-drawer-step1-next" class="flex-1 py-3 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-xs">
+        <span>Continuar a Datos de Entrega</span>
+        <span>→</span>
+      </button>
+
+      <!-- Step 2 Next Button -->
+      <button id="btn-drawer-step2-next" class="flex-1 py-3 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-xs hidden">
+        <span>Ir a Métodos de Pago</span>
+        <span>→</span>
+      </button>
+
+      <!-- Step 3 Action: Process Online Payment (Card / Nequi) -->
+      <button id="btn-process-payment" class="flex-1 py-3.5 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs flex items-center justify-center gap-2 transition-all shadow-md shadow-blue-600/20 hidden">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+        </svg>
+        <span id="btn-pay-label">Pagar y Validar Transacción</span>
+      </button>
+
+      <!-- Step 3 Alternative: WhatsApp Direct Checkout -->
+      <button id="btn-order-whatsapp-direct" class="flex-1 py-3.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs flex items-center justify-center gap-2 transition-all shadow-md shadow-emerald-600/20 hidden">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+        </svg>
+        <span>Generar Pedido para WhatsApp</span>
+      </button>
+
+      <!-- Step 4 Action: Notify Paid Order to WhatsApp -->
+      <button id="btn-notify-paid-whatsapp" class="flex-1 py-3.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs flex items-center justify-center gap-2 transition-all shadow-md shadow-emerald-600/20 hidden">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+        </svg>
+        <span>Enviar Comprobante Pagado a WhatsApp</span>
+      </button>
+    </div>
+
+  </div>
+
+  <!-- Dynamic Cart Toast Notification (Appears only when an item is added) -->
+  <div 
+    id="store-toast" 
+    class="fixed bottom-6 left-6 z-[60] flex items-center gap-3 bg-slate-950/95 backdrop-blur-md text-white text-xs px-4 py-3 rounded-2xl shadow-2xl border border-slate-800 opacity-0 pointer-events-none translate-y-6 scale-95 transition-all duration-300"
+    role="status"
+    aria-live="polite"
+  >
+    <div class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 border border-emerald-500/40">
+      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+      </svg>
+    </div>
+    <div class="flex flex-col pr-1">
+      <span class="text-[9px] font-mono font-bold text-emerald-400 uppercase tracking-wider leading-none mb-0.5">Pedido Actualizado</span>
+      <span id="toast-text" class="font-medium text-slate-100 text-xs">Producto agregado con éxito</span>
+    </div>
+  </div>
+
+</Layout>
+
+<!-- Client Side Business Logic for E-Commerce Engine with Payment Gateway and Course Enrollment -->
+<script define:vars={{ catalogProducts, storeWorkshops }}>
+  // State
+  let cart = [];
+  let currentStep = 1;
+  let appliedDiscount = 0;
+  let selectedModalProduct = null;
+  let modalQty = 1;
+  let selectedPaymentMethod = "card"; // "card" | "nequi" | "whatsapp"
+  let isPaymentApproved = false;
+  let generatedTxnId = "";
+  let generatedAuthCode = "";
+  let generatedOrderId = "";
+
+  // DOM Elements
+  const cartTrigger = document.getElementById('btn-cart-trigger');
+  const drawer = document.getElementById('checkout-drawer');
+  const drawerBackdrop = document.getElementById('checkout-drawer-backdrop');
+  const btnCloseDrawer = document.getElementById('btn-close-drawer');
+  const navBadge = document.getElementById('nav-cart-badge');
+
+  const step1 = document.getElementById('drawer-step-1');
+  const step2 = document.getElementById('drawer-step-2');
+  const step3 = document.getElementById('drawer-step-3');
+  const step4 = document.getElementById('drawer-step-4');
+  const processingOverlay = document.getElementById('payment-processing-overlay');
+
+  const badge1 = document.getElementById('step-badge-1');
+  const badge2 = document.getElementById('step-badge-2');
+  const badge3 = document.getElementById('step-badge-3');
+  const badge4 = document.getElementById('step-badge-4');
+
+  const btnStep1Next = document.getElementById('btn-drawer-step1-next');
+  const btnStep2Next = document.getElementById('btn-drawer-step2-next');
+  const btnProcessPayment = document.getElementById('btn-process-payment');
+  const btnOrderWhatsAppDirect = document.getElementById('btn-order-whatsapp-direct');
+  const btnNotifyPaidWhatsApp = document.getElementById('btn-notify-paid-whatsapp');
+  const btnDrawerBack = document.getElementById('btn-drawer-back');
+
+  const cartContainer = document.getElementById('cart-items-container');
+  const subtotalEl = document.getElementById('summary-subtotal');
+  const discountEl = document.getElementById('summary-discount');
+  const rowDiscount = document.getElementById('row-discount');
+  const totalEl = document.getElementById('summary-total');
+  const gatewayTotalBadge = document.getElementById('gateway-total-badge');
+
+  const couponInput = document.getElementById('coupon-input');
+  const btnApplyCoupon = document.getElementById('btn-apply-coupon');
+  const couponFeedback = document.getElementById('coupon-feedback');
+  const floatingWa = document.getElementById('store-floating-wa');
+
+  // Open/Close Drawer
+  function openCheckout() {
+    drawer?.classList.remove('translate-x-full');
+    drawerBackdrop?.classList.remove('hidden');
+    // Smoothly hide floating WhatsApp button so it never covers or obstructs checkout actions
+    if (floatingWa) {
+      floatingWa.classList.add('opacity-0', 'pointer-events-none', 'translate-y-8');
+    }
+    goToStep(1);
+  }
+
+  function closeCheckout() {
+    drawer?.classList.add('translate-x-full');
+    drawerBackdrop?.classList.add('hidden');
+    // Smoothly restore floating WhatsApp button
+    if (floatingWa) {
+      floatingWa.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-8');
+    }
+  }
+
+  cartTrigger?.addEventListener('click', openCheckout);
+  btnCloseDrawer?.addEventListener('click', closeCheckout);
+  drawerBackdrop?.addEventListener('click', closeCheckout);
+
+  // Dynamic Toast Indicator (Appears when item is added, auto-dismisses smoothly)
+  let toastTimer = null;
+  function showToast(msg) {
+    const toast = document.getElementById('store-toast');
+    const toastText = document.getElementById('toast-text');
+    if (!toast || !toastText) return;
+
+    if (toastTimer) clearTimeout(toastTimer);
+
+    toastText.textContent = msg;
+    toast.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-6', 'scale-95');
+    toast.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0', 'scale-100');
+
+    toastTimer = setTimeout(() => {
+      toast.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0', 'scale-100');
+      toast.classList.add('opacity-0', 'pointer-events-none', 'translate-y-6', 'scale-95');
+    }, 2800);
+  }
+
+  // Update Cart UI & Calculations
+  function renderCart() {
+    if (!cartContainer || !subtotalEl || !totalEl || !navBadge) return;
+
+    let subtotal = 0;
+    let count = 0;
+
+    if (cart.length === 0) {
+      cartContainer.innerHTML = '<div class="py-12 text-center text-slate-400 text-xs italic">Tu pedido está vacío. Agrega productos o talleres de la tienda.</div>';
+      subtotalEl.textContent = '$0.00 USD';
+      totalEl.textContent = '$0.00 USD';
+      if (gatewayTotalBadge) gatewayTotalBadge.textContent = '$0.00 USD';
+      navBadge.textContent = '0';
+      if (rowDiscount) rowDiscount.classList.add('hidden');
+      return;
+    }
+
+    cartContainer.innerHTML = '';
+    cart.forEach(item => {
+      subtotal += item.price * item.qty;
+      count += item.qty;
+
+      const row = document.createElement('div');
+      row.className = "flex items-center gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs";
+      row.innerHTML = `
+        <img src="${item.img}" class="w-12 h-12 rounded-lg object-cover border border-slate-200 shrink-0" alt="${item.name}" />
+        <div class="flex-1 min-w-0">
+          <span class="font-bold text-slate-900 block truncate">${item.name}</span>
+          <span class="font-mono text-slate-500">$${item.price.toFixed(2)} USD</span>
+        </div>
+        <div class="flex items-center gap-1.5 shrink-0">
+          <button class="btn-qty-minus px-2 py-1 bg-white border border-slate-200 rounded text-slate-700 font-bold" data-id="${item.id}">-</button>
+          <span class="font-mono font-bold px-1 text-slate-900">${item.qty}</span>
+          <button class="btn-qty-plus px-2 py-1 bg-white border border-slate-200 rounded text-slate-700 font-bold" data-id="${item.id}">+</button>
+          <button class="btn-qty-remove text-rose-500 hover:text-rose-700 ml-1 font-bold" data-id="${item.id}">✕</button>
+        </div>
+      `;
+      cartContainer.appendChild(row);
+    });
+
+    const discountAmount = subtotal * appliedDiscount;
+    const finalTotal = subtotal - discountAmount;
+
+    subtotalEl.textContent = `$${subtotal.toFixed(2)} USD`;
+    if (appliedDiscount > 0 && rowDiscount && discountEl) {
+      rowDiscount.classList.remove('hidden');
+      discountEl.textContent = `-$${discountAmount.toFixed(2)} USD`;
+    } else if (rowDiscount) {
+      rowDiscount.classList.add('hidden');
+    }
+    totalEl.textContent = `$${finalTotal.toFixed(2)} USD`;
+    if (gatewayTotalBadge) gatewayTotalBadge.textContent = `$${finalTotal.toFixed(2)} USD`;
+    navBadge.textContent = String(count);
+
+    // Bind item buttons
+    document.querySelectorAll('.btn-qty-plus').forEach(b => {
+      b.addEventListener('click', (e) => {
+        const id = e.currentTarget.getAttribute('data-id');
+        const item = cart.find(i => i.id === id);
+        if (item) item.qty++;
+        renderCart();
+      });
+    });
+
+    document.querySelectorAll('.btn-qty-minus').forEach(b => {
+      b.addEventListener('click', (e) => {
+        const id = e.currentTarget.getAttribute('data-id');
+        const item = cart.find(i => i.id === id);
+        if (item) {
+          if (item.qty > 1) item.qty--;
+          else cart = cart.filter(i => i.id !== id);
+        }
+        renderCart();
+      });
+    });
+
+    document.querySelectorAll('.btn-qty-remove').forEach(b => {
+      b.addEventListener('click', (e) => {
+        const id = e.currentTarget.getAttribute('data-id');
+        cart = cart.filter(i => i.id !== id);
+        renderCart();
+      });
+    });
+  }
+
+  // Add Item to Cart
+  function addToCart(item, qty = 1) {
+    const existing = cart.find(i => i.id === item.id);
+    if (existing) {
+      existing.qty += qty;
+    } else {
+      cart.push({
+        id: item.id,
+        name: item.name || item.title,
+        price: item.price,
+        img: item.image || item.img,
+        qty: qty
+      });
+    }
+    renderCart();
+    showToast(`✓ Agregado: ${item.name || item.title} (x${qty})`);
+  }
+
+  // Catalog item click
+  document.querySelectorAll('.btn-catalog-add').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const id = e.currentTarget.getAttribute('data-id');
+      const prod = catalogProducts.find(p => p.id === id);
+      if (prod) addToCart(prod, 1);
+    });
+  });
+
+  // Course item click (Enrolls course into cart!)
+  document.querySelectorAll('.btn-enroll-course').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const id = e.currentTarget.getAttribute('data-id');
+      const workshop = storeWorkshops.find(w => w.id === id);
+      if (workshop) {
+        addToCart({
+          id: workshop.id,
+          name: `[Taller] ${workshop.title}`,
+          price: workshop.price,
+          image: workshop.image
+        }, 1);
+        openCheckout();
+      }
+    });
+  });
+
+  // Coupon Logic
+  btnApplyCoupon?.addEventListener('click', () => {
+    const code = couponInput?.value.trim().toUpperCase();
+    if (code === 'PALKIO10') {
+      appliedDiscount = 0.10;
+      if (couponFeedback) {
+        couponFeedback.className = "text-[11px] font-mono mt-1 block text-emerald-700 font-bold";
+        couponFeedback.textContent = "✓ ¡Cupón PALKIO10 aplicado! 10% de descuento.";
+      }
+      renderCart();
+    } else {
+      appliedDiscount = 0;
+      if (couponFeedback) {
+        couponFeedback.className = "text-[11px] font-mono mt-1 block text-rose-600 font-bold";
+        couponFeedback.textContent = "Código inválido. Prueba con PALKIO10.";
+      }
+      renderCart();
+    }
+  });
+
+  // Payment Method Tabs Logic
+  const tabPayCard = document.getElementById('tab-pay-card');
+  const tabPayNequi = document.getElementById('tab-pay-nequi');
+  const tabPayWhatsapp = document.getElementById('tab-pay-whatsapp');
+
+  const viewPayCard = document.getElementById('view-pay-card');
+  const viewPayNequi = document.getElementById('view-pay-nequi');
+  const viewPayWhatsapp = document.getElementById('view-pay-whatsapp');
+  const btnPayLabel = document.getElementById('btn-pay-label');
+
+  function setPaymentMethod(method) {
+    selectedPaymentMethod = method;
+    [tabPayCard, tabPayNequi, tabPayWhatsapp].forEach(t => {
+      t?.classList.remove('active', 'border-blue-600', 'bg-blue-50/70', 'border-emerald-600', 'bg-emerald-50/70', 'border-purple-600', 'bg-purple-50/70');
+      t?.classList.add('border-slate-200', 'bg-slate-50', 'text-slate-600');
+    });
+
+    [viewPayCard, viewPayNequi, viewPayWhatsapp].forEach(v => v?.classList.add('hidden'));
+
+    if (method === 'card') {
+      tabPayCard?.classList.add('active', 'border-blue-600', 'bg-blue-50/70', 'text-slate-900');
+      viewPayCard?.classList.remove('hidden');
+      btnProcessPayment?.classList.remove('hidden');
+      btnOrderWhatsAppDirect?.classList.add('hidden');
+      if (btnPayLabel && totalEl) btnPayLabel.textContent = `Pagar ${totalEl.textContent} con Tarjeta`;
+    } else if (method === 'nequi') {
+      tabPayNequi?.classList.add('active', 'border-purple-600', 'bg-purple-50/70', 'text-slate-900');
+      viewPayNequi?.classList.remove('hidden');
+      btnProcessPayment?.classList.remove('hidden');
+      btnOrderWhatsAppDirect?.classList.add('hidden');
+      if (btnPayLabel && totalEl) btnPayLabel.textContent = `Confirmar Pago Nequi ${totalEl.textContent}`;
+    } else if (method === 'whatsapp') {
+      tabPayWhatsapp?.classList.add('active', 'border-emerald-600', 'bg-emerald-50/70', 'text-slate-900');
+      viewPayWhatsapp?.classList.remove('hidden');
+      btnProcessPayment?.classList.add('hidden');
+      btnOrderWhatsAppDirect?.classList.remove('hidden');
+    }
+  }
+
+  tabPayCard?.addEventListener('click', () => setPaymentMethod('card'));
+  tabPayNequi?.addEventListener('click', () => setPaymentMethod('nequi'));
+  tabPayWhatsapp?.addEventListener('click', () => setPaymentMethod('whatsapp'));
+
+  // Card Formatting Helper
+  const cardNumberInput = document.getElementById('card-number');
+  const cardExpiryInput = document.getElementById('card-expiry');
+  const cardIcon = document.getElementById('card-type-icon');
+
+  cardNumberInput?.addEventListener('input', (e) => {
+    let val = e.target.value.replace(/\D/g, '');
+    let formatted = '';
+    for (let i = 0; i < val.length; i++) {
+      if (i > 0 && i % 4 === 0) formatted += ' ';
+      formatted += val[i];
+    }
+    e.target.value = formatted;
+
+    if (val.startsWith('4')) {
+      if (cardIcon) cardIcon.textContent = 'VISA';
+    } else if (val.startsWith('5')) {
+      if (cardIcon) cardIcon.textContent = 'MC';
+    } else {
+      if (cardIcon) cardIcon.textContent = '💳';
+    }
+  });
+
+  cardExpiryInput?.addEventListener('input', (e) => {
+    let val = e.target.value.replace(/\D/g, '');
+    if (val.length >= 2) {
+      val = val.substring(0, 2) + '/' + val.substring(2, 4);
+    }
+    e.target.value = val;
+  });
+
+  // Step Navigation in Drawer
+  function goToStep(step) {
+    currentStep = step;
+    [step1, step2, step3, step4, processingOverlay].forEach(s => s?.classList.add('hidden'));
+
+    if (step === 1) step1?.classList.remove('hidden');
+    else if (step === 2) step2?.classList.remove('hidden');
+    else if (step === 3) {
+      step3?.classList.remove('hidden');
+      setPaymentMethod(selectedPaymentMethod);
+    } else if (step === 4) {
+      step4?.classList.remove('hidden');
+      populateSuccessReceipt();
+    }
+
+    [badge1, badge2, badge3, badge4].forEach((b, idx) => {
+      if (idx + 1 === step) {
+        b?.classList.remove('bg-slate-200', 'text-slate-600');
+        b?.classList.add('bg-emerald-600', 'text-white');
+      } else {
+        b?.classList.remove('bg-emerald-600', 'text-white');
+        b?.classList.add('bg-slate-200', 'text-slate-600');
+      }
+    });
+
+    // Button states
+    btnStep1Next?.classList.add('hidden');
+    btnStep2Next?.classList.add('hidden');
+    btnProcessPayment?.classList.add('hidden');
+    btnOrderWhatsAppDirect?.classList.add('hidden');
+    btnNotifyPaidWhatsApp?.classList.add('hidden');
+    btnDrawerBack?.classList.add('hidden');
+
+    if (step === 1) {
+      btnStep1Next?.classList.remove('hidden');
+    } else if (step === 2) {
+      btnDrawerBack?.classList.remove('hidden');
+      btnStep2Next?.classList.remove('hidden');
+    } else if (step === 3) {
+      btnDrawerBack?.classList.remove('hidden');
+      if (selectedPaymentMethod === 'whatsapp') {
+        btnOrderWhatsAppDirect?.classList.remove('hidden');
+      } else {
+        btnProcessPayment?.classList.remove('hidden');
+      }
+    } else if (step === 4) {
+      btnNotifyPaidWhatsApp?.classList.remove('hidden');
+    }
+  }
+
+  btnStep1Next?.addEventListener('click', () => {
+    if (cart.length === 0) {
+      alert("Agrega al menos un producto o taller a tu carrito.");
+      return;
+    }
+    goToStep(2);
+  });
+
+  btnStep2Next?.addEventListener('click', () => {
+    const name = document.getElementById('ship-name')?.value.trim();
+    const phone = document.getElementById('ship-phone')?.value.trim();
+    const addr = document.getElementById('ship-address')?.value.trim();
+
+    if (!name || !phone || !addr) {
+      alert("Por favor completa los campos obligatorios: Nombre, Teléfono y Dirección de entrega.");
+      return;
+    }
+    goToStep(3);
+  });
+
+  btnDrawerBack?.addEventListener('click', () => {
+    if (currentStep > 1 && currentStep < 4) goToStep(currentStep - 1);
+  });
+
+  // PROCESS SIMULATED ONLINE PAYMENT (Card / Nequi)
+  btnProcessPayment?.addEventListener('click', () => {
+    if (selectedPaymentMethod === 'card') {
+      const cardNum = cardNumberInput?.value.replace(/\s/g, '');
+      const cardExp = cardExpiryInput?.value.trim();
+      const cardHolder = document.getElementById('card-holder')?.value.trim();
+
+      if (!cardHolder || !cardNum || cardNum.length < 15 || !cardExp) {
+        alert("Por favor ingresa los datos de la tarjeta válidos para la pasarela.");
+        return;
+      }
+    }
+
+    step3?.classList.add('hidden');
+    btnProcessPayment?.classList.add('hidden');
+    btnDrawerBack?.classList.add('hidden');
+    processingOverlay?.classList.remove('hidden');
+
+    setTimeout(() => {
+      isPaymentApproved = true;
+      generatedOrderId = `#ORD-${Math.floor(1000 + Math.random() * 9000)}`;
+      generatedTxnId = `TXN-${Math.floor(10000000 + Math.random() * 90000000)}`;
+      generatedAuthCode = `#AUTH-${Math.floor(100000 + Math.random() * 900000)}`;
+
+      processingOverlay?.classList.add('hidden');
+      goToStep(4);
+    }, 1800);
+  });
+
+  // Populates Receipt in Step 4
+  function populateSuccessReceipt() {
+    const name = document.getElementById('ship-name')?.value.trim() || 'Cliente';
+    const phone = document.getElementById('ship-phone')?.value.trim() || 'No especificado';
+    const city = document.getElementById('ship-city')?.value.trim() || 'Bogotá';
+    const addr = document.getElementById('ship-address')?.value.trim() || '';
+
+    const recOrderId = document.getElementById('receipt-order-id');
+    const recTxnId = document.getElementById('receipt-txn-id');
+    const recAuth = document.getElementById('receipt-auth-code');
+    const recName = document.getElementById('receipt-name');
+    const recPhone = document.getElementById('receipt-phone');
+    const recAddr = document.getElementById('receipt-address');
+    const recMethod = document.getElementById('receipt-payment-method');
+    const recTotal = document.getElementById('receipt-total');
+    const recBadge = document.getElementById('receipt-txn-badge');
+    const title = document.getElementById('success-title');
+
+    if (recOrderId) recOrderId.textContent = generatedOrderId || `#ORD-${Math.floor(1000 + Math.random() * 9000)}`;
+    if (recTxnId) recTxnId.textContent = generatedTxnId || `TXN-${Math.floor(10000000 + Math.random() * 90000000)}`;
+    if (recAuth) recAuth.textContent = generatedAuthCode || `#AUTH-${Math.floor(100000 + Math.random() * 900000)}`;
+    if (recName) recName.textContent = name;
+    if (recPhone) recPhone.textContent = phone;
+    if (recAddr) recAddr.textContent = `${addr}, ${city}`;
+    if (recTotal && totalEl) recTotal.textContent = totalEl.textContent;
+
+    if (selectedPaymentMethod === 'card') {
+      if (recMethod) recMethod.textContent = 'Tarjeta de Crédito / Débito (Pasarela SSL)';
+      if (recBadge) recBadge.textContent = '100% Pagado & Aprobado';
+      if (title) title.textContent = '¡Pago Aprobado con Éxito!';
+    } else if (selectedPaymentMethod === 'nequi') {
+      if (recMethod) recMethod.textContent = 'Transferencia Nequi / Bancolombia';
+      if (recBadge) recBadge.textContent = '100% Pagado & Aprobado';
+      if (title) title.textContent = '¡Transferencia Registrada con Éxito!';
+    } else {
+      if (recMethod) recMethod.textContent = 'Pago Contra Entrega en Domicilio';
+      if (recBadge) {
+        recBadge.textContent = 'Pendiente de Pago en Entrega';
+        recBadge.className = 'bg-amber-100 text-amber-800 text-[10px] px-2 py-0.5 rounded font-bold';
+      }
+      if (title) title.textContent = '¡Orden Generada Exitosamente!';
+    }
+  }
+
+  // DISPATCH WHATSAPP DIRECT (For Contra Entrega)
+  btnOrderWhatsAppDirect?.addEventListener('click', () => {
+    const orderId = `#ORD-${Math.floor(1000 + Math.random() * 9000)}`;
+    const name = document.getElementById('ship-name')?.value.trim() || 'Cliente';
+    const phone = document.getElementById('ship-phone')?.value.trim() || '';
+    const city = document.getElementById('ship-city')?.value.trim() || 'Bogotá';
+    const addr = document.getElementById('ship-address')?.value.trim() || '';
+    const notes = document.getElementById('ship-notes')?.value.trim() || 'Ninguna';
+
+    let msg = `🌿 *NUEVO PEDIDO ${orderId} — ESTUDIO BOTÁNICO*\n`;
+    msg += `------------------------------------\n`;
+    msg += `👤 *Cliente:* ${name}\n`;
+    msg += `📱 *WhatsApp:* ${phone}\n`;
+    msg += `📍 *Dirección / Sede:* ${addr}, ${city}\n`;
+    msg += `📝 *Notas:* ${notes}\n\n`;
+    msg += `📦 *PRODUCTOS / TALLERES:* \n`;
+
+    let subtotal = 0;
+    cart.forEach(item => {
+      msg += `• ${item.qty}x ${item.name} — $${(item.price * item.qty).toFixed(2)} USD\n`;
+      subtotal += item.price * item.qty;
+    });
+
+    const discountAmount = subtotal * appliedDiscount;
+    const total = subtotal - discountAmount;
+
+    msg += `\n💵 *RESUMEN DE PAGO:*\n`;
+    msg += `Subtotal: $${subtotal.toFixed(2)} USD\n`;
+    if (appliedDiscount > 0) {
+      msg += `Descuento (PALKIO10): -$${discountAmount.toFixed(2)} USD\n`;
+    }
+    msg += `Envío: GRATIS\n`;
+    msg += `*TOTAL A PAGAR: $${total.toFixed(2)} USD*\n`;
+    msg += `*Método de Pago:* Pago Contra Entrega en Domicilio\n`;
+    msg += `------------------------------------\n`;
+    msg += `¿Podrían confirmarme la recepción del pedido y hora de entrega?`;
+
+    const url = `https://api.whatsapp.com/send?text=${encodeURIComponent(msg)}`;
+    window.open(url, '_blank');
+  });
+
+  // NOTIFY PAID ORDER TO WHATSAPP (Post Gateway Approval)
+  btnNotifyPaidWhatsApp?.addEventListener('click', () => {
+    const orderId = document.getElementById('receipt-order-id')?.textContent || '#ORD-PAGADO';
+    const txnId = document.getElementById('receipt-txn-id')?.textContent || 'TXN-000';
+    const authCode = document.getElementById('receipt-auth-code')?.textContent || '#AUTH-000';
+    const name = document.getElementById('ship-name')?.value.trim() || 'Cliente';
+    const phone = document.getElementById('ship-phone')?.value.trim() || '';
+    const city = document.getElementById('ship-city')?.value.trim() || 'Bogotá';
+    const addr = document.getElementById('ship-address')?.value.trim() || '';
+    const method = document.getElementById('receipt-payment-method')?.textContent || 'Pasarela';
+    const total = document.getElementById('receipt-total')?.textContent || '$0.00 USD';
+
+    let msg = `✅ *COMPROBANTE DE ORDEN PAGADA ${orderId} — ESTUDIO BOTÁNICO*\n`;
+    msg += `------------------------------------\n`;
+    msg += `💳 *Estado de Pago:* APROBADO (100% Pagado)\n`;
+    msg += `🧾 *Transacción:* ${txnId} · ${authCode}\n`;
+    msg += `👤 *Cliente:* ${name}\n`;
+    msg += `📱 *WhatsApp:* ${phone}\n`;
+    msg += `📍 *Dirección de Entrega / Acceso:* ${addr}, ${city}\n\n`;
+    msg += `📦 *PRODUCTOS / INSCRIPCIONES:* \n`;
+
+    cart.forEach(item => {
+      msg += `• ${item.qty}x ${item.name} — $${(item.price * item.qty).toFixed(2)} USD\n`;
+    });
+
+    msg += `\n💵 *TOTAL PAGADO: ${total}*\n`;
+    msg += `*Método:* ${method}\n`;
+    msg += `------------------------------------\n`;
+    msg += `Acabo de completar el pago en línea. Por favor confírmenme el despacho o enlace del taller.`;
+
+    const url = `https://api.whatsapp.com/send?text=${encodeURIComponent(msg)}`;
+    window.open(url, '_blank');
+  });
+
+  // Quick View Modal Logic
+  const modal = document.getElementById('product-modal');
+  const modalBackdrop = document.getElementById('product-modal-backdrop');
+  const btnCloseModal = document.getElementById('btn-close-modal');
+  const modalImg = document.getElementById('modal-img');
+  const modalCat = document.getElementById('modal-cat');
+  const modalTitle = document.getElementById('modal-title');
+  const modalRating = document.getElementById('modal-rating');
+  const modalSku = document.getElementById('modal-sku');
+  const modalPrice = document.getElementById('modal-price');
+  const modalDesc = document.getElementById('modal-desc');
+  const modalSpecs = document.getElementById('modal-specs-container');
+  const modalQtyVal = document.getElementById('modal-qty-val');
+  const modalBtnAdd = document.getElementById('modal-btn-add');
+
+  function openQuickview(prodId) {
+    const prod = catalogProducts.find(p => p.id === prodId);
+    if (!prod) return;
+    selectedModalProduct = prod;
+    modalQty = 1;
+    if (modalQtyVal) modalQtyVal.textContent = '1';
+
+    if (modalImg) modalImg.src = prod.image;
+    if (modalCat) modalCat.textContent = prod.category;
+    if (modalTitle) modalTitle.textContent = prod.name;
+    if (modalRating) modalRating.textContent = `★ ${prod.rating} (${prod.reviews} reseñas)`;
+    if (modalSku) modalSku.textContent = `SKU: ${prod.sku}`;
+    if (modalPrice) modalPrice.textContent = `$${prod.price.toFixed(2)} `;
+    if (modalDesc) modalDesc.textContent = prod.shortDesc;
+
+    if (modalSpecs) {
+      modalSpecs.innerHTML = '';
+      for (const [k, v] of Object.entries(prod.specs)) {
+        const item = document.createElement('div');
+        item.className = "flex justify-between py-1 border-b border-slate-200/60 last:border-0";
+        item.innerHTML = `<span class="text-slate-500 capitalize">${k}:</span> <strong class="text-slate-900">${v}</strong>`;
+        modalSpecs.appendChild(item);
+      }
+    }
+
+    modal?.classList.remove('hidden');
+    modalBackdrop?.classList.remove('hidden');
+  }
+
+  function closeModal() {
+    modal?.classList.add('hidden');
+    modalBackdrop?.classList.add('hidden');
+  }
+
+  document.querySelectorAll('.btn-open-quickview').forEach(b => {
+    b.addEventListener('click', (e) => {
+      const id = e.currentTarget.getAttribute('data-id');
+      if (id) openQuickview(id);
+    });
+  });
+
+  btnCloseModal?.addEventListener('click', closeModal);
+  modalBackdrop?.addEventListener('click', closeModal);
+
+  document.getElementById('modal-qty-plus')?.addEventListener('click', () => {
+    modalQty++;
+    if (modalQtyVal) modalQtyVal.textContent = String(modalQty);
+  });
+
+  document.getElementById('modal-qty-minus')?.addEventListener('click', () => {
+    if (modalQty > 1) {
+      modalQty--;
+      if (modalQtyVal) modalQtyVal.textContent = String(modalQty);
+    }
+  });
+
+  modalBtnAdd?.addEventListener('click', () => {
+    if (selectedModalProduct) {
+      addToCart(selectedModalProduct, modalQty);
+      closeModal();
+    }
+  });
+
+  // Live Instant Search Filter
+  const liveSearch = document.getElementById('live-search-input');
+  const catalogGrid = document.getElementById('products-catalog-grid');
+  const catalogItems = document.querySelectorAll('.catalog-item');
+
+  liveSearch?.addEventListener('input', (e) => {
+    const q = e.target.value.toLowerCase().trim();
+    catalogItems.forEach(card => {
+      const name = card.getAttribute('data-name') || '';
+      const cat = (card.getAttribute('data-category') || '').toLowerCase();
+      if (name.includes(q) || cat.includes(q)) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+
+  // Category Tabs Filter
+  const catPills = document.querySelectorAll('#store-cat-filters .cat-pill');
+  catPills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      catPills.forEach(p => {
+        p.classList.remove('bg-slate-900', 'text-white');
+        p.classList.add('bg-slate-100', 'text-slate-600');
+      });
+      pill.classList.add('bg-slate-900', 'text-white');
+      pill.classList.remove('bg-slate-100', 'text-slate-600');
+
+      const selected = pill.getAttribute('data-cat');
+      catalogItems.forEach(card => {
+        const cat = card.getAttribute('data-category');
+        if (selected === 'all' || cat === selected) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // Sorting Dropdown
+  const sortSelect = document.getElementById('sort-select');
+  sortSelect?.addEventListener('change', (e) => {
+    const val = e.target.value;
+    const cardsArr = Array.from(catalogItems);
+
+    if (val === 'price-asc') {
+      cardsArr.sort((a, b) => parseFloat(a.dataset.price) - parseFloat(b.dataset.price));
+    } else if (val === 'price-desc') {
+      cardsArr.sort((a, b) => parseFloat(b.dataset.price) - parseFloat(a.dataset.price));
+    } else if (val === 'rating') {
+      cardsArr.sort((a, b) => parseFloat(b.dataset.rating) - parseFloat(a.dataset.rating));
+    }
+
+    if (catalogGrid) {
+      cardsArr.forEach(c => catalogGrid.appendChild(c));
+    }
+  });
+
+  // Initial render
+  renderCart();
+</script>

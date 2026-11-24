@@ -1,0 +1,184 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import { companyData } from '../data/company';
+
+const faqs = [
+  {
+    category: "Arquitectura & Rendimiento",
+    q: "¿Por qué elegir una solución a medida de PalkioTech en lugar de WordPress, Wix o Shopify?",
+    a: "Las plataformas genéricas como WordPress sufren de código inflado (bloatware), plugins vulnerables y tiempos de carga lentos (>4s en móviles) que ahuyentan a tus clientes. En PalkioTech construimos con arquitectura de islas (Astro 5) y bases de datos indexadas, lo que garantiza cargas instantáneas (<0.8s), puntuación 100/100 en Google Lighthouse, seguridad impenetrable y cero pagos de comisiones mensuales por funcionalidades básicas."
+  },
+  {
+    category: "Inteligencia Artificial",
+    q: "¿Cómo garantizan que el agente de inteligencia artificial en WhatsApp no invente datos ni alucine?",
+    a: "Aplicamos técnicas avanzadas de Grounding y Prompt Engineering defensivo. El modelo de lenguaje (Gemini / OpenAI) opera bajo una instrucción de sistema estricta delimitada exclusivamente a la base de conocimiento comercial suministrada por tu empresa. Si un usuario realiza una pregunta fuera del catálogo o alcance, el agente está calibrado para responder cortésmente y canalizar el caso con un asesor humano."
+  },
+  {
+    category: "Propiedad Intelectual",
+    q: "¿Quién es el dueño del código fuente, las bases de datos y los accesos?",
+    a: "Tu empresa es la única dueña. Al completar la Fase 5 de nuestra metodología, transferimos la totalidad de los repositorios Git, credenciales de bases de datos, tokens de APIs y manuales técnicos. No implementamos candados propietarios ni dependencias forzosas."
+  },
+  {
+    category: "Plazos & Metodología",
+    q: "¿Cuáles son los plazos de entrega habituales de un proyecto?",
+    a: "Siguiendo nuestra metodología ágil de 5 fases, una Landing Page corporativa de alto rendimiento toma entre 1 y 2 semanas; la implementación de un Agente de Ventas con IA en WhatsApp toma entre 2 y 3 semanas; y una plataforma a medida o Mini-CRM toma entre 2 y 4 semanas, con reportes y demos funcionales cada semana."
+  },
+  {
+    category: "Contratación & Facturación",
+    q: "¿Cómo se estructuran los pagos y la contratación?",
+    a: "Trabajamos bajo un modelo transparente por hitos: 50% de anticipo al firmar el Documento de Alcance (SOW) y 50% contra entrega y verificación final en tu servidor de producción, respaldado por factura formal y contrato de prestación de servicios."
+  },
+  {
+    category: "Hardware NFC & QR",
+    q: "¿La persona que toca mi tarjeta NFC necesita tener alguna app instalada?",
+    a: "No. El 100% de los teléfonos modernos (iPhone 7 en adelante y Android con NFC) leen el chip de forma nativa a nivel del sistema operativo sin descargar nada. Para más detalles visita nuestra vista especializada en /nfc-qr."
+  }
+];
+---
+
+<Layout 
+  title="Preguntas Frecuentes, Equipo & Cultura de Ingeniería | PalkioTech"
+  description="Respuestas técnicas y comerciales a dudas sobre arquitectura web, agentes de IA, propiedad del código, plazos de entrega, estructura de equipo y metodología de PalkioTech."
+>
+  <Navbar />
+
+  <main class="min-h-screen bg-[#f8fafc] text-slate-800">
+    
+    <!-- Hero Header -->
+    <section class="pt-10 pb-16 bg-white border-b border-slate-200 relative overflow-hidden" data-navbar-theme="light">
+      <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-gradient-to-b from-amber-100/40 via-yellow-50/20 to-transparent blur-3xl pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <nav class="flex items-center gap-2 text-xs font-mono text-slate-500 mb-8">
+          <a href="/" class="hover:text-amber-700 transition-colors">Inicio</a>
+          <span>/</span>
+          <span class="text-amber-700 font-bold">Preguntas Frecuentes & Equipo</span>
+        </nav>
+
+        <div class="max-w-3xl mx-auto text-center">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-900 text-xs font-mono font-bold mb-4 shadow-2xs">
+            <span>✦ TRANSPARENCIA COMERCIAL & TÉCNICA</span>
+          </div>
+
+          <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
+            Preguntas Frecuentes & <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-yellow-600 to-amber-700">Equipo de Ingeniería</span>
+          </h1>
+
+          <p class="text-slate-600 text-base sm:text-lg leading-relaxed">
+            Resolvemos las dudas habituales de directivos y líderes de operaciones antes de iniciar un proyecto de software con PalkioTech.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FAQ Accordion List -->
+    <section class="py-16" data-navbar-theme="light">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="space-y-4 mb-16">
+          {faqs.map((faq) => (
+            <details class="group rounded-2xl bg-white border border-slate-200 p-6 [&_summary::-webkit-details-marker]:hidden hover:border-amber-300 transition-all shadow-2xs">
+              <summary class="flex items-center justify-between cursor-pointer focus:outline-none">
+                <div>
+                  <span class="text-[10px] font-mono text-amber-700 uppercase tracking-wider font-bold block mb-1">
+                    {faq.category}
+                  </span>
+                  <h3 class="text-base font-bold text-slate-900 group-hover:text-amber-700 transition-colors pr-4">
+                    {faq.q}
+                  </h3>
+                </div>
+                <span class="w-8 h-8 rounded-xl bg-slate-50 border border-slate-200 text-slate-600 flex items-center justify-center shrink-0 group-open:rotate-180 transition-transform shadow-2xs">
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/>
+                  </svg>
+                </span>
+              </summary>
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mt-4 pt-4 border-t border-slate-100">
+                {faq.a}
+              </p>
+            </details>
+          ))}
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Team & Roles Section -->
+    <section id="equipo" class="py-16 bg-white border-t border-slate-200 scroll-mt-12" data-navbar-theme="light">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="max-w-3xl mx-auto text-center mb-14">
+          <span class="text-xs font-mono font-bold text-amber-700 uppercase tracking-wider block mb-2">✦ ESTRUCTURA OPERATIVA</span>
+          <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+            Estructura del Equipo de Ingeniería & Asesoría
+          </h2>
+          <p class="text-slate-600 text-sm mt-2">
+            Cada proyecto cuenta con especialistas técnicos, ingeniería de hardware phygital y asesoría financiera estratégica para garantizar viabilidad y respuesta inmediata.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+          {companyData.team.map((member) => (
+            <div class="rounded-2xl bg-slate-50 border border-slate-200 p-6 flex flex-col justify-between hover:border-amber-400 transition-all shadow-2xs">
+              <div>
+                <span class="text-[10px] font-mono font-bold text-amber-800 uppercase tracking-wider block mb-1">
+                  {member.specialty}
+                </span>
+                <h3 class="text-base font-bold text-slate-900 mb-2">
+                  {member.role}
+                </h3>
+                <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                  {member.focus}
+                </p>
+              </div>
+              <div class="pt-3 border-t border-slate-200 flex items-center gap-1.5 text-[10px] font-mono text-emerald-700 font-bold">
+                <span>●</span>
+                <span>Estándar Activo SLA</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <!-- Values -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          {companyData.coreValues.map((val) => (
+            <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 shadow-2xs">
+              <span class="text-[10px] font-mono font-bold text-amber-800 bg-amber-100 px-2.5 py-0.5 rounded border border-amber-300 inline-block mb-3">
+                {val.badge}
+              </span>
+              <h4 class="text-base font-bold text-slate-900 mb-1.5">{val.title}</h4>
+              <p class="text-xs text-slate-600 leading-relaxed">{val.description}</p>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Bottom CTA -->
+    <section class="py-16 bg-[#0c0c10] text-white border-t border-[#1e1e24]" data-navbar-theme="dark">
+      <div class="max-w-4xl mx-auto px-4 text-center">
+        <h3 class="text-2xl font-extrabold text-white mb-3">
+          ¿Tienes una pregunta específica sobre tu sistema actual?
+        </h3>
+        <p class="text-sm text-zinc-300 mb-6 max-w-xl mx-auto">
+          Podemos revisar tu stack y requerimientos en una llamada técnica de 20 minutos sin ningún compromiso.
+        </p>
+        <a 
+          href="/#contacto"
+          class="inline-flex items-center gap-2 py-3 px-6 rounded-xl bg-gradient-to-r from-amber-400 via-amber-500 to-yellow-500 text-slate-950 font-black text-xs sm:text-sm shadow-md hover:scale-105 transition-all"
+        >
+          <span>Agendar Diagnóstico 1-a-1</span>
+          <span>→</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</Layout>

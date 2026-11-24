@@ -1,0 +1,86 @@
+---
+import ExecutiveSpeedDesk from '../components/ExecutiveSpeedDesk.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  hideSpeedDesk?: boolean;
+}
+
+const {
+  title = "PalkioTech | Sistemas Web de Alto Rendimiento, IA & Software Empresarial",
+  description = "Firma de ingeniería de software y soluciones digitales B2B. Desarrollamos plataformas web de ultra alta velocidad, aplicaciones móviles nativas, agentes de ventas 24/7 en WhatsApp, mini-CRMs y sistemas a medida para empresas en expansión.",
+  hideSpeedDesk = Astro.url.pathname.startsWith('/demos/')
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="author" content="PalkioTech" />
+    <meta name="keywords" content="PalkioTech, Desarrollo Web B2B, Aplicaciones Móviles, Agentes de IA, WhatsApp Bots, Astro 5, Mini-CRM, Sistemas POS, Automatización Web, Python ETL, Software Empresarial" />
+
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://palkiotech.com/" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+
+    <!-- Google Fonts Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  </head>
+  <body class="bg-[#f8fafc] text-slate-800 antialiased selection:bg-amber-500/25 selection:text-amber-950 font-['Plus_Jakarta_Sans',sans-serif] min-h-screen relative overflow-x-hidden">
+    
+    <!-- Ambient Clean Enterprise Background Overlay -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+      <!-- Top Subtle Gradient Glow (Champagne Gold / Obsidian) -->
+      <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[1000px] h-[550px] bg-gradient-to-b from-amber-100/40 via-yellow-50/30 to-transparent blur-3xl opacity-80"></div>
+      <!-- Subtle Ambient Tint -->
+      <div class="absolute top-[35%] -left-64 w-[500px] h-[500px] bg-amber-50/40 rounded-full blur-[140px]"></div>
+      <div class="absolute top-[65%] -right-64 w-[500px] h-[500px] bg-slate-100/60 rounded-full blur-[140px]"></div>
+      <!-- Grid Pattern -->
+      <div class="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f060_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f060_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+    </div>
+
+    <!-- Main Content Container -->
+    <div class="relative z-10 flex flex-col min-h-screen">
+      <slot />
+    </div>
+
+    <!-- Global Executive Speed Desk Widget (Persistent on non-demo pages) -->
+    {!hideSpeedDesk && <ExecutiveSpeedDesk />}
+
+    <style is:global>
+      /* Custom Clean Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f5f9;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
+      }
+
+      /* Code Font */
+      code, pre, .font-mono {
+        font-family: 'JetBrains Mono', monospace;
+      }
+    </style>
+  </body>
+</html>

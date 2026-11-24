@@ -1,0 +1,1062 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout 
+  title="Blueprint de Ingeniería & Estándar Metodológico | PalkioTech"
+  description="Expediente técnico oficial con la metodología de 5 fases, especificación de requerimientos (RF/RNF), alcances (SOW), stack tecnológico y planos de arquitectura de PalkioTech."
+>
+  <Navbar />
+
+  <main class="min-h-screen bg-slate-50 text-slate-900 pb-24">
+    
+    <!-- Unified Slim Sticky Subnav (Single bar, only 40px height, blends seamlessly without suffocating the viewport) -->
+    <div id="blueprint-subnav" class="sticky top-16 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/90 py-2 px-4 sm:px-8 shadow-xs transition-all duration-200">
+      <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+        
+        <!-- Left: Status pill + Scrollable Section Links -->
+        <div class="flex items-center gap-3 overflow-x-auto no-scrollbar whitespace-nowrap text-xs">
+          <div class="flex items-center gap-1.5 pr-3 border-r border-slate-200 shrink-0">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span class="font-mono font-bold text-slate-800 text-[11px]">BLUEPRINT v3.2</span>
+          </div>
+
+          <nav class="flex items-center gap-1 font-semibold text-slate-600 text-xs">
+            <a href="#sec-ficha" class="px-2.5 py-1 rounded-md hover:bg-slate-100 hover:text-amber-700 transition-colors">1. Ficha</a>
+            <a href="#sec-requerimientos" class="px-2.5 py-1 rounded-md hover:bg-slate-100 hover:text-amber-700 transition-colors">2. Requerimientos</a>
+            <a href="#sec-alcances" class="px-2.5 py-1 rounded-md hover:bg-slate-100 hover:text-amber-700 transition-colors">3. Alcances</a>
+            <a href="#sec-stack" class="px-2.5 py-1 rounded-md hover:bg-slate-100 hover:text-amber-700 transition-colors">4. Stack</a>
+            <a href="#sec-metodologia" class="px-2.5 py-1 rounded-md hover:bg-slate-100 hover:text-amber-700 transition-colors">5. Metodología</a>
+            <a href="#sec-diagramas" class="px-2.5 py-1 rounded-md hover:bg-slate-100 hover:text-amber-700 transition-colors">6. Diagramas</a>
+            <a href="#sec-qa" class="px-2.5 py-1 rounded-md hover:bg-slate-100 hover:text-amber-700 transition-colors">7. Matriz QA</a>
+            <a href="#sec-despliegue" class="px-2.5 py-1 rounded-md hover:bg-slate-100 hover:text-amber-700 transition-colors">8. SLA & Acta</a>
+          </nav>
+        </div>
+
+        <!-- Right: Print PDF Button -->
+        <button 
+          id="print-blueprint-btn" 
+          onclick="window.print()"
+          class="shrink-0 inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-200 text-xs font-bold shadow-2xs transition-all cursor-pointer whitespace-nowrap"
+          title="Imprimir o guardar expediente en PDF"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+          </svg>
+          <span>Imprimir PDF Formal</span>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- Main Content Container -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10">
+      
+      <!-- Document Header / Hero Badge -->
+      <div class="mb-12 pb-8 border-b border-slate-200">
+        <div class="flex items-center gap-3.5 mb-6 pb-6 border-b border-slate-200/70">
+          <img src="/images/palkiotech-emblem.png" alt="PalkioTech Emblem" class="h-12 w-auto object-contain drop-shadow" />
+          <div>
+            <span class="font-black text-2xl text-slate-900 tracking-tight leading-none block">
+              PALKIO<span class="text-amber-600">TECH</span>
+            </span>
+            <span class="text-[9px] font-mono tracking-[0.2em] font-bold text-amber-700 uppercase mt-1 block">
+              INNOVATION &bull; ENGINEERING &bull; TECHNOLOGY
+            </span>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-3 mb-4">
+          <span class="text-xs font-mono font-bold uppercase tracking-wider text-amber-800 bg-amber-50 px-3 py-1 rounded-full border border-amber-200">
+            ✦ DOCUMENTO PÚBLICO DE TRANSPARENCIA TÉCNICA
+          </span>
+          <span class="text-xs font-mono text-slate-500">
+            Código Doc: <strong class="text-slate-800">PK-ENG-SPEC-2026-v3</strong>
+          </span>
+          <span class="text-xs font-mono text-slate-500">
+            Versión: <strong class="text-slate-800">3.2.0 STABLE</strong>
+          </span>
+        </div>
+
+        <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
+          Especificación de Ingeniería, Metodología & Blueprint Técnico
+        </h1>
+
+        <p class="text-slate-600 text-base sm:text-lg max-w-4xl leading-relaxed">
+          Guía integral y manual de arquitectura de <strong>PalkioTech</strong>. Establece los estándares normativos, criterios de aceptación, lenguajes de programación, delimitación de contratos SOW y protocolos operativos aplicables a cada proyecto que desarrollamos. Publicamos nuestra metodología de forma abierta como garantía de transparencia y rigor técnico.
+        </p>
+      </div>
+
+      <!-- ==========================================
+           SECCIÓN 1: FICHA TÉCNICA DEL PROYECTO
+           ========================================== -->
+      <section id="sec-ficha" class="mb-16 scroll-mt-32">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="w-8 h-8 rounded-lg bg-gradient-to-r from-amber-500 to-yellow-600 text-slate-950 font-black font-mono font-bold text-sm flex items-center justify-center">1</span>
+          <h2 class="text-2xl font-extrabold text-slate-900 tracking-tight">
+            Ficha Técnica & Resumen Ejecutivo del Proyecto
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-xs">
+            <span class="text-xs font-mono font-bold uppercase text-slate-500 block mb-1">Entidad Responsable</span>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">PalkioTech</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Software Engineering & AI Solutions Studio especializado en sistemas web de alto rendimiento, microservicios e inteligencia artificial conversacional para el sector empresarial.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-xs">
+            <span class="text-xs font-mono font-bold uppercase text-slate-500 block mb-1">Filosofía de Arquitectura</span>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">Zero-Bloatware & Edge-First</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Eliminación de plugins lentos y frameworks pesados. Generación estática en el Edge con hidratación reactiva únicamente en componentes que interactúan con el usuario.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-xs">
+            <span class="text-xs font-mono font-bold uppercase text-slate-500 block mb-1">Propiedad Intelectual</span>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">100% Propietario del Cliente</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Transferencia total del código fuente, repositorios Git, bases de datos y configuraciones de nube sin ataduras ni comisiones recurrentes por venta o transacción.
+            </p>
+          </div>
+        </div>
+
+        <!-- Metric Targets Table -->
+        <div class="rounded-2xl bg-white border border-slate-200 overflow-hidden shadow-xs">
+          <div class="bg-slate-100 px-6 py-3 border-b border-slate-200">
+            <h3 class="text-xs font-mono font-bold text-slate-700 uppercase tracking-wider">
+              Objetivos Clave de Desempeño (SLO / KPI Targets)
+            </h3>
+          </div>
+          <div class="divide-y divide-slate-100 text-xs">
+            <div class="p-4 grid grid-cols-1 sm:grid-cols-4 gap-2 items-center">
+              <span class="font-bold text-slate-800">Velocidad de Carga Inicial</span>
+              <span class="font-mono text-amber-800 font-bold">&lt; 800 milisegundos</span>
+              <span class="text-slate-600 sm:col-span-2">Medido en dispositivos móviles estándar bajo redes 4G mediante Google Lighthouse.</span>
+            </div>
+            <div class="p-4 grid grid-cols-1 sm:grid-cols-4 gap-2 items-center">
+              <span class="font-bold text-slate-800">Calificación Google Lighthouse</span>
+              <span class="font-mono text-emerald-600 font-bold">98 - 100 / 100</span>
+              <span class="text-slate-600 sm:col-span-2">Optimización integral en Performance, SEO, Accesibilidad y Buenas Prácticas Web.</span>
+            </div>
+            <div class="p-4 grid grid-cols-1 sm:grid-cols-4 gap-2 items-center">
+              <span class="font-bold text-slate-800">Búsqueda Reactiva en Catálogos</span>
+              <span class="font-mono text-amber-800 font-bold">&lt; 10 milisegundos</span>
+              <span class="text-slate-600 sm:col-span-2">Indexación en memoria RAM del navegador sobre arrays optimizados sin latencia de red.</span>
+            </div>
+            <div class="p-4 grid grid-cols-1 sm:grid-cols-4 gap-2 items-center">
+              <span class="font-bold text-slate-800">Latencia de Respuesta Webhook</span>
+              <span class="font-mono text-indigo-600 font-bold">&lt; 100 milisegundos</span>
+              <span class="text-slate-600 sm:col-span-2">ACK instantáneo ante eventos entrantes de Meta Cloud API para evitar reintentos en bucle.</span>
+            </div>
+            <div class="p-4 grid grid-cols-1 sm:grid-cols-4 gap-2 items-center">
+              <span class="font-bold text-slate-800">Disponibilidad de Servicio (Uptime)</span>
+              <span class="font-mono text-emerald-600 font-bold">99.9% Uptime</span>
+              <span class="text-slate-600 sm:col-span-2">Capa frontend distribuida en red perimetral Edge CDN con tolerancia ante fallos de servidor.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SECCIÓN 2: REQUERIMIENTOS FUNCIONALES Y NO FUNCIONALES
+           ========================================== -->
+      <section id="sec-requerimientos" class="mb-16 scroll-mt-32">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="w-8 h-8 rounded-lg bg-gradient-to-r from-amber-500 to-yellow-600 text-slate-950 font-black font-mono font-bold text-sm flex items-center justify-center">2</span>
+          <h2 class="text-2xl font-extrabold text-slate-900 tracking-tight">
+            Levantamiento de Requerimientos: Matriz Completa RF & RNF
+          </h2>
+        </div>
+
+        <p class="text-slate-600 text-sm mb-6 leading-relaxed">
+          Cada funcionalidad desarrollada en el ecosistema PalkioTech parte de un requerimiento formal clasificado bajo la metodología MoSCoW (Must Have, Should Have, Could Have). A continuación se especifican los requerimientos funcionales por cada uno de los 3 productos insignia y la plataforma central.
+        </p>
+
+        <!-- Functional Requirements by Subsystem -->
+        <div class="space-y-6 mb-10">
+          
+          <!-- Subsystem 1: Retail & E-Commerce -->
+          <div class="rounded-2xl bg-white border border-slate-200 p-6 shadow-xs">
+            <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-100">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                <h3 class="font-bold text-slate-900 text-base">
+                  Subsistema A: Tienda Retail & Academia VerdeVivo (`/demos/catalogo-retail`)
+                </h3>
+              </div>
+              <span class="text-xs font-mono font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded">
+                MÓDULO 100% OPERATIVO
+              </span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                <strong class="font-mono text-amber-800 block mb-1">RF-01.1 · Búsqueda Reactiva en Memoria:</strong>
+                <p class="text-slate-600 leading-relaxed">
+                  Buscador instantáneo con debounce de 50ms que filtra por nombre, categoría y SKU con respuestas inferiores a 10 milisegundos sin recargar la página.
+                </p>
+              </div>
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                <strong class="font-mono text-amber-800 block mb-1">RF-01.2 · Modal de Vista Rápida (Quick View):</strong>
+                <p class="text-slate-600 leading-relaxed">
+                  Inspección interactiva de especificaciones, nivel de luz/riego botánico, selector de unidades y cálculo de existencias en tiempo real.
+                </p>
+              </div>
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                <strong class="font-mono text-amber-800 block mb-1">RF-01.3 · Módulo Híbrido de Matriculación:</strong>
+                <p class="text-slate-600 leading-relaxed">
+                  Inscripción directa a talleres presenciales y cursos virtuales con contador de cupos restantes e integración transparente al carrito común.
+                </p>
+              </div>
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                <strong class="font-mono text-amber-800 block mb-1">RF-01.4 · Checkout en 4 Pasos con Barra de Envío:</strong>
+                <p class="text-slate-600 leading-relaxed">
+                  Drawer slide-over que calcula el umbral de envío gratis ($100,000 COP), motor de cupones (`PALKIO10`) y desglose de impuestos.
+                </p>
+              </div>
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                <strong class="font-mono text-amber-800 block mb-1">RF-01.5 · Pasarela Dual de Pagos:</strong>
+                <p class="text-slate-600 leading-relaxed">
+                  Simulador de tarjeta de crédito/débito con detección automática de franquicia (Visa/Mastercard), pagos PSE/Nequi con QR, y Contraentrega.
+                </p>
+              </div>
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                <strong class="font-mono text-amber-800 block mb-1">RF-01.6 · Voucher Digital Oficial & WhatsApp Dispatch:</strong>
+                <p class="text-slate-600 leading-relaxed">
+                  Generación de comprobante con folio único `#ORD-2026-XXXX`, código de autorización bancaria y botón de envío formateado a WhatsApp de bodega.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Subsystem 2: CRM & Operations -->
+          <div class="rounded-2xl bg-white border border-slate-200 p-6 shadow-xs">
+            <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-100">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+                <h3 class="font-bold text-slate-900 text-base">
+                  Subsistema B: PalkioTech LeadHub v2.4 PROD (`/demos/crm-operaciones`)
+                </h3>
+              </div>
+              <span class="text-xs font-mono font-bold text-amber-800 bg-amber-50 px-2.5 py-1 rounded">
+                MÓDULO 100% OPERATIVO
+              </span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                <strong class="font-mono text-amber-800 block mb-1">RF-02.1 · Tablero Kanban Reactivo de 4 Etapas:</strong>
+                <p class="text-slate-600 leading-relaxed">
+                  Etapas: Nuevo, Contactado, Propuesta SOW y Cerrado Ganado. Drag & drop o selector rápido con recálculo dinámico del valor total del pipeline.
+                </p>
+              </div>
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                <strong class="font-mono text-amber-800 block mb-1">RF-02.2 · Slide-over de Detalle con Transcripción WhatsApp:</strong>
+                <p class="text-slate-600 leading-relaxed">
+                  Inspección completa de la conversación sostenida con el cliente, historial de mensajes, campo de respuesta del asesor y 4 plantillas oficiales HSM Meta.
+                </p>
+              </div>
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                <strong class="font-mono text-amber-800 block mb-1">RF-02.3 · Score de Calificación por IA & Notas:</strong>
+                <p class="text-slate-600 leading-relaxed">
+                  Puntaje algorítmico de 0 a 100 evaluando intención de compra, checklist de diagnóstico, notas internas del equipo y agendamiento de reuniones.
+                </p>
+              </div>
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                <strong class="font-mono text-amber-800 block mb-1">RF-02.4 · Generador Formal de Propuestas SOW en PDF:</strong>
+                <p class="text-slate-600 leading-relaxed">
+                  Modal interactivo que emite contratos técnicos SOW con alcance, entregables, cronograma y precios cotizados listos para descargar o imprimir.
+                </p>
+              </div>
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                <strong class="font-mono text-amber-800 block mb-1">RF-02.5 · Embudo de Métricas & Exportación Excel:</strong>
+                <p class="text-slate-600 leading-relaxed">
+                  Panel colapsable con estado visual activo/inactivo, KPIs de conversión y descarga en 1 clic de la base de datos a formato CSV/Excel real.
+                </p>
+              </div>
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                <strong class="font-mono text-amber-800 block mb-1">RF-02.6 · Simulación de Webhooks & Salud de Microservicios:</strong>
+                <p class="text-slate-600 leading-relaxed">
+                  Inyección de leads vía webhook simulado y footer corporativo con monitoreo de Meta Cloud API (99.98%), PostgreSQL (14ms) y OpenAI (320ms).
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Subsystem 3: Healthcare -->
+          <div class="rounded-2xl bg-white border border-slate-200 p-6 shadow-xs">
+            <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-100">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-indigo-500"></span>
+                <h3 class="font-bold text-slate-900 text-base">
+                  Subsistema C: Clínica Salud Total (`/demos/clinica-salud`)
+                </h3>
+              </div>
+              <span class="text-xs font-mono font-bold text-indigo-700 bg-indigo-50 px-2.5 py-1 rounded">
+                MÓDULO 100% OPERATIVO
+              </span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                <strong class="font-mono text-amber-800 block mb-1">RF-03.1 · Motor de Agendamiento Adaptativo en 2 Pasos:</strong>
+                <p class="text-slate-600 leading-relaxed">
+                  Algoritmo que recalcula los horarios disponibles según el especialista y día seleccionado, eliminando el riesgo de sobrecupo (overbooking).
+                </p>
+              </div>
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                <strong class="font-mono text-amber-800 block mb-1">RF-03.2 · Directorio Médico con Credenciales Verificadas:</strong>
+                <p class="text-slate-600 leading-relaxed">
+                  Fichas de 6 especialistas con fotografía profesional, número de registro Rethus, valor de consulta particular y botón de agendamiento directo.
+                </p>
+              </div>
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                <strong class="font-mono text-amber-800 block mb-1">RF-03.3 · Pase Médico Digital con Código QR:</strong>
+                <p class="text-slate-600 leading-relaxed">
+                  Ticket de confirmación `#MED-2026-XXXX` con código QR para recepción, preparación médica y despacho automático al WhatsApp del paciente.
+                </p>
+              </div>
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                <strong class="font-mono text-amber-800 block mb-1">RF-03.4 · Portal Cifrado de Resultados de Laboratorio:</strong>
+                <p class="text-slate-600 leading-relaxed">
+                  Módulo de autogestión con validación de Documento de Identidad y Orden Clínica (`#LAB-9842`), desplegando reporte oficial de Perfil Lipídico.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Non-Functional Requirements Table -->
+        <div class="rounded-2xl bg-white border border-slate-200 p-6 shadow-xs">
+          <h3 class="text-base font-bold text-slate-900 mb-4 pb-2 border-b border-slate-100 flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-slate-800"></span>
+            <span>Requerimientos No Funcionales de Nivel Industrial (RNF)</span>
+          </h3>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+              <span class="font-mono font-bold text-slate-700 block mb-1">RNF-01 · Latencia y Core Web Vitals:</span>
+              <p class="text-slate-600 leading-relaxed">
+                Largest Contentful Paint (LCP) &lt; 1.2s, First Input Delay (FID) &lt; 20ms y Cumulative Layout Shift (CLS) = 0. Cumplimiento estricto de los estándares de Google Search Console.
+              </p>
+            </div>
+            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+              <span class="font-mono font-bold text-slate-700 block mb-1">RNF-02 · Privacidad & Ley 1581 (Habeas Data):</span>
+              <p class="text-slate-600 leading-relaxed">
+                Autorización expresa para el tratamiento de datos personales en todos los formularios. Cero almacenamiento no cifrado de información médica sensible.
+              </p>
+            </div>
+            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+              <span class="font-mono font-bold text-slate-700 block mb-1">RNF-03 · Blindaje Criptográfico & Secretos:</span>
+              <p class="text-slate-600 leading-relaxed">
+                Ninguna credencial de producción (API keys de Meta Cloud o LLMs) reside en el bundle del cliente. Las peticiones sensibles son mediadas por microservicios autorizados.
+              </p>
+            </div>
+            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+              <span class="font-mono font-bold text-slate-700 block mb-1">RNF-04 · Accesibilidad Universal WCAG 2.1 AA:</span>
+              <p class="text-slate-600 leading-relaxed">
+                Contraste de color mínimo de 4.5:1 para texto normal, soporte de navegación por teclado mediante teclas Tab/Enter y etiquetas semánticas de accesibilidad ARIA.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SECCIÓN 3: DELIMITACIÓN DE ALCANCES (SOW)
+           ========================================== -->
+      <section id="sec-alcances" class="mb-16 scroll-mt-32">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="w-8 h-8 rounded-lg bg-gradient-to-r from-amber-500 to-yellow-600 text-slate-950 font-black font-mono font-bold text-sm flex items-center justify-center">3</span>
+          <h2 class="text-2xl font-extrabold text-slate-900 tracking-tight">
+            Delimitación de Alcances: Matriz In-Scope vs. Out-of-Scope (SOW)
+          </h2>
+        </div>
+
+        <p class="text-slate-600 text-sm mb-6 leading-relaxed">
+          Para garantizar entregas puntuales y presupuestos cerrados sin sobrecostos inesperados, establecemos fronteras de alcance contractualmente vinculantes en cada acuerdo de nivel de servicio (SOW).
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          
+          <!-- In-Scope Box -->
+          <div class="p-6 rounded-2xl bg-emerald-50/50 border border-emerald-200">
+            <div class="flex items-center gap-2 mb-4 pb-2 border-b border-emerald-200">
+              <svg class="w-5 h-5 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <h3 class="font-bold text-emerald-950 text-base">
+                IN-SCOPE (Garantizado por Contrato)
+              </h3>
+            </div>
+            <ul class="space-y-3 text-xs text-slate-700">
+              <li class="flex items-start gap-2">
+                <span class="text-emerald-600 font-bold">✓</span>
+                <span>Desarrollo frontend responsivo con arquitectura de islas Astro 5 y Tailwind CSS para máxima velocidad de carga.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-emerald-600 font-bold">✓</span>
+                <span>Programación de la lógica reactiva en cliente para catálogos, carritos de compra, filtros y tableros Kanban.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-emerald-600 font-bold">✓</span>
+                <span>Conexión y simulación validada de gateways de mensajería oficial (Meta WhatsApp Cloud API v21.0).</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-emerald-600 font-bold">✓</span>
+                <span>Despliegue a producción en infraestructura Edge CDN con certificado SSL/TLS y configuración de DNS.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-emerald-600 font-bold">✓</span>
+                <span>Transferencia de la totalidad de repositorios Git privados y licencias de código propietario al cliente.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-emerald-600 font-bold">✓</span>
+                <span>Garantía técnica SLA de 30 a 60 días para corrección de cualquier anomalía o bug detectado en producción sin costo.</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Out-of-Scope Box -->
+          <div class="p-6 rounded-2xl bg-slate-100 border border-slate-300">
+            <div class="flex items-center gap-2 mb-4 pb-2 border-b border-slate-300">
+              <svg class="w-5 h-5 text-slate-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <h3 class="font-bold text-slate-800 text-base">
+                OUT-OF-SCOPE (Exclusiones para Fases Posteriores)
+              </h3>
+            </div>
+            <ul class="space-y-3 text-xs text-slate-600">
+              <li class="flex items-start gap-2">
+                <span class="text-slate-400 font-bold">✗</span>
+                <span>Contratación y costos recurrentes de consumo de Meta Cloud API o proveedores de LLMs (el cliente suministra sus llaves de facturación directa).</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-slate-400 font-bold">✗</span>
+                <span>Adquisición de hardware físico (impresoras térmicas, lectores ópticos de códigos de barras o servidores físicos en sede).</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-slate-400 font-bold">✗</span>
+                <span>Gestión de campañas de mercadeo digital, compra de pauta publicitaria en Meta Ads o redacción de contenido editorial.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-slate-400 font-bold">✗</span>
+                <span>Modificaciones estructurales a la base de datos no contempladas en el acta de inicio de requerimientos aprobada.</span>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- Change Request Protocol Box -->
+        <div class="p-5 rounded-2xl bg-white border border-slate-200 text-xs text-slate-700 shadow-xs">
+          <strong class="font-mono text-amber-800 block mb-2 uppercase tracking-wider">
+            ✦ Protocolo de Gestión de Cambios de Alcance (Change Request Protocol):
+          </strong>
+          <p class="leading-relaxed mb-3">
+            Cualquier requerimiento que no figure en el documento SOW inicial se tramita mediante una <em>Solicitud Formal de Cambio (CRF)</em>. PalkioTech evalúa el impacto en horas de ingeniería y cronograma, emite un anexo técnico con costo cerrado, y no se ejecuta hasta contar con la firma aprobatoria de la gerencia del cliente. De esta forma, el cronograma original nunca se ve comprometido.
+          </p>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SECCIÓN 4: STACK TECNOLÓGICO & LENGUAJES
+           ========================================== -->
+      <section id="sec-stack" class="mb-16 scroll-mt-32">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="w-8 h-8 rounded-lg bg-gradient-to-r from-amber-500 to-yellow-600 text-slate-950 font-black font-mono font-bold text-sm flex items-center justify-center">4</span>
+          <h2 class="text-2xl font-extrabold text-slate-900 tracking-tight">
+            Lenguajes de Programación, Frameworks y Stack Tecnológico
+          </h2>
+        </div>
+
+        <p class="text-slate-600 text-sm mb-6 leading-relaxed">
+          Cada herramienta utilizada en el ecosistema PalkioTech fue seleccionada con un criterio estricto de ingeniería: maximizar la velocidad de respuesta, garantizar la resiliencia en fallos de red y evitar la deuda técnica acumulada por plugins obsoletos.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+          
+          <!-- Astro 5 -->
+          <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-xs">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-mono font-bold text-amber-800 bg-amber-50 px-2.5 py-1 rounded border border-amber-200">Frontend SSG/SSR</span>
+              <span class="text-xs font-mono text-slate-400">v5.1+</span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 mb-2">Astro 5 (Islands Architecture)</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Generador de sitios de alto rendimiento que pre-renderiza páginas en HTML puro en el Edge. Elimina el JavaScript innecesario del navegador, reduciendo el peso de la página hasta en un 90% frente a SPAs tradicionales.
+            </p>
+          </div>
+
+          <!-- Tailwind CSS -->
+          <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-xs">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-mono font-bold text-cyan-700 bg-cyan-50 px-2.5 py-1 rounded border border-cyan-200">Diseño UI/UX</span>
+              <span class="text-xs font-mono text-slate-400">v3 / v4 Engine</span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 mb-2">Tailwind CSS (Atomic Styling)</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Motor de utilidades CSS atómicas compilado mediante PurgeCSS. Garantiza que solo los estilos efectivamente usados viajen al usuario final, manteniendo hojas de estilo inferiores a 15 KB.
+            </p>
+          </div>
+
+          <!-- TypeScript -->
+          <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-xs">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-mono font-bold text-indigo-700 bg-indigo-50 px-2.5 py-1 rounded border border-indigo-200">Tipado Estricto</span>
+              <span class="text-xs font-mono text-slate-400">v5.3+</span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 mb-2">TypeScript 5</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Modelado de tipos de datos estáticos para contratos de APIs, prospectos de CRM y registros médicos. Previene anomalías en tiempo de compilación y asegura consistencia estructural en todo el proyecto.
+            </p>
+          </div>
+
+          <!-- Python 3.13 -->
+          <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-xs">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-mono font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded border border-emerald-200">Datos & ETL</span>
+              <span class="text-xs font-mono text-slate-400">v3.13</span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 mb-2">Python 3.13 (Microservicios)</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Procesamiento de datos masivos: saneamiento de catálogos desbordados en memoria, cálculo ponderado de algoritmos EAN-13 y workers de streaming binario fragmentado (Chunked Upload).
+            </p>
+          </div>
+
+          <!-- Node.js ESM -->
+          <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-xs">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-mono font-bold text-green-700 bg-green-50 px-2.5 py-1 rounded border border-green-200">Orquestación Backend</span>
+              <span class="text-xs font-mono text-slate-400">Node 20+ LTS</span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 mb-2">Node.js (ES Modules)</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Servicio asíncrono no bloqueante de alta concurrencia para recepción de webhooks de WhatsApp Cloud API, sincronización de leads y despacho de correos transaccionales con ACK ultrarrápido.
+            </p>
+          </div>
+
+          <!-- SQLite WAL / PostgreSQL -->
+          <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-xs">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-mono font-bold text-amber-700 bg-amber-50 px-2.5 py-1 rounded border border-amber-200">Persistencia Híbrida</span>
+              <span class="text-xs font-mono text-slate-400">WAL / B-Tree</span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 mb-2">SQLite WAL & PostgreSQL</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              SQLite con Write-Ahead Logging para terminales POS en mostrador (lecturas locales en microsegundos sin internet) y PostgreSQL relacional ACID para servidores centrales en la nube.
+            </p>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- ==========================================
+           SECCIÓN 5: METODOLOGÍA DE 5 FASES PALKIOTECH
+           ========================================== -->
+      <section id="sec-metodologia" class="mb-16 scroll-mt-32">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="w-8 h-8 rounded-lg bg-gradient-to-r from-amber-500 to-yellow-600 text-slate-950 font-black font-mono font-bold text-sm flex items-center justify-center">5</span>
+          <h2 class="text-2xl font-extrabold text-slate-900 tracking-tight">
+            Metodología de 5 Fases PalkioTech: Ciclo de Vida del Software
+          </h2>
+        </div>
+
+        <p class="text-slate-600 text-sm mb-6 leading-relaxed">
+          Cada proyecto sigue un ciclo de vida lineal y riguroso. Ninguna fase inicia sin que el entregable de la fase anterior esté aprobado por escrito.
+        </p>
+
+        <div class="space-y-4 mb-8">
+          
+          <div class="p-5 rounded-2xl bg-white border border-slate-200 flex flex-col md:flex-row gap-4 items-start shadow-xs">
+            <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-800 font-mono font-bold text-lg flex items-center justify-center border border-amber-200 shrink-0">
+              01
+            </div>
+            <div class="flex-1">
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+                <h3 class="font-bold text-slate-900 text-base">Fase 1: Descubrimiento, Requerimientos & SOW Estricto</h3>
+                <span class="text-xs font-mono text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded font-semibold">3 a 5 Días Laborales</span>
+              </div>
+              <p class="text-xs text-slate-600 leading-relaxed mb-2">
+                Inmersión con líderes de negocio para identificar cuellos de botella reales, definir KPIs cuantitativos y redactar el contrato de especificación de requerimientos (SOW).
+              </p>
+              <span class="text-[11px] font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
+                Entregable Oficial: Documento SOW con Requerimientos y Presupuesto Cerrado.
+              </span>
+            </div>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-white border border-slate-200 flex flex-col md:flex-row gap-4 items-start shadow-xs">
+            <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-800 font-mono font-bold text-lg flex items-center justify-center border border-amber-200 shrink-0">
+              02
+            </div>
+            <div class="flex-1">
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+                <h3 class="font-bold text-slate-900 text-base">Fase 2: Arquitectura de Software & Prototipado Interactivo</h3>
+                <span class="text-xs font-mono text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded font-semibold">1 Semana</span>
+              </div>
+              <p class="text-xs text-slate-600 leading-relaxed mb-2">
+                Modelado de bases de datos, diagramación de APIs y diseño de la interfaz interactiva en alta fidelidad para validar la experiencia de usuario antes de codificar.
+              </p>
+              <span class="text-[11px] font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
+                Entregable Oficial: Prototipo Interactivo Aprobado + Diagrama de Flujo de Datos.
+              </span>
+            </div>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-white border border-slate-200 flex flex-col md:flex-row gap-4 items-start shadow-xs">
+            <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-800 font-mono font-bold text-lg flex items-center justify-center border border-amber-200 shrink-0">
+              03
+            </div>
+            <div class="flex-1">
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+                <h3 class="font-bold text-slate-900 text-base">Fase 3: Construcción Modular Ágil & Pruebas Continuas (QA)</h3>
+                <span class="text-xs font-mono text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded font-semibold">1 a 3 Semanas (Sprints)</span>
+              </div>
+              <p class="text-xs text-slate-600 leading-relaxed mb-2">
+                Codificación modular en Astro, TypeScript y Tailwind. Integración de webhooks, lógica de pasarelas de pago y pruebas continuas en servidor privado de Staging.
+              </p>
+              <span class="text-[11px] font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
+                Entregable Oficial: URL Privada de Staging con Avances Semanales Auditables.
+              </span>
+            </div>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-white border border-slate-200 flex flex-col md:flex-row gap-4 items-start shadow-xs">
+            <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-800 font-mono font-bold text-lg flex items-center justify-center border border-amber-200 shrink-0">
+              04
+            </div>
+            <div class="flex-1">
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+                <h3 class="font-bold text-slate-900 text-base">Fase 4: Despliegue a Producción, Hardening & Optimización</h3>
+                <span class="text-xs font-mono text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded font-semibold">3 a 5 Días Laborales</span>
+              </div>
+              <p class="text-xs text-slate-600 leading-relaxed mb-2">
+                Aprovisionamiento en red Edge CDN, blindaje SSL/TLS 1.3, rate-limiting contra ataques de denegación de servicio y auditoría Lighthouse 95-100 en producción.
+              </p>
+              <span class="text-[11px] font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
+                Entregable Oficial: Sistema Activo en Dominio Corporativo + Auditoría de Rendimiento.
+              </span>
+            </div>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-white border border-slate-200 flex flex-col md:flex-row gap-4 items-start shadow-xs">
+            <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-800 font-mono font-bold text-lg flex items-center justify-center border border-amber-200 shrink-0">
+              05
+            </div>
+            <div class="flex-1">
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+                <h3 class="font-bold text-slate-900 text-base">Fase 5: Capacitación, Transferencia de Repositorios & Garantía SLA</h3>
+                <span class="text-xs font-mono text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded font-semibold">30 a 60 Días de Cobertura</span>
+              </div>
+              <p class="text-xs text-slate-600 leading-relaxed mb-2">
+                Capacitación en video para el personal operativo, entrega total de repositorios Git privados y activación formal de la garantía SLA para corrección de bugs sin costo.
+              </p>
+              <span class="text-[11px] font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
+                Entregable Oficial: Repositorio Git Transferido + Manual Operativo PDF + Garantía Activa.
+              </span>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- ==========================================
+           SECCIÓN 6: DIAGRAMAS TÉCNICOS & ARQUITECTURA
+           ========================================== -->
+      <section id="sec-diagramas" class="mb-16 scroll-mt-32">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="w-8 h-8 rounded-lg bg-gradient-to-r from-amber-500 to-yellow-600 text-slate-950 font-black font-mono font-bold text-sm flex items-center justify-center">6</span>
+          <h2 class="text-2xl font-extrabold text-slate-900 tracking-tight">
+            Planos Técnicos y Diagramas de Arquitectura
+          </h2>
+        </div>
+
+        <p class="text-slate-600 text-sm mb-6 leading-relaxed">
+          Flujos de datos e integración de microservicios documentados para el equipo de infraestructura.
+        </p>
+
+        <!-- Diagram 1: WhatsApp Bot & LeadHub Pipeline -->
+        <div class="mb-8 p-6 sm:p-8 rounded-3xl bg-slate-900 text-white shadow-xl">
+          <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-800">
+            <span class="text-xs font-mono text-emerald-400 font-bold uppercase tracking-wider">
+              ✦ Diagrama 1: Orquestación Conversacional WhatsApp & Pipeline LeadHub
+            </span>
+            <span class="text-[11px] font-mono text-slate-400">Latencia E2E &lt; 3.0s</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-5 gap-3 text-center text-xs font-mono my-6">
+            <div class="p-4 rounded-xl bg-slate-800 border border-slate-700">
+              <span class="text-blue-400 font-bold block mb-1">Paso 1</span>
+              <strong class="text-white block">Usuario Móvil</strong>
+              <span class="text-[11px] text-slate-400">Escribe consulta en WhatsApp</span>
+            </div>
+            <div class="flex items-center justify-center text-slate-500 font-bold text-lg hidden sm:flex">→</div>
+            <div class="p-4 rounded-xl bg-slate-800 border border-slate-700">
+              <span class="text-emerald-400 font-bold block mb-1">Paso 2</span>
+              <strong class="text-white block">Meta Cloud API</strong>
+              <span class="text-[11px] text-slate-400">Webhook POST HMAC-SHA256</span>
+            </div>
+            <div class="flex items-center justify-center text-slate-500 font-bold text-lg hidden sm:flex">→</div>
+            <div class="p-4 rounded-xl bg-slate-800 border border-slate-700">
+              <span class="text-indigo-400 font-bold block mb-1">Paso 3</span>
+              <strong class="text-white block">Node.js + LLM Flash</strong>
+              <span class="text-[11px] text-slate-400">Guardrails antialucinación</span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-slate-800 text-xs">
+            <div class="p-3 rounded-xl bg-slate-950/60 border border-slate-800">
+              <span class="font-bold text-slate-300 block mb-1 font-mono">Bifurcación A · Sincronización CRM:</span>
+              <p class="text-slate-400 leading-relaxed text-[11px]">
+                El lead calificado se inserta automáticamente en la etapa "Nuevo" de LeadHub con su score de compra (0-100) y transcripción íntegra.
+              </p>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-950/60 border border-slate-800">
+              <span class="font-bold text-slate-300 block mb-1 font-mono">Bifurcación B · Respuesta Humanoide:</span>
+              <p class="text-slate-400 leading-relaxed text-[11px]">
+                El webhook envía la señal `mark_as_read` y simula presencia (`typing...`) calculando la demora en base a la longitud del texto antes de responder.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Diagram 2: Offline POS Architecture -->
+        <div class="p-6 sm:p-8 rounded-3xl bg-slate-900 text-white shadow-xl">
+          <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-800">
+            <span class="text-xs font-mono text-cyan-400 font-bold uppercase tracking-wider">
+              ✦ Diagrama 2: Arquitectura Resiliente POS Mostrador (Offline-First)
+            </span>
+            <span class="text-[11px] font-mono text-slate-400">Búsqueda &lt; 50ms</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-4 gap-3 text-center text-xs font-mono my-6">
+            <div class="p-4 rounded-xl bg-slate-800 border border-slate-700">
+              <span class="text-cyan-400 font-bold block mb-1">Entrada</span>
+              <strong class="text-white block">Lector Óptico</strong>
+              <span class="text-[11px] text-slate-400">Disparo EAN-13 directo</span>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-800 border border-slate-700">
+              <span class="text-cyan-400 font-bold block mb-1">Motor</span>
+              <strong class="text-white block">SQLite WAL</strong>
+              <span class="text-[11px] text-slate-400">Índice B-Tree en memoria</span>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-800 border border-slate-700">
+              <span class="text-cyan-400 font-bold block mb-1">Caja</span>
+              <strong class="text-white block">Impresora Ticket</strong>
+              <span class="text-[11px] text-slate-400">Comprobante físico de venta</span>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-800 border border-slate-700">
+              <span class="text-cyan-400 font-bold block mb-1">Nube</span>
+              <strong class="text-white block">Sync Diferido</strong>
+              <span class="text-[11px] text-slate-400">Sincroniza al volver la red</span>
+            </div>
+          </div>
+
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Este patrón asegura que el negocio nunca detenga la facturación física ante una caída generalizada de fibra óptica o señal celular. La base local procesa hasta 10,000 transacciones diarias en modo offline continuo.
+          </p>
+        </div>
+
+      </section>
+
+      <!-- ==========================================
+           SECCIÓN 7: MATRIZ DE CONTROL DE CALIDAD (QA)
+           ========================================== -->
+      <section id="sec-qa" class="mb-16 scroll-mt-32">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="w-8 h-8 rounded-lg bg-gradient-to-r from-amber-500 to-yellow-600 text-slate-950 font-black font-mono font-bold text-sm flex items-center justify-center">7</span>
+          <h2 class="text-2xl font-extrabold text-slate-900 tracking-tight">
+            Matriz de Control de Calidad (QA) y Criterios de Aceptación
+          </h2>
+        </div>
+
+        <p class="text-slate-600 text-sm mb-6 leading-relaxed">
+          Checklist interactivo de auditoría técnica. Puedes marcar las casillas para validar el cumplimiento de cada estándar durante la revisión de cualquier proyecto.
+        </p>
+
+        <!-- Interactive QA Checklist Box -->
+        <div class="rounded-3xl bg-white border border-slate-200 p-6 sm:p-8 shadow-xs">
+          
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-slate-100">
+            <div>
+              <h3 class="text-base font-bold text-slate-900">
+                Auditoría Técnica Pre-Lanzamiento
+              </h3>
+              <p class="text-xs text-slate-500">
+                Verifica cada criterio para certificar el pase a producción.
+              </p>
+            </div>
+            <div class="flex items-center gap-3">
+              <span id="qa-counter" class="text-xs font-mono font-bold px-3 py-1.5 rounded-lg bg-amber-50 text-amber-800 border border-amber-200">
+                0 / 12 Verificados
+              </span>
+              <button 
+                id="reset-qa-btn" 
+                class="text-xs font-mono text-slate-500 hover:text-rose-600 transition-colors cursor-pointer"
+              >
+                Reiniciar
+              </button>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs" id="qa-checklist">
+            
+            <label class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-start gap-3 cursor-pointer hover:bg-amber-50/50 transition-colors">
+              <input type="checkbox" class="qa-checkbox mt-0.5 rounded text-amber-700 focus:ring-blue-500" />
+              <div>
+                <strong class="text-slate-900 block font-semibold">1. Auditoría Lighthouse &gt; 95 en Producción</strong>
+                <span class="text-slate-500">Pruebas en móvil y escritorio con métricas en verde.</span>
+              </div>
+            </label>
+
+            <label class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-start gap-3 cursor-pointer hover:bg-amber-50/50 transition-colors">
+              <input type="checkbox" class="qa-checkbox mt-0.5 rounded text-amber-700 focus:ring-blue-500" />
+              <div>
+                <strong class="text-slate-900 block font-semibold">2. Cero Errores de Sintaxis en Consola</strong>
+                <span class="text-slate-500">Inspección de Developer Tools sin excepciones de JavaScript.</span>
+              </div>
+            </label>
+
+            <label class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-start gap-3 cursor-pointer hover:bg-amber-50/50 transition-colors">
+              <input type="checkbox" class="qa-checkbox mt-0.5 rounded text-amber-700 focus:ring-blue-500" />
+              <div>
+                <strong class="text-slate-900 block font-semibold">3. Integridad de Recursos Multimedia (HTTP 200)</strong>
+                <span class="text-slate-500">Verificación de que ninguna imagen o script devuelva 404.</span>
+              </div>
+            </label>
+
+            <label class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-start gap-3 cursor-pointer hover:bg-amber-50/50 transition-colors">
+              <input type="checkbox" class="qa-checkbox mt-0.5 rounded text-amber-700 focus:ring-blue-500" />
+              <div>
+                <strong class="text-slate-900 block font-semibold">4. Validación de Formularios Client-Side</strong>
+                <span class="text-slate-500">Campos obligatorios, regex de correo y teléfono colombiano.</span>
+              </div>
+            </label>
+
+            <label class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-start gap-3 cursor-pointer hover:bg-amber-50/50 transition-colors">
+              <input type="checkbox" class="qa-checkbox mt-0.5 rounded text-amber-700 focus:ring-blue-500" />
+              <div>
+                <strong class="text-slate-900 block font-semibold">5. Despacho Transaccional de Órdenes a WhatsApp</strong>
+                <span class="text-slate-500">Comprobante de compra con formato limpio y enlace oficial.</span>
+              </div>
+            </label>
+
+            <label class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-start gap-3 cursor-pointer hover:bg-amber-50/50 transition-colors">
+              <input type="checkbox" class="qa-checkbox mt-0.5 rounded text-amber-700 focus:ring-blue-500" />
+              <div>
+                <strong class="text-slate-900 block font-semibold">6. Exportación de Datos en Formato CSV / Excel</strong>
+                <span class="text-slate-500">Generación de archivos descargables con encoding UTF-8.</span>
+              </div>
+            </label>
+
+            <label class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-start gap-3 cursor-pointer hover:bg-amber-50/50 transition-colors">
+              <input type="checkbox" class="qa-checkbox mt-0.5 rounded text-amber-700 focus:ring-blue-500" />
+              <div>
+                <strong class="text-slate-900 block font-semibold">7. Emisión de Pase Médico con Folio y QR</strong>
+                <span class="text-slate-500">Ticket de cita con folio único e instrucciones para el paciente.</span>
+              </div>
+            </label>
+
+            <label class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-start gap-3 cursor-pointer hover:bg-amber-50/50 transition-colors">
+              <input type="checkbox" class="qa-checkbox mt-0.5 rounded text-amber-700 focus:ring-blue-500" />
+              <div>
+                <strong class="text-slate-900 block font-semibold">8. Consulta Segura de Laboratorio Cifrada</strong>
+                <span class="text-slate-500">Acceso restringido por documento y orden sin fugas de datos.</span>
+              </div>
+            </label>
+
+            <label class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-start gap-3 cursor-pointer hover:bg-amber-50/50 transition-colors">
+              <input type="checkbox" class="qa-checkbox mt-0.5 rounded text-amber-700 focus:ring-blue-500" />
+              <div>
+                <strong class="text-slate-900 block font-semibold">9. Blindaje de Claves en Variables de Entorno</strong>
+                <span class="text-slate-500">Cero credenciales en texto plano dentro del código cliente.</span>
+              </div>
+            </label>
+
+            <label class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-start gap-3 cursor-pointer hover:bg-amber-50/50 transition-colors">
+              <input type="checkbox" class="qa-checkbox mt-0.5 rounded text-amber-700 focus:ring-blue-500" />
+              <div>
+                <strong class="text-slate-900 block font-semibold">10. Cumplimiento Legal de Habeas Data (Ley 1581)</strong>
+                <span class="text-slate-500">Cláusula de tratamiento de datos en todos los puntos de contacto.</span>
+              </div>
+            </label>
+
+            <label class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-start gap-3 cursor-pointer hover:bg-amber-50/50 transition-colors">
+              <input type="checkbox" class="qa-checkbox mt-0.5 rounded text-amber-700 focus:ring-blue-500" />
+              <div>
+                <strong class="text-slate-900 block font-semibold">11. Soporte Multi-Dispositivo (Móvil, Tablet, Desktop)</strong>
+                <span class="text-slate-500">Pruebas en resoluciones desde 320px hasta 2560px sin desbordamientos.</span>
+              </div>
+            </label>
+
+            <label class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-start gap-3 cursor-pointer hover:bg-amber-50/50 transition-colors">
+              <input type="checkbox" class="qa-checkbox mt-0.5 rounded text-amber-700 focus:ring-blue-500" />
+              <div>
+                <strong class="text-slate-900 block font-semibold">12. Compilación de Producción Limpia (Build 0 Errors)</strong>
+                <span class="text-slate-500">Comando `npm run build` ejecutado exitosamente con código 0.</span>
+              </div>
+            </label>
+
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ==========================================
+           SECCIÓN 8: DESPLIEGUE, GARANTÍA SLA Y ACTA
+           ========================================== -->
+      <section id="sec-despliegue" class="mb-16 scroll-mt-32">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="w-8 h-8 rounded-lg bg-gradient-to-r from-amber-500 to-yellow-600 text-slate-950 font-black font-mono font-bold text-sm flex items-center justify-center">8</span>
+          <h2 class="text-2xl font-extrabold text-slate-900 tracking-tight">
+            Protocolo de Despliegue, Garantía SLA y Acta de Entrega
+          </h2>
+        </div>
+
+        <div class="p-8 rounded-3xl bg-white border border-slate-200 shadow-xs mb-8">
+          <h3 class="text-base font-bold text-slate-900 mb-4 pb-2 border-b border-slate-100">
+            Términos de la Garantía Técnica SLA de PalkioTech
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs text-slate-600 leading-relaxed">
+            <div>
+              <strong class="text-slate-900 block mb-1 font-mono">Cobertura de 30 a 60 Días:</strong>
+              <p>Todo fallo, bug visual o inconsistencia en la lógica de negocio programada se soluciona sin cargo alguno durante el período de garantía inicial.</p>
+            </div>
+            <div>
+              <strong class="text-slate-900 block mb-1 font-mono">Tiempos de Respuesta Crítica:</strong>
+              <p>Atención en menos de 2 horas para incidencias críticas que afecten la facturación o la atención en vivo de prospectos y pacientes.</p>
+            </div>
+            <div>
+              <strong class="text-slate-900 block mb-1 font-mono">Entrega de Repositorio Git:</strong>
+              <p>Acceso administrativo completo como Propietario del repositorio GitHub/GitLab, con historial de commits y documentación técnica de despliegue.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Formal Sign-Off Box -->
+        <div class="p-8 rounded-3xl bg-slate-900 text-white shadow-xl">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 pb-6 border-b border-slate-800">
+            <div>
+              <span class="text-xs font-mono text-emerald-400 font-bold uppercase tracking-wider block mb-1">
+                ✦ ACTA DE CONFORMIDAD Y CIERRE DE INGENIERÍA
+              </span>
+              <h3 class="text-xl font-bold text-white">
+                Validación de Entrega de Solución Tecnológica
+              </h3>
+            </div>
+            <button 
+              onclick="window.print()" 
+              class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-500 text-white text-xs font-bold transition-all cursor-pointer self-start sm:self-auto"
+            >
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+              </svg>
+              <span>Imprimir Documento Oficial</span>
+            </button>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 text-xs font-mono pt-4">
+            <div class="border-t border-slate-700 pt-4">
+              <span class="text-slate-400 block mb-1">Por PalkioTech:</span>
+              <strong class="text-white block text-sm">Dirección de Arquitectura & Sistemas</strong>
+              <span class="text-slate-500 text-[11px]">Sistemas Web & Soluciones de Inteligencia Artificial</span>
+            </div>
+            <div class="border-t border-slate-700 pt-4">
+              <span class="text-slate-400 block mb-1">Por la Empresa Cliente:</span>
+              <strong class="text-white block text-sm">Dirección de Operaciones / Gerencia General</strong>
+              <span class="text-slate-500 text-[11px]">Firma de Aprobación de Requerimientos & SOW</span>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+  <Footer />
+</Layout>
+
+<!-- Print Styling -->
+<style>
+  @media print {
+    header,
+    footer,
+    #print-blueprint-btn,
+    #reset-qa-btn {
+      display: none !important;
+    }
+    body {
+      background: white !important;
+      color: black !important;
+    }
+    .shadow-xs, .shadow-md, .shadow-xl, .shadow-2xl {
+      box-shadow: none !important;
+      border: 1px solid #cbd5e1 !important;
+    }
+  }
+</style>
+
+<!-- Clean Client Script for QA Checklist -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var qaCheckboxes = document.querySelectorAll('.qa-checkbox');
+    var qaCounter = document.getElementById('qa-counter');
+    var resetQaBtn = document.getElementById('reset-qa-btn');
+
+    function updateQaCounter() {
+      var checkedCount = 0;
+      qaCheckboxes.forEach(function(cb) {
+        if (cb.checked) checkedCount++;
+      });
+      if (qaCounter) {
+        qaCounter.textContent = checkedCount + ' / ' + qaCheckboxes.length + ' Verificados';
+        if (checkedCount === qaCheckboxes.length) {
+          qaCounter.classList.remove('bg-amber-50', 'text-amber-800', 'border-amber-200');
+          qaCounter.classList.add('bg-emerald-50', 'text-emerald-700', 'border-emerald-200');
+        } else {
+          qaCounter.classList.add('bg-amber-50', 'text-amber-800', 'border-amber-200');
+          qaCounter.classList.remove('bg-emerald-50', 'text-emerald-700', 'border-emerald-200');
+        }
+      }
+    }
+
+    qaCheckboxes.forEach(function(cb) {
+      cb.addEventListener('change', updateQaCounter);
+    });
+
+    if (resetQaBtn) {
+      resetQaBtn.addEventListener('click', function() {
+        qaCheckboxes.forEach(function(cb) {
+          cb.checked = false;
+        });
+        updateQaCounter();
+      });
+    }
+
+    // Subnav sticky offset sync on scroll
+    var subnav = document.getElementById('blueprint-subnav');
+    window.addEventListener('scroll', function() {
+      var scrollY = window.scrollY || window.pageYOffset;
+      if (subnav) {
+        if (scrollY > 30) {
+          subnav.style.top = '52px';
+        } else {
+          subnav.style.top = '64px';
+        }
+      }
+    }, { passive: true });
+  });
+</script>

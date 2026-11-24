@@ -1,0 +1,273 @@
+---
+import { companyData } from '../data/company';
+
+const phone = companyData.whatsappNumber || '';
+const baseWa = phone ? `https://api.whatsapp.com/send?phone=${phone}&text=` : `https://api.whatsapp.com/send?text=`;
+
+const techMsg = encodeURIComponent("¡Hola equipo de ingeniería de PalkioTech! 👋 Tengo una consulta sobre arquitectura de software y requerimientos técnicos para mi empresa.");
+const salesMsg = encodeURIComponent("¡Hola equipo comercial de PalkioTech! 👋 Deseo solicitar información sobre presupuestos, acuerdos SOW y tiempos de entrega de proyectos.");
+---
+
+<!-- ==========================================
+     EXECUTIVE SPEED DESK (FLOATING WIDGET)
+     ========================================== -->
+<div id="speed-desk-widget" class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+  
+  <!-- Popover Menu Card (Hidden by default, slides up smoothly) -->
+  <div 
+    id="speed-desk-popover" 
+    class="hidden opacity-0 translate-y-3 transition-all duration-300 w-[360px] max-w-[calc(100vw-2rem)] rounded-3xl bg-[#0a0a0d]/98 backdrop-blur-xl border border-[#24242e] text-white shadow-2xl p-5 mb-3.5 relative overflow-hidden"
+    role="dialog"
+    aria-label="Mesa de Contacto Ejecutivo PalkioTech"
+  >
+    <!-- Background Ambient Glow -->
+    <div class="absolute -top-16 -right-16 w-36 h-36 bg-amber-500/15 rounded-full blur-2xl pointer-events-none"></div>
+
+    <!-- Header -->
+    <div class="flex items-start justify-between gap-3 pb-3.5 mb-3 border-b border-[#202028] relative z-10">
+      <div class="flex items-center gap-2.5">
+        <img src="/images/palkiotech-emblem.png" alt="PalkioTech" class="w-8 h-8 object-contain drop-shadow" />
+        <div>
+          <div class="flex items-center gap-1.5">
+            <h3 class="font-black text-sm text-white tracking-tight">PalkioTech Speed Desk</h3>
+            <span class="text-[9px] font-mono font-bold text-emerald-400 bg-emerald-950/80 px-1.5 py-0.2 rounded border border-emerald-800">
+              ACTIVO
+            </span>
+          </div>
+          <span class="text-[11px] text-zinc-400 block leading-tight">
+            Respuesta promedio: &lt; 15 min en WhatsApp
+          </span>
+        </div>
+      </div>
+
+      <!-- Close Button -->
+      <button 
+        type="button" 
+        id="speed-desk-close-btn"
+        aria-label="Cerrar mesa de ayuda"
+        class="text-zinc-400 hover:text-white p-1 rounded-lg hover:bg-[#181820] transition-colors cursor-pointer"
+      >
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- 4 Action Channels List -->
+    <div class="space-y-2 relative z-10 text-xs">
+      
+      <!-- Option 1: Engineering Technical Line -->
+      <a 
+        href={`${baseWa}${techMsg}`} 
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex items-start gap-3 p-3 rounded-2xl bg-[#121216] hover:bg-[#181822] border border-[#24242e] hover:border-amber-400/50 transition-all group"
+      >
+        <div class="w-8 h-8 rounded-xl bg-amber-950/80 text-amber-400 border border-amber-800/60 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+          </svg>
+        </div>
+        <div class="flex-1">
+          <div class="flex items-center justify-between gap-1">
+            <strong class="text-white font-bold group-hover:text-amber-300 transition-colors">Línea de Ingeniería</strong>
+            <span class="text-[10px] font-mono text-emerald-400">WhatsApp ↗</span>
+          </div>
+          <p class="text-[11px] text-zinc-400 leading-snug mt-0.5">
+            Dudas técnicas, arquitectura de software y requerimientos.
+          </p>
+        </div>
+      </a>
+
+      <!-- Option 2: Commercial & SOW Line -->
+      <a 
+        href={`${baseWa}${salesMsg}`} 
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex items-start gap-3 p-3 rounded-2xl bg-[#121216] hover:bg-[#181822] border border-[#24242e] hover:border-emerald-500/50 transition-all group"
+      >
+        <div class="w-8 h-8 rounded-xl bg-emerald-950/80 text-emerald-400 border border-emerald-800/60 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <div class="flex-1">
+          <div class="flex items-center justify-between gap-1">
+            <strong class="text-white font-bold group-hover:text-emerald-300 transition-colors">Línea Comercial B2B</strong>
+            <span class="text-[10px] font-mono text-emerald-400">WhatsApp ↗</span>
+          </div>
+          <p class="text-[11px] text-zinc-400 leading-snug mt-0.5">
+            Cotizaciones, acuerdos SOW y presupuestos cerrados.
+          </p>
+        </div>
+      </a>
+
+      <!-- Option 3: Schedule 20min Call -->
+      <a 
+        href="/#contacto" 
+        id="desk-schedule-link"
+        class="flex items-start gap-3 p-3 rounded-2xl bg-[#121216] hover:bg-[#181822] border border-[#24242e] hover:border-amber-400/50 transition-all group"
+      >
+        <div class="w-8 h-8 rounded-xl bg-amber-950/80 text-amber-400 border border-amber-800/60 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+        </div>
+        <div class="flex-1">
+          <div class="flex items-center justify-between gap-1">
+            <strong class="text-white font-bold group-hover:text-amber-300 transition-colors">Agendar Diagnóstico</strong>
+            <span class="text-[10px] font-mono text-amber-400">20 Minutos</span>
+          </div>
+          <p class="text-[11px] text-zinc-400 leading-snug mt-0.5">
+            Videollamada 1 a 1 sin costo para evaluar tu sistema.
+          </p>
+        </div>
+      </a>
+
+      <!-- Option 4: Open Blueprint Docs -->
+      <a 
+        href="/blueprint" 
+        class="flex items-start gap-3 p-3 rounded-2xl bg-[#121216] hover:bg-[#181822] border border-[#24242e] hover:border-amber-400/50 transition-all group"
+      >
+        <div class="w-8 h-8 rounded-xl bg-[#1a1a24] text-amber-400 border border-[#2e2e3e] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+        </div>
+        <div class="flex-1">
+          <div class="flex items-center justify-between gap-1">
+            <strong class="text-white font-bold group-hover:text-white transition-colors">Blueprint Técnico</strong>
+            <span class="text-[10px] font-mono text-amber-400">DOCS ↗</span>
+          </div>
+          <p class="text-[11px] text-zinc-400 leading-snug mt-0.5">
+            Expediente oficial con requerimientos, stack y QA.
+          </p>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- Microservices Status Footer -->
+    <div class="pt-3 mt-3 border-t border-[#202028] flex items-center justify-between text-[10px] font-mono text-zinc-500">
+      <span class="flex items-center gap-1.5 text-emerald-400">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>Sistemas Operativos (99.9%)</span>
+      </span>
+      <span>Bogotá · Remoto Global</span>
+    </div>
+
+  </div>
+
+  <!-- Main Floating Trigger Button -->
+  <button 
+    type="button" 
+    id="speed-desk-toggle-btn"
+    aria-expanded="false"
+    aria-label="Abrir mesa de ayuda rápida de PalkioTech"
+    class="group flex items-center gap-2.5 px-4 py-3 rounded-full bg-[#0a0a0d]/95 hover:bg-[#121216] backdrop-blur-md text-white border border-[#24242e] hover:border-amber-400/60 shadow-2xl hover:shadow-amber-500/20 transition-all cursor-pointer hover:-translate-y-0.5"
+  >
+    <img src="/images/palkiotech-emblem.png" alt="PalkioTech" class="w-4 h-4 object-contain group-hover:scale-110 transition-transform" />
+
+    <!-- Glowing Status Indicator -->
+    <span class="relative flex h-2 w-2 shrink-0">
+      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+      <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+    </span>
+
+    <span class="text-xs font-bold tracking-tight group-hover:text-amber-300 transition-colors">
+      Mesa de Contacto 24/7
+    </span>
+
+    <!-- Message / Headset Icon -->
+    <div class="w-6 h-6 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0">
+      <svg id="icon-desk-open" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+      </svg>
+      <svg id="icon-desk-close" class="w-3.5 h-3.5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </div>
+  </button>
+
+</div>
+
+<!-- Clean Vanilla JavaScript for speed desk widget -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var toggleBtn = document.getElementById('speed-desk-toggle-btn');
+    var closeBtn = document.getElementById('speed-desk-close-btn');
+    var popover = document.getElementById('speed-desk-popover');
+    var iconOpen = document.getElementById('icon-desk-open');
+    var iconClose = document.getElementById('icon-desk-close');
+    var scheduleLink = document.getElementById('desk-schedule-link');
+
+    var isOpen = false;
+
+    function openDesk() {
+      isOpen = true;
+      if (popover) {
+        popover.classList.remove('hidden');
+        setTimeout(function() {
+          popover.classList.remove('opacity-0', 'translate-y-3');
+          popover.classList.add('opacity-100', 'translate-y-0');
+        }, 10);
+      }
+      if (iconOpen) iconOpen.classList.add('hidden');
+      if (iconClose) iconClose.classList.remove('hidden');
+      if (toggleBtn) toggleBtn.setAttribute('aria-expanded', 'true');
+    }
+
+    function closeDesk() {
+      isOpen = false;
+      if (popover) {
+        popover.classList.remove('opacity-100', 'translate-y-0');
+        popover.classList.add('opacity-0', 'translate-y-3');
+        setTimeout(function() {
+          popover.classList.add('hidden');
+        }, 200);
+      }
+      if (iconOpen) iconOpen.classList.remove('hidden');
+      if (iconClose) iconClose.classList.add('hidden');
+      if (toggleBtn) toggleBtn.setAttribute('aria-expanded', 'false');
+    }
+
+    if (toggleBtn) {
+      toggleBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (isOpen) {
+          closeDesk();
+        } else {
+          openDesk();
+        }
+      });
+    }
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        closeDesk();
+      });
+    }
+
+    // Auto close when clicking outside
+    document.addEventListener('click', function(e) {
+      if (isOpen && popover && !popover.contains(e.target) && !toggleBtn.contains(e.target)) {
+        closeDesk();
+      }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && isOpen) {
+        closeDesk();
+      }
+    });
+
+    // Schedule link smooth scroll
+    if (scheduleLink) {
+      scheduleLink.addEventListener('click', function() {
+        closeDesk();
+      });
+    }
+  });
+</script>

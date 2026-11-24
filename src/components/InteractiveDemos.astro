@@ -1,0 +1,144 @@
+---
+// src/components/InteractiveDemos.astro
+---
+
+<section id="demos" class="py-20 relative overflow-hidden bg-slate-50 border-y border-slate-200" data-navbar-theme="light">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    
+    <!-- Section Header -->
+    <div class="max-w-3xl mx-auto text-center mb-12">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-900 text-xs font-mono font-bold mb-3 shadow-2xs">
+        <span>✦ 0.2 PRODUCTOS LISTOS PARA VENDER & DEMOS EN VIVO</span>
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-3">
+        Páginas Web y Sistemas <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-amber-500 to-yellow-600">Listos para Vender</span>
+      </h2>
+      <p class="text-slate-600 text-xs sm:text-sm leading-relaxed max-w-2xl mx-auto">
+        No mostramos simples maquetas conceptuales. Desarrollamos software completo, funcional y listo para ser adaptado a la identidad de tu empresa.
+      </p>
+    </div>
+
+    <!-- 4 Flagship Software & Mobile Apps Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      
+      <!-- App 1: E-Commerce Retail -->
+      <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-2xs hover:shadow-md hover:border-emerald-500 transition-all flex flex-col justify-between group">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-[10px] font-mono font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+              E-Commerce & Retail
+            </span>
+            <span class="text-[10px] text-slate-400 font-mono">Web Completa</span>
+          </div>
+          <h3 class="text-base font-extrabold text-slate-900 group-hover:text-emerald-700 transition-colors mb-2 leading-snug">
+            Tienda Web con Catálogo & Despacho a WhatsApp
+          </h3>
+          <p class="text-xs text-slate-600 leading-relaxed mb-4">
+            Buscador instantáneo en menos de 50ms, filtros por categoría, carrito interactivo y checkout directo a WhatsApp sin comisiones.
+          </p>
+        </div>
+        <a 
+          href="/demos/catalogo-retail" 
+          target="_blank" 
+          class="inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-2xs transition-all"
+        >
+          <span>Probar E-Commerce en Vivo</span>
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- App 2: Mini-CRM Operaciones -->
+      <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-2xs hover:shadow-md hover:border-amber-400 transition-all flex flex-col justify-between group">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-[10px] font-mono font-bold text-amber-800 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">
+              App Web Operativa
+            </span>
+            <span class="text-[10px] text-slate-400 font-mono">Panel Privado</span>
+          </div>
+          <h3 class="text-base font-extrabold text-slate-900 group-hover:text-amber-700 transition-colors mb-2 leading-snug">
+            PalkioTech LeadHub · Mini-CRM & Pipeline Kanban
+          </h3>
+          <p class="text-xs text-slate-600 leading-relaxed mb-4">
+            Panel administrativo para gestionar prospectos del bot de WhatsApp, mover tarjetas de venta y emitir cotizaciones automáticas.
+          </p>
+        </div>
+        <a 
+          href="/demos/crm-operaciones" 
+          target="_blank" 
+          class="inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-600 hover:from-amber-600 hover:to-yellow-700 text-slate-950 font-bold text-xs shadow-2xs transition-all"
+        >
+          <span>Abrir Panel CRM en Vivo</span>
+          <svg class="w-3.5 h-3.5 text-slate-950" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- App 3: Portal Salud / Clínico -->
+      <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-2xs hover:shadow-md hover:border-indigo-500 transition-all flex flex-col justify-between group">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-[10px] font-mono font-bold text-indigo-800 bg-indigo-50 px-2 py-0.5 rounded border border-indigo-200">
+              Web Salud & Citas
+            </span>
+            <span class="text-[10px] text-slate-400 font-mono">Portal Citas</span>
+          </div>
+          <h3 class="text-base font-extrabold text-slate-900 group-hover:text-indigo-700 transition-colors mb-2 leading-snug">
+            Clínica Médica con Agendamiento de Citas en Línea
+          </h3>
+          <p class="text-xs text-slate-600 leading-relaxed mb-4">
+            Portal institucional con agenda de médicos, especialidades y confirmación de citas con emisión de folio seguro.
+          </p>
+        </div>
+        <a 
+          href="/demos/clinica-salud" 
+          target="_blank" 
+          class="inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shadow-2xs transition-all"
+        >
+          <span>Ver Portal Médico en Vivo</span>
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- App 4: App Móvil ClimaRoute -->
+      <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-2xs hover:shadow-md hover:border-amber-400 transition-all flex flex-col justify-between group">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-[10px] font-mono font-bold text-amber-800 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">
+              App Móvil iOS & Android
+            </span>
+            <span class="text-[10px] text-slate-400 font-mono">Smartphone 60 FPS</span>
+          </div>
+          <h3 class="text-base font-extrabold text-slate-900 group-hover:text-amber-700 transition-colors mb-2 leading-snug">
+            ClimaRoute (AppClimate) · Copiloto Meteorológico Móvil
+          </h3>
+          <p class="text-xs text-slate-600 leading-relaxed mb-4">
+            Simulador nativo en smartphone. Ruteo en carretera con segmentos coloreados por probabilidad de lluvia y clima en vivo.
+          </p>
+        </div>
+        <a 
+          href="/demos/appclimate" 
+          target="_blank" 
+          class="inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs shadow-2xs transition-all group-hover:bg-amber-500 group-hover:text-slate-950"
+        >
+          <span>Probar App Móvil en Vivo</span>
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+          </svg>
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Quick Footnote -->
+    <p class="text-center text-[11px] font-mono text-slate-400">
+      ✦ Cada producto es 100% interactivo y está desplegado en producción real con persistencia de datos.
+    </p>
+
+  </div>
+</section>

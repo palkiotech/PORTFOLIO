@@ -1,0 +1,182 @@
+---
+// src/components/ProofAndTrustSection.astro
+---
+
+<section id="confianza" class="py-20 relative overflow-hidden bg-slate-50 border-b border-slate-200" data-navbar-theme="light">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    
+    <!-- Section Header -->
+    <div class="max-w-3xl mx-auto text-center mb-12">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-900 text-xs font-mono font-bold mb-3 shadow-2xs">
+        <span>✦ PROCESOS DE INGENIERÍA & RIGOR METODOLÓGICO</span>
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-3">
+        Cómo lo Hacemos: <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-amber-500 to-yellow-600">Proceso Técnico de Extremo a Extremo</span>
+      </h2>
+      <p class="text-slate-600 text-xs sm:text-sm leading-relaxed max-w-2xl mx-auto">
+        Sin improvisación ni plantillas genéricas. Desarrollamos software y hardware phygital bajo procesos estructurados, transferencia del 100% del código en Git y garantía post-lanzamiento.
+      </p>
+    </div>
+
+    <!-- 1. Top 3 Engineering Process & Methodology Cards (Cómo se Hace) -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+      
+      <!-- Phase 1: Architecture & Diagnosis -->
+      <div class="rounded-2xl p-6 bg-white border border-slate-200 shadow-2xs hover:border-amber-400 transition-all flex flex-col justify-between group">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-[10px] font-mono font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 inline-block">
+              FASE 01 · ARQUITECTURA
+            </span>
+            <span class="text-xs font-mono font-extrabold text-slate-400">PASO 1/3</span>
+          </div>
+          <span class="text-3xl sm:text-4xl font-black text-amber-600 font-mono block mb-1">
+            01. Análisis
+          </span>
+          <h3 class="text-sm font-bold text-slate-900 mb-2">
+            Diagnóstico de Viabilidad & Arquitectura a la Medida
+          </h3>
+          <p class="text-xs text-slate-600 leading-relaxed mb-4">
+            Levantamiento de requerimientos y modelado de datos sin CMS lentos ni plantillas infladas. Diseñamos la solución técnica exacta y definimos un alcance con entregables específicos.
+          </p>
+          <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-100 text-[11px] font-mono text-slate-600 mb-4 space-y-1">
+            <div class="flex items-center gap-1.5 text-emerald-700 font-bold">
+              <span>✓</span><span>Stack ultrarrápido (Astro/React/Edge)</span>
+            </div>
+            <div class="flex items-center gap-1.5 text-slate-500">
+              <span>✓</span><span>Cero bloatware · 100% código limpio</span>
+            </div>
+          </div>
+        </div>
+        <a 
+          href="/blueprint" 
+          class="text-xs font-mono font-bold text-amber-700 hover:text-amber-800 inline-flex items-center gap-1 pt-3 border-t border-slate-100 group-hover:translate-x-0.5 transition-transform"
+        >
+          <span>Ver Metodología de 5 Fases</span>
+          <span>→</span>
+        </a>
+      </div>
+
+      <!-- Phase 2: Development & Phygital NFC Integration -->
+      <div class="rounded-2xl p-6 bg-white border border-slate-200 shadow-2xs hover:border-amber-400 transition-all flex flex-col justify-between group">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-[10px] font-mono font-bold text-amber-800 bg-amber-50 px-2 py-0.5 rounded border border-amber-200 inline-block">
+              FASE 02 · HARDWARE & CÓDIGO
+            </span>
+            <span class="text-xs font-mono font-extrabold text-slate-400">PASO 2/3</span>
+          </div>
+          <span class="text-3xl sm:text-4xl font-black text-amber-600 font-mono block mb-1">
+            02. Desarrollo
+          </span>
+          <h3 class="text-sm font-bold text-slate-900 mb-2">
+            Programación Web & Codificación Phygital NFC
+          </h3>
+          <p class="text-xs text-slate-600 leading-relaxed mb-4">
+            Construcción de interfaces con carga en &lt;0.6s y programación de microchips NFC NTAG216 de grado industrial con códigos QR dinámicos en la nube, 100% personalizados con tu marca.
+          </p>
+          <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-100 text-[11px] font-mono text-slate-600 mb-4 space-y-1">
+            <div class="flex items-center gap-1.5 text-amber-700 font-bold">
+              <span>✓</span><span>Chip NTAG216 + QR dinámico redirigible</span>
+            </div>
+            <div class="flex items-center gap-1.5 text-slate-500">
+              <span>✓</span><span>Diseño acrílico o PVC a tu medida</span>
+            </div>
+          </div>
+        </div>
+        <a 
+          href="/nfc-qr" 
+          class="text-xs font-mono font-bold text-amber-700 hover:text-amber-800 inline-flex items-center gap-1 pt-3 border-t border-slate-100 group-hover:translate-x-0.5 transition-transform"
+        >
+          <span>Explorar Hardware PalkioTag™</span>
+          <span>→</span>
+        </a>
+      </div>
+
+      <!-- Phase 3: Edge Deployment & SLA Guarantee -->
+      <div class="rounded-2xl p-6 bg-white border border-slate-200 shadow-2xs hover:border-amber-400 transition-all flex flex-col justify-between group">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-[10px] font-mono font-bold text-indigo-800 bg-indigo-50 px-2 py-0.5 rounded border border-indigo-200 inline-block">
+              FASE 03 · QA & DESPLIEGUE
+            </span>
+            <span class="text-xs font-mono font-extrabold text-slate-400">PASO 3/3</span>
+          </div>
+          <span class="text-3xl sm:text-4xl font-black text-amber-600 font-mono block mb-1">
+            03. Entrega
+          </span>
+          <h3 class="text-sm font-bold text-slate-900 mb-2">
+            Despliegue en Edge, Pruebas QA & Transferencia Git
+          </h3>
+          <p class="text-xs text-slate-600 leading-relaxed mb-4">
+            Verificación de compatibilidad nativa en el 100% de celulares iPhone y Android. Entrega de la propiedad total del repositorio privado en Git y soporte técnico continuo bajo SLA.
+          </p>
+          <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-100 text-[11px] font-mono text-slate-600 mb-4 space-y-1">
+            <div class="flex items-center gap-1.5 text-indigo-700 font-bold">
+              <span>✓</span><span>100% propiedad del código en Git</span>
+            </div>
+            <div class="flex items-center gap-1.5 text-slate-500">
+              <span>✓</span><span>Garantía técnica y SLA post-lanzamiento</span>
+            </div>
+          </div>
+        </div>
+        <a 
+          href="/casos" 
+          class="text-xs font-mono font-bold text-amber-700 hover:text-amber-800 inline-flex items-center gap-1 pt-3 border-t border-slate-100 group-hover:translate-x-0.5 transition-transform"
+        >
+          <span>Ver Expediente de Casos de Éxito</span>
+          <span>→</span>
+        </a>
+      </div>
+
+    </div>
+
+    <!-- 2. Dual Action Banner: Casos de Éxito & Blueprint -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
+      
+      <!-- Box Left: Casos de Éxito Link -->
+      <a 
+        href="/casos" 
+        class="group p-5 rounded-2xl bg-white border border-slate-200 hover:border-amber-400 shadow-2xs hover:shadow-sm transition-all flex items-center justify-between"
+      >
+        <div class="flex items-center gap-3.5">
+          <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-800 flex items-center justify-center font-bold text-lg border border-amber-200 shrink-0">
+            📊
+          </div>
+          <div>
+            <h4 class="text-sm font-bold text-slate-900 group-hover:text-amber-800 transition-colors">
+              Expediente Completo de Casos de Éxito (7 Casos)
+            </h4>
+            <p class="text-[11px] text-slate-500 mt-0.5">
+              Revisa arquitectura, problemas resueltos y métricas de producción.
+            </p>
+          </div>
+        </div>
+        <span class="text-amber-600 font-bold text-sm shrink-0 group-hover:translate-x-1 transition-transform">→</span>
+      </a>
+
+      <!-- Box Right: Blueprint Oficial Link -->
+      <a 
+        href="/blueprint" 
+        class="group p-5 rounded-2xl bg-white border border-slate-200 hover:border-amber-400 shadow-2xs hover:shadow-sm transition-all flex items-center justify-between"
+      >
+        <div class="flex items-center gap-3.5">
+          <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-800 flex items-center justify-center font-bold text-lg border border-amber-200 shrink-0">
+            📐
+          </div>
+          <div>
+            <h4 class="text-sm font-bold text-slate-900 group-hover:text-amber-800 transition-colors">
+              Blueprint Técnico & Metodología de 5 Fases
+            </h4>
+            <p class="text-[11px] text-slate-500 mt-0.5">
+              Estándar de 8 secciones, criterios de aceptación QA y contrato SLA.
+            </p>
+          </div>
+        </div>
+        <span class="text-amber-600 font-bold text-sm shrink-0 group-hover:translate-x-1 transition-transform">→</span>
+      </a>
+
+    </div>
+
+  </div>
+</section>

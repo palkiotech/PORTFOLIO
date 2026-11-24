@@ -1,0 +1,707 @@
+---
+// src/components/BudgetCalculatorSection.astro
+import { companyData } from '../data/company';
+const whatsappNumber = companyData.whatsappNumber || '';
+---
+
+<section id="cotizador" class="py-24 relative overflow-hidden bg-[#060709] text-white border-t border-[#1e1e24]">
+  
+  <!-- Subtle Background Glows -->
+  <div class="absolute -top-40 -left-40 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="absolute -bottom-40 -right-40 w-96 h-96 bg-indigo-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    
+    <!-- Section Header -->
+    <div class="max-w-3xl mx-auto text-center mb-16">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-950/80 border border-amber-700/60 text-amber-400 text-xs font-mono font-bold mb-4">
+        <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+        <span>✦ TRANSPARENCIA RADICAL EN INGENIERÍA</span>
+      </div>
+      
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-5">
+        Calculadora Interactiva de <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500">Presupuesto & Retorno de Inversión</span>
+      </h2>
+      
+      <p class="text-zinc-300 text-base sm:text-lg leading-relaxed">
+        Configura tu solución técnica, selecciona los módulos que necesita tu operativa y obtén una estimación de presupuesto con el <strong>ahorro proyectado (ROI)</strong> a 12 meses. Sin sorpresas ni comisiones ocultas.
+      </p>
+
+      <!-- Currency Switcher Toggle -->
+      <div class="inline-flex items-center gap-1.5 p-1 rounded-xl bg-[#0c0c10] border border-[#22222a] mt-6">
+        <button 
+          type="button" 
+          id="currency-usd" 
+          class="currency-btn active px-4 py-1.5 rounded-lg text-xs font-mono font-bold bg-amber-500 text-white shadow-xs transition-all cursor-pointer"
+        >
+          USD ($) Dólares
+        </button>
+        <button 
+          type="button" 
+          id="currency-cop" 
+          class="currency-btn px-4 py-1.5 rounded-lg text-xs font-mono font-bold text-zinc-400 hover:text-white transition-all cursor-pointer"
+        >
+          COP ($) Pesos Col.
+        </button>
+      </div>
+    </div>
+
+    <!-- Calculator Grid Container -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- ==========================================
+           LEFT COLUMN: CONFIGURATION (STEPS 1, 2, 3)
+           ========================================== -->
+      <div class="lg:col-span-7 space-y-8">
+        
+        <!-- STEP 1: Base Solution Selection -->
+        <div class="p-6 sm:p-8 rounded-3xl bg-[#0c0c10] border border-[#22222a] shadow-xl">
+          <div class="flex items-center justify-between mb-4 pb-3 border-b border-[#22222a]">
+            <span class="text-xs font-mono font-bold uppercase tracking-wider text-amber-400">
+              Paso 1: Selecciona la Solución Base
+            </span>
+            <span class="text-[11px] font-mono text-zinc-400">1 requerida</span>
+          </div>
+
+          <div class="space-y-3" id="base-solutions-group">
+            
+            <!-- Option 1: E-Commerce & Retail -->
+            <label class="solution-card active flex items-start gap-3.5 p-4 rounded-2xl bg-[#121216] border-2 border-amber-400 cursor-pointer hover:border-amber-400 transition-all">
+              <input type="radio" name="base-solution" value="ecommerce" data-usd="1200" checked class="mt-1 text-amber-500 focus:ring-0" />
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2 mb-1">
+                  <strong class="text-white text-sm font-bold">Tienda E-Commerce & Catálogo de Alta Velocidad</strong>
+                  <span class="text-xs font-mono font-extrabold text-amber-400 price-tag" data-base-usd="1200">$1,200 USD</span>
+                </div>
+                <p class="text-xs text-zinc-400 leading-relaxed">
+                  Carga en menos de 0.8s, búsqueda reactiva en memoria, checkout en 4 pasos, matriculación a cursos y despacho transaccional a WhatsApp.
+                </p>
+              </div>
+            </label>
+
+            <!-- Option 2: CRM & Pipeline -->
+            <label class="solution-card flex items-start gap-3.5 p-4 rounded-2xl bg-[#101014] border border-[#22222a] cursor-pointer hover:border-amber-400/60 transition-all">
+              <input type="radio" name="base-solution" value="crm" data-usd="1450" class="mt-1 text-amber-500 focus:ring-0" />
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2 mb-1">
+                  <strong class="text-white text-sm font-bold">Mini-CRM Operativo & Pipeline de Ventas B2B</strong>
+                  <span class="text-xs font-mono font-extrabold text-amber-400 price-tag" data-base-usd="1450">$1,450 USD</span>
+                </div>
+                <p class="text-xs text-zinc-400 leading-relaxed">
+                  Tablero Kanban interactivo de 4 columnas, transcripción de chat de WhatsApp, score de calificación por IA y generador de propuestas SOW en PDF.
+                </p>
+              </div>
+            </label>
+
+            <!-- Option 3: Healthcare Portal -->
+            <label class="solution-card flex items-start gap-3.5 p-4 rounded-2xl bg-[#101014] border border-[#22222a] cursor-pointer hover:border-amber-400/60 transition-all">
+              <input type="radio" name="base-solution" value="clinic" data-usd="1350" class="mt-1 text-amber-500 focus:ring-0" />
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2 mb-1">
+                  <strong class="text-white text-sm font-bold">Web Médica / Citas Inteligentes & Resultados</strong>
+                  <span class="text-xs font-mono font-extrabold text-amber-400 price-tag" data-base-usd="1350">$1,350 USD</span>
+                </div>
+                <p class="text-xs text-zinc-400 leading-relaxed">
+                  Agendamiento adaptativo en 2 pasos según especialista, emisión de Pase Médico Digital con código QR y portal seguro de resultados clínicos.
+                </p>
+              </div>
+            </label>
+
+            <!-- Option 4: AI WhatsApp Agent -->
+            <label class="solution-card flex items-start gap-3.5 p-4 rounded-2xl bg-[#101014] border border-[#22222a] cursor-pointer hover:border-amber-400/60 transition-all">
+              <input type="radio" name="base-solution" value="ai_agent" data-usd="980" class="mt-1 text-amber-500 focus:ring-0" />
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2 mb-1">
+                  <strong class="text-white text-sm font-bold">Agente Autónomo de Ventas en WhatsApp 24/7</strong>
+                  <span class="text-xs font-mono font-extrabold text-amber-400 price-tag" data-base-usd="980">$980 USD</span>
+                </div>
+                <p class="text-xs text-zinc-400 leading-relaxed">
+                  Atención nocturna y festivos con Google Gemini Flash, guardrails antialucinación, simulación de tipeo humano y registro en Google Sheets / CRM.
+                </p>
+              </div>
+            </label>
+
+            <!-- Option 5: Enterprise Custom Suite -->
+            <label class="solution-card flex items-start gap-3.5 p-4 rounded-2xl bg-[#101014] border border-[#22222a] cursor-pointer hover:border-amber-400/60 transition-all">
+              <input type="radio" name="base-solution" value="enterprise" data-usd="2750" class="mt-1 text-amber-500 focus:ring-0" />
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2 mb-1">
+                  <strong class="text-white text-sm font-bold">Suite Integral Enterprise a Medida (Multi-Módulo)</strong>
+                  <span class="text-xs font-mono font-extrabold text-emerald-400 price-tag" data-base-usd="2750">$2,750 USD</span>
+                </div>
+                <p class="text-xs text-zinc-400 leading-relaxed">
+                  Ecosistema integral unificado: E-Commerce + CRM + Agente de IA + Microservicios Docker en infraestructura Edge de alta concurrencia.
+                </p>
+              </div>
+            </label>
+
+            <!-- Option 6: Mobile App iOS & Android -->
+            <label class="solution-card flex items-start gap-3.5 p-4 rounded-2xl bg-[#101014] border border-[#22222a] cursor-pointer hover:border-amber-400/60 transition-all">
+              <input type="radio" name="base-solution" value="mobile_app" data-usd="1650" class="mt-1 text-amber-500 focus:ring-0" />
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2 mb-1">
+                  <strong class="text-white text-sm font-bold">Aplicación Móvil Nativa iOS & Android (App Mobile)</strong>
+                  <span class="text-xs font-mono font-extrabold text-amber-400 price-tag" data-base-usd="1650">$1,650 USD</span>
+                </div>
+                <p class="text-xs text-zinc-400 leading-relaxed">
+                  Desarrollo en React Native / Flutter a 60 FPS, arquitectura offline-first con SQLite, notificaciones push, lectura de sensores/GPS y despliegue en tiendas.
+                </p>
+              </div>
+            </label>
+
+            <!-- Option 7: PalkioTag™ Stands Google 5★ & Smart NFC Cards -->
+            <label class="solution-card flex items-start gap-3.5 p-4 rounded-2xl bg-[#101014] border border-[#22222a] cursor-pointer hover:border-amber-400/60 transition-all">
+              <input type="radio" name="base-solution" value="nfc_qr" data-usd="450" class="mt-1 text-amber-500 focus:ring-0" />
+              <div class="flex-1">
+                <div class="flex items-center justify-between gap-2 mb-1">
+                  <strong class="text-white text-sm font-bold">PalkioTag™: Stands One-Tap Google Review 5★ & Tarjetas Inteligentes NFC</strong>
+                  <span class="text-xs font-mono font-extrabold text-amber-400 price-tag" data-base-usd="450">$450 USD</span>
+                </div>
+                <p class="text-xs text-zinc-400 leading-relaxed">
+                  Lote de stands acrílicos PalkioTag Review™ para multiplicar reseñas 5★ en Google Maps o tarjetas PalkioTag Card™ en PVC con chip NFC y QR de respaldo, 100% personalizables.
+                </p>
+              </div>
+            </label>
+
+          </div>
+        </div>
+
+        <!-- STEP 2: Additional Modules & Capabilities -->
+        <div class="p-6 sm:p-8 rounded-3xl bg-[#0c0c10] border border-[#22222a] shadow-xl">
+          <div class="flex items-center justify-between mb-4 pb-3 border-b border-[#22222a]">
+            <span class="text-xs font-mono font-bold uppercase tracking-wider text-emerald-400">
+              Paso 2: Módulos & Capacidades de Ingeniería
+            </span>
+            <span class="text-[11px] font-mono text-zinc-400">Opcionales</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="addons-group">
+            
+            <label class="addon-card flex items-start gap-3 p-3.5 rounded-xl bg-[#121216]/60 border border-[#22222a] cursor-pointer hover:border-slate-700 transition-colors">
+              <input type="checkbox" data-usd="250" class="addon-checkbox mt-0.5 rounded text-amber-500 focus:ring-0" checked />
+              <div>
+                <span class="text-xs font-bold text-white block">Pasarela Dual de Pagos</span>
+                <span class="text-[11px] text-zinc-400 leading-tight block">Tarjetas, PSE, Nequi y Contraentrega</span>
+                <span class="text-[10px] font-mono font-bold text-amber-400 mt-1 block addon-price" data-usd="250">+$250 USD</span>
+              </div>
+            </label>
+
+            <label class="addon-card flex items-start gap-3 p-3.5 rounded-xl bg-[#121216]/60 border border-[#22222a] cursor-pointer hover:border-slate-700 transition-colors">
+              <input type="checkbox" data-usd="320" class="addon-checkbox mt-0.5 rounded text-amber-500 focus:ring-0" checked />
+              <div>
+                <span class="text-xs font-bold text-white block">Meta WhatsApp Cloud API v21</span>
+                <span class="text-[11px] text-zinc-400 leading-tight block">Plantillas HSM preaprobadas por Meta</span>
+                <span class="text-[10px] font-mono font-bold text-amber-400 mt-1 block addon-price" data-usd="320">+$320 USD</span>
+              </div>
+            </label>
+
+            <label class="addon-card flex items-start gap-3 p-3.5 rounded-xl bg-[#121216]/60 border border-[#22222a] cursor-pointer hover:border-slate-700 transition-colors">
+              <input type="checkbox" data-usd="350" class="addon-checkbox mt-0.5 rounded text-amber-500 focus:ring-0" />
+              <div>
+                <span class="text-xs font-bold text-white block">Motor POS Offline (SQLite WAL)</span>
+                <span class="text-[11px] text-zinc-400 leading-tight block">Búsqueda &lt;50ms sin conexión a internet</span>
+                <span class="text-[10px] font-mono font-bold text-amber-400 mt-1 block addon-price" data-usd="350">+$350 USD</span>
+              </div>
+            </label>
+
+            <label class="addon-card flex items-start gap-3 p-3.5 rounded-xl bg-[#121216]/60 border border-[#22222a] cursor-pointer hover:border-slate-700 transition-colors">
+              <input type="checkbox" data-usd="190" class="addon-checkbox mt-0.5 rounded text-amber-500 focus:ring-0" checked />
+              <div>
+                <span class="text-xs font-bold text-white block">Motor de Impresión PDF Formal</span>
+                <span class="text-[11px] text-zinc-400 leading-tight block">Vouchers, tickets médicos y contratos SOW</span>
+                <span class="text-[10px] font-mono font-bold text-amber-400 mt-1 block addon-price" data-usd="190">+$190 USD</span>
+              </div>
+            </label>
+
+            <label class="addon-card flex items-start gap-3 p-3.5 rounded-xl bg-[#121216]/60 border border-[#22222a] cursor-pointer hover:border-slate-700 transition-colors">
+              <input type="checkbox" data-usd="280" class="addon-checkbox mt-0.5 rounded text-amber-500 focus:ring-0" />
+              <div>
+                <span class="text-xs font-bold text-white block">Pipeline ETL de Datos en Python</span>
+                <span class="text-[11px] text-zinc-400 leading-tight block">Depuración y validación EAN-13 masiva</span>
+                <span class="text-[10px] font-mono font-bold text-amber-400 mt-1 block addon-price" data-usd="280">+$280 USD</span>
+              </div>
+            </label>
+
+            <label class="addon-card flex items-start gap-3 p-3.5 rounded-xl bg-[#121216]/60 border border-[#22222a] cursor-pointer hover:border-slate-700 transition-colors">
+              <input type="checkbox" data-usd="220" class="addon-checkbox mt-0.5 rounded text-amber-500 focus:ring-0" />
+              <div>
+                <span class="text-xs font-bold text-white block">Garantía SLA Extendida (60 Días)</span>
+                <span class="text-[11px] text-zinc-400 leading-tight block">Capacitación grabada + soporte prioritario</span>
+                <span class="text-[10px] font-mono font-bold text-amber-400 mt-1 block addon-price" data-usd="220">+$220 USD</span>
+              </div>
+            </label>
+
+            <label class="addon-card flex items-start gap-3 p-3.5 rounded-xl bg-[#121216]/60 border border-[#22222a] cursor-pointer hover:border-amber-400/50 transition-colors">
+              <input type="checkbox" data-usd="180" class="addon-checkbox mt-0.5 rounded text-amber-500 focus:ring-0" />
+              <div>
+                <span class="text-xs font-bold text-white block">Pack de Stands NFC One-Tap Google Review</span>
+                <span class="text-[11px] text-zinc-400 leading-tight block">Placas acrílicas para mostrador y 5★ instantáneas</span>
+                <span class="text-[10px] font-mono font-bold text-amber-400 mt-1 block addon-price" data-usd="180">+$180 USD</span>
+              </div>
+            </label>
+
+          </div>
+        </div>
+
+        <!-- STEP 3: Business Sliders for Live ROI Math -->
+        <div class="p-6 sm:p-8 rounded-3xl bg-[#0c0c10] border border-[#22222a] shadow-xl">
+          <div class="flex items-center justify-between mb-4 pb-3 border-b border-[#22222a]">
+            <span class="text-xs font-mono font-bold uppercase tracking-wider text-indigo-400">
+              Paso 3: Parámetros Operativos de tu Empresa
+            </span>
+            <span class="text-[11px] font-mono text-zinc-400">Calcula tu Ahorro</span>
+          </div>
+
+          <!-- Slider 1: Monthly Sales Volume -->
+          <div class="mb-6">
+            <div class="flex items-center justify-between gap-2 mb-2 text-xs">
+              <label for="slider-revenue" class="font-semibold text-zinc-300">
+                Ventas o Facturación Mensual Estimada:
+              </label>
+              <span id="slider-revenue-val" class="font-mono font-bold text-emerald-400 text-sm">$12,000 USD / mes</span>
+            </div>
+            <input 
+              type="range" 
+              id="slider-revenue" 
+              min="2000" 
+              max="50000" 
+              step="1000" 
+              value="12000"
+              class="w-full accent-amber-500 bg-[#181820] rounded-lg cursor-pointer"
+            />
+            <div class="flex justify-between text-[10px] font-mono text-zinc-500 mt-1">
+              <span>$2,000 USD</span>
+              <span>$25,000 USD</span>
+              <span>$50,000+ USD</span>
+            </div>
+          </div>
+
+          <!-- Slider 2: Weekly Manual Hours -->
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-2 text-xs">
+              <label for="slider-hours" class="font-semibold text-zinc-300">
+                Horas semanales que tu equipo gasta en tareas manuales:
+              </label>
+              <span id="slider-hours-val" class="font-mono font-bold text-amber-400 text-sm">18 Horas / sem</span>
+            </div>
+            <input 
+              type="range" 
+              id="slider-hours" 
+              min="5" 
+              max="60" 
+              step="1" 
+              value="18"
+              class="w-full accent-amber-500 bg-[#181820] rounded-lg cursor-pointer"
+            />
+            <div class="flex justify-between text-[10px] font-mono text-zinc-500 mt-1">
+              <span>5h / sem</span>
+              <span>30h / sem</span>
+              <span>60h / sem</span>
+            </div>
+            <span class="text-[11px] text-zinc-400 block mt-2">
+              (Responder WhatsApp, buscar productos en Excel, cotizar manualmente, agendar citas).
+            </span>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- ==========================================
+           RIGHT COLUMN: REAL-TIME SUMMARY & ROI PANEL (STICKY)
+           ========================================== -->
+      <div class="lg:col-span-5 sticky top-20">
+        
+        <div class="p-6 sm:p-8 rounded-3xl bg-gradient-to-b from-[#08080b] via-[#0d0d12] to-[#08080b] border border-amber-400/40 shadow-2xl relative overflow-hidden">
+          
+          <div class="flex items-center justify-between mb-6 pb-4 border-b border-[#22222a]">
+            <div>
+              <span class="text-[10px] font-mono uppercase tracking-wider text-emerald-400 font-bold block mb-1">
+                ✦ RESUMEN EJECUTIVO EN TIEMPO REAL
+              </span>
+              <h3 class="text-xl font-extrabold text-white">
+                Cotización & Retorno Proyectado
+              </h3>
+            </div>
+            <span class="text-[10px] font-mono bg-amber-950/80 text-amber-300 border border-amber-700/60 px-2 py-0.5 rounded">
+              PAGO ÚNICO
+            </span>
+          </div>
+
+          <!-- Price Display -->
+          <div class="mb-6 p-5 rounded-2xl bg-[#121216] border border-[#22222a] text-center">
+            <span class="text-xs font-mono text-zinc-400 uppercase tracking-wider block mb-1">
+              Inversión Estimada de Ingeniería:
+            </span>
+            <div class="flex items-baseline justify-center gap-1.5 mb-1">
+              <span id="output-price" class="text-4xl sm:text-5xl font-extrabold font-mono text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-yellow-300 to-white">
+                $1,960
+              </span>
+              <span id="output-currency-code" class="text-sm font-mono font-bold text-amber-400">USD</span>
+            </div>
+            <span class="text-[11px] text-zinc-400 block">
+              100% Código Propietario · 0% Comisiones Recurrentes
+            </span>
+          </div>
+
+          <!-- Project Specs Grid -->
+          <div class="grid grid-cols-2 gap-3 mb-6 text-xs font-mono">
+            <div class="p-3 rounded-xl bg-[#0c0c10]/60 border border-[#22222a]">
+              <span class="text-zinc-400 text-[10px] block mb-0.5">Plazo de Entrega:</span>
+              <strong id="output-timeline" class="text-white block font-bold">14 a 18 Días</strong>
+            </div>
+            <div class="p-3 rounded-xl bg-[#0c0c10]/60 border border-[#22222a]">
+              <span class="text-zinc-400 text-[10px] block mb-0.5">Modalidad de Trabajo:</span>
+              <strong class="text-white block font-bold">Sprints Ágiles (QA)</strong>
+            </div>
+            <div class="p-3 rounded-xl bg-[#0c0c10]/60 border border-[#22222a]">
+              <span class="text-zinc-400 text-[10px] block mb-0.5">Propiedad Código:</span>
+              <strong class="text-emerald-400 block font-bold">100% del Cliente</strong>
+            </div>
+            <div class="p-3 rounded-xl bg-[#0c0c10]/60 border border-[#22222a]">
+              <span class="text-zinc-400 text-[10px] block mb-0.5">Garantía Técnica:</span>
+              <strong id="output-warranty" class="text-amber-400 block font-bold">30 Días SLA</strong>
+            </div>
+          </div>
+
+          <!-- ROI Projection Highlights -->
+          <div class="mb-6 p-4 rounded-2xl bg-emerald-950/40 border border-emerald-800/60 space-y-3">
+            <span class="text-xs font-mono font-bold text-emerald-400 uppercase tracking-wider block flex items-center gap-1.5">
+              <svg class="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+              </svg>
+              <span>Retorno de Inversión Proyectado (12 Meses):</span>
+            </span>
+
+            <div class="flex items-center justify-between text-xs border-b border-emerald-900/60 pb-2">
+              <span class="text-zinc-300">Ahorro Anual en Comisiones (vs. 3% CMS tradicional):</span>
+              <strong id="roi-commission-savings" class="font-mono text-emerald-300 text-sm">+$4,320 USD / año</strong>
+            </div>
+
+            <div class="flex items-center justify-between text-xs border-b border-emerald-900/60 pb-2">
+              <span class="text-zinc-300">Horas Operativas Liberadas a tu Equipo:</span>
+              <strong id="roi-hours-saved" class="font-mono text-amber-300 text-sm">~655 horas / año</strong>
+            </div>
+
+            <div class="flex items-center justify-between text-xs pt-1">
+              <span class="text-zinc-300">Plazo de Amortización (Payback):</span>
+              <strong id="roi-payback-months" class="font-mono text-white text-xs bg-emerald-900/80 px-2 py-0.5 rounded font-bold">
+                ~2.8 Meses
+              </strong>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="space-y-3">
+            <!-- WhatsApp Dispatch -->
+            <button 
+              type="button" 
+              id="calc-send-whatsapp"
+              class="w-full py-4 px-6 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-sm flex items-center justify-center gap-2.5 shadow-lg shadow-emerald-600/30 hover:-translate-y-0.5 transition-all cursor-pointer"
+            >
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+              </svg>
+              <span>Enviar Cotización a Asesor PalkioTech</span>
+            </button>
+
+            <!-- Formal SOW Diagnostics -->
+            <a 
+              href="#contacto"
+              id="calc-schedule-btn"
+              class="w-full py-3 px-6 rounded-xl bg-amber-500 hover:bg-amber-400 text-white font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-md text-center"
+            >
+              <span>Agendar Diagnóstico Técnico de 20 min</span>
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+              </svg>
+            </a>
+
+            <!-- Print Quote PDF -->
+            <button 
+              type="button" 
+              id="calc-download-pdf"
+              class="w-full py-2.5 px-4 rounded-xl bg-[#181820] hover:bg-[#22222c] text-zinc-300 font-mono text-xs border border-[#2e2e3a] transition-colors flex items-center justify-center gap-2 cursor-pointer"
+            >
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+              </svg>
+              <span>Imprimir / Guardar Resumen en PDF</span>
+            </button>
+          </div>
+
+          <span class="text-[11px] font-mono text-zinc-500 text-center block mt-4">
+            ✦ Estimación sujeta a confirmación en el acta de inicio SOW.
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- Vanilla JavaScript for Reactive Calculation & Math -->
+<script define:vars={{ whatsappNumber }}>
+  document.addEventListener('DOMContentLoaded', function() {
+    var COP_RATE = 4150; // Estimated exchange rate 1 USD = 4,150 COP
+    var currentCurrency = 'USD'; // 'USD' or 'COP'
+
+    var currencyUsdBtn = document.getElementById('currency-usd');
+    var currencyCopBtn = document.getElementById('currency-cop');
+
+    var solutionInputs = document.querySelectorAll('input[name="base-solution"]');
+    var solutionCards = document.querySelectorAll('.solution-card');
+    var addonCheckboxes = document.querySelectorAll('.addon-checkbox');
+    var priceTags = document.querySelectorAll('.price-tag');
+    var addonPrices = document.querySelectorAll('.addon-price');
+
+    var sliderRevenue = document.getElementById('slider-revenue');
+    var sliderRevenueVal = document.getElementById('slider-revenue-val');
+    var sliderHours = document.getElementById('slider-hours');
+    var sliderHoursVal = document.getElementById('slider-hours-val');
+
+    var outputPrice = document.getElementById('output-price');
+    var outputCurrencyCode = document.getElementById('output-currency-code');
+    var outputTimeline = document.getElementById('output-timeline');
+    var outputWarranty = document.getElementById('output-warranty');
+
+    var roiCommission = document.getElementById('roi-commission-savings');
+    var roiHours = document.getElementById('roi-hours-saved');
+    var roiPayback = document.getElementById('roi-payback-months');
+
+    var sendWhatsappBtn = document.getElementById('calc-send-whatsapp');
+    var downloadPdfBtn = document.getElementById('calc-download-pdf');
+
+    // Currency Switcher
+    function setCurrency(curr) {
+      currentCurrency = curr;
+      if (curr === 'USD') {
+        if (currencyUsdBtn) {
+          currencyUsdBtn.classList.add('bg-amber-500', 'text-white');
+          currencyUsdBtn.classList.remove('text-zinc-400');
+        }
+        if (currencyCopBtn) {
+          currencyCopBtn.classList.remove('bg-amber-500', 'text-white');
+          currencyCopBtn.classList.add('text-zinc-400');
+        }
+      } else {
+        if (currencyCopBtn) {
+          currencyCopBtn.classList.add('bg-amber-500', 'text-white');
+          currencyCopBtn.classList.remove('text-zinc-400');
+        }
+        if (currencyUsdBtn) {
+          currencyUsdBtn.classList.remove('bg-amber-500', 'text-white');
+          currencyUsdBtn.classList.add('text-zinc-400');
+        }
+      }
+
+      // Update base solution card tags
+      priceTags.forEach(function(tag) {
+        var baseUsd = parseInt(tag.getAttribute('data-base-usd') || '0', 10);
+        if (currentCurrency === 'USD') {
+          tag.textContent = '$' + baseUsd.toLocaleString('en-US') + ' USD';
+        } else {
+          tag.textContent = '$' + (baseUsd * COP_RATE).toLocaleString('es-CO') + ' COP';
+        }
+      });
+
+      // Update addon tags
+      addonPrices.forEach(function(tag) {
+        var usd = parseInt(tag.getAttribute('data-usd') || '0', 10);
+        if (currentCurrency === 'USD') {
+          tag.textContent = '+$' + usd + ' USD';
+        } else {
+          tag.textContent = '+$' + (usd * COP_RATE).toLocaleString('es-CO') + ' COP';
+        }
+      });
+
+      recalculate();
+    }
+
+    if (currencyUsdBtn) currencyUsdBtn.addEventListener('click', function() { setCurrency('USD'); });
+    if (currencyCopBtn) currencyCopBtn.addEventListener('click', function() { setCurrency('COP'); });
+
+    // Radio change visual handler
+    solutionInputs.forEach(function(radio) {
+      radio.addEventListener('change', function() {
+        solutionCards.forEach(function(card) {
+          card.classList.remove('active', 'border-2', 'border-amber-400', 'bg-[#121216]');
+          card.classList.add('border-[#22222a]', 'bg-[#101014]');
+        });
+        var parentCard = radio.closest('.solution-card');
+        if (parentCard) {
+          parentCard.classList.add('active', 'border-2', 'border-amber-400', 'bg-[#121216]');
+          parentCard.classList.remove('border-[#22222a]', 'bg-[#101014]');
+        }
+        recalculate();
+      });
+    });
+
+    // Checkbox changes
+    addonCheckboxes.forEach(function(cb) {
+      cb.addEventListener('change', recalculate);
+    });
+
+    // Sliders input
+    if (sliderRevenue) {
+      sliderRevenue.addEventListener('input', function() {
+        var val = parseInt(sliderRevenue.value, 10);
+        if (sliderRevenueVal) {
+          if (currentCurrency === 'USD') {
+            sliderRevenueVal.textContent = '$' + val.toLocaleString('en-US') + ' USD / mes';
+          } else {
+            sliderRevenueVal.textContent = '$' + (val * COP_RATE).toLocaleString('es-CO') + ' COP / mes';
+          }
+        }
+        recalculate();
+      });
+    }
+
+    if (sliderHours) {
+      sliderHours.addEventListener('input', function() {
+        var h = parseInt(sliderHours.value, 10);
+        if (sliderHoursVal) {
+          sliderHoursVal.textContent = h + ' Horas / sem';
+        }
+        recalculate();
+      });
+    }
+
+    // Main Recalculate Logic
+    function recalculate() {
+      var totalUsd = 0;
+      var selectedSolution = 'ecommerce';
+      var hasExtendedSla = false;
+
+      // Base solution price
+      solutionInputs.forEach(function(radio) {
+        if (radio.checked) {
+          totalUsd += parseInt(radio.getAttribute('data-usd') || '0', 10);
+          selectedSolution = radio.value;
+        }
+      });
+
+      // Addons price
+      addonCheckboxes.forEach(function(cb) {
+        if (cb.checked) {
+          var val = parseInt(cb.getAttribute('data-usd') || '0', 10);
+          totalUsd += val;
+          if (val === 220) hasExtendedSla = true;
+        }
+      });
+
+      // Format output price
+      if (outputPrice && outputCurrencyCode) {
+        if (currentCurrency === 'USD') {
+          outputPrice.textContent = '$' + totalUsd.toLocaleString('en-US');
+          outputCurrencyCode.textContent = 'USD';
+        } else {
+          outputPrice.textContent = '$' + (totalUsd * COP_RATE).toLocaleString('es-CO');
+          outputCurrencyCode.textContent = 'COP';
+        }
+      }
+
+      // Timeline estimation based on complexity
+      if (outputTimeline) {
+        if (selectedSolution === 'enterprise') {
+          outputTimeline.textContent = '21 a 30 Días';
+        } else if (totalUsd > 1800) {
+          outputTimeline.textContent = '14 a 21 Días';
+        } else {
+          outputTimeline.textContent = '10 a 14 Días';
+        }
+      }
+
+      // Warranty
+      if (outputWarranty) {
+        outputWarranty.textContent = hasExtendedSla ? '60 Días SLA' : '30 Días SLA';
+      }
+
+      // ROI Math:
+      // Commission savings: 3% of annual revenue (revenue * 12 * 0.03)
+      var revMonth = sliderRevenue ? parseInt(sliderRevenue.value, 10) : 12000;
+      var annualCommissionSavedUsd = Math.round(revMonth * 12 * 0.03);
+
+      if (roiCommission) {
+        if (currentCurrency === 'USD') {
+          roiCommission.textContent = '+$' + annualCommissionSavedUsd.toLocaleString('en-US') + ' USD / año';
+        } else {
+          roiCommission.textContent = '+$' + (annualCommissionSavedUsd * COP_RATE).toLocaleString('es-CO') + ' COP / año';
+        }
+      }
+
+      // Hours saved: 70% of weekly manual hours * 52 weeks
+      var weeklyHours = sliderHours ? parseInt(sliderHours.value, 10) : 18;
+      var annualHoursSaved = Math.round(weeklyHours * 0.70 * 52);
+      if (roiHours) {
+        roiHours.textContent = '~' + annualHoursSaved + ' horas / año';
+      }
+
+      // Payback period in months = (totalUsd / (annualCommissionSavedUsd / 12 + (annualHoursSaved * 15 / 12)))
+      var monthlyValue = (annualCommissionSavedUsd / 12) + ((annualHoursSaved * 12) / 12);
+      var paybackMonths = (totalUsd / (monthlyValue || 1)).toFixed(1);
+      if (paybackMonths < 1.0) paybackMonths = '0.9';
+      if (paybackMonths > 6.0) paybackMonths = '5.8';
+
+      if (roiPayback) {
+        roiPayback.textContent = '~' + paybackMonths + ' Meses';
+      }
+    }
+
+    // WhatsApp Dispatch
+    if (sendWhatsappBtn) {
+      sendWhatsappBtn.addEventListener('click', function() {
+        var baseName = '';
+        solutionInputs.forEach(function(r) {
+          if (r.checked) {
+            var label = r.closest('label');
+            if (label) {
+              var strong = label.querySelector('strong');
+              if (strong) baseName = strong.textContent.trim();
+            }
+          }
+        });
+
+        var checkedAddons = [];
+        addonCheckboxes.forEach(function(cb) {
+          if (cb.checked) {
+            var label = cb.closest('label');
+            if (label) {
+              var span = label.querySelector('.text-xs.font-bold');
+              if (span) checkedAddons.push(span.textContent.trim());
+            }
+          }
+        });
+
+        var finalPrice = outputPrice ? outputPrice.textContent : '$0';
+        var finalCurr = outputCurrencyCode ? outputCurrencyCode.textContent : 'USD';
+        var payback = roiPayback ? roiPayback.textContent : '~2.8 Meses';
+
+        var msg = '¡Hola PalkioTech! 👋 He configurado una propuesta en su calculadora web:\n\n' +
+          '📌 *Solución:* ' + baseName + '\n' +
+          '🧩 *Módulos:* ' + (checkedAddons.length > 0 ? checkedAddons.join(', ') : 'Base estándar') + '\n' +
+          '💰 *Inversión Estimada:* ' + finalPrice + ' ' + finalCurr + ' (Pago único)\n' +
+          '⏱ *Plazo:* ' + (outputTimeline ? outputTimeline.textContent : '14 Días') + '\n' +
+          '📈 *Payback Proyectado:* ' + payback + '\n\n' +
+          'Me gustaría agendar una llamada de diagnóstico de 20 minutos para formalizar los requerimientos.';
+
+        var waPhone = whatsappNumber ? 'phone=' + whatsappNumber + '&' : '';
+        var url = 'https://api.whatsapp.com/send?' + waPhone + 'text=' + encodeURIComponent(msg);
+        window.open(url, '_blank');
+      });
+    }
+
+    // Download / Print PDF
+    if (downloadPdfBtn) {
+      downloadPdfBtn.addEventListener('click', function() {
+        window.print();
+      });
+    }
+
+    // Initial calculation run
+    recalculate();
+  });
+</script>

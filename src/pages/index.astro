@@ -1,0 +1,27 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import InteractiveDemos from '../components/InteractiveDemos.astro';
+import ServicesSection from '../components/ServicesSection.astro';
+import NfcTeaserSection from '../components/NfcTeaserSection.astro';
+import ProofAndTrustSection from '../components/ProofAndTrustSection.astro';
+import ContactSection from '../components/ContactSection.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout 
+  title="PalkioTech | Sistemas Web de Alto Rendimiento, IA & Automatización B2B"
+  description="Desarrollamos la infraestructura digital que escala tu empresa: plataformas web ultrarrápidas, agentes autónomos de IA y hardware inteligente con garantía formal de ingeniería."
+>
+  <Navbar />
+  <main>
+    <Hero />
+    <InteractiveDemos />
+    <NfcTeaserSection />
+    <ServicesSection />
+    <ProofAndTrustSection />
+    <ContactSection />
+  </main>
+  <Footer />
+</Layout>

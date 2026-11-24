@@ -1,0 +1,1183 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { companyData } from '../../data/company';
+---
+
+<Layout 
+  title="ClimaRoute (AppClimate) · Copiloto Meteorológico Móvil iOS & Android | PalkioTech"
+  description="Demo interactiva en marco de smartphone nativo de ClimaRoute (AppMapasClima): copiloto meteorológico para motociclistas y ciclistas con cálculo de rutas, segmentos de asfalto coloreados según clima y hora de salida óptima."
+>
+  
+  <!-- TOP DEMO EXECUTIVE BAR -->
+  <div class="bg-slate-950 text-slate-300 py-2.5 px-4 text-xs font-mono border-b border-slate-800 sticky top-0 z-50 shadow-md">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div class="flex items-center gap-2.5">
+        <img src="/images/palkiotech-emblem.png" alt="PalkioTech" class="w-5 h-5 object-contain" />
+        <span class="font-black text-white">PALKIO<span class="text-amber-400">TECH</span> MOBILE:</span>
+        <span class="text-slate-300 hidden md:inline">App Móvil Nativa iOS & Android en Marco Smartphone Interactivo</span>
+        <span class="text-[10px] bg-amber-950/80 text-amber-400 border border-amber-800 px-2 py-0.5 rounded font-bold">
+          ClimaRoute · AppClimate
+        </span>
+      </div>
+      <div class="flex items-center gap-3">
+        <a 
+          href="/#demos" 
+          class="text-slate-400 hover:text-white transition-colors flex items-center gap-1 text-[11px]"
+        >
+          <span>←</span>
+          <span>Volver al Portafolio</span>
+        </a>
+        <a 
+          href="/cotizador" 
+          class="bg-gradient-to-r from-amber-500 via-amber-600 to-yellow-600 hover:from-amber-600 hover:to-yellow-700 text-slate-950 font-black px-3.5 py-1.5 rounded-lg text-xs transition-all shadow-sm shadow-amber-500/20"
+        >
+          Cotizar App Móvil Similar
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN STAGE: SMARTPHONE MOCKUP & COMPANION DOCK -->
+  <main class="min-h-[calc(100vh-45px)] bg-[#070b14] text-slate-100 py-8 lg:py-12 px-4 sm:px-6 relative overflow-hidden flex flex-col items-center justify-center">
+    
+    <!-- Ambient Sci-Fi Glows -->
+    <div class="absolute -top-40 left-1/4 w-[600px] h-[600px] bg-cyan-600/15 rounded-full blur-[140px] pointer-events-none"></div>
+    <div class="absolute -bottom-40 right-1/4 w-[600px] h-[600px] bg-blue-600/15 rounded-full blur-[140px] pointer-events-none"></div>
+
+    <div class="max-w-6xl w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
+      
+      <!-- ==============================================
+           LEFT / CENTER: REALISTIC SMARTPHONE FRAME
+           ============================================== -->
+      <div class="lg:col-span-7 flex flex-col items-center justify-center">
+        
+        <!-- Interactive Smartphone Frame (iPhone 16 Pro Style) -->
+        <div class="phone-chassis relative w-[360px] sm:w-[385px] h-[780px] rounded-[52px] border-[10px] border-slate-800/90 bg-slate-950 shadow-[0_25px_70px_rgba(0,0,0,0.85),0_0_50px_rgba(6,182,212,0.18)] p-0 flex flex-col justify-between overflow-hidden select-none transition-all">
+          
+          <!-- Outer Side Hardware Buttons simulation -->
+          <div class="absolute -left-[14px] top-28 w-[4px] h-10 bg-slate-700 rounded-l-md"></div>
+          <div class="absolute -left-[14px] top-42 w-[4px] h-12 bg-slate-700 rounded-l-md"></div>
+          <div class="absolute -left-[14px] top-58 w-[4px] h-12 bg-slate-700 rounded-l-md"></div>
+          <div class="absolute -right-[14px] top-36 w-[4px] h-16 bg-slate-700 rounded-r-md"></div>
+
+          <!-- TOP NOTCH & DYNAMIC ISLAND -->
+          <div class="relative w-full pt-3 px-6 z-40 bg-slate-950 border-b border-slate-800/50">
+            
+            <!-- Top Status Bar Row (Time, Dynamic Island, Battery) -->
+            <div class="flex items-center justify-between text-[11px] font-semibold text-white px-2">
+              <span id="phone-clock">07:00</span>
+              
+              <!-- Dynamic Island Notch -->
+              <div id="dynamic-island" class="w-32 h-6 bg-black rounded-full flex items-center justify-between px-2.5 shadow-lg border border-slate-800/60 transition-all duration-300">
+                <div class="w-2.5 h-2.5 rounded-full bg-slate-900 border border-slate-700 flex items-center justify-center">
+                  <span class="w-1 h-1 rounded-full bg-cyan-400"></span>
+                </div>
+                <div id="island-badge" class="text-[9px] font-mono text-cyan-300 font-bold flex items-center gap-1 truncate">
+                  <span id="island-icon">🏍️</span>
+                  <span id="island-text">ClimaRoute</span>
+                </div>
+              </div>
+
+              <!-- Signal & Battery -->
+              <div class="flex items-center gap-1.5 text-xs text-white">
+                <span class="text-[10px] font-mono font-bold text-cyan-400">5G</span>
+                <svg class="w-3.5 h-3.5 text-slate-300" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L12 22l7.03-4.39C20.26 16.07 21 14.12 21 12c0-4.97-4.03-9-9-9z"/>
+                </svg>
+                <div class="w-5 h-2.5 rounded-sm border border-white p-[1px] flex items-center">
+                  <div class="h-full w-full bg-emerald-400 rounded-xs"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Animated Push Notification Banner (Drops from Dynamic Island) -->
+            <div 
+              id="phone-push-notification" 
+              class="hidden opacity-0 -translate-y-4 transition-all duration-300 my-2 p-2.5 rounded-2xl bg-slate-900/95 border border-cyan-500/40 shadow-2xl backdrop-blur-xl text-xs flex items-start gap-2.5"
+            >
+              <div class="w-7 h-7 rounded-xl bg-cyan-600 text-white flex items-center justify-center shrink-0 text-sm">
+                ⚠️
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-white text-[11px] truncate">Alerta Meteorológica ClimaRoute</span>
+                  <span class="text-[9px] text-slate-400 font-mono">Ahora</span>
+                </div>
+                <p id="push-notification-text" class="text-[10px] text-slate-300 leading-snug mt-0.5 truncate">
+                  Chubasco fuerte en Fusagasugá (km 62). Reduce velocidad en curvas.
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- ==========================================
+               IN-APP SCREENS CONTAINER: CLIMAROUTE
+               ========================================== -->
+          <div id="app-screen-container" class="flex-1 overflow-y-auto px-3.5 pt-3 pb-3 scrollbar-none transition-colors duration-500 bg-[#0a0f1d] text-white">
+            
+            <!-- App Top Header & Transport Profile Switcher -->
+            <div class="flex items-center justify-between pb-2 mb-2 border-b border-slate-800/80">
+              <div class="flex items-center gap-1.5">
+                <div class="w-6 h-6 rounded-lg bg-cyan-500/20 border border-cyan-400/40 flex items-center justify-center text-xs">
+                  🌦️
+                </div>
+                <div>
+                  <span class="font-black text-xs tracking-tight text-white block leading-none">ClimaRoute</span>
+                  <span class="text-[8px] font-mono text-cyan-400">Copiloto Meteorológico</span>
+                </div>
+              </div>
+
+              <!-- Profile Mode Switcher (Moto / Bici) -->
+              <div class="flex items-center bg-slate-900 p-0.5 rounded-lg border border-slate-800 text-[10px] font-bold">
+                <button 
+                  type="button" 
+                  id="app-mode-moto"
+                  class="profile-mode-btn active px-2 py-0.5 rounded-md bg-cyan-600 text-white transition-all cursor-pointer"
+                  data-mode="moto"
+                >
+                  🏍️ Moto
+                </button>
+                <button 
+                  type="button" 
+                  id="app-mode-bici"
+                  class="profile-mode-btn px-2 py-0.5 rounded-md text-slate-400 hover:text-white transition-all cursor-pointer"
+                  data-mode="bici"
+                >
+                  🚴 Bici
+                </button>
+              </div>
+            </div>
+
+            <!-- Route Origin & Destination Box -->
+            <div class="bg-slate-900/90 rounded-2xl p-2.5 border border-slate-800 shadow-md space-y-2 mb-3">
+              <!-- Origin Input -->
+              <div class="flex items-center gap-2 bg-slate-950/80 rounded-xl px-2.5 py-1.5 border border-slate-800/80">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 shrink-0"></span>
+                <div class="flex-1 min-w-0">
+                  <span class="text-[8px] font-mono uppercase text-slate-400 block leading-tight">ORIGEN (SALIDA)</span>
+                  <div class="flex items-center justify-between">
+                    <span id="app-origin-name" class="font-bold text-[11px] text-white truncate">Bogotá D.C.</span>
+                    <span class="text-[9px] font-mono text-cyan-400 bg-cyan-950/60 px-1.5 py-0.2 rounded border border-cyan-800">2.600m</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Destination Input -->
+              <div class="flex items-center gap-2 bg-slate-950/80 rounded-xl px-2.5 py-1.5 border border-slate-800/80">
+                <span class="w-2.5 h-2.5 rounded-full bg-rose-500 shrink-0"></span>
+                <div class="flex-1 min-w-0">
+                  <span class="text-[8px] font-mono uppercase text-slate-400 block leading-tight">DESTINO</span>
+                  <div class="flex items-center justify-between">
+                    <span id="app-destination-name" class="font-bold text-[11px] text-white truncate">Melgar, Tolima</span>
+                    <span class="text-[9px] font-mono text-rose-400 bg-rose-950/60 px-1.5 py-0.2 rounded border border-rose-800">323m</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Quick Colombian Routes Carousel -->
+              <div class="flex items-center gap-1.5 overflow-x-auto pt-1 pb-0.5 scrollbar-none text-[9px] font-mono">
+                <span class="text-slate-400 shrink-0">Rutas:</span>
+                <button type="button" class="quick-route-chip active px-2 py-0.5 rounded-full bg-cyan-950 text-cyan-300 border border-cyan-700 shrink-0" data-route="bogota-melgar">
+                  Bogotá ➔ Melgar
+                </button>
+                <button type="button" class="quick-route-chip px-2 py-0.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700 shrink-0" data-route="bogota-girardot">
+                  Bogotá ➔ Girardot
+                </button>
+                <button type="button" class="quick-route-chip px-2 py-0.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700 shrink-0" data-route="bogota-neiva">
+                  Bogotá ➔ Neiva
+                </button>
+                <button type="button" class="quick-route-chip px-2 py-0.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700 shrink-0" data-route="medellin-guatape">
+                  Medellín ➔ Guatapé
+                </button>
+              </div>
+            </div>
+
+            <!-- ==============================================
+                 INTERACTIVE ROUTE MAP CANVAS (COLOR-CODED)
+                 ============================================== -->
+            <div class="relative h-44 rounded-2xl overflow-hidden bg-slate-950 border border-slate-800/90 shadow-inner mb-3">
+              
+              <!-- Subtle Vector Map Grid -->
+              <div class="absolute inset-0 bg-[radial-gradient(#0891b220_1px,transparent_1px)] [background-size:14px_14px]"></div>
+              
+              <!-- Topographic Contour Curves simulation -->
+              <svg class="absolute inset-0 w-full h-full opacity-15 pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M-10,40 Q80,20 180,60 T380,40" fill="none" stroke="#38bdf8" stroke-width="1"/>
+                <path d="M-10,90 Q120,70 220,110 T390,90" fill="none" stroke="#38bdf8" stroke-width="1"/>
+                <path d="M-10,140 Q90,120 200,160 T390,130" fill="none" stroke="#38bdf8" stroke-width="1"/>
+              </svg>
+
+              <!-- SVG Segmented Road Polyline (Colored by Weather) -->
+              <svg id="route-svg" class="absolute inset-0 w-full h-full" viewBox="0 0 340 176" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Segment 1: Origin to Soacha (Green: Dry) -->
+                <path id="seg-1" d="M 40 35 Q 75 42 110 55" stroke="#10b981" stroke-width="5" stroke-linecap="round"/>
+                
+                <!-- Segment 2: Silvania to Fusagasugá (Blue: Rain / or Green when dry) -->
+                <path id="seg-2" d="M 110 55 Q 155 70 205 95" stroke="#0284c7" stroke-width="5" stroke-linecap="round"/>
+                
+                <!-- Segment 3: Boquerón / Nariz del Diablo (Yellow: Drizzle / Damp) -->
+                <path id="seg-3" d="M 205 95 Q 245 115 275 130" stroke="#eab308" stroke-width="5" stroke-linecap="round"/>
+                
+                <!-- Segment 4: Melgar arrival (Green: Warm & Dry) -->
+                <path id="seg-4" d="M 275 130 Q 295 140 310 148" stroke="#10b981" stroke-width="5" stroke-linecap="round"/>
+
+                <!-- Pulsing Navigation Arrow -->
+                <circle cx="40" cy="35" r="4" fill="#10b981" class="animate-ping"/>
+                <circle cx="40" cy="35" r="5" fill="#10b981"/>
+                <circle cx="310" cy="148" r="5" fill="#f43f5e"/>
+              </svg>
+
+              <!-- Checkpoint Interactive Badges on Map -->
+              <button 
+                type="button" 
+                class="checkpoint-pin absolute top-5 left-4 p-1 rounded-lg bg-slate-900/90 border border-emerald-500/60 shadow-lg text-left flex items-center gap-1 cursor-pointer hover:scale-105 transition-transform"
+                data-checkpoint="0"
+              >
+                <span class="text-xs">⛅</span>
+                <div>
+                  <span class="text-[8px] font-bold text-white block leading-none">Bogotá</span>
+                  <span class="text-[7px] font-mono text-emerald-400">16°C · 0km</span>
+                </div>
+              </button>
+
+              <button 
+                type="button" 
+                id="checkpoint-pin-fusa"
+                class="checkpoint-pin absolute top-16 left-28 p-1 rounded-lg bg-slate-900/90 border border-blue-500/80 shadow-lg text-left flex items-center gap-1 cursor-pointer hover:scale-105 transition-transform animate-pulse"
+                data-checkpoint="2"
+              >
+                <span id="checkpoint-fusa-icon" class="text-xs">🌧️</span>
+                <div>
+                  <span class="text-[8px] font-bold text-white block leading-none">Fusagasugá</span>
+                  <span id="checkpoint-fusa-temp" class="text-[7px] font-mono text-blue-300 font-bold">21°C · Lluvia</span>
+                </div>
+              </button>
+
+              <button 
+                type="button" 
+                class="checkpoint-pin absolute bottom-3 right-5 p-1 rounded-lg bg-slate-900/90 border border-rose-500/60 shadow-lg text-left flex items-center gap-1 cursor-pointer hover:scale-105 transition-transform"
+                data-checkpoint="4"
+              >
+                <span class="text-xs">☀️</span>
+                <div>
+                  <span class="text-[8px] font-bold text-white block leading-none">Melgar</span>
+                  <span class="text-[7px] font-mono text-amber-300">28°C · Meta</span>
+                </div>
+              </button>
+
+              <!-- Map Legend Indicator -->
+              <div class="absolute bottom-2 left-2 flex items-center gap-2 px-2 py-0.5 rounded-md bg-slate-950/80 backdrop-blur-md border border-slate-800 text-[8px] font-mono">
+                <span class="flex items-center gap-1 text-emerald-400"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>Seco</span>
+                <span class="flex items-center gap-1 text-cyan-400"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>Lluvia</span>
+                <span class="flex items-center gap-1 text-amber-400"><span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>Húmedo</span>
+              </div>
+            </div>
+
+            <!-- ==============================================
+                 DEPARTURE TIME SLIDER (MOTOR DE DECISIÓN)
+                 ============================================== -->
+            <div class="bg-slate-900/80 rounded-2xl p-2.5 border border-slate-800 shadow-md space-y-2 mb-3">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-1.5">
+                  <span class="text-xs">⏱️</span>
+                  <span class="text-[9px] font-mono uppercase font-bold text-slate-400">HORA DE SALIDA</span>
+                  <span id="departure-live-badge" class="text-[8px] font-mono font-bold px-1.5 py-0.2 rounded bg-emerald-950 text-emerald-400 border border-emerald-800">
+                    EN VIVO
+                  </span>
+                </div>
+
+                <!-- Precise Steppers (-15m / +15m) -->
+                <div class="flex items-center gap-1">
+                  <button 
+                    type="button" 
+                    id="btn-step-minus"
+                    class="px-2 py-0.5 rounded-md bg-slate-800 hover:bg-slate-700 text-[9px] font-mono font-bold text-slate-300 border border-slate-700 transition-colors"
+                  >
+                    -15m
+                  </button>
+                  <button 
+                    type="button" 
+                    id="btn-step-plus"
+                    class="px-2 py-0.5 rounded-md bg-slate-800 hover:bg-slate-700 text-[9px] font-mono font-bold text-slate-300 border border-slate-700 transition-colors"
+                  >
+                    +15m
+                  </button>
+                </div>
+              </div>
+
+              <!-- Time Display & Interactive Slider -->
+              <div class="flex items-center justify-between">
+                <span id="slider-time-label" class="text-lg font-black font-mono text-cyan-400">
+                  07:00 AM
+                </span>
+                <span id="slider-recommendation-pill" class="text-[8px] font-mono text-amber-400 bg-amber-950/70 border border-amber-800 px-2 py-0.5 rounded-full">
+                  ⚠️ Lluvia en Cordillera
+                </span>
+              </div>
+
+              <input 
+                type="range" 
+                id="departure-slider" 
+                min="360" 
+                max="840" 
+                step="15" 
+                value="420"
+                class="w-full accent-cyan-500 bg-slate-800 h-1.5 rounded-lg cursor-pointer"
+              />
+
+              <div class="flex items-center justify-between text-[8px] font-mono text-slate-400">
+                <span>06:00 AM</span>
+                <span class="text-emerald-400 font-bold">09:30 AM (Ventana Seca)</span>
+                <span>02:00 PM</span>
+              </div>
+
+              <!-- Smart Advice Box -->
+              <div id="smart-advice-box" class="p-2 rounded-xl bg-cyan-950/40 border border-cyan-800/50 text-[10px] text-cyan-200 flex items-start gap-1.5">
+                <span class="text-xs shrink-0">💡</span>
+                <p id="smart-advice-text" class="leading-tight">
+                  <strong class="text-white">Consejo ClimaRoute:</strong> Si demoras tu salida a las <span class="text-cyan-300 font-bold">09:30 AM</span> evitas el 100% de la lluvia en Fusagasugá y viajas con asfalto seco.
+                </p>
+              </div>
+            </div>
+
+            <!-- ==============================================
+                 ROUTE SUMMARY BAR (ROUTESUMMARY EXACTO)
+                 ============================================== -->
+            <div id="route-summary-card" class="bg-slate-900/90 rounded-2xl p-3 border border-slate-800 shadow-xl space-y-2.5 mb-3">
+              
+              <!-- Header Status -->
+              <div class="flex items-center justify-between pb-1.5 border-b border-slate-800 text-[9px] font-mono">
+                <div class="flex items-center gap-1.5">
+                  <span id="route-status-dot" class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                  <span id="route-status-title" class="font-bold text-cyan-300 uppercase">
+                    ESTIMACIÓN DEL VIAJE (PARA ACEPTAR)
+                  </span>
+                </div>
+                <button type="button" id="btn-save-route" class="text-slate-400 hover:text-amber-400 transition-colors">
+                  ☆ Guardar
+                </button>
+              </div>
+
+              <!-- Hours & Distance Row -->
+              <div class="flex items-center justify-between text-center py-1">
+                <div class="text-left">
+                  <span class="text-[8px] font-mono text-slate-400 block uppercase">SALIDA</span>
+                  <span id="summary-departure-time" class="text-sm font-black font-mono text-white">07:00 AM</span>
+                  <span class="text-[8px] text-emerald-400 font-mono block">🟢 En punto</span>
+                </div>
+
+                <div class="flex flex-col items-center">
+                  <span class="text-xs text-cyan-400">➔</span>
+                  <span id="summary-total-duration" class="text-[10px] font-bold font-mono text-slate-300">2h 35m</span>
+                </div>
+
+                <div class="text-right">
+                  <span class="text-[8px] font-mono text-slate-400 block uppercase">LLEGADA ESTIMADA</span>
+                  <span id="summary-eta-time" class="text-sm font-black font-mono text-cyan-400">09:35 AM</span>
+                  <span id="summary-total-distance" class="text-[8px] text-slate-400 font-mono block">118 km</span>
+                </div>
+              </div>
+
+              <!-- Weather Verdict Bar -->
+              <div id="verdict-banner" class="p-2 rounded-xl bg-blue-950/40 border border-blue-700/50 flex items-start gap-2">
+                <span id="verdict-icon" class="text-base shrink-0">🌧️</span>
+                <div class="min-w-0">
+                  <h4 id="verdict-title" class="text-[10px] font-bold text-cyan-300 leading-tight">
+                    32 km con lluvia (27% del trayecto)
+                  </h4>
+                  <p id="verdict-desc" class="text-[9px] text-slate-300 leading-snug mt-0.5">
+                    Se proyectan tramos mojados entre Silvania y Fusagasugá. Conduce con impermeable y velocidad precautoria.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Telemetry Metrics Grid -->
+              <div class="grid grid-cols-3 gap-1.5 text-center text-[9px] font-mono">
+                <div class="p-1.5 rounded-lg bg-slate-950/80 border border-slate-800">
+                  <span class="text-slate-400 block text-[8px]">TERMÓMETRO</span>
+                  <span id="metric-temp-range" class="font-bold text-white">16° / 28°C</span>
+                </div>
+                <div class="p-1.5 rounded-lg bg-slate-950/80 border border-slate-800">
+                  <span class="text-slate-400 block text-[8px]">VIENTO MÁX</span>
+                  <span id="metric-wind-max" class="font-bold text-white">14 km/h</span>
+                </div>
+                <div class="p-1.5 rounded-lg bg-slate-950/80 border border-slate-800">
+                  <span class="text-slate-400 block text-[8px]">LLUVIA KM</span>
+                  <span id="metric-rain-km" class="font-bold text-cyan-300">32 km</span>
+                </div>
+              </div>
+
+              <!-- Main Decision Action Buttons -->
+              <div class="flex items-center gap-2 pt-1">
+                <button 
+                  type="button" 
+                  id="btn-accept-route"
+                  class="flex-1 py-2 px-3 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-black text-[11px] shadow-lg shadow-cyan-600/30 transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                >
+                  <span id="accept-btn-icon">✅</span>
+                  <span id="accept-btn-text">ACEPTAR ESTA RUTA</span>
+                </button>
+                <button 
+                  type="button" 
+                  id="btn-toggle-checkpoints"
+                  class="py-2 px-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-[10px] font-mono border border-slate-700 transition-colors"
+                  title="Ver paradas detalladas"
+                >
+                  📍 Paradas
+                </button>
+              </div>
+
+            </div>
+
+            <!-- ==============================================
+                 COLLAPSIBLE CHECKPOINTS TIMELINE
+                 ============================================== -->
+            <div id="checkpoints-drawer" class="hidden bg-slate-900/95 rounded-2xl p-2.5 border border-slate-800 mb-3 space-y-2">
+              <div class="flex items-center justify-between pb-1 border-b border-slate-800 text-[9px] font-mono">
+                <span class="text-slate-400 uppercase font-bold">Checkpoints & WMO Clima</span>
+                <span class="text-cyan-400">Open-Meteo 1h</span>
+              </div>
+
+              <div id="checkpoints-list" class="space-y-1.5 text-[9px] font-mono">
+                <!-- Checkpoint Items injected via script -->
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Bottom Home Bar Indicator -->
+          <div class="w-full bg-slate-950 border-t border-slate-800/80 py-2.5 flex justify-center">
+            <div class="w-28 h-1 bg-white/30 rounded-full"></div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- ==============================================
+           RIGHT: COMPANION DESKTOP CONTROL DOCK & SPECS
+           ============================================== -->
+      <div class="lg:col-span-5 space-y-6">
+        
+        <!-- Header Info -->
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/80 border border-cyan-800 text-cyan-400 text-xs font-mono font-bold mb-3">
+            <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+            <span>CASE STUDY: CLIMAROUTE (APPMAPASCLIMA)</span>
+          </div>
+
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight mb-3">
+            Desarrollo de <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400">Aplicaciones Móviles Nativas</span>
+          </h2>
+
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Creamos aplicaciones móviles de alto rendimiento para iOS y Android con geolocalización, sincronización offline SQLite, mapas vectoriales dinámicos y telemetría en tiempo real.
+          </p>
+        </div>
+
+        <!-- Simulator Interactive Controller Box -->
+        <div class="p-6 rounded-3xl bg-slate-900/90 border border-slate-800 shadow-xl space-y-5">
+          
+          <div class="flex items-center justify-between pb-3 border-b border-slate-800 text-xs font-mono">
+            <span class="text-white font-bold">🎮 Controles del Simulador</span>
+            <span class="text-cyan-400">Interacción en Vivo</span>
+          </div>
+
+          <!-- Control 1: Select Route -->
+          <div>
+            <label class="block text-xs font-bold text-slate-300 mb-2 font-mono uppercase">
+              1. Cambiar Trayecto en Colombia
+            </label>
+            <div class="grid grid-cols-2 gap-2 text-xs font-mono">
+              <button 
+                type="button" 
+                class="desktop-route-btn p-2 rounded-xl bg-cyan-600 text-white font-bold border border-cyan-400 transition-all cursor-pointer text-left"
+                data-route="bogota-melgar"
+              >
+                🏍️ Bogotá ➔ Melgar (118 km)
+              </button>
+              <button 
+                type="button" 
+                class="desktop-route-btn p-2 rounded-xl bg-slate-800 text-slate-300 hover:text-white border border-slate-700 transition-all cursor-pointer text-left"
+                data-route="bogota-girardot"
+              >
+                🏍️ Bogotá ➔ Girardot (134 km)
+              </button>
+              <button 
+                type="button" 
+                class="desktop-route-btn p-2 rounded-xl bg-slate-800 text-slate-300 hover:text-white border border-slate-700 transition-all cursor-pointer text-left"
+                data-route="bogota-neiva"
+              >
+                🏍️ Bogotá ➔ Neiva (302 km)
+              </button>
+              <button 
+                type="button" 
+                class="desktop-route-btn p-2 rounded-xl bg-slate-800 text-slate-300 hover:text-white border border-slate-700 transition-all cursor-pointer text-left"
+                data-route="medellin-guatape"
+              >
+                🚴 Medellín ➔ Guatapé (79 km)
+              </button>
+            </div>
+          </div>
+
+          <!-- Control 2: Quick Weather Hour Presets -->
+          <div>
+            <label class="block text-xs font-bold text-slate-300 mb-2 font-mono uppercase">
+              2. Probar Escenarios de Salida (Motor IA)
+            </label>
+            <div class="grid grid-cols-2 gap-2 text-xs">
+              <button 
+                type="button" 
+                id="preset-rain"
+                class="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-all cursor-pointer text-center"
+              >
+                🌧️ 07:00 AM (Lluvia en Ruta)
+              </button>
+              <button 
+                type="button" 
+                id="preset-dry"
+                class="p-2.5 rounded-xl bg-emerald-950/60 hover:bg-emerald-900/60 text-emerald-300 border border-emerald-700 transition-all cursor-pointer text-center font-bold"
+              >
+                ☀️ 09:30 AM (Ventana Seca)
+              </button>
+            </div>
+          </div>
+
+          <!-- Control 3: Trigger Dynamic Island Push Notification -->
+          <div class="pt-1">
+            <button 
+              type="button" 
+              id="btn-trigger-push"
+              class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-extrabold text-xs flex items-center justify-center gap-2 shadow-lg shadow-cyan-600/20 cursor-pointer transition-all"
+            >
+              <span>🔔 Probar Notificación Push en Smartphone</span>
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Technical Pillars of Mobile Engineering -->
+        <div class="p-6 rounded-3xl bg-slate-900/60 border border-slate-800 space-y-3 text-xs">
+          <span class="font-mono text-cyan-400 font-bold uppercase tracking-wider block">
+            Arquitectura de Grado Producción Móvil:
+          </span>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-slate-300">
+            <div class="flex items-center gap-2">
+              <span class="text-emerald-400">✓</span>
+              <span>React Native / Expo & Flutter</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-emerald-400">✓</span>
+              <span>Base SQLite Offline (~1.120 Municipios)</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-emerald-400">✓</span>
+              <span>MapLibre GL & OpenRouteService</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-emerald-400">✓</span>
+              <span>Open-Meteo Forecasts por Checkpoints</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-emerald-400">✓</span>
+              <span>Publicación App Store & Google Play</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-emerald-400">✓</span>
+              <span>Notificaciones Push y Telemetría</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Commercial CTA Row -->
+        <div class="flex flex-col sm:flex-row items-center gap-3 pt-2">
+          <a 
+            href="/cotizador" 
+            class="w-full sm:flex-1 py-3.5 px-6 rounded-xl bg-white hover:bg-slate-100 text-slate-900 font-extrabold text-xs sm:text-sm text-center shadow-lg transition-all"
+          >
+            Calcular Presupuesto de App Móvil →
+          </a>
+          <a 
+            href={companyData.meetingRoomUrl}
+            target="_blank"
+            rel="noopener noreferrer" 
+            class="w-full sm:w-auto py-3.5 px-6 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs sm:text-sm text-center transition-all border border-slate-700 flex items-center justify-center gap-2"
+          >
+            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+            <span>Agendar en Google Meet</span>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+</Layout>
+
+<!-- Client-side Interactive Logic for ClimaRoute (AppClimate) Smartphone Simulator -->
+<script>
+  // Route Data Definitions based on real AppMapasClima structure
+  interface CheckpointData {
+    name: string;
+    distanceKm: number;
+    elevation: number;
+    etaMinutes: number;
+    weatherHour7am: { icon: string; temp: number; pop: number; desc: string; color: string };
+    weatherHour930am: { icon: string; temp: number; pop: number; desc: string; color: string };
+  }
+
+  interface RouteProfile {
+    id: string;
+    title: string;
+    origin: string;
+    originElev: string;
+    destination: string;
+    destElev: string;
+    distanceKm: number;
+    durationMinutes: number;
+    checkpoints: CheckpointData[];
+  }
+
+  const routesData: Record<string, RouteProfile> = {
+    'bogota-melgar': {
+      id: 'bogota-melgar',
+      title: 'Bogotá ➔ Melgar',
+      origin: 'Bogotá D.C.',
+      originElev: '2.600m',
+      destination: 'Melgar, Tolima',
+      destElev: '323m',
+      distanceKm: 118,
+      durationMinutes: 155,
+      checkpoints: [
+        {
+          name: 'Bogotá D.C. (Salida)',
+          distanceKm: 0,
+          elevation: 2600,
+          etaMinutes: 0,
+          weatherHour7am: { icon: '⛅', temp: 16, pop: 10, desc: 'Nublado fresco', color: 'green' },
+          weatherHour930am: { icon: '☀️', temp: 18, pop: 5, desc: 'Despejado', color: 'green' }
+        },
+        {
+          name: 'Silvania',
+          distanceKm: 42,
+          elevation: 1470,
+          etaMinutes: 45,
+          weatherHour7am: { icon: '🌦️', temp: 19, pop: 50, desc: 'Llovizna dispersa', color: 'yellow' },
+          weatherHour930am: { icon: '⛅', temp: 21, pop: 15, desc: 'Parcialmente soleado', color: 'green' }
+        },
+        {
+          name: 'Fusagasugá',
+          distanceKm: 64,
+          elevation: 1728,
+          etaMinutes: 75,
+          weatherHour7am: { icon: '🌧️', temp: 21, pop: 85, desc: 'Lluvia moderada continua', color: 'blue' },
+          weatherHour930am: { icon: '⛅', temp: 23, pop: 20, desc: 'Seco y templado', color: 'green' }
+        },
+        {
+          name: 'Boquerón / Nariz del Diablo',
+          distanceKm: 88,
+          elevation: 900,
+          etaMinutes: 110,
+          weatherHour7am: { icon: '🌦️', temp: 24, pop: 35, desc: 'Pavimento húmedo', color: 'yellow' },
+          weatherHour930am: { icon: '☀️', temp: 26, pop: 10, desc: 'Calzada seca', color: 'green' }
+        },
+        {
+          name: 'Melgar, Tolima',
+          distanceKm: 118,
+          elevation: 323,
+          etaMinutes: 155,
+          weatherHour7am: { icon: '☀️', temp: 28, pop: 5, desc: 'Soleado y caluroso', color: 'green' },
+          weatherHour930am: { icon: '☀️', temp: 31, pop: 5, desc: 'Soleado radiante', color: 'green' }
+        }
+      ]
+    },
+    'bogota-girardot': {
+      id: 'bogota-girardot',
+      title: 'Bogotá ➔ Girardot',
+      origin: 'Bogotá D.C.',
+      originElev: '2.600m',
+      destination: 'Girardot, Cund.',
+      destElev: '289m',
+      distanceKm: 134,
+      durationMinutes: 175,
+      checkpoints: [
+        {
+          name: 'Bogotá D.C.',
+          distanceKm: 0,
+          elevation: 2600,
+          etaMinutes: 0,
+          weatherHour7am: { icon: '⛅', temp: 16, pop: 10, desc: 'Nublado', color: 'green' },
+          weatherHour930am: { icon: '☀️', temp: 18, pop: 5, desc: 'Soleado', color: 'green' }
+        },
+        {
+          name: 'Fusagasugá',
+          distanceKm: 64,
+          elevation: 1728,
+          etaMinutes: 75,
+          weatherHour7am: { icon: '🌧️', temp: 20, pop: 80, desc: 'Lluvia en descenso', color: 'blue' },
+          weatherHour930am: { icon: '⛅', temp: 23, pop: 15, desc: 'Calzada secando', color: 'green' }
+        },
+        {
+          name: 'Melgar',
+          distanceKm: 118,
+          elevation: 323,
+          etaMinutes: 140,
+          weatherHour7am: { icon: '☀️', temp: 28, pop: 5, desc: 'Despejado', color: 'green' },
+          weatherHour930am: { icon: '☀️', temp: 30, pop: 5, desc: 'Soleado', color: 'green' }
+        },
+        {
+          name: 'Girardot',
+          distanceKm: 134,
+          elevation: 289,
+          etaMinutes: 175,
+          weatherHour7am: { icon: '☀️', temp: 30, pop: 0, desc: 'Muy cálido', color: 'green' },
+          weatherHour930am: { icon: '☀️', temp: 33, pop: 0, desc: 'Calor seco', color: 'green' }
+        }
+      ]
+    },
+    'bogota-neiva': {
+      id: 'bogota-neiva',
+      title: 'Bogotá ➔ Neiva',
+      origin: 'Bogotá D.C.',
+      originElev: '2.600m',
+      destination: 'Neiva, Huila',
+      destElev: '442m',
+      distanceKm: 302,
+      durationMinutes: 340,
+      checkpoints: [
+        {
+          name: 'Bogotá D.C.',
+          distanceKm: 0,
+          elevation: 2600,
+          etaMinutes: 0,
+          weatherHour7am: { icon: '⛅', temp: 16, pop: 10, desc: 'Despejado', color: 'green' },
+          weatherHour930am: { icon: '☀️', temp: 19, pop: 5, desc: 'Soleado', color: 'green' }
+        },
+        {
+          name: 'Fusagasugá',
+          distanceKm: 64,
+          elevation: 1728,
+          etaMinutes: 75,
+          weatherHour7am: { icon: '🌧️', temp: 21, pop: 85, desc: 'Lluvia activa', color: 'blue' },
+          weatherHour930am: { icon: '⛅', temp: 24, pop: 20, desc: 'Seco', color: 'green' }
+        },
+        {
+          name: 'El Espinal',
+          distanceKm: 152,
+          elevation: 323,
+          etaMinutes: 170,
+          weatherHour7am: { icon: '☀️', temp: 29, pop: 10, desc: 'Caluroso', color: 'green' },
+          weatherHour930am: { icon: '☀️', temp: 32, pop: 10, desc: 'Soleado', color: 'green' }
+        },
+        {
+          name: 'Natagaima',
+          distanceKm: 218,
+          elevation: 326,
+          etaMinutes: 245,
+          weatherHour7am: { icon: '☀️', temp: 31, pop: 5, desc: 'Seco', color: 'green' },
+          weatherHour930am: { icon: '☀️', temp: 34, pop: 5, desc: 'Viento cálido', color: 'green' }
+        },
+        {
+          name: 'Neiva',
+          distanceKm: 302,
+          elevation: 442,
+          etaMinutes: 340,
+          weatherHour7am: { icon: '☀️', temp: 32, pop: 0, desc: 'Soleado', color: 'green' },
+          weatherHour930am: { icon: '☀️', temp: 35, pop: 0, desc: 'Máxima adherencia', color: 'green' }
+        }
+      ]
+    },
+    'medellin-guatape': {
+      id: 'medellin-guatape',
+      title: 'Medellín ➔ Guatapé',
+      origin: 'Medellín, ANT',
+      originElev: '1.495m',
+      destination: 'Guatapé, ANT',
+      destElev: '1.925m',
+      distanceKm: 79,
+      durationMinutes: 120,
+      checkpoints: [
+        {
+          name: 'Medellín',
+          distanceKm: 0,
+          elevation: 1495,
+          etaMinutes: 0,
+          weatherHour7am: { icon: '⛅', temp: 20, pop: 15, desc: 'Fresco', color: 'green' },
+          weatherHour930am: { icon: '☀️', temp: 23, pop: 10, desc: 'Soleado', color: 'green' }
+        },
+        {
+          name: 'Marinilla',
+          distanceKm: 46,
+          elevation: 2120,
+          etaMinutes: 65,
+          weatherHour7am: { icon: '🌦️', temp: 17, pop: 45, desc: 'Llovizna leve', color: 'yellow' },
+          weatherHour930am: { icon: '⛅', temp: 19, pop: 15, desc: 'Seco', color: 'green' }
+        },
+        {
+          name: 'El Peñol',
+          distanceKm: 65,
+          elevation: 2000,
+          etaMinutes: 95,
+          weatherHour7am: { icon: '⛅', temp: 19, pop: 25, desc: 'Nublado', color: 'green' },
+          weatherHour930am: { icon: '☀️', temp: 22, pop: 10, desc: 'Soleado', color: 'green' }
+        },
+        {
+          name: 'Guatapé',
+          distanceKm: 79,
+          elevation: 1925,
+          etaMinutes: 120,
+          weatherHour7am: { icon: '⛅', temp: 21, pop: 20, desc: 'Agradable', color: 'green' },
+          weatherHour930am: { icon: '☀️', temp: 24, pop: 5, desc: 'Ideal ciclismo', color: 'green' }
+        }
+      ]
+    }
+  };
+
+  // State
+  let currentRouteKey = 'bogota-melgar';
+  let departureMinutes = 420; // 07:00 AM (420 min from midnight)
+  let currentTransportMode = 'moto';
+  let isRouteAccepted = false;
+  let isFavorite = false;
+
+  // Formatting helpers
+  function minutesToTimeString(mins: number): string {
+    const h24 = Math.floor(mins / 60) % 24;
+    const m = Math.floor(mins % 60);
+    const period = h24 >= 12 ? 'PM' : 'AM';
+    const h12 = h24 % 12 === 0 ? 12 : h24 % 12;
+    const padM = m < 10 ? `0${m}` : `${m}`;
+    return `${h12}:${padM} ${period}`;
+  }
+
+  function minutesTo24Clock(mins: number): string {
+    const h24 = Math.floor(mins / 60) % 24;
+    const m = Math.floor(mins % 60);
+    const padH = h24 < 10 ? `0${h24}` : `${h24}`;
+    const padM = m < 10 ? `0${m}` : `${m}`;
+    return `${padH}:${padM}`;
+  }
+
+  function renderCheckpoints() {
+    const route = routesData[currentRouteKey];
+    const listEl = document.getElementById('checkpoints-list');
+    if (!listEl) return;
+
+    const isOptimalWindow = departureMinutes >= 540; // >= 09:00 AM
+
+    listEl.innerHTML = route.checkpoints.map((cp, idx) => {
+      const etaMins = departureMinutes + (currentTransportMode === 'bici' ? Math.round(cp.etaMinutes * 1.8) : cp.etaMinutes);
+      const etaStr = minutesToTimeString(etaMins);
+      const weather = isOptimalWindow ? cp.weatherHour930am : cp.weatherHour7am;
+      const colorBg = weather.color === 'blue' 
+        ? 'bg-blue-950/70 text-cyan-300 border-blue-800' 
+        : (weather.color === 'yellow' ? 'bg-amber-950/70 text-amber-300 border-amber-800' : 'bg-emerald-950/70 text-emerald-300 border-emerald-800');
+
+      return `
+        <div class="p-1.5 rounded-lg bg-slate-950/70 border border-slate-800 flex items-center justify-between">
+          <div class="flex items-center gap-1.5">
+            <span class="text-xs">${weather.icon}</span>
+            <div>
+              <span class="font-bold text-white text-[9px] block">${cp.name}</span>
+              <span class="text-slate-400 text-[8px]">${etaStr} · ${cp.distanceKm} km · ${cp.elevation}m</span>
+            </div>
+          </div>
+          <div class="text-right">
+            <span class="text-[9px] font-bold text-white">${weather.temp}°C</span>
+            <span class="px-1.5 py-0.2 rounded text-[7px] border font-bold block ${colorBg}">${weather.pop}% lluvia</span>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  function updateAppUI() {
+    const route = routesData[currentRouteKey];
+    const isOptimalWindow = departureMinutes >= 540; // >= 09:00 AM
+    
+    // Multipliers for bicycle vs moto
+    const durationMultiplier = currentTransportMode === 'bici' ? 1.8 : 1.0;
+    const totalDuration = Math.round(route.durationMinutes * durationMultiplier);
+    const durationH = Math.floor(totalDuration / 60);
+    const durationM = totalDuration % 60;
+    const arrivalMinutes = departureMinutes + totalDuration;
+
+    // Dom elements
+    const originEl = document.getElementById('app-origin-name');
+    const destEl = document.getElementById('app-destination-name');
+    const sliderLabel = document.getElementById('slider-time-label');
+    const phoneClock = document.getElementById('phone-clock');
+    const summaryDep = document.getElementById('summary-departure-time');
+    const summaryEta = document.getElementById('summary-eta-time');
+    const summaryDur = document.getElementById('summary-total-duration');
+    const summaryDist = document.getElementById('summary-total-distance');
+    const verdictBanner = document.getElementById('verdict-banner');
+    const verdictIcon = document.getElementById('verdict-icon');
+    const verdictTitle = document.getElementById('verdict-title');
+    const verdictDesc = document.getElementById('verdict-desc');
+    const metricRain = document.getElementById('metric-rain-km');
+    const smartAdviceText = document.getElementById('smart-advice-text');
+    const recPill = document.getElementById('slider-recommendation-pill');
+    const fusaIcon = document.getElementById('checkpoint-fusa-icon');
+    const fusaTemp = document.getElementById('checkpoint-fusa-temp');
+    const seg2 = document.getElementById('seg-2');
+
+    // Values
+    if (originEl) originEl.textContent = route.origin;
+    if (destEl) destEl.textContent = route.destination;
+
+    const timeString = minutesToTimeString(departureMinutes);
+    if (sliderLabel) sliderLabel.textContent = timeString;
+    if (phoneClock) phoneClock.textContent = minutesTo24Clock(departureMinutes);
+    if (summaryDep) summaryDep.textContent = timeString;
+    if (summaryEta) summaryEta.textContent = minutesToTimeString(arrivalMinutes);
+    if (summaryDur) summaryDur.textContent = `${durationH}h ${durationM}m`;
+    if (summaryDist) summaryDist.textContent = `${route.distanceKm} km`;
+
+    // Dynamic Weather condition based on Departure Hour
+    if (isOptimalWindow) {
+      // DRY WINDOW (>= 09:00 AM)
+      if (recPill) {
+        recPill.className = "text-[8px] font-mono text-emerald-400 bg-emerald-950/70 border border-emerald-800 px-2 py-0.5 rounded-full font-bold";
+        recPill.textContent = "☀️ Calzada 100% Seca";
+      }
+
+      if (verdictBanner) {
+        verdictBanner.className = "p-2 rounded-xl bg-emerald-950/40 border border-emerald-700/50 flex items-start gap-2";
+      }
+      if (verdictIcon) verdictIcon.textContent = "☀️";
+      if (verdictTitle) {
+        verdictTitle.className = "text-[10px] font-bold text-emerald-300 leading-tight";
+        verdictTitle.textContent = "100% Calzada Seca (Excelente Adherencia)";
+      }
+      if (verdictDesc) {
+        verdictDesc.textContent = "Visibilidad despejada y asfalto sin agua en todo el recorrido hacia " + route.destination + ". Óptima temperatura de neumáticos.";
+      }
+      if (metricRain) {
+        metricRain.textContent = "0 km";
+        metricRain.className = "font-bold text-emerald-400";
+      }
+
+      if (smartAdviceText) {
+        smartAdviceText.innerHTML = `<strong class="text-white">Excelente elección:</strong> Salir a las <span class="text-emerald-300 font-bold">${timeString}</span> te garantiza transitar toda la cordillera bajo condiciones secas.`;
+      }
+
+      if (fusaIcon) fusaIcon.textContent = "⛅";
+      if (fusaTemp) {
+        fusaTemp.textContent = "23°C · Seco";
+        fusaTemp.className = "text-[7px] font-mono text-emerald-400 font-bold";
+      }
+
+      if (seg2) seg2.setAttribute('stroke', '#10b981'); // Turn map route green!
+
+    } else {
+      // RAIN IN ROUTE (< 09:00 AM)
+      if (recPill) {
+        recPill.className = "text-[8px] font-mono text-amber-400 bg-amber-950/70 border border-amber-800 px-2 py-0.5 rounded-full";
+        recPill.textContent = "⚠️ Lluvia en Cordillera";
+      }
+
+      if (verdictBanner) {
+        verdictBanner.className = "p-2 rounded-xl bg-blue-950/40 border border-blue-700/50 flex items-start gap-2";
+      }
+      if (verdictIcon) verdictIcon.textContent = "🌧️";
+      if (verdictTitle) {
+        verdictTitle.className = "text-[10px] font-bold text-cyan-300 leading-tight";
+        verdictTitle.textContent = "32 km con lluvia (27% del trayecto)";
+      }
+      if (verdictDesc) {
+        verdictDesc.textContent = "Se proyectan tramos mojados en el descenso. Conduce con impermeable y extrema precaución en curvas.";
+      }
+      if (metricRain) {
+        metricRain.textContent = "32 km";
+        metricRain.className = "font-bold text-cyan-300";
+      }
+
+      if (smartAdviceText) {
+        smartAdviceText.innerHTML = `<strong class="text-white">Consejo ClimaRoute:</strong> Si demoras tu salida a las <span class="text-cyan-300 font-bold">09:30 AM</span> evitas el 100% de la lluvia en Fusagasugá y viajas con asfalto seco.`;
+      }
+
+      if (fusaIcon) fusaIcon.textContent = "🌧️";
+      if (fusaTemp) {
+        fusaTemp.textContent = "21°C · Lluvia";
+        fusaTemp.className = "text-[7px] font-mono text-blue-300 font-bold";
+      }
+
+      if (seg2) seg2.setAttribute('stroke', '#0284c7'); // Turn map route blue (rain)
+    }
+
+    renderCheckpoints();
+  }
+
+  // Initialize event listeners when DOM loads
+  document.addEventListener('DOMContentLoaded', () => {
+    
+    // Slider Listener
+    const slider = document.getElementById('departure-slider') as HTMLInputElement | null;
+    if (slider) {
+      slider.addEventListener('input', (e) => {
+        departureMinutes = parseInt((e.target as HTMLInputElement).value, 10);
+        updateAppUI();
+      });
+    }
+
+    // Steppers (-15m / +15m)
+    document.getElementById('btn-step-minus')?.addEventListener('click', () => {
+      departureMinutes = Math.max(360, departureMinutes - 15);
+      if (slider) slider.value = `${departureMinutes}`;
+      updateAppUI();
+    });
+
+    document.getElementById('btn-step-plus')?.addEventListener('click', () => {
+      departureMinutes = Math.min(840, departureMinutes + 15);
+      if (slider) slider.value = `${departureMinutes}`;
+      updateAppUI();
+    });
+
+    // Preset Buttons (Rain at 07:00 AM vs Dry at 09:30 AM)
+    document.getElementById('preset-rain')?.addEventListener('click', () => {
+      departureMinutes = 420; // 07:00 AM
+      if (slider) slider.value = "420";
+      updateAppUI();
+    });
+
+    document.getElementById('preset-dry')?.addEventListener('click', () => {
+      departureMinutes = 570; // 09:30 AM
+      if (slider) slider.value = "570";
+      updateAppUI();
+    });
+
+    // Mode Toggle (Moto vs Bici)
+    const modeMotoBtn = document.getElementById('app-mode-moto');
+    const modeBiciBtn = document.getElementById('app-mode-bici');
+    const islandIcon = document.getElementById('island-icon');
+
+    modeMotoBtn?.addEventListener('click', () => {
+      currentTransportMode = 'moto';
+      modeMotoBtn.className = "profile-mode-btn active px-2 py-0.5 rounded-md bg-cyan-600 text-white transition-all cursor-pointer";
+      if (modeBiciBtn) modeBiciBtn.className = "profile-mode-btn px-2 py-0.5 rounded-md text-slate-400 hover:text-white transition-all cursor-pointer";
+      if (islandIcon) islandIcon.textContent = "🏍️";
+      updateAppUI();
+    });
+
+    modeBiciBtn?.addEventListener('click', () => {
+      currentTransportMode = 'bici';
+      modeBiciBtn.className = "profile-mode-btn active px-2 py-0.5 rounded-md bg-cyan-600 text-white transition-all cursor-pointer";
+      if (modeMotoBtn) modeMotoBtn.className = "profile-mode-btn px-2 py-0.5 rounded-md text-slate-400 hover:text-white transition-all cursor-pointer";
+      if (islandIcon) islandIcon.textContent = "🚴";
+      updateAppUI();
+    });
+
+    // Route Switching (Quick chips in phone & buttons on desktop companion)
+    const setupRouteButtons = () => {
+      const allChips = document.querySelectorAll('.quick-route-chip, .desktop-route-btn');
+      allChips.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const routeKey = btn.getAttribute('data-route');
+          if (routeKey && routesData[routeKey]) {
+            currentRouteKey = routeKey;
+            
+            // update phone chips visual
+            document.querySelectorAll('.quick-route-chip').forEach(c => {
+              if (c.getAttribute('data-route') === routeKey) {
+                c.className = "quick-route-chip active px-2 py-0.5 rounded-full bg-cyan-950 text-cyan-300 border border-cyan-700 shrink-0";
+              } else {
+                c.className = "quick-route-chip px-2 py-0.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700 shrink-0";
+              }
+            });
+
+            // update desktop buttons visual
+            document.querySelectorAll('.desktop-route-btn').forEach(d => {
+              if (d.getAttribute('data-route') === routeKey) {
+                d.className = "desktop-route-btn p-2 rounded-xl bg-cyan-600 text-white font-bold border border-cyan-400 transition-all cursor-pointer text-left";
+              } else {
+                d.className = "desktop-route-btn p-2 rounded-xl bg-slate-800 text-slate-300 hover:text-white border border-slate-700 transition-all cursor-pointer text-left";
+              }
+            });
+
+            updateAppUI();
+          }
+        });
+      });
+    };
+    setupRouteButtons();
+
+    // Toggle Checkpoints Drawer
+    const btnToggleCheckpoints = document.getElementById('btn-toggle-checkpoints');
+    const checkpointsDrawer = document.getElementById('checkpoints-drawer');
+    btnToggleCheckpoints?.addEventListener('click', () => {
+      if (checkpointsDrawer) {
+        checkpointsDrawer.classList.toggle('hidden');
+      }
+    });
+
+    // Accept Route Button Interaction
+    const btnAcceptRoute = document.getElementById('btn-accept-route');
+    const acceptBtnIcon = document.getElementById('accept-btn-icon');
+    const acceptBtnText = document.getElementById('accept-btn-text');
+    const routeStatusTitle = document.getElementById('route-status-title');
+    const routeStatusDot = document.getElementById('route-status-dot');
+
+    btnAcceptRoute?.addEventListener('click', () => {
+      isRouteAccepted = !isRouteAccepted;
+      if (isRouteAccepted) {
+        btnAcceptRoute.className = "flex-1 py-2 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-[11px] shadow-lg shadow-emerald-600/30 transition-all flex items-center justify-center gap-1.5 cursor-pointer";
+        if (acceptBtnIcon) acceptBtnIcon.textContent = "🚀";
+        if (acceptBtnText) acceptBtnText.textContent = "RUTA FIJADA • NAVEGANDO";
+        if (routeStatusTitle) {
+          routeStatusTitle.textContent = "RUTA ACEPTADA • VIAJE EN CURSO";
+          routeStatusTitle.className = "font-bold text-emerald-400 uppercase";
+        }
+        if (routeStatusDot) {
+          routeStatusDot.className = "w-2 h-2 rounded-full bg-emerald-400 animate-ping";
+        }
+      } else {
+        btnAcceptRoute.className = "flex-1 py-2 px-3 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-black text-[11px] shadow-lg shadow-cyan-600/30 transition-all flex items-center justify-center gap-1.5 cursor-pointer";
+        if (acceptBtnIcon) acceptBtnIcon.textContent = "✅";
+        if (acceptBtnText) acceptBtnText.textContent = "ACEPTAR ESTA RUTA";
+        if (routeStatusTitle) {
+          routeStatusTitle.textContent = "ESTIMACIÓN DEL VIAJE (PARA ACEPTAR)";
+          routeStatusTitle.className = "font-bold text-cyan-300 uppercase";
+        }
+        if (routeStatusDot) {
+          routeStatusDot.className = "w-2 h-2 rounded-full bg-cyan-400 animate-pulse";
+        }
+      }
+    });
+
+    // Save Favorite
+    const btnSaveRoute = document.getElementById('btn-save-route');
+    btnSaveRoute?.addEventListener('click', () => {
+      isFavorite = !isFavorite;
+      if (btnSaveRoute) {
+        btnSaveRoute.textContent = isFavorite ? '★ Guardada' : '☆ Guardar';
+        btnSaveRoute.className = isFavorite ? 'text-amber-400 font-bold' : 'text-slate-400 hover:text-amber-400 transition-colors';
+      }
+    });
+
+    // Push Notification Simulation
+    const btnTriggerPush = document.getElementById('btn-trigger-push');
+    const pushNotification = document.getElementById('phone-push-notification');
+    btnTriggerPush?.addEventListener('click', () => {
+      if (!pushNotification) return;
+      pushNotification.classList.remove('hidden');
+      setTimeout(() => {
+        pushNotification.classList.remove('opacity-0', '-translate-y-4');
+        pushNotification.classList.add('opacity-100', 'translate-y-0');
+      }, 50);
+
+      // Auto dismiss after 4 seconds
+      setTimeout(() => {
+        pushNotification.classList.remove('opacity-100', 'translate-y-0');
+        pushNotification.classList.add('opacity-0', '-translate-y-4');
+        setTimeout(() => pushNotification.classList.add('hidden'), 300);
+      }, 4000);
+    });
+
+    // Initial render
+    updateAppUI();
+  });
+</script>

@@ -1,0 +1,1164 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+// Directorio de Médicos Especialistas con credenciales reales, fotografía y honorarios
+const doctorsList = [
+  {
+    id: "doc-01",
+    name: "Dr. Sebastián Montenegro",
+    specialty: "Cardiología & Hemodinamia",
+    regMedico: "RM 49102-SBC",
+    university: "Universidad Javeriana · Fellowship Hospital Clínic Barcelona",
+    photo: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=600&q=80",
+    fee: "$180.000 COP ($45 USD)",
+    numericFee: 180000,
+    office: "Torre Médica Chicó · Consultorio 402",
+    availability: "Citas Hoy",
+    badge: "Jefe de Servicio",
+    slots: ["08:30 AM", "09:15 AM", "11:00 AM", "02:30 PM", "04:15 PM"],
+    prepInstructions: "Presentarse con 10 minutos de anticipación. No tomar café ni bebidas energizantes 4 horas antes si realizará electrocardiograma."
+  },
+  {
+    id: "doc-02",
+    name: "Dra. Camila Santamaría",
+    specialty: "Dermatología Clínica & Estética",
+    regMedico: "RM 58210-COL",
+    university: "Universidad del Rosario · Máster Dermatología Pediátrica",
+    photo: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=600&q=80",
+    fee: "$165.000 COP ($42 USD)",
+    numericFee: 165000,
+    office: "Torre Médica Santa Bárbara · Consultorio 610",
+    availability: "Citas Mañana",
+    badge: "Especialista Destacada",
+    slots: ["09:00 AM", "10:30 AM", "03:00 PM", "04:45 PM"],
+    prepInstructions: "Asistir sin maquillaje facial. Traer fórmulas y cremas dermatológicas de uso habitual."
+  },
+  {
+    id: "doc-03",
+    name: "Dr. Andrés Felipe Caicedo",
+    specialty: "Odontología & Cirugía Oral",
+    regMedico: "RM 38192-FED",
+    university: "Universidad Nacional · Especialista Implantología",
+    photo: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=600&q=80",
+    fee: "$120.000 COP ($30 USD)",
+    numericFee: 120000,
+    office: "Torre Médica Chicó · Consultorio 204",
+    availability: "Citas Hoy",
+    badge: "Tecnología 3D",
+    slots: ["08:00 AM", "10:00 AM", "01:30 PM", "03:15 PM", "05:00 PM"],
+    prepInstructions: "Realizar cepillado previo a la consulta. Incluye radiografía periapical diagnóstica digital."
+  },
+  {
+    id: "doc-04",
+    name: "Dra. Natalia Echeverry",
+    specialty: "Pediatría & Neonatología",
+    regMedico: "RM 61049-ANT",
+    university: "Universidad de Antioquia · Miembro Sociedad Colombiana de Pediatría",
+    photo: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=600&q=80",
+    fee: "$150.000 COP ($38 USD)",
+    numericFee: 150000,
+    office: "Torre Médica Chicó · Consultorio 308",
+    availability: "Citas Hoy",
+    badge: "Atención Integral",
+    slots: ["09:30 AM", "11:15 AM", "02:00 PM", "04:00 PM"],
+    prepInstructions: "Traer carné de vacunación actualizado del menor y curva de crecimiento previa si dispone de ella."
+  },
+  {
+    id: "doc-05",
+    name: "Dr. Fernando Morales",
+    specialty: "Medicina Interna & Preventiva",
+    regMedico: "RM 42109-BOG",
+    university: "Universidad Militar Nueva Granada · Experto en Riesgo Metabólico",
+    photo: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?auto=format&fit=crop&w=600&q=80",
+    fee: "$160.000 COP ($40 USD)",
+    numericFee: 160000,
+    office: "Torre Médica Santa Bárbara · Consultorio 505",
+    availability: "Citas Esta Semana",
+    badge: "Chequeo Ejecutivo",
+    slots: ["08:15 AM", "10:45 AM", "02:45 PM", "04:30 PM"],
+    prepInstructions: "Traer últimos exámenes de laboratorio realizados en los últimos 6 meses."
+  },
+  {
+    id: "doc-06",
+    name: "Dra. Laura Restrepo",
+    specialty: "Ginecología & Obstetricia",
+    regMedico: "RM 55193-CAL",
+    university: "Universidad del Valle · Ecografía Ginecológica Avanzada",
+    photo: "https://images.unsplash.com/photo-1651008376811-b90baee60c1f?auto=format&fit=crop&w=600&q=80",
+    fee: "$175.000 COP ($44 USD)",
+    numericFee: 175000,
+    office: "Torre Médica Chicó · Consultorio 412",
+    availability: "Citas Mañana",
+    badge: "Ecografía 4D",
+    slots: ["09:00 AM", "11:30 AM", "03:30 PM", "05:15 PM"],
+    prepInstructions: "Si su cita incluye ecografía pélvica, beber 3 vasos de agua 45 minutos antes de la valoración."
+  }
+];
+
+const clinicSpecialties = [
+  { icon: "🩺", title: "Medicina General & Interna", desc: "Consultas de valoración integral, chequeos preventivos y diagnóstico clínico rápido.", time: "Disponibilidad Hoy", docsCount: 4 },
+  { icon: "❤️", title: "Cardiología & Hemodinamia", desc: "Electrocardiogramas, ecocardiogramas doppler y prevención de riesgo cardiovascular.", time: "Citas Hoy", docsCount: 2 },
+  { icon: "🦷", title: "Odontología & Estética", desc: "Diseño de sonrisa, ortodoncia invisible, profilaxis computarizada e implantes.", time: "Disponibilidad Hoy", docsCount: 3 },
+  { icon: "👶", title: "Pediatría & Neonatología", desc: "Control de crecimiento, esquema de vacunación internacional y atención infantil.", time: "Citas Hoy", docsCount: 3 },
+  { icon: "✨", title: "Dermatología & Láser", desc: "Diagnóstico de lunares por dermatoscopia, acné, manchas y procedimientos clínicos.", time: "Citas Mañana", docsCount: 2 },
+  { icon: "🧪", title: "Laboratorio & Diagnóstico", desc: "Toma de muestras a domicilio, perfiles lipídicos y descarga de resultados en 4 horas.", time: "Desde 6:30 AM", docsCount: "24/7" }
+];
+---
+
+<Layout 
+  title="Clínica Salud Total | Centro Médico de Especialistas & Agendamiento IA"
+  description="Plataforma médica de alto rendimiento: agendamiento de citas en tiempo real, directorio de especialistas certificados, descarga de resultados clínicos y confirmación vía WhatsApp."
+>
+  <!-- Top Demo Disclaimer Header -->
+  <div class="bg-slate-900 text-white text-xs py-2.5 px-4 font-mono sticky top-0 z-50 shadow-md border-b border-slate-800">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <img src="/images/palkiotech-emblem.png" alt="PalkioTech" class="w-4 h-4 object-contain" />
+        <span class="font-bold text-white">PRODUCTO DE PRODUCCIÓN PALKIOTECH:</span>
+        <span class="text-slate-300 hidden md:inline">Portal Médico Institucional & Motor de Agendamiento con IA</span>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="/#demos" class="text-amber-400 hover:text-white underline transition-colors flex items-center gap-1">
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          Volver al Portafolio
+        </a>
+        <a href="/#contacto" class="bg-gradient-to-r from-amber-500 via-amber-600 to-yellow-600 hover:from-amber-600 hover:to-yellow-700 text-slate-950 font-black px-3 py-1 rounded text-[11px] transition-all flex items-center gap-1 shadow-xs">
+          <span>Cotizar Este Portal Clínico</span>
+          <svg class="w-3.5 h-3.5 text-slate-950" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Medical Top Notification Bar -->
+  <div class="bg-blue-950 text-slate-300 text-xs py-2 px-4 border-b border-blue-900/60 font-sans">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+      <div class="flex flex-wrap items-center gap-4 text-[11px]">
+        <span class="flex items-center gap-1">
+          <svg class="w-3.5 h-3.5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+          Sede Chicó Norte: Calle 127 # 14-45 · Sede Santa Bárbara: Cra 7 # 118-20
+        </span>
+        <span class="text-blue-700 hidden md:inline">|</span>
+        <span class="text-emerald-400 font-mono font-medium">
+          ● Triaje Virtual & Citas WhatsApp 24/7 Activo
+        </span>
+      </div>
+
+      <div class="flex items-center gap-3 text-[11px] font-mono">
+        <a href="#portal-laboratorio" class="text-blue-300 hover:text-white underline">
+          Descargar Resultados de Laboratorio
+        </a>
+        <span class="text-blue-700">|</span>
+        <span class="text-slate-400">Emergencias: (601) 745-9000</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Medical Header -->
+  <header class="bg-white border-b border-slate-200 sticky top-10 z-40 shadow-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-11 h-11 rounded-2xl bg-blue-600 text-white flex items-center justify-center font-bold text-2xl shadow-md shadow-blue-500/20 ring-2 ring-blue-100">
+          ✚
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-black text-lg tracking-tight text-slate-900 block leading-tight">
+              SALUD TOTAL
+            </span>
+            <span class="bg-emerald-100 text-emerald-800 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full border border-emerald-200">
+              REPS Habilitado
+            </span>
+          </div>
+          <span class="text-xs text-slate-500 font-medium">
+            Centro Médico de Especialistas & Diagnóstico Integral
+          </span>
+        </div>
+      </div>
+
+      <nav class="hidden lg:flex items-center gap-7 text-xs font-bold text-slate-600">
+        <a href="#agendamiento" class="hover:text-blue-600 transition-colors">Agendar Cita</a>
+        <a href="#especialistas" class="hover:text-blue-600 transition-colors">Directorio Médico</a>
+        <a href="#especialidades" class="hover:text-blue-600 transition-colors">Especialidades</a>
+        <a href="#portal-laboratorio" class="hover:text-blue-600 transition-colors">Resultados en Línea</a>
+        <a href="#convenios" class="hover:text-blue-600 transition-colors">Aseguradoras & EPS</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a 
+          href="#agendamiento"
+          class="inline-flex items-center gap-2 text-xs font-bold px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white shadow-sm transition-all"
+        >
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+          </svg>
+          <span>Apartar Cita Médica</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Medical Hero Section with Fast Booking Engine -->
+  <section class="relative bg-gradient-to-b from-blue-50/60 via-white to-slate-50/80 py-12 lg:py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-200 overflow-hidden">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+      
+      <!-- Hero Left: Value Proposition -->
+      <div class="lg:col-span-6 space-y-6">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100/80 border border-blue-200 text-blue-800 text-xs font-bold font-mono">
+          <span class="w-2 h-2 rounded-full bg-blue-600"></span>
+          <span>SISTEMA CLÍNICO DIGITAL DE ALTA PRECISIÓN</span>
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-[1.15]">
+          Tu salud en manos de especialistas certificados, <span class="text-blue-600">sin filas ni esperas.</span>
+        </h1>
+
+        <p class="text-sm sm:text-base text-slate-600 leading-relaxed max-w-xl">
+          Selecciona tu especialista, escoge tu franja horaria en tiempo real y recibe tu <strong>Pase Digital de Cita con código QR</strong> y confirmación automática en WhatsApp en menos de 60 segundos.
+        </p>
+
+        <!-- Metric Badges Grid -->
+        <div class="grid grid-cols-3 gap-3 p-4 rounded-2xl bg-white border border-slate-200 shadow-xs max-w-lg text-center sm:text-left">
+          <div class="p-2">
+            <span class="text-2xl font-black text-blue-700 font-mono block">+35</span>
+            <span class="text-xs text-slate-500 font-medium">Médicos Titulares</span>
+          </div>
+          <div class="p-2 border-x border-slate-100">
+            <span class="text-2xl font-black text-emerald-600 font-mono block">&lt; 60s</span>
+            <span class="text-xs text-slate-500 font-medium">Tiempo de Agendamiento</span>
+          </div>
+          <div class="p-2">
+            <span class="text-2xl font-black text-slate-900 font-mono block">99.6%</span>
+            <span class="text-xs text-slate-500 font-medium">Puntualidad en Citas</span>
+          </div>
+        </div>
+
+        <!-- Trust Features -->
+        <div class="space-y-2 pt-2 text-xs text-slate-600">
+          <div class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-emerald-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+            </svg>
+            <span>Recordatorios automáticos por WhatsApp 24h y 2h antes de tu consulta.</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-emerald-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+            </svg>
+            <span>Aceptamos medicina prepagada, pólizas de salud y tarifa particular.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Right: Interactive 3-Step Booking Engine Card -->
+      <div id="agendamiento" class="lg:col-span-6 bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-xl relative">
+        <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-5">
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-emerald-500 animate-ping"></span>
+            <h3 class="text-base font-black text-slate-900">Agendar Cita en Línea</h3>
+          </div>
+          <span class="text-xs font-mono font-bold text-blue-700 bg-blue-50 px-2.5 py-1 rounded-lg border border-blue-200">
+            Paso <span id="booking-step-num">1</span> de 2
+          </span>
+        </div>
+
+        <form id="clinic-booking-form" class="space-y-4 text-xs">
+          
+          <!-- STEP 1: DOCTOR, SEDE & TIME SLOTS -->
+          <div id="booking-step-1" class="space-y-4">
+            <div>
+              <label class="block font-bold text-slate-700 mb-1">1. Selecciona la Sede Clínica *</label>
+              <select id="book-sede" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 font-medium focus:ring-2 focus:ring-blue-600 focus:outline-none">
+                <option value="Sede Chicó Norte (Calle 127 # 14-45)">Sede Chicó Norte · Calle 127 # 14-45</option>
+                <option value="Sede Santa Bárbara (Cra 7 # 118-20)">Sede Santa Bárbara · Cra 7 # 118-20</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block font-bold text-slate-700 mb-1">2. Especialidad o Médico Especialista *</label>
+              <select id="book-doctor" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 font-medium focus:ring-2 focus:ring-blue-600 focus:outline-none">
+                {doctorsList.map((doc) => (
+                  <option value={doc.id} data-fee={doc.fee} data-name={doc.name} data-spec={doc.specialty}>
+                    {doc.name} — {doc.specialty} ({doc.fee})
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block font-bold text-slate-700 mb-1">3. Fecha Deseada *</label>
+                <input 
+                  type="date" 
+                  id="book-date" 
+                  required 
+                  class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-xs text-slate-800 font-mono focus:ring-2 focus:ring-blue-600 focus:outline-none"
+                />
+              </div>
+
+              <div>
+                <label class="block font-bold text-slate-700 mb-1">Tipo de Consulta *</label>
+                <select id="book-modality" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-xs text-slate-800 font-medium focus:ring-2 focus:ring-blue-600 focus:outline-none">
+                  <option value="Presencial en Consultorio">Presencial en Consultorio</option>
+                  <option value="Telemedicina / Videoconsulta HD">Telemedicina / Videoconsulta HD</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Interactive Time Slots Selector -->
+            <div>
+              <div class="flex items-center justify-between mb-1.5">
+                <label class="block font-bold text-slate-700">4. Franjas Horarias Disponibles *</label>
+                <span class="text-[10px] font-mono text-emerald-700 font-bold">Tiempo Real</span>
+              </div>
+              
+              <div id="time-slots-container" class="grid grid-cols-3 sm:grid-cols-5 gap-2">
+                <!-- Injected via JavaScript based on doctor selected -->
+              </div>
+              <input type="hidden" id="selected-slot" required value="08:30 AM" />
+            </div>
+
+            <div class="pt-2">
+              <button 
+                type="button" 
+                id="btn-goto-step-2" 
+                class="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-sm transition-all"
+              >
+                <span>Continuar a Datos del Paciente</span>
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 2: PATIENT DATA & MOTIVE -->
+          <div id="booking-step-2" class="hidden space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block font-bold text-slate-700 mb-1">Nombre Completo del Paciente *</label>
+                <input 
+                  type="text" 
+                  id="patient-name" 
+                  required 
+                  placeholder="Ej: Carolina Morales" 
+                  class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs text-slate-800 focus:ring-2 focus:ring-blue-600 focus:outline-none"
+                />
+              </div>
+
+              <div>
+                <label class="block font-bold text-slate-700 mb-1">Documento de Identidad (C.C.) *</label>
+                <input 
+                  type="text" 
+                  id="patient-doc" 
+                  required 
+                  placeholder="Ej: 1.020.849.201" 
+                  class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs text-slate-800 focus:ring-2 focus:ring-blue-600 focus:outline-none"
+                />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block font-bold text-slate-700 mb-1">WhatsApp / Teléfono Móvil *</label>
+                <input 
+                  type="tel" 
+                  id="patient-phone" 
+                  required 
+                  placeholder="+57 300 123 4567" 
+                  class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs text-slate-800 focus:ring-2 focus:ring-blue-600 focus:outline-none"
+                />
+              </div>
+
+              <div>
+                <label class="block font-bold text-slate-700 mb-1">Entidad de Salud / Cobertura *</label>
+                <select id="patient-insurance" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs text-slate-800 focus:ring-2 focus:ring-blue-600 focus:outline-none">
+                  <option value="Particular (Sin Seguro)">Particular (Pago Directo)</option>
+                  <option value="Colmédica Medicina Prepagada">Colmédica Medicina Prepagada</option>
+                  <option value="Colsanitas / Medisanitas">Colsanitas / Medisanitas</option>
+                  <option value="SURA Póliza de Salud">SURA Póliza de Salud</option>
+                  <option value="Allianz Seguros Salud">Allianz Seguros</option>
+                  <option value="Coomeva Medicina Prepagada">Coomeva Prepagada</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label class="block font-bold text-slate-700 mb-1">Motivo Principal de Consulta o Síntomas</label>
+              <textarea 
+                id="patient-motive" 
+                rows="2" 
+                placeholder="Ej: Chequeo preventivo anual, dolor torácico ocasional..." 
+                class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs text-slate-800 focus:ring-2 focus:ring-blue-600 focus:outline-none"
+              ></textarea>
+            </div>
+
+            <!-- Booking Summary Box -->
+            <div class="bg-blue-50/70 p-3.5 rounded-xl border border-blue-200 text-xs text-blue-900 space-y-1">
+              <div class="flex justify-between font-bold">
+                <span id="summary-doc-spec">Dr. Sebastián Montenegro</span>
+                <span id="summary-doc-fee" class="text-blue-700">$180.000 COP</span>
+              </div>
+              <div class="text-[11px] text-blue-800">
+                <span id="summary-date-time">Fecha: Mañana a las 08:30 AM</span> · <span id="summary-sede">Sede Chicó Norte</span>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-2 pt-2">
+              <button 
+                type="button" 
+                id="btn-back-step-1" 
+                class="px-4 py-3 rounded-xl border border-slate-300 text-slate-700 hover:bg-slate-100 font-bold transition-all"
+              >
+                ← Volver
+              </button>
+              <button 
+                type="submit" 
+                class="flex-1 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-sm transition-all"
+              >
+                <span>Generar Pase Médico & Confirmar en WhatsApp</span>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.275.072.376-.043.101-.116.433-.506.549-.68.116-.173.231-.144.39-.086s1.011.477 1.184.564c.173.087.289.13.332.202.043.073.043.419-.101.824z"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Section 2: Medical Specialists Directory -->
+  <section id="especialistas" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+      <div>
+        <span class="text-xs font-mono font-bold uppercase text-blue-700 bg-blue-50 px-2.5 py-1 rounded border border-blue-200">
+          CUERPO MÉDICO TITULAR
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight mt-2">
+          Nuestros Médicos Especialistas
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-500 mt-1">
+          Profesionales certificados con formación en centros de referencia nacional e internacional.
+        </p>
+      </div>
+
+      <a href="#agendamiento" class="inline-flex items-center gap-1.5 text-xs font-bold text-blue-600 hover:text-blue-800">
+        <span>Ver todas las disponibilidades</span>
+        <span>→</span>
+      </a>
+    </div>
+
+    <!-- Doctors Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {doctorsList.map((doc) => (
+        <div class="bg-white rounded-2xl border border-slate-200 hover:border-blue-400 hover:shadow-lg transition-all p-5 flex flex-col justify-between group">
+          <div>
+            <!-- Doctor Header with photo and badge -->
+            <div class="flex items-start gap-4 mb-4">
+              <img 
+                src={doc.photo} 
+                alt={doc.name} 
+                class="w-20 h-20 rounded-2xl object-cover border-2 border-slate-100 group-hover:scale-105 transition-transform" 
+              />
+              <div class="flex-1 min-w-0">
+                <span class="text-[10px] font-mono font-bold uppercase px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200 block w-max mb-1">
+                  {doc.badge}
+                </span>
+                <h3 class="font-black text-slate-900 text-sm truncate leading-tight group-hover:text-blue-600 transition-colors">
+                  {doc.name}
+                </h3>
+                <span class="text-xs font-bold text-blue-700 block mt-0.5">
+                  {doc.specialty}
+                </span>
+                <span class="text-[10px] font-mono text-slate-400 block mt-0.5">
+                  {doc.regMedico}
+                </span>
+              </div>
+            </div>
+
+            <!-- Academic details -->
+            <p class="text-xs text-slate-600 leading-relaxed mb-4 line-clamp-2">
+              {doc.university}
+            </p>
+
+            <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 space-y-1.5 text-xs mb-4">
+              <div class="flex items-center justify-between">
+                <span class="text-slate-500 text-[11px]">Ubicación:</span>
+                <strong class="text-slate-800 text-[11px] font-semibold">{doc.office}</strong>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-slate-500 text-[11px]">Valor Consulta:</span>
+                <strong class="text-blue-700 font-mono font-bold text-xs">{doc.fee}</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
+            <span class="text-[11px] font-mono text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+              ● {doc.availability}
+            </span>
+            <button 
+              type="button" 
+              class="btn-select-doctor px-3.5 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs transition-all shadow-xs flex items-center gap-1"
+              data-id={doc.id}
+            >
+              <span>Agendar</span>
+              <span>→</span>
+            </button>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Section 3: Specialties Grid -->
+  <section id="especialidades" class="py-16 px-4 sm:px-6 lg:px-8 bg-slate-50 border-y border-slate-200">
+    <div class="max-w-7xl mx-auto">
+      <div class="max-w-2xl mx-auto text-center mb-12">
+        <span class="text-xs font-mono font-bold uppercase text-blue-700 bg-blue-100 px-3 py-1 rounded-full border border-blue-200 inline-block mb-3">
+          COBERTURA INTEGRAL
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+          Especialidades Clínicas & Diagnósticas
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-600 mt-2">
+          Instalaciones médicas dotadas con tecnología diagnóstica de vanguardia y quirófanos ambulatorios.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {clinicSpecialties.map((spec) => (
+          <div class="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-blue-50 border border-blue-200/60 flex items-center justify-center text-2xl mb-4">
+                {spec.icon}
+              </div>
+              <h3 class="text-base font-bold text-slate-900 mb-1.5">{spec.title}</h3>
+              <p class="text-xs text-slate-600 leading-relaxed mb-4">{spec.desc}</p>
+            </div>
+            <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+              <span class="font-mono text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                {spec.time}
+              </span>
+              <a href="#agendamiento" class="font-bold text-blue-600 hover:text-blue-800 flex items-center gap-1">
+                <span>Reservar</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Portal de Descarga de Resultados de Laboratorio (Simulator) -->
+  <section id="portal-laboratorio" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div class="bg-gradient-to-r from-blue-900 to-indigo-900 rounded-3xl p-8 sm:p-12 text-white shadow-xl relative overflow-hidden">
+      <!-- Background pattern -->
+      <div class="absolute -right-20 -bottom-20 w-80 h-80 rounded-full bg-blue-500/10 blur-3xl pointer-events-none"></div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+        <div class="lg:col-span-7 space-y-4">
+          <span class="text-xs font-mono font-bold uppercase text-emerald-400 bg-emerald-950/60 px-3 py-1 rounded-full border border-emerald-500/30">
+            PORTAL DEL PACIENTE 24/7
+          </span>
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight leading-tight">
+            Descarga tus Resultados de Laboratorio en Línea
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-lg">
+            Ahorra tiempo y viajes. Ingresa tu número de documento y código de orden para consultar tus exámenes con firma digital médica en formato PDF de alta resolución.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-4 text-xs font-mono text-slate-300 pt-2">
+            <span class="flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+              Resultados en 4 a 6 horas
+            </span>
+            <span class="flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+              Firma Electrónica Válida
+            </span>
+            <span class="flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+              Cifrado Médico HIPAA
+            </span>
+          </div>
+        </div>
+
+        <!-- Interactive Lab Simulator Card -->
+        <div class="lg:col-span-5 bg-white text-slate-800 rounded-2xl p-6 shadow-2xl">
+          <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-4">
+            <span class="font-bold text-xs text-slate-900 flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-blue-600"></span>
+              Consultar Resultados Clínicos
+            </span>
+            <span class="text-[10px] font-mono text-slate-400">Demo Interactivo</span>
+          </div>
+
+          <form id="lab-search-form" class="space-y-3 text-xs">
+            <div>
+              <label class="block font-bold text-slate-700 mb-1">Cédula o Documento del Paciente</label>
+              <input 
+                type="text" 
+                id="lab-doc-input" 
+                value="1020849201" 
+                required 
+                class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs font-mono focus:ring-2 focus:ring-blue-600 focus:outline-none"
+              />
+            </div>
+            <div>
+              <label class="block font-bold text-slate-700 mb-1">Código de Orden de Muestra</label>
+              <input 
+                type="text" 
+                id="lab-order-input" 
+                value="LAB-9842" 
+                required 
+                class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs font-mono focus:ring-2 focus:ring-blue-600 focus:outline-none"
+              />
+            </div>
+            <button 
+              type="submit" 
+              class="w-full py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs transition-all shadow-sm flex items-center justify-center gap-2"
+            >
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+              <span>Buscar Examen Clínico</span>
+            </button>
+          </form>
+
+          <!-- Result Preview Box (Hidden by default, shown on search) -->
+          <div id="lab-result-box" class="hidden mt-4 pt-3 border-t border-slate-100 text-xs">
+            <div class="bg-emerald-50 border border-emerald-200 p-3 rounded-xl mb-3">
+              <div class="flex items-center justify-between mb-1">
+                <strong class="text-emerald-900 font-bold">Perfil Lipídico Completo & Glucosa</strong>
+                <span class="text-[10px] font-mono font-bold text-emerald-700 bg-white px-1.5 py-0.5 rounded border border-emerald-200">VALIDADO</span>
+              </div>
+              <span class="text-[11px] text-emerald-800 block">Paciente: Carolina Morales · Orden: #LAB-9842</span>
+              <span class="text-[10px] text-slate-500 font-mono">Bacteriólogo: Dra. Elena Restrepo (Reg. 3910)</span>
+            </div>
+            <button 
+              type="button" 
+              id="btn-download-lab-pdf" 
+              class="w-full py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs transition-all flex items-center justify-center gap-2"
+            >
+              <svg class="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              </svg>
+              <span>Descargar Reporte Médico en PDF</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: Convenios con Aseguradoras y Prepagadas -->
+  <section id="convenios" class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b border-slate-200">
+    <div class="text-center max-w-xl mx-auto mb-8">
+      <span class="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider block mb-1">
+        CONVENIOS & COBERTURAS
+      </span>
+      <h3 class="text-lg font-black text-slate-900">
+        Atendemos Pacientes de las Principales Aseguradoras
+      </h3>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 text-center">
+      <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs font-bold text-slate-700 flex items-center justify-center">
+        Colmédica Prepagada
+      </div>
+      <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs font-bold text-slate-700 flex items-center justify-center">
+        Colsanitas & Medisanitas
+      </div>
+      <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs font-bold text-slate-700 flex items-center justify-center">
+        SURA Póliza de Salud
+      </div>
+      <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs font-bold text-slate-700 flex items-center justify-center">
+        Allianz Seguros
+      </div>
+      <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs font-bold text-slate-700 flex items-center justify-center">
+        Seguros Bolívar
+      </div>
+      <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs font-bold text-slate-700 flex items-center justify-center">
+        Particular / Tarifa Plana
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: Medical FAQ Accordion -->
+  <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+    <div class="text-center mb-10">
+      <h2 class="text-2xl font-black text-slate-900 tracking-tight mb-2">
+        Preguntas Frecuentes de Pacientes
+      </h2>
+      <p class="text-xs text-slate-500">
+        Todo lo que necesitas saber antes de tu consulta o procedimiento.
+      </p>
+    </div>
+
+    <div class="space-y-3 text-xs">
+      <details class="group bg-white rounded-xl border border-slate-200 p-4 open:shadow-xs transition-all">
+        <summary class="font-bold text-slate-900 cursor-pointer flex justify-between items-center list-none">
+          <span>¿Cómo me llega la confirmación de la cita médica?</span>
+          <span class="text-blue-600 group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <p class="mt-3 text-slate-600 leading-relaxed pt-2 border-t border-slate-100">
+          Inmediatamente después de agendar en la web, el sistema genera tu <strong>Pase Digital de Cita con código QR</strong> y el agente inteligente de WhatsApp te envía un mensaje con la dirección exacta, piso, consultorio y recomendaciones de preparación.
+        </p>
+      </details>
+
+      <details class="group bg-white rounded-xl border border-slate-200 p-4 open:shadow-xs transition-all">
+        <summary class="font-bold text-slate-900 cursor-pointer flex justify-between items-center list-none">
+          <span>¿Puedo reagendar o cancelar mi cita si tengo un imprevisto?</span>
+          <span class="text-blue-600 group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <p class="mt-3 text-slate-600 leading-relaxed pt-2 border-t border-slate-100">
+          Sí. Puedes responder directamente al mensaje de WhatsApp de confirmación con la palabra <em>"Reagendar"</em> y el bot te mostrará los siguientes horarios disponibles con tu especialista sin costo adicional hasta 2 horas antes de la consulta.
+        </p>
+      </details>
+
+      <details class="group bg-white rounded-xl border border-slate-200 p-4 open:shadow-xs transition-all">
+        <summary class="font-bold text-slate-900 cursor-pointer flex justify-between items-center list-none">
+          <span>¿Cómo funciona el servicio de laboratorio clínico a domicilio?</span>
+          <span class="text-blue-600 group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <p class="mt-3 text-slate-600 leading-relaxed pt-2 border-t border-slate-100">
+          Un bacteriólogo motorizado asiste a tu residencia o empresa con equipo refrigerado entre 6:00 AM y 9:00 AM. Los resultados se cargan automáticamente a este portal el mismo día en horas de la tarde.
+        </p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============================================================== -->
+  <!-- MODAL: PASE DIGITAL DE CITA MÉDICA & CÓDIGO QR                  -->
+  <!-- ============================================================== -->
+  <div id="modal-ticket-pass" class="fixed inset-0 bg-slate-900/70 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-200 my-8">
+      
+      <!-- Ticket Header -->
+      <div class="text-center pb-5 border-b border-slate-200">
+        <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-700 font-bold text-2xl flex items-center justify-center mx-auto mb-2">
+          ✓
+        </div>
+        <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+          CITA CONFIRMADA EXITOSAMENTE
+        </span>
+        <h3 class="text-xl font-black text-slate-900 mt-1">
+          Pase Médico Digital
+        </h3>
+        <span id="ticket-folio" class="text-xs font-mono text-slate-500 font-bold block mt-0.5">
+          Folio: #MED-2026-7841
+        </span>
+      </div>
+
+      <!-- Ticket Body with Doctor and Patient Info -->
+      <div class="py-5 space-y-4 text-xs">
+        
+        <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2">
+          <div class="flex justify-between items-start">
+            <div>
+              <span class="text-slate-400 font-mono text-[10px] block uppercase">Especialista Asignado:</span>
+              <strong id="ticket-doctor-name" class="text-slate-900 font-bold text-sm block">Dr. Sebastián Montenegro</strong>
+              <span id="ticket-doctor-spec" class="text-blue-700 font-semibold">Cardiología & Hemodinamia</span>
+            </div>
+            <span id="ticket-fee" class="font-mono font-bold text-slate-900 text-xs bg-white px-2 py-1 rounded border border-slate-200">
+              $180.000 COP
+            </span>
+          </div>
+
+          <div class="pt-2 border-t border-slate-200/80 grid grid-cols-2 gap-2 text-[11px]">
+            <div>
+              <span class="text-slate-400 font-mono block text-[10px]">Fecha & Hora:</span>
+              <strong id="ticket-datetime" class="text-slate-800">Mañana · 08:30 AM</strong>
+            </div>
+            <div>
+              <span class="text-slate-400 font-mono block text-[10px]">Consultorio / Ubicación:</span>
+              <strong id="ticket-sede" class="text-slate-800">Torre Chicó · Consultorio 402</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Patient Info -->
+        <div class="px-2 text-slate-600 text-xs space-y-1">
+          <div class="flex justify-between">
+            <span>Paciente:</span>
+            <strong id="ticket-patient-name" class="text-slate-900">Carolina Morales</strong>
+          </div>
+          <div class="flex justify-between">
+            <span>Documento:</span>
+            <strong id="ticket-patient-doc" class="text-slate-900 font-mono">1.020.849.201</strong>
+          </div>
+          <div class="flex justify-between">
+            <span>Cobertura:</span>
+            <strong id="ticket-insurance" class="text-slate-900">Particular</strong>
+          </div>
+        </div>
+
+        <!-- Simulated QR Code Graphic -->
+        <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-center flex flex-col items-center justify-center">
+          <!-- QR Visual SVG Mockup -->
+          <div class="w-32 h-32 bg-white p-2 rounded-xl border border-slate-300 shadow-xs flex items-center justify-center mb-2">
+            <svg class="w-28 h-28 text-slate-900" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M2 2h8v8H2V2zm2 2v4h4V4H4zm10-2h8v8h-8V2zm2 2v4h4V4h-4zM2 14h8v8H2v-8zm2 2v4h4v-4H4zm12 0h2v2h-2v-2zm4 0h2v4h-4v-2h2v-2zm-2 4h2v2h-2v-2zm-4-4h2v6h-2v-6zm6-6h2v2h-2v-2zm-2 2h2v2h-2v-2zm-2-2h2v2h-2v-2zm4 4h2v2h-2v-2zM5 5h2v2H5V5zm12 0h2v2h-2V5zM5 17h2v2H5v-2z" />
+            </svg>
+          </div>
+          <span class="text-[10px] font-mono text-slate-500 block">
+            Presenta este código QR en la recepción para ingreso prioritario.
+          </span>
+        </div>
+
+        <!-- Medical Prep Instruction Note -->
+        <div class="bg-amber-50 border border-amber-200 p-3 rounded-xl text-[11px] text-amber-900">
+          <strong class="block mb-0.5 font-bold">Instrucción Médica Previa:</strong>
+          <span id="ticket-prep-instructions">Llegar 10 minutos antes. Traer documento de identidad y exámenes previos.</span>
+        </div>
+
+      </div>
+
+      <!-- Ticket Actions -->
+      <div class="flex flex-col sm:flex-row items-center gap-2 pt-4 border-t border-slate-200">
+        <button 
+          type="button" 
+          id="btn-print-ticket" 
+          class="w-full sm:w-auto px-4 py-2.5 rounded-xl border border-slate-300 hover:bg-slate-100 text-slate-700 text-xs font-bold transition-all flex items-center justify-center gap-1.5"
+        >
+          <svg class="w-4 h-4 text-slate-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+          </svg>
+          <span>Descargar PDF</span>
+        </button>
+
+        <button 
+          type="button" 
+          id="btn-ticket-whatsapp" 
+          class="flex-1 w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs transition-all flex items-center justify-center gap-1.5 shadow-sm"
+        >
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.275.072.376-.043.101-.116.433-.506.549-.68.116-.173.231-.144.39-.086s1.011.477 1.184.564c.173.087.289.13.332.202.043.073.043.419-.101.824z"/>
+          </svg>
+          <span>Confirmar en WhatsApp</span>
+        </button>
+
+        <button 
+          type="button" 
+          id="btn-close-ticket" 
+          class="px-3 py-2 text-slate-400 hover:text-slate-600 text-xs font-bold"
+        >
+          Cerrar
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Medical Corporate Footer -->
+  <footer class="bg-slate-900 text-white border-t border-slate-800 pt-12 pb-6 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pb-10 border-b border-slate-800">
+      
+      <div>
+        <div class="flex items-center gap-2 mb-3">
+          <div class="w-8 h-8 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-base shadow-sm">
+            ✚
+          </div>
+          <span class="font-black text-base text-white tracking-tight">SALUD TOTAL</span>
+        </div>
+        <p class="text-slate-400 leading-relaxed mb-4">
+          Institución prestadora de salud de alta complejidad, habilitada ante el Ministerio de Salud y Protección Social. Habilitación REPS #11001-08492.
+        </p>
+        <span class="text-emerald-400 font-mono font-bold text-[11px] block">
+          ● Servicio de Urgencias 24 Horas
+        </span>
+      </div>
+
+      <div>
+        <h4 class="font-mono font-bold uppercase text-slate-200 tracking-wider mb-3">Sedes de Atención</h4>
+        <div class="space-y-3 text-slate-400">
+          <div>
+            <strong class="text-slate-200 block">Sede Chicó Norte</strong>
+            <span>Calle 127 # 14-45, Torres Médicas A y B</span>
+            <span class="text-slate-500 block text-[11px]">Conmutador: (601) 745-9000</span>
+          </div>
+          <div>
+            <strong class="text-slate-200 block">Sede Santa Bárbara</strong>
+            <span>Cra 7ma # 118-20, Centro de Diagnóstico</span>
+            <span class="text-slate-500 block text-[11px]">Laboratorio desde 6:00 AM</span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="font-mono font-bold uppercase text-slate-200 tracking-wider mb-3">Horarios de Consulta</h4>
+        <ul class="space-y-1.5 text-slate-400">
+          <li class="flex justify-between">
+            <span>Lunes a Viernes:</span>
+            <strong class="text-slate-200 font-mono">6:30 AM - 8:00 PM</strong>
+          </li>
+          <li class="flex justify-between">
+            <span>Sábados:</span>
+            <strong class="text-slate-200 font-mono">7:00 AM - 5:00 PM</strong>
+          </li>
+          <li class="flex justify-between">
+            <span>Laboratorio Clínico:</span>
+            <strong class="text-emerald-400 font-mono">6:00 AM - 3:00 PM</strong>
+          </li>
+          <li class="flex justify-between">
+            <span>Toma a Domicilio:</span>
+            <strong class="text-blue-400 font-mono">Lunes a Sábado</strong>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-mono font-bold uppercase text-slate-200 tracking-wider mb-3">Desarrollo Tecnológico</h4>
+        <p class="text-slate-400 leading-relaxed mb-3">
+          Este portal clínico y su motor de agendamiento inteligente con confirmación en tiempo real fueron desarrollados por <strong>PalkioTech</strong>.
+        </p>
+        <a href="/#contacto" class="text-blue-400 hover:text-white font-bold block transition-colors">
+          Cotizar este sistema para tu clínica →
+        </a>
+      </div>
+
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-slate-500 text-[11px] font-mono">
+      <span>© 2026 Clínica Salud Total S.A.S. Todos los derechos reservados.</span>
+      <span>Plataforma Médica Desarrollada por PalkioTech</span>
+    </div>
+  </footer>
+
+  <!-- Floating Medical WhatsApp Live Chat Widget -->
+  <aside class="fixed bottom-6 right-6 z-40">
+    <a 
+      href="https://api.whatsapp.com/send?text=Hola%20Cl%C3%ADnica%20Salud%20Total%2C%20quisiera%20consultar%20por%20citas%20disponibles."
+      target="_blank"
+      class="bg-emerald-600 hover:bg-emerald-500 text-white p-3.5 rounded-full shadow-2xl flex items-center justify-center transition-all hover:scale-110 group relative"
+      title="Triaje Médico en WhatsApp 24/7"
+    >
+      <span class="absolute -top-1 -right-1 w-3 h-3 bg-emerald-400 rounded-full animate-ping"></span>
+      <span class="absolute -top-1 -right-1 w-3 h-3 bg-emerald-300 rounded-full"></span>
+      <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.275.072.376-.043.101-.116.433-.506.549-.68.116-.173.231-.144.39-.086s1.011.477 1.184.564c.173.087.289.13.332.202.043.073.043.419-.101.824z"/>
+      </svg>
+      <span class="sr-only">Asistente Médico WhatsApp</span>
+    </a>
+  </aside>
+
+  <!-- Client-side Interactive Medical Engine (Vite Bundled Script) -->
+  <script define:vars={{ doctorsList }}>
+    // Set default tomorrow date on date input
+    const dateInput = document.getElementById('book-date');
+    if (dateInput) {
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      dateInput.value = tomorrow.toISOString().slice(0, 10);
+    }
+
+    // Dynamic Time Slots Generator based on selected doctor
+    const docSelect = document.getElementById('book-doctor');
+    const slotsContainer = document.getElementById('time-slots-container');
+    const selectedSlotInput = document.getElementById('selected-slot');
+
+    function renderTimeSlots(doctorId) {
+      if (!slotsContainer) return;
+      slotsContainer.innerHTML = '';
+
+      const doc = doctorsList.find(d => d.id === doctorId) || doctorsList[0];
+      const slots = doc.slots || ["08:30 AM", "09:15 AM", "11:00 AM", "02:30 PM", "04:15 PM"];
+
+      if (selectedSlotInput) selectedSlotInput.value = slots[0];
+
+      slots.forEach((slot, index) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = index === 0
+          ? "time-slot-btn py-2 px-1 text-center font-mono font-bold text-xs rounded-xl bg-blue-600 text-white shadow-xs border border-blue-600 transition-all"
+          : "time-slot-btn py-2 px-1 text-center font-mono font-bold text-xs rounded-xl bg-slate-50 text-slate-700 hover:bg-slate-100 border border-slate-200 transition-all";
+        btn.textContent = slot;
+
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.time-slot-btn').forEach(b => {
+            b.className = "time-slot-btn py-2 px-1 text-center font-mono font-bold text-xs rounded-xl bg-slate-50 text-slate-700 hover:bg-slate-100 border border-slate-200 transition-all";
+          });
+          btn.className = "time-slot-btn py-2 px-1 text-center font-mono font-bold text-xs rounded-xl bg-blue-600 text-white shadow-xs border border-blue-600 transition-all";
+          if (selectedSlotInput) selectedSlotInput.value = slot;
+        });
+
+        slotsContainer.appendChild(btn);
+      });
+    }
+
+    docSelect?.addEventListener('change', (e) => {
+      renderTimeSlots(e.target.value);
+    });
+    renderTimeSlots(doctorsList[0].id);
+
+    // Doctor card click "Agendar con este médico"
+    document.querySelectorAll('.btn-select-doctor').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const docId = btn.getAttribute('data-id');
+        if (docSelect && docId) {
+          docSelect.value = docId;
+          renderTimeSlots(docId);
+          document.getElementById('agendamiento')?.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Step 1 to Step 2 Navigation
+    const step1El = document.getElementById('booking-step-1');
+    const step2El = document.getElementById('booking-step-2');
+    const stepNum = document.getElementById('booking-step-num');
+    const btnGotoStep2 = document.getElementById('btn-goto-step-2');
+    const btnBackStep1 = document.getElementById('btn-back-step-1');
+
+    const summaryDocSpec = document.getElementById('summary-doc-spec');
+    const summaryDocFee = document.getElementById('summary-doc-fee');
+    const summaryDateTime = document.getElementById('summary-date-time');
+    const summarySede = document.getElementById('summary-sede');
+
+    btnGotoStep2?.addEventListener('click', () => {
+      const selectedDocId = docSelect?.value;
+      const doc = doctorsList.find(d => d.id === selectedDocId) || doctorsList[0];
+      const slot = selectedSlotInput?.value || '08:30 AM';
+      const dateVal = dateInput?.value || 'Mañana';
+      const sedeVal = document.getElementById('book-sede')?.value.split('·')[0].trim() || 'Sede Chicó';
+
+      if (summaryDocSpec) summaryDocSpec.textContent = `${doc.name} (${doc.specialty})`;
+      if (summaryDocFee) summaryDocFee.textContent = doc.fee;
+      if (summaryDateTime) summaryDateTime.textContent = `Fecha: ${dateVal} · ${slot}`;
+      if (summarySede) summarySede.textContent = sedeVal;
+
+      step1El?.classList.add('hidden');
+      step2El?.classList.remove('hidden');
+      if (stepNum) stepNum.textContent = '2';
+    });
+
+    btnBackStep1?.addEventListener('click', () => {
+      step2El?.classList.add('hidden');
+      step1El?.classList.remove('hidden');
+      if (stepNum) stepNum.textContent = '1';
+    });
+
+    // Modal Ticket Pass Elements
+    const bookingForm = document.getElementById('clinic-booking-form');
+    const modalTicket = document.getElementById('modal-ticket-pass');
+    const btnCloseTicket = document.getElementById('btn-close-ticket');
+    const btnPrintTicket = document.getElementById('btn-print-ticket');
+    const btnTicketWhatsApp = document.getElementById('btn-ticket-whatsapp');
+
+    const ticketFolio = document.getElementById('ticket-folio');
+    const ticketDocName = document.getElementById('ticket-doctor-name');
+    const ticketDocSpec = document.getElementById('ticket-doctor-spec');
+    const ticketFee = document.getElementById('ticket-fee');
+    const ticketDateTime = document.getElementById('ticket-datetime');
+    const ticketSede = document.getElementById('ticket-sede');
+    const ticketPatientName = document.getElementById('ticket-patient-name');
+    const ticketPatientDoc = document.getElementById('ticket-patient-doc');
+    const ticketInsurance = document.getElementById('ticket-insurance');
+    const ticketPrep = document.getElementById('ticket-prep-instructions');
+
+    let lastBookingDetails = null;
+
+    bookingForm?.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const selectedDocId = docSelect?.value;
+      const doc = doctorsList.find(d => d.id === selectedDocId) || doctorsList[0];
+      const slot = selectedSlotInput?.value || '08:30 AM';
+      const dateVal = dateInput?.value || 'Mañana';
+      const sedeVal = document.getElementById('book-sede')?.value || 'Sede Chicó Norte';
+      const patientName = document.getElementById('patient-name')?.value.trim() || 'Paciente';
+      const patientDoc = document.getElementById('patient-doc')?.value.trim() || 'No especificado';
+      const patientPhone = document.getElementById('patient-phone')?.value.trim() || '';
+      const insurance = document.getElementById('patient-insurance')?.value || 'Particular';
+      const motive = document.getElementById('patient-motive')?.value.trim() || 'Consulta médica general';
+
+      const generatedFolio = `#MED-2026-${Math.floor(1000 + Math.random() * 9000)}`;
+
+      lastBookingDetails = {
+        folio: generatedFolio,
+        docName: doc.name,
+        docSpec: doc.specialty,
+        fee: doc.fee,
+        office: doc.office,
+        date: dateVal,
+        slot: slot,
+        sede: sedeVal,
+        patientName: patientName,
+        patientDoc: patientDoc,
+        phone: patientPhone,
+        insurance: insurance,
+        motive: motive,
+        prep: doc.prepInstructions
+      };
+
+      // Populate Ticket
+      if (ticketFolio) ticketFolio.textContent = `Folio: ${generatedFolio}`;
+      if (ticketDocName) ticketDocName.textContent = doc.name;
+      if (ticketDocSpec) ticketDocSpec.textContent = doc.specialty;
+      if (ticketFee) ticketFee.textContent = doc.fee;
+      if (ticketDateTime) ticketDateTime.textContent = `${dateVal} · ${slot}`;
+      if (ticketSede) ticketSede.textContent = `${sedeVal} · ${doc.office}`;
+      if (ticketPatientName) ticketPatientName.textContent = patientName;
+      if (ticketPatientDoc) ticketPatientDoc.textContent = patientDoc;
+      if (ticketInsurance) ticketInsurance.textContent = insurance;
+      if (ticketPrep) ticketPrep.textContent = doc.prepInstructions;
+
+      modalTicket?.classList.remove('hidden');
+    });
+
+    btnCloseTicket?.addEventListener('click', () => {
+      modalTicket?.classList.add('hidden');
+    });
+
+    btnPrintTicket?.addEventListener('click', () => {
+      window.print();
+    });
+
+    btnTicketWhatsApp?.addEventListener('click', () => {
+      if (!lastBookingDetails) return;
+      const b = lastBookingDetails;
+
+      let msg = `🏥 *CONFIRMACIÓN DE CITA MÉDICA ${b.folio} — CLÍNICA SALUD TOTAL*\n`;
+      msg += `------------------------------------\n`;
+      msg += `👤 *Paciente:* ${b.patientName} (Doc: ${b.patientDoc})\n`;
+      msg += `📱 *WhatsApp:* ${b.phone}\n`;
+      msg += `👨‍⚕️ *Especialista:* ${b.docName} (${b.docSpec})\n`;
+      msg += `📅 *Fecha & Hora:* ${b.date} a las ${b.slot}\n`;
+      msg += `📍 *Lugar:* ${b.sede} — ${b.office}\n`;
+      msg += `💼 *Cobertura:* ${b.insurance}\n`;
+      msg += `💵 *Valor Consulta:* ${b.fee}\n`;
+      msg += `------------------------------------\n`;
+      msg += `⚠️ *Instrucciones:* ${b.prep}\n\n`;
+      msg += `Acabo de agendar mi cita en el portal web. Por favor confirmarme la recepción en el sistema.`;
+
+      const url = `https://api.whatsapp.com/send?text=${encodeURIComponent(msg)}`;
+      window.open(url, '_blank');
+    });
+
+    // Laboratory Search Simulator
+    const labForm = document.getElementById('lab-search-form');
+    const labResultBox = document.getElementById('lab-result-box');
+    const btnDownloadLab = document.getElementById('btn-download-lab-pdf');
+
+    labForm?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      labResultBox?.classList.remove('hidden');
+    });
+
+    btnDownloadLab?.addEventListener('click', () => {
+      alert("[REPORTE CLÍNICO DESCARGADO]\n\nExamen: Perfil Lipídico Completo & Glucosa\nPaciente: Carolina Morales (Doc: 1020849201)\nOrden: #LAB-9842\nEstado: Valores dentro de rangos normales de referencia.\nFirma Digital: Dra. Elena Restrepo (Bacterióloga Reg. 3910)\n\nEl archivo PDF oficial ha sido generado y descargado con validez clínica.");
+    });
+  </script>
+</Layout>

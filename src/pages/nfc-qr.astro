@@ -1,0 +1,1399 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import { companyData } from '../data/company';
+
+const phone = companyData.whatsappNumber || '';
+const baseWa = phone ? `https://api.whatsapp.com/send?phone=${phone}&text=` : `https://api.whatsapp.com/send?text=`;
+const waMsgNfc = encodeURIComponent("¡Hola equipo de PalkioTech! 👋 Me interesa cotizar para mi negocio: [ ] Stand de reseñas Google 5★ / [ ] Tarjetas NFC en PVC / [ ] QR para menú o redes. ¿Podrían brindarme información de precios y personalización por favor?");
+---
+
+<Layout 
+  title="PalkioTag™ · Stands NFC & QR para Reseñas de Google 5★ y Tarjetas Ejecutivas | PalkioTech"
+  description="Multiplica tus reseñas de 5 estrellas en Google Maps y digitaliza la presencia física de tu empresa en 1 toque con PalkioTag™: stands acrílicos de mostrador y tarjetas inteligentes NFC."
+>
+  <Navbar />
+
+  <main class="bg-[#060709] text-white min-h-screen selection:bg-amber-500/30 selection:text-amber-200" data-page-theme="dark">
+    
+    <!-- Hero Breadcrumb & Header -->
+    <section class="pt-10 pb-16 relative overflow-hidden border-b border-[#1a1a22]" data-navbar-theme="dark">
+      <!-- Ambient Glows -->
+      <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[900px] h-[450px] bg-gradient-to-b from-amber-500/15 via-yellow-500/10 to-transparent blur-3xl pointer-events-none"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(#202028_1px,transparent_1px)] [background-size:24px_24px] opacity-40 pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <!-- Breadcrumb Navigation -->
+        <nav class="flex items-center gap-2 text-xs font-mono text-zinc-400 mb-8">
+          <a href="/" class="hover:text-amber-400 transition-colors">Inicio</a>
+          <span>/</span>
+          <span class="text-zinc-500">Soluciones Phygital</span>
+          <span>/</span>
+          <span class="text-amber-400 font-bold">PalkioTag™ (Google 5★ & NFC)</span>
+        </nav>
+
+        <div class="max-w-4xl mx-auto text-center">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-950/80 border border-amber-700/60 text-amber-300 text-xs font-mono font-bold mb-6 shadow-sm">
+            <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+            <span>✦ PALKIOTAG™ · HARDWARE PHYGITAL DE RESEÑAS GOOGLE 5★</span>
+          </div>
+
+          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight mb-6 leading-[1.15]">
+            PalkioTag™: <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500">Reseñas de Google 5★</span> & Tarjetas NFC en 1 Toque
+          </h1>
+
+          <p class="text-base sm:text-lg text-zinc-300 font-normal leading-relaxed mb-8 max-w-3xl mx-auto">
+            Multiplica tus opiniones positivas en Google Maps de forma instantánea. Tus clientes solo tienen que acercar su smartphone al stand de mostrador <strong>PalkioTag Review™</strong> para calificar con 5 estrellas en segundos, sin aplicaciones ni búsquedas manuales.
+          </p>
+
+          <!-- Action CTAs -->
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto mb-10">
+            <a 
+              href="#simulador" 
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl bg-gradient-to-r from-amber-400 via-amber-500 to-yellow-500 hover:from-amber-500 hover:to-yellow-600 text-slate-950 font-black shadow-lg shadow-amber-500/25 transition-all text-sm hover:scale-105"
+            >
+              <span>Probar Simulador Interactivo ↓</span>
+            </a>
+
+            <a 
+              href="#video-demo" 
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#121216] hover:bg-[#181822] text-amber-300 border border-amber-500/40 hover:border-amber-400 font-bold transition-all text-sm hover:scale-105"
+            >
+              <span>▶ Ver Video Real en Acción</span>
+            </a>
+
+            <a 
+              href={`${baseWa}${waMsgNfc}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#121216] hover:bg-[#181822] text-emerald-400 border border-emerald-800/60 font-bold transition-all text-sm"
+            >
+              <span>💬 Consultar por WhatsApp</span>
+            </a>
+          </div>
+
+          <!-- Feature Highlights Bar -->
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-left pt-6 border-t border-[#1e1e26]">
+            <div class="p-3.5 rounded-2xl bg-[#0c0c10] border border-[#202028]">
+              <span class="text-amber-400 font-bold font-mono text-xs block mb-0.5">⚡ 1-Tap Touch</span>
+              <span class="text-zinc-400 text-[11px] leading-tight block">0 aplicaciones requeridas para quien escanea.</span>
+            </div>
+            <div class="p-3.5 rounded-2xl bg-[#0c0c10] border border-[#202028]">
+              <span class="text-amber-400 font-bold font-mono text-xs block mb-0.5">🔐 Chip NTAG216</span>
+              <span class="text-zinc-400 text-[11px] leading-tight block">888 bytes para vCard completa y links múltiples.</span>
+            </div>
+            <div class="p-3.5 rounded-2xl bg-[#0c0c10] border border-[#202028]">
+              <span class="text-amber-400 font-bold font-mono text-xs block mb-0.5">🔄 Doble Propósito</span>
+              <span class="text-zinc-400 text-[11px] leading-tight block">Chip NFC al frente + código QR dinámico al reverso.</span>
+            </div>
+            <div class="p-3.5 rounded-2xl bg-[#0c0c10] border border-[#202028]">
+              <span class="text-amber-400 font-bold font-mono text-xs block mb-0.5">✨ 100% Personalizable</span>
+              <span class="text-zinc-400 text-[11px] leading-tight block">Con tu logotipo, colores y adaptado a lo que necesites.</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==============================================
+         MAIN INTERACTIVE SHOWCASE (CARD & PHONE SIMULATOR)
+         ============================================== -->
+    <section id="simulador" class="py-20 relative overflow-hidden" data-navbar-theme="dark">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <div class="max-w-3xl mx-auto text-center mb-12">
+          <span class="text-xs font-mono font-bold text-amber-400 uppercase tracking-wider block mb-2">✦ LABORATORIO DIGITAL INTERACTIVO</span>
+          <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
+            Experimenta el Flujo Físico y Digital en Tiempo Real
+          </h2>
+          <p class="text-zinc-400 text-sm mt-2">
+            Selecciona un producto para conocer su funcionamiento, impacto comercial en tu negocio y simular en tiempo real cómo interactúa el smartphone de tu cliente.
+          </p>
+        </div>
+
+        <div class="bg-[#0d0d12] p-6 sm:p-10 rounded-3xl border border-[#22222a] shadow-2xl backdrop-blur-xl space-y-8">
+          
+          <!-- TOP: TITLE BAR & PRODUCT SELECTOR (FULL WIDTH) -->
+          <div class="space-y-4">
+            <div class="flex items-center justify-between pb-3 border-b border-[#22222a] text-xs font-mono">
+              <span class="text-zinc-400 font-bold uppercase tracking-wider">Simulador de Hardware Físico PalkioTag™</span>
+              <span class="text-amber-400 font-bold flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                Chip NTAG216 Activo
+              </span>
+            </div>
+
+            <!-- Product Category Selector -->
+            <div>
+              <label class="block text-xs font-mono font-bold text-zinc-300 mb-2 uppercase">
+                1. Selecciona el Producto Phygital a Simular:
+              </label>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs font-mono font-bold">
+                <button 
+                  type="button" 
+                  id="btn-simulate-google-tap"
+                  class="py-2.5 px-3 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-600 text-slate-950 font-black hover:from-amber-600 hover:to-yellow-700 transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-sm"
+                >
+                  <span>⭐ Stand Google 5★</span>
+                </button>
+                <button 
+                  type="button" 
+                  id="btn-simulate-card-tap"
+                  class="py-2.5 px-3 rounded-xl bg-[#121216] hover:bg-[#181822] text-amber-300 border border-amber-500/50 hover:border-amber-400 font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                >
+                  <span>🪪 Tarjeta PVC</span>
+                </button>
+                <button 
+                  type="button" 
+                  id="btn-simulate-menu-tap"
+                  class="py-2.5 px-3 rounded-xl bg-[#121216] hover:bg-[#181822] text-emerald-400 border border-emerald-600/50 hover:border-emerald-500 font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                >
+                  <span>🍽️ Menú / QR Mesa</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- MIDDLE: HARDWARE FÍSICO Y DISPOSITIVO SMARTPHONE A LA PAR (SIDE-BY-SIDE) -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center justify-items-center py-2">
+            
+            <!-- LEFT: CUSTOMIZABLE NFC HARDWARE PREVIEW -->
+            <div class="w-full max-w-[360px] flex flex-col items-center justify-center space-y-4">
+              <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 font-mono text-[10px] font-bold uppercase tracking-wider">
+                <span>✦</span> Diseño Físico Personalizado
+              </div>
+
+              <!-- STAGE 1: STAND ACRÍLICO GOOGLE 5★ (DEFAULT) -->
+              <div id="hw-stage-google" class="w-full space-y-4">
+                
+                <!-- Stand Card Body -->
+                <div class="relative w-full max-w-[330px] mx-auto rounded-3xl overflow-hidden border-2 border-amber-400/70 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.95),0_0_35px_rgba(212,175,55,0.25)] select-none bg-white">
+                  
+                  <!-- TOP WHITE SECTION -->
+                  <div class="p-6 pt-5 text-center relative bg-white">
+                    
+                    <!-- 5 Gold Stars at the very top -->
+                    <div class="flex items-center justify-center gap-1.5 text-amber-400 text-2xl drop-shadow-xs mb-1">
+                      <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    </div>
+
+                    <!-- Subtitle -->
+                    <p class="text-slate-600 text-[11px] font-semibold tracking-wide">
+                      ¿Te encantó tu experiencia?
+                    </p>
+
+                    <!-- Big Bold Black Headline -->
+                    <h3 class="text-2xl sm:text-3xl font-black text-slate-950 tracking-tight leading-[1.08] my-1 uppercase">
+                      CALIFÍCANOS<br />EN GOOGLE
+                    </h3>
+
+                    <!-- CENTER LOGO: PALKIOTECH -->
+                    <div class="my-2.5 flex flex-col items-center justify-center">
+                      <img src="/images/palkiotech-emblem.png" alt="PalkioTech" class="h-12 w-auto object-contain drop-shadow" />
+                      <span class="font-black text-xs text-slate-950 tracking-tight mt-0.5">
+                        PALKIO<span class="text-amber-600">TECH</span>
+                      </span>
+                    </div>
+
+                    <!-- Capsule Badge -->
+                    <div class="inline-block px-3.5 py-1 rounded-full bg-slate-950 text-amber-400 font-mono font-bold text-[10px] border border-amber-400 shadow-xs">
+                      ¡Solo toma unos segundos!
+                    </div>
+
+                  </div>
+
+                  <!-- TRANSITION WAVE (CURVED WAVE WITH GOLD ACCENT LINE) -->
+                  <div class="relative h-10 w-full overflow-hidden bg-white -mt-1">
+                    <svg class="absolute bottom-0 w-full h-10 text-[#0c0d12]" viewBox="0 0 500 150" preserveAspectRatio="none">
+                      <path d="M0.00,49.98 C150.00,150.00 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: currentColor;"></path>
+                    </svg>
+                    <!-- Gold Accent Curve Line -->
+                    <svg class="absolute bottom-0 w-full h-10" viewBox="0 0 500 150" preserveAspectRatio="none">
+                      <path d="M0.00,49.98 C150.00,150.00 349.20,-49.98 500.00,49.98" style="stroke: #d4af37; stroke-width: 5; fill: none;"></path>
+                    </svg>
+                  </div>
+
+                  <!-- BOTTOM SOLID BLACK SECTION -->
+                  <div class="bg-[#0c0d12] text-white p-6 pt-2 pb-5 text-center relative">
+                    
+                    <div class="grid grid-cols-2 gap-4 items-center pt-2">
+                      
+                      <!-- Left: NFC Zone (TOCA AQUÍ) -->
+                      <div class="flex flex-col items-center">
+                        <div class="w-18 h-18 sm:w-20 sm:h-20 rounded-full border-2 border-amber-500/80 p-1 flex items-center justify-center shadow-[0_0_15px_rgba(245,158,11,0.3)]">
+                          <div class="w-full h-full rounded-full border-2 border-white flex items-center justify-center bg-[#151620]">
+                            <svg class="w-8 h-8 text-white animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M8.111 16.404a5.5 5.5 0 010-7.778M12.354 19.167a9.5 9.5 0 000-13.434M16.596 22a13.5 13.5 0 000-19" />
+                            </svg>
+                          </div>
+                        </div>
+                        <span class="text-[11px] font-mono font-black text-white uppercase mt-2 block tracking-wider">
+                          TOCA AQUÍ
+                        </span>
+                      </div>
+
+                      <!-- Right: QR Zone (ESCANEA AQUÍ) -->
+                      <div class="flex flex-col items-center">
+                        <div class="relative w-18 h-18 sm:w-20 sm:h-20 flex items-center justify-center">
+                          <!-- Gold Corner Brackets -->
+                          <div class="absolute -top-1 -left-1 w-3.5 h-3.5 border-t-2 border-l-2 border-amber-400"></div>
+                          <div class="absolute -top-1 -right-1 w-3.5 h-3.5 border-t-2 border-r-2 border-amber-400"></div>
+                          <div class="absolute -bottom-1 -left-1 w-3.5 h-3.5 border-b-2 border-l-2 border-amber-400"></div>
+                          <div class="absolute -bottom-1 -right-1 w-3.5 h-3.5 border-b-2 border-r-2 border-amber-400"></div>
+                          
+                          <!-- QR Graphic -->
+                          <div class="w-full h-full bg-white rounded-lg p-1.5 shadow-md flex items-center justify-center">
+                            <svg class="w-full h-full text-slate-950" viewBox="0 0 24 24" fill="currentColor">
+                              <path d="M2 2h8v8H2V2zm2 2v4h4V4H4zm10-2h8v8h-8V2zm2 2v4h4V4h-4zM2 14h8v8H2v-8zm2 2v4h4v-4H4zm14-2h2v2h-2v-2zm-4 0h2v4h-2v-4zm6 4h2v4h-2v-4zm-4 2h2v2h-2v-2zm4-6h2v2h-2v-2z"/>
+                            </svg>
+                          </div>
+                        </div>
+                        <span class="text-[11px] font-mono font-black text-white uppercase mt-2 block tracking-wider">
+                          ESCANEA AQUÍ
+                        </span>
+                      </div>
+
+                    </div>
+
+                    <!-- Footer Yellow / Gold Notice -->
+                    <div class="mt-4 pt-2.5 border-t border-white/10 text-center">
+                      <span class="text-xs font-mono font-bold text-amber-400">
+                        ¡Gracias por elegirnos!
+                      </span>
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <!-- Pedestal Stand Base Graphic -->
+                <div class="w-48 h-3.5 mx-auto -mt-2 bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-600 rounded-b-xl shadow-lg border-t border-yellow-200"></div>
+
+                <div class="text-center pt-1">
+                  <button 
+                    type="button" 
+                    id="btn-stand-tap-action"
+                    class="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-600 text-slate-950 font-black text-xs hover:scale-105 transition-transform cursor-pointer shadow-md"
+                  >
+                    <span>📲 Tocar Stand (Simular Interacción NFC)</span>
+                  </button>
+                </div>
+
+              </div>
+
+              <!-- STAGE 2: TARJETA PVC DOBLE CARA (FRENTE NFC & REVERSO QR) -->
+              <div id="hw-stage-card" class="w-full space-y-4 hidden">
+                
+                <!-- Card Face Switcher Tabs -->
+                <div class="flex items-center justify-between pb-2 border-b border-white/10">
+                  <div class="flex items-center gap-1.5 p-1 rounded-xl bg-[#090a0e] border border-amber-400/40 text-[10px] font-mono">
+                    <button 
+                      type="button" 
+                      id="btn-page-card-front" 
+                      class="page-card-side-btn active px-3 py-1 rounded-lg bg-gradient-to-r from-amber-500 to-yellow-600 text-slate-950 font-black transition-all cursor-pointer shadow-xs"
+                    >
+                      <span>🪪 Frente: NFC</span>
+                    </button>
+                    <button 
+                      type="button" 
+                      id="btn-page-card-back" 
+                      class="page-card-side-btn px-3 py-1 rounded-lg text-zinc-400 hover:text-white font-bold transition-all cursor-pointer"
+                    >
+                      <span>🔄 Reverso: QR</span>
+                    </button>
+                  </div>
+                  <span class="text-[9px] font-mono font-bold text-amber-300 uppercase bg-amber-950/80 px-2 py-0.5 rounded border border-amber-800/60">
+                    100% Personalizable
+                  </span>
+                </div>
+
+                <!-- CARD FRONT -->
+                <div id="page-card-face-front" class="relative w-full h-56 sm:h-64 rounded-3xl p-6 sm:p-8 flex flex-col justify-between border transition-all duration-500 overflow-hidden select-none bg-gradient-to-tr from-[#0a0a0c] via-[#16161c] to-[#0d0d10] border-amber-400/60 shadow-[0_20px_50px_rgba(0,0,0,0.95),0_0_35px_rgba(212,175,55,0.22)]">
+                  <div class="absolute -inset-full bg-gradient-to-r from-transparent via-amber-400/15 to-transparent rotate-45 pointer-events-none transform translate-x-12"></div>
+
+                  <div class="flex items-center justify-between relative z-10">
+                    <div class="flex items-center gap-3">
+                      <img src="/images/palkiotech-emblem.png" alt="PalkioTech" class="w-10 h-10 object-contain drop-shadow" />
+                      <div>
+                        <span class="font-black text-base tracking-tight text-white block leading-none">
+                          PALKIO<span class="text-amber-400">TECH</span>
+                        </span>
+                        <span class="text-[8px] font-mono tracking-widest text-amber-300 font-bold uppercase mt-0.5 block">
+                          SMART PVC CARD
+                        </span>
+                      </div>
+                    </div>
+                    <div class="flex items-center gap-1 text-amber-400/80">
+                      <svg class="w-6 h-6 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M8.111 16.404a5.5 5.5 0 010-7.778M12.354 19.167a9.5 9.5 0 000-13.434M16.596 22a13.5 13.5 0 000-19" />
+                      </svg>
+                    </div>
+                  </div>
+
+                  <div class="relative z-10 my-auto">
+                    <div class="w-11 h-8 rounded-md bg-gradient-to-br from-amber-300 via-amber-500 to-yellow-600 border border-yellow-200/50 shadow-inner flex items-center justify-center opacity-90">
+                      <div class="w-full h-px bg-yellow-900/40 my-auto"></div>
+                    </div>
+                  </div>
+
+                  <div class="flex items-end justify-between relative z-10 pt-2 border-t border-white/10">
+                    <div>
+                      <span class="font-mono font-bold text-sm tracking-wider text-white uppercase block leading-none drop-shadow">
+                        ALEJANDRO SALAS
+                      </span>
+                      <span class="font-mono text-[9px] text-amber-300/90 uppercase tracking-widest block mt-1">
+                        FOUNDER & PRINCIPAL ENGINEER
+                      </span>
+                    </div>
+                    <span class="text-[9px] font-mono text-zinc-400 bg-black/40 px-2 py-0.5 rounded border border-white/10">
+                      FRENTE NFC
+                    </span>
+                  </div>
+                </div>
+
+                <!-- CARD BACK (QR DOBLE PROPÓSITO) -->
+                <div id="page-card-face-back" class="relative w-full h-56 sm:h-64 rounded-3xl p-6 sm:p-7 flex flex-col justify-between border transition-all duration-500 overflow-hidden select-none bg-gradient-to-tr from-[#0d0e14] via-[#141620] to-[#0a0a0e] border-amber-400/60 shadow-[0_20px_50px_rgba(0,0,0,0.95),0_0_35px_rgba(212,175,55,0.22)] hidden text-center">
+                  <div class="w-full h-6 bg-gradient-to-r from-zinc-950 via-zinc-900 to-zinc-950 rounded flex items-center px-3 border-y border-zinc-800">
+                    <span class="text-[7px] font-mono text-zinc-500 tracking-widest uppercase">PALKIOTAG SMART PVC · CHIP NTAG216</span>
+                  </div>
+
+                  <div class="my-auto">
+                    <span class="text-[10px] font-mono text-zinc-300 block mb-1.5">
+                      Escanea con cualquier cámara de smartphone:
+                    </span>
+                    <div class="w-20 h-20 mx-auto rounded-xl bg-white p-1.5 shadow-xl flex items-center justify-center border-2 border-amber-400/70">
+                      <svg class="w-full h-full text-slate-950" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M2 2h8v8H2V2zm2 2v4h4V4H4zm10-2h8v8h-8V2zm2 2v4h4V4h-4zM2 14h8v8H2v-8zm2 2v4h4v-4H4zm14-2h2v2h-2v-2zm-4 0h2v4h-2v-4zm6 4h2v4h-2v-4zm-4 2h2v2h-2v-2zm4-6h2v2h-2v-2z"/>
+                      </svg>
+                    </div>
+                    <span class="text-[9px] font-mono text-emerald-400 font-bold block mt-1.5">
+                      ✓ 100% Personalizable para lo que quieras
+                    </span>
+                  </div>
+
+                  <div class="pt-2 border-t border-white/10 flex items-center justify-between text-[9px] font-mono text-zinc-400">
+                    <span>Doble Propósito: NFC + QR</span>
+                    <span class="text-amber-400 font-bold">REVERSO QR</span>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- STAGE 3: PLACA MENÚ QR MESA (RESTAURANTES) -->
+              <div id="hw-stage-menu" class="w-full space-y-4 hidden">
+                <div class="relative w-full max-w-[320px] mx-auto rounded-3xl p-6 bg-gradient-to-b from-[#12141c] to-[#0a0b10] border-2 border-emerald-500/60 shadow-xl text-center select-none">
+                  <div class="flex items-center justify-between pb-2 border-b border-white/10 mb-3">
+                    <span class="text-xs font-bold text-white">Café Bistró · Menú Digital</span>
+                    <span class="text-[9px] font-mono text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-800">Mesa #4</span>
+                  </div>
+                  <div class="w-24 h-24 mx-auto rounded-2xl bg-white p-2 shadow-lg my-3 border border-emerald-400">
+                    <svg class="w-full h-full text-slate-950" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M2 2h8v8H2V2zm2 2v4h4V4H4zm10-2h8v8h-8V2zm2 2v4h4V4h-4zM2 14h8v8H2v-8zm2 2v4h4v-4H4zm14-2h2v2h-2v-2zm-4 0h2v4h-2v-4zm6 4h2v4h-2v-4zm-4 2h2v2h-2v-2zm4-6h2v2h-2v-2z"/>
+                    </svg>
+                  </div>
+                  <p class="text-[10px] font-mono text-zinc-300">Acerca tu móvil o escanea el código para ver la carta sin descargar apps.</p>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- RIGHT: PHONE INTERACTIVE CLIENT RESPONSE -->
+            <div class="w-full max-w-[340px] flex flex-col items-center justify-center space-y-4">
+              <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-mono text-[10px] font-bold uppercase tracking-wider">
+                <span>✦</span> Dispositivo Móvil en Tiempo Real
+              </div>
+
+              <!-- Phone Mockup Container -->
+              <div class="relative w-full max-w-[320px] rounded-[44px] bg-[#08080b] border-[5px] border-[#202028] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9),0_0_30px_rgba(212,175,55,0.15)] overflow-hidden">
+                
+                <!-- Phone Dynamic Island / Camera -->
+                <div class="pt-3 pb-2 px-6 flex items-center justify-between text-[10px] text-zinc-400 font-mono z-30 relative bg-[#08080b]">
+                  <span>09:41</span>
+                  <div class="px-3 py-1 rounded-full bg-slate-900 border border-slate-800 flex items-center gap-1.5 text-zinc-400">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span id="pill-text" class="text-[8px] text-amber-300 font-bold">⭐ GOOGLE 5★</span>
+                  </div>
+                  <span>5G 📶</span>
+                </div>
+
+                <!-- Phone Screen Content Viewports -->
+                <div class="p-4 min-h-[440px] flex flex-col justify-between relative text-xs">
+                  
+                  <!-- SCENARIO 1: SMART VCARD SCREEN (HIDDEN INITIALLY) -->
+                  <div id="screen-vcard" class="hidden space-y-4">
+                    
+                    <div class="text-center pt-2">
+                      <div class="w-16 h-16 rounded-full mx-auto p-1 bg-gradient-to-tr from-amber-400 to-yellow-600 shadow-md mb-2 flex items-center justify-center">
+                        <div class="w-full h-full rounded-full bg-[#0e0e14] flex items-center justify-center">
+                          <img src="/images/palkiotech-emblem.png" alt="PalkioTech" class="w-10 h-10 object-contain" />
+                        </div>
+                      </div>
+                      <h3 class="text-base font-extrabold text-white leading-tight">Alejandro Salas</h3>
+                      <p class="text-[11px] font-mono text-amber-300 font-medium">PalkioTech · Founder & Lead Engineer</p>
+                      <p class="text-[9px] text-zinc-400 font-mono mt-0.5">Sistemas Web ultrarrápidos, IA & hardware NFC</p>
+                    </div>
+
+                    <!-- Quick Action Buttons -->
+                    <div class="space-y-2">
+                      <button 
+                        type="button"
+                        class="w-full py-2.5 px-3 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-600 text-slate-950 font-black text-xs flex items-center justify-center gap-2 shadow-xs"
+                      >
+                        <span>💾 Guardar en Contactos (vCard)</span>
+                      </button>
+                      <a 
+                        href={`${baseWa}${waMsgNfc}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="w-full py-2 px-3 rounded-xl bg-[#15803d] hover:bg-emerald-600 text-white font-bold text-xs flex items-center justify-center gap-2 transition-colors block text-center"
+                      >
+                        <span>💬 Enviar WhatsApp Directo</span>
+                      </a>
+                      <a 
+                        href="/" 
+                        class="w-full py-2 px-3 rounded-xl bg-[#16161e] hover:bg-[#1e1e28] text-zinc-300 font-mono text-xs flex items-center justify-center gap-1.5 transition-colors border border-[#242430] block text-center"
+                      >
+                        <span>🌐 Abrir Portafolio Oficial</span>
+                      </a>
+                    </div>
+
+                    <!-- Location & Socials -->
+                    <div class="p-2.5 rounded-xl bg-[#101014] border border-[#202028] text-[10px] space-y-1 font-mono text-zinc-300">
+                      <div class="flex items-center justify-between">
+                        <span class="text-zinc-500">📍 Ubicación:</span>
+                        <span class="text-white font-bold">Bogotá, Colombia</span>
+                      </div>
+                      <div class="flex items-center justify-between">
+                        <span class="text-zinc-500">✉️ Correo:</span>
+                        <span class="text-amber-400 font-bold">{companyData.email}</span>
+                      </div>
+                      <div class="flex items-center justify-between">
+                        <span class="text-zinc-500">📱 WhatsApp:</span>
+                        <span class="text-emerald-400 font-bold">{companyData.phoneDisplay}</span>
+                      </div>
+                    </div>
+
+                    <div class="text-center">
+                      <span class="text-[9px] font-mono text-zinc-400">⚡ Transferencia instantánea sin descargar app</span>
+                    </div>
+
+                  </div>
+
+                  <!-- SCENARIO 2: GOOGLE 5★ REVIEW STAND SCREEN (ACTIVE DEFAULT) -->
+                  <div id="screen-google" class="space-y-4">
+                    <div class="text-center pt-2">
+                      <div class="w-12 h-12 rounded-2xl mx-auto bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-2xl mb-2 text-amber-400">
+                        ⭐
+                      </div>
+                      <h3 class="text-base font-extrabold text-white leading-tight">Tu Negocio en Google Maps</h3>
+                      <p class="text-[10px] font-mono text-emerald-400 font-bold mt-0.5">One-Tap Review PalkioTech</p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-[#121218] border border-amber-400/40 text-center space-y-2">
+                      <span class="text-xs font-bold text-white block">Califica tu experiencia:</span>
+                      <div class="flex items-center justify-center gap-1 text-amber-400 text-xl">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                      </div>
+                      <span class="text-[9px] font-mono text-amber-300 font-bold block">¡5 Estrellas seleccionadas automáticamente!</span>
+                    </div>
+
+                    <button 
+                      type="button" 
+                      class="w-full py-2.5 px-3 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-600 text-slate-950 font-black text-xs flex items-center justify-center gap-1.5 shadow-xs"
+                    >
+                      <span>Publicar Reseña en Google Maps ↗</span>
+                    </button>
+
+                    <div class="p-2 rounded-lg bg-[#101014] border border-[#202028] text-[9px] font-mono text-zinc-300">
+                      📈 <strong>Impacto probado:</strong> Los comercios con placas NFC multiplican sus opiniones positivas por 4 en los primeros 30 días.
+                    </div>
+                  </div>
+
+                  <!-- SCENARIO 3: RESTAURANT / STORE MENU SCREEN (HIDDEN) -->
+                  <div id="screen-menu" class="hidden space-y-3">
+                    <div class="flex items-center justify-between pb-2 border-b border-[#202028]">
+                      <div>
+                        <h4 class="font-extrabold text-white text-xs">Café Bistró · Menú QR</h4>
+                        <span class="text-[9px] font-mono text-emerald-400">Mesa #4 · Servicio Activo</span>
+                      </div>
+                      <span class="text-[9px] font-mono bg-emerald-950 text-emerald-300 border border-emerald-800 px-1.5 py-0.5 rounded">En Vivo</span>
+                    </div>
+
+                    <div class="space-y-2 text-xs">
+                      <div class="p-2 rounded-xl bg-[#121218] border border-[#202028] flex items-center justify-between">
+                        <div>
+                          <strong class="text-white block text-[11px]">Sandwich de Roast Beef Artesanal</strong>
+                          <span class="text-[9px] text-zinc-400">Pan focaccia, rúgula y reducción balsámica</span>
+                        </div>
+                        <span class="font-mono font-bold text-amber-400 text-[11px]">$26,500</span>
+                      </div>
+
+                      <div class="p-2 rounded-xl bg-[#121218] border border-[#202028] flex items-center justify-between">
+                        <div>
+                          <strong class="text-white block text-[11px]">Cold Brew Nitro Especial</strong>
+                          <span class="text-[9px] text-zinc-400">Extracción lenta 18h, notas cacao</span>
+                        </div>
+                        <span class="font-mono font-bold text-amber-400 text-[11px]">$9,000</span>
+                      </div>
+                    </div>
+
+                    <div class="p-2 rounded-lg bg-amber-950/40 border border-amber-800/40 text-[9px] font-mono text-amber-300">
+                      💡 <strong>Ventaja PalkioTech:</strong> Cambias precios y platos agotados desde tu móvil sin volver a imprimir el código QR físico.
+                    </div>
+                  </div>
+
+                </div>
+
+                <!-- Bottom Home Indicator -->
+                <div class="py-2.5 bg-[#0a0a0d] border-t border-[#22222a]/60 flex justify-center z-30">
+                  <div class="w-24 h-1 bg-white/30 rounded-full"></div>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- BOTTOM: COMENTARIOS Y DETALLES ORGANIZADOS HORIZONTALMENTE (NO HACE LARGO EL APARTADO) -->
+          <div class="pt-6 border-t border-[#1f202b]">
+            
+            <!-- 1. INFO GOOGLE STAND (DEFAULT) -->
+            <div id="info-google" class="space-y-4">
+              <div class="flex items-center justify-between pb-3 border-b border-[#22222e]">
+                <div class="flex items-center gap-2">
+                  <span class="text-lg">⭐</span>
+                  <h4 class="font-extrabold text-white text-sm sm:text-base tracking-tight">PalkioTag Review™: Stand de Mostrador Google 5★</h4>
+                </div>
+                <span class="text-[10px] font-mono font-bold bg-amber-500/15 text-amber-300 border border-amber-500/30 px-2.5 py-0.5 rounded-full">
+                  Puntos de Venta
+                </span>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="p-4 rounded-2xl bg-[#13141c] border border-[#232435] flex flex-col justify-between">
+                  <div>
+                    <span class="text-amber-400 font-mono font-bold text-[11px] uppercase tracking-wider block mb-1.5">
+                      📋 Descripción del Producto
+                    </span>
+                    <p class="text-zinc-300 text-xs leading-relaxed">
+                      Stand de mostrador fabricado en acrílico resistente de alta durabilidad con base de pedestal, chip NFC NTAG216 integrado al frente y código QR dinámico de alta resolución. 100% personalizable con el logotipo y colores de tu negocio.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="p-4 rounded-2xl bg-[#13141c] border border-[#232435] flex flex-col justify-between">
+                  <div>
+                    <span class="text-emerald-400 font-mono font-bold text-[11px] uppercase tracking-wider block mb-1.5">
+                      🎯 ¿Para qué sirve?
+                    </span>
+                    <p class="text-zinc-300 text-xs leading-relaxed">
+                      Tus clientes solo tienen que acercar su smartphone o escanear el QR para que se les abra de inmediato tu ficha oficial de Google Maps con las <strong class="text-white">5 estrellas preseleccionadas</strong>. Solo presionan "Publicar" en menos de 5 segundos, sin descargar apps ni buscar tu negocio manualmente.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="p-4 rounded-2xl bg-gradient-to-br from-amber-500/10 via-amber-500/5 to-transparent border border-amber-500/30 flex flex-col justify-between">
+                  <div>
+                    <span class="text-amber-300 font-mono font-bold text-[11px] uppercase tracking-wider block mb-1.5">
+                      🚀 ¿Cómo impulsa tu negocio?
+                    </span>
+                    <p class="text-zinc-200 text-xs leading-relaxed">
+                      <strong class="text-amber-400">Multiplica tus opiniones positivas hasta por 4 en los primeros 30 días</strong>. El algoritmo de Google Maps posiciona a los negocios con más reseñas recientes en los primeros lugares de búsqueda en tu zona. El 93% de las personas leen opiniones antes de comprar; más 5 estrellas = más clientes y ventas constantes todos los días.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2. INFO PVC CARD -->
+            <div id="info-card" class="space-y-4 hidden">
+              <div class="flex items-center justify-between pb-3 border-b border-[#22222e]">
+                <div class="flex items-center gap-2">
+                  <span class="text-lg">🪪</span>
+                  <h4 class="font-extrabold text-white text-sm sm:text-base tracking-tight">PalkioTag Card™: Tarjeta Inteligente en PVC Doble Cara</h4>
+                </div>
+                <span class="text-[10px] font-mono font-bold bg-amber-500/15 text-amber-300 border border-amber-500/30 px-2.5 py-0.5 rounded-full">
+                  Profesionales & Ventas
+                </span>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="p-4 rounded-2xl bg-[#13141c] border border-[#232435] flex flex-col justify-between">
+                  <div>
+                    <span class="text-amber-400 font-mono font-bold text-[11px] uppercase tracking-wider block mb-1.5">
+                      📋 Descripción del Producto
+                    </span>
+                    <p class="text-zinc-300 text-xs leading-relaxed">
+                      Tarjeta inteligente en material PVC con doble propósito funcional: chip NFC integrado al frente y código QR dinámico de alta nitidez al reverso. Formato estándar de billetera, 100% personalizable por ambas caras con tu imagen y datos.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="p-4 rounded-2xl bg-[#13141c] border border-[#232435] flex flex-col justify-between">
+                  <div>
+                    <span class="text-emerald-400 font-mono font-bold text-[11px] uppercase tracking-wider block mb-1.5">
+                      🎯 ¿Para qué sirve?
+                    </span>
+                    <p class="text-zinc-300 text-xs leading-relaxed">
+                      Transfiere al instante tu tarjeta de contacto digital (<strong class="text-white">vCard completa</strong>), catálogo comercial, enlaces a redes sociales (Instagram, TikTok, WhatsApp) o pasarelas de pago directamente a la agenda del smartphone del cliente en 1 solo toque o escaneo.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="p-4 rounded-2xl bg-gradient-to-br from-amber-500/10 via-amber-500/5 to-transparent border border-amber-500/30 flex flex-col justify-between">
+                  <div>
+                    <span class="text-amber-300 font-mono font-bold text-[11px] uppercase tracking-wider block mb-1.5">
+                      🚀 ¿Cómo impulsa tu negocio?
+                    </span>
+                    <p class="text-zinc-200 text-xs leading-relaxed">
+                      <strong class="text-amber-400">Elimina la pérdida del 88% de clientes potenciales</strong> que botan las tarjetas de papel a la basura. Proyecta máxima autoridad tecnológica en reuniones comerciales y ahorra dinero de por vida en imprenta: si cambias de teléfono, cargo o catálogo, se actualiza en la nube sin reimprimir la tarjeta.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3. INFO MENU QR -->
+            <div id="info-menu" class="space-y-4 hidden">
+              <div class="flex items-center justify-between pb-3 border-b border-[#22222e]">
+                <div class="flex items-center gap-2">
+                  <span class="text-lg">🍽️</span>
+                  <h4 class="font-extrabold text-white text-sm sm:text-base tracking-tight">PalkioTag Menu™: Placa Acrílica de Mesa & Barra</h4>
+                </div>
+                <span class="text-[10px] font-mono font-bold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 px-2.5 py-0.5 rounded-full">
+                  Gastronomía & Bares
+                </span>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="p-4 rounded-2xl bg-[#13141c] border border-[#232435] flex flex-col justify-between">
+                  <div>
+                    <span class="text-amber-400 font-mono font-bold text-[11px] uppercase tracking-wider block mb-1.5">
+                      📋 Descripción del Producto
+                    </span>
+                    <p class="text-zinc-300 text-xs leading-relaxed">
+                      Placa de mesa y barra fabricada en acrílico impermeable resistente a derrames y limpieza continua, con código QR dinámico y chip NFC de conexión rápida. Personalizada con el número de cada mesa y el logo de tu local.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="p-4 rounded-2xl bg-[#13141c] border border-[#232435] flex flex-col justify-between">
+                  <div>
+                    <span class="text-emerald-400 font-mono font-bold text-[11px] uppercase tracking-wider block mb-1.5">
+                      🎯 ¿Para qué sirve?
+                    </span>
+                    <p class="text-zinc-300 text-xs leading-relaxed">
+                      Permite a los comensales abrir la carta digital con fotos en alta definición y <strong class="text-white">conectarse a la red Wi-Fi de cortesía en 1 toque</strong> desde su mesa, sin esperar al mesero ni tener que pedir o teclear contraseñas largas.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="p-4 rounded-2xl bg-gradient-to-br from-emerald-500/10 via-emerald-500/5 to-transparent border border-emerald-500/30 flex flex-col justify-between">
+                  <div>
+                    <span class="text-emerald-300 font-mono font-bold text-[11px] uppercase tracking-wider block mb-1.5">
+                      🚀 ¿Cómo impulsa tu negocio?
+                    </span>
+                    <p class="text-zinc-200 text-xs leading-relaxed">
+                      <strong class="text-emerald-400">Acelera la rotación de mesas hasta un 25%</strong> y sube el consumo promedio gracias a fotos apetitosas en el menú. Ahorras el 100% en costos de reimpresión al cambiar precios o platos agotados en segundos desde tu teléfono, mientras tus meseros se concentran en atender y vender.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==============================================
+         REAL-LIFE VIDEO DEMONSTRATION SECTION (1080P SHOWCASE)
+         ============================================== -->
+    <section id="video-demo" class="py-20 bg-gradient-to-b from-[#07080b] via-[#0d0e16] to-[#08080c] border-t border-[#1a1a24] relative overflow-hidden" data-navbar-theme="dark">
+      
+      <!-- Ambient Gold Spotlight -->
+      <div class="absolute top-1/2 left-1/4 -translate-y-1/2 w-[600px] h-[600px] bg-amber-500/10 rounded-full blur-[140px] pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <div class="max-w-3xl mx-auto text-center mb-12 sm:mb-16">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-300 font-mono font-bold text-xs uppercase tracking-wider mb-4 shadow-sm">
+            <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
+            <span>✦ DEMOSTRACIÓN REAL EN VIVO</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-[1.15]">
+            Mira Cómo tus Clientes Califican en Google Maps en <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500">Menos de 5 Segundos</span>
+          </h2>
+          <p class="text-zinc-300 text-sm sm:text-base mt-3 max-w-2xl mx-auto leading-relaxed">
+            Así es la experiencia real sin trucos: el cliente acerca su smartphone a la placa acrílica PalkioTag Review™ y de inmediato se abre tu ficha oficial con las 5 estrellas listas para enviar.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center bg-[#0d0e14]/90 border border-amber-400/30 rounded-3xl p-6 sm:p-10 shadow-2xl backdrop-blur-xl">
+          
+          <!-- LEFT: VERTICAL 9:16 VIDEO PLAYER MOCKUP (lg:col-span-5) -->
+          <div class="lg:col-span-5 flex flex-col items-center justify-center">
+            <div class="relative w-full max-w-[320px] rounded-[38px] p-2.5 bg-gradient-to-b from-[#181924] via-[#101118] to-[#0a0a0f] border-2 border-amber-400/60 shadow-[0_25px_60px_-15px_rgba(245,158,11,0.25),0_0_40px_rgba(0,0,0,0.9)] overflow-hidden group">
+              
+              <!-- Top Recording Notch / Tag -->
+              <div class="absolute top-5 left-5 z-20 flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/80 backdrop-blur-md border border-amber-400/40 text-[9px] font-mono font-bold text-amber-300 shadow">
+                <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                <span>PALKIOTAG™ EN ACCIÓN</span>
+              </div>
+
+              <!-- Top Resolution Badge -->
+              <div class="absolute top-5 right-5 z-20 px-2.5 py-1 rounded-full bg-black/80 backdrop-blur-md border border-white/20 text-[9px] font-mono font-bold text-zinc-300">
+                1080p HD
+              </div>
+
+              <!-- HTML5 Video Element (Se inicia con audio al bajar a visualizar y se pausa al salir) -->
+              <video 
+                id="showcase-video"
+                src="/videos/nfc-palkiotech-1080.mp4" 
+                controls 
+                playsinline 
+                loop 
+                preload="metadata"
+                class="w-full aspect-[9/16] object-cover rounded-[30px] bg-black shadow-inner"
+              ></video>
+
+              <!-- Video Audio Control Button Bar (Permite Silenciar o Activar) -->
+              <div class="pt-3 pb-1 text-center">
+                <button 
+                  type="button" 
+                  id="btn-unmute-video"
+                  class="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/50 text-amber-300 font-mono text-xs font-bold transition-all cursor-pointer shadow-sm hover:scale-105"
+                >
+                  <span id="sound-toggle-icon">🔊</span>
+                  <span id="sound-toggle-label">Silenciar Audio</span>
+                </button>
+              </div>
+
+            </div>
+            <span class="text-[11px] font-mono text-zinc-400 mt-3 text-center block">
+              💡 Puedes pausar, adelantar o poner en pantalla completa con los controles.
+            </span>
+          </div>
+
+          <!-- RIGHT: SALES PILLARS & IMPACT (lg:col-span-7) -->
+          <div class="lg:col-span-7 space-y-6">
+            
+            <div class="inline-flex items-center gap-2 text-xs font-mono font-bold text-amber-400 uppercase tracking-wider">
+              <span>✦ EL PROBLEMA QUE RESUELVE ESTE PRODUCTO</span>
+            </div>
+
+            <h3 class="text-2xl sm:text-3xl font-black text-white leading-tight">
+              Tus Clientes Felices Quieren Calificarte, pero les Da Pereza Buscar tu Nombre en Google
+            </h3>
+
+            <p class="text-zinc-300 text-sm leading-relaxed">
+              El 70% de los clientes insatisfechos se desahogan dejando una mala reseña, mientras que el 90% de los clientes que tuvieron una excelente experiencia se van sin calificar porque nadie les facilita el proceso. El stand <strong>PalkioTag Review™</strong> elimina esa fricción de raíz:
+            </p>
+
+            <div class="space-y-3.5 pt-2">
+              <div class="flex items-start gap-3 p-3.5 rounded-2xl bg-[#141520] border border-[#242536]">
+                <div class="w-9 h-9 rounded-xl bg-amber-500/20 text-amber-400 font-bold flex items-center justify-center shrink-0 text-base">
+                  ⚡
+                </div>
+                <div>
+                  <strong class="text-white text-sm font-bold block mb-0.5">1 Toque NFC o 1 Escaneo QR</strong>
+                  <p class="text-zinc-400 text-xs leading-relaxed">
+                    Funciona en el 100% de celulares modernos: iPhone y Android. Sin instalar apps ni buscar el nombre de tu local en un mapa.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3 p-3.5 rounded-2xl bg-[#141520] border border-[#242536]">
+                <div class="w-9 h-9 rounded-xl bg-emerald-500/20 text-emerald-400 font-bold flex items-center justify-center shrink-0 text-base">
+                  ⭐
+                </div>
+                <div>
+                  <strong class="text-white text-sm font-bold block mb-0.5">5 Estrellas Preseleccionadas</strong>
+                  <p class="text-zinc-400 text-xs leading-relaxed">
+                    El enlace abre directamente el formulario de reseña con la calificación máxima lista para dar clic en "Publicar".
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3 p-3.5 rounded-2xl bg-[#141520] border border-[#242536]">
+                <div class="w-9 h-9 rounded-xl bg-amber-500/20 text-amber-400 font-bold flex items-center justify-center shrink-0 text-base">
+                  📈
+                </div>
+                <div>
+                  <strong class="text-white text-sm font-bold block mb-0.5">Algoritmo de Google Maps a tu Favor</strong>
+                  <p class="text-zinc-400 text-xs leading-relaxed">
+                    Más opiniones positivas constantes hacen que Google recomiende tu negocio antes que a tu competencia cuando busquen tu categoría cerca.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- CTA inside video section -->
+            <div class="pt-4 flex flex-col sm:flex-row items-center gap-3">
+              <a 
+                href={`${baseWa}${waMsgNfc}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-gradient-to-r from-amber-400 via-amber-500 to-yellow-500 hover:from-amber-500 hover:to-yellow-600 text-slate-950 font-black text-sm shadow-lg shadow-amber-500/25 transition-all hover:scale-105 cursor-pointer"
+              >
+                <span>💬 Cotizar Stands para mi Negocio por WhatsApp →</span>
+              </a>
+
+              <a 
+                href="#simulador"
+                class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-[#161722] hover:bg-[#1e1f2e] text-zinc-300 hover:text-white border border-[#28293c] font-bold text-xs transition-all"
+              >
+                <span>Probar Simulador Interactivo ↑</span>
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==============================================
+         4 FLAGSHIP NFC & QR PRODUCT VERTICALS
+         ============================================== -->
+    <section class="py-16 bg-[#08080c] border-t border-[#1a1a22]" data-navbar-theme="dark">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="max-w-3xl mx-auto text-center mb-16">
+          <span class="text-xs font-mono font-bold text-amber-400 uppercase tracking-wider block mb-2">✦ LÍNEAS DE PRODUCCIÓN OFICIALES</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+            4 Soluciones Phygital Diseñadas para tu Industria
+          </h2>
+          <p class="text-zinc-400 text-sm sm:text-base mt-2">
+            Cada producto se personaliza con tu identidad de marca y se configura para que tus clientes interactúen en un solo toque o escaneo.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          
+          <!-- Vertical 1: Google Review Counter Stands (NOW FIRST!) -->
+          <div class="p-6 rounded-3xl bg-[#101015] border border-amber-500/40 hover:border-amber-400 transition-all flex flex-col justify-between group shadow-sm ring-1 ring-amber-400/20">
+            <div>
+              <div class="w-12 h-12 rounded-2xl bg-amber-950/80 border border-amber-700/60 flex items-center justify-center text-2xl text-amber-400 mb-4 group-hover:scale-110 transition-transform">
+                ⭐
+              </div>
+              <span class="text-[10px] font-mono text-amber-400 font-bold uppercase tracking-wider block mb-1">
+                01. Puntos de Venta, Clínicas & Restaurantes
+              </span>
+              <h3 class="text-lg font-bold text-white mb-2 leading-snug">
+                PalkioTag Review™: Stands Mostrador Google 5★
+              </h3>
+              <p class="text-xs text-zinc-300 leading-relaxed mb-4">
+                Stands acrílicos de mostrador con chip NFC + QR dinámico. El cliente acerca su smartphone y se abre la pantalla de calificación de Google Maps con las 5 estrellas listas en segundos.
+              </p>
+            </div>
+            <ul class="text-[11px] font-mono text-zinc-400 space-y-1 pt-3 border-t border-[#202028]">
+              <li>✓ Multiplica tus reseñas de Google Maps x4</li>
+              <li>✓ 0 descargas de aplicaciones ni búsquedas</li>
+              <li>✓ Acrílico de alta calidad 100% personalizable</li>
+            </ul>
+          </div>
+
+          <!-- Vertical 2: Smart Business Cards -->
+          <div class="p-6 rounded-3xl bg-[#101015] border border-[#22222a] hover:border-amber-400/50 transition-all flex flex-col justify-between group shadow-sm">
+            <div>
+              <div class="w-12 h-12 rounded-2xl bg-amber-950/80 border border-amber-700/60 flex items-center justify-center text-2xl text-amber-400 mb-4 group-hover:scale-110 transition-transform">
+                🪪
+              </div>
+              <span class="text-[10px] font-mono text-amber-400 font-bold uppercase tracking-wider block mb-1">
+                02. Directivos, Consultores & Equipos
+              </span>
+              <h3 class="text-lg font-bold text-white mb-2 leading-snug">
+                PalkioTag Card™: Tarjetas Inteligentes en PVC (Doble Cara)
+              </h3>
+              <p class="text-xs text-zinc-300 leading-relaxed mb-4">
+                Tarjetas en material PVC con doble propósito: chip NFC al frente y código QR de respaldo al reverso. 100% personalizables para lo que tú quieras: tarjeta de contacto vCard, catálogos, enlaces de redes sociales o cobros.
+              </p>
+            </div>
+            <ul class="text-[11px] font-mono text-zinc-400 space-y-1 pt-3 border-t border-[#202028]">
+              <li>✓ Perfil vCard dinámico actualizable cloud</li>
+              <li>✓ Compatible con iPhone y Android nativo</li>
+              <li>✓ Código QR vectorial de respaldo grabado</li>
+            </ul>
+          </div>
+
+          <!-- Vertical 3: Customizable QR Codes for Menus & Social Media -->
+          <div class="p-6 rounded-3xl bg-[#101015] border border-[#22222a] hover:border-amber-400/50 transition-all flex flex-col justify-between group shadow-sm">
+            <div>
+              <div class="w-12 h-12 rounded-2xl bg-amber-950/80 border border-amber-700/60 flex items-center justify-center text-2xl text-amber-400 mb-4 group-hover:scale-110 transition-transform">
+                📲
+              </div>
+              <span class="text-[10px] font-mono text-amber-400 font-bold uppercase tracking-wider block mb-1">
+                03. Menús Digitales & Redes Sociales
+              </span>
+              <h3 class="text-lg font-bold text-white mb-2 leading-snug">
+                Códigos QR Personalizables para Menú o Redes
+              </h3>
+              <p class="text-xs text-zinc-300 leading-relaxed mb-4">
+                Códigos QR totalmente personalizables con tu logo, colores y estilo. Ideales para cartas de restaurantes, menús digitales, enlaces directos a WhatsApp, Instagram, TikTok o catálogos web, adaptables para lo que tú quieras.
+              </p>
+            </div>
+            <ul class="text-[11px] font-mono text-zinc-400 space-y-1 pt-3 border-t border-[#202028]">
+              <li>✓ 100% Personalizable: Con tu logo y colores de marca</li>
+              <li>✓ Para cartas de menú, redes sociales o catálogos</li>
+              <li>✓ 0 Apps: Escaneo instantáneo desde cualquier smartphone</li>
+            </ul>
+          </div>
+
+          <!-- Vertical 4: Table Plaques & Instant Wi-Fi / Hospitality -->
+          <div class="p-6 rounded-3xl bg-[#101015] border border-[#22222a] hover:border-amber-400/50 transition-all flex flex-col justify-between group shadow-sm">
+            <div>
+              <div class="w-12 h-12 rounded-2xl bg-amber-950/80 border border-amber-700/60 flex items-center justify-center text-2xl text-amber-400 mb-4 group-hover:scale-110 transition-transform">
+                🍽️
+              </div>
+              <span class="text-[10px] font-mono text-amber-400 font-bold uppercase tracking-wider block mb-1">
+                04. Hostelería, Cafés & Eventos
+              </span>
+              <h3 class="text-lg font-bold text-white mb-2 leading-snug">
+                Placas de Mesa: Menú QR + WiFi en 1 Toque
+              </h3>
+              <p class="text-xs text-zinc-300 leading-relaxed mb-4">
+                Placas acrílicas para mesas y barras con código QR y chip NFC. Permite a los clientes abrir la carta digital y conectarse a la red WiFi del local en un solo toque sin pedir la contraseña al mesero.
+              </p>
+            </div>
+            <ul class="text-[11px] font-mono text-zinc-400 space-y-1 pt-3 border-t border-[#202028]">
+              <li>✓ 100% Personalizable: Tu logo y número de mesa</li>
+              <li>✓ Conexión WiFi automática en 1 toque (NFC)</li>
+              <li>✓ Menú digital o catálogo sin descargas de apps</li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==============================================
+         TECHNICAL SPECIFICATIONS MATRIX
+         ============================================== -->
+    <section class="py-16 bg-[#060709] border-t border-[#1a1a22]" data-navbar-theme="dark">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="max-w-3xl mx-auto text-center mb-12">
+          <span class="text-xs font-mono font-bold text-amber-400 uppercase tracking-wider block mb-2">✦ RIGOR TÉCNICO & HOMOLOGACIÓN</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+            Especificaciones Técnicas del Chipset NFC & Protocolos
+          </h2>
+          <p class="text-zinc-400 text-xs sm:text-sm mt-1">
+            Utilizamos exclusivamente microcontroladores NXP semiconductores certificados bajo la norma internacional ISO/IEC 14443-A.
+          </p>
+        </div>
+
+        <div class="max-w-4xl mx-auto overflow-x-auto">
+          <table class="w-full text-xs text-left border border-[#22222a] rounded-2xl overflow-hidden bg-[#0c0c10]">
+            <thead class="bg-[#14141a] text-zinc-300 font-mono text-[11px] border-b border-[#22222a]">
+              <tr>
+                <th class="p-4">Parámetro Técnico</th>
+                <th class="p-4 text-amber-400">Chip NTAG216 (PalkioTech Pro)</th>
+                <th class="p-4 text-zinc-400">Chip NTAG213 (Estándar)</th>
+                <th class="p-4 text-zinc-400">Código QR Físico Estático</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-[#1e1e26] text-zinc-300 font-mono">
+              <tr>
+                <td class="p-4 font-bold text-white">Memoria EEPROM Utilizable</td>
+                <td class="p-4 text-amber-400 font-bold">888 Bytes (vCard rica en datos)</td>
+                <td class="p-4">144 Bytes (Solo URL corta)</td>
+                <td class="p-4">Sin memoria electrónica</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-bold text-white">Velocidad de Respuesta</td>
+                <td class="p-4 text-emerald-400 font-bold">&lt; 0.1 segundos (Instantáneo)</td>
+                <td class="p-4">&lt; 0.1 segundos</td>
+                <td class="p-4">Requiere enfocar cámara (3-5s)</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-bold text-white">Compatibilidad Smartphone</td>
+                <td class="p-4 text-white">iOS 14+ y Android NFC Nativo</td>
+                <td class="p-4">iOS 14+ y Android NFC Nativo</td>
+                <td class="p-4">Cámara de cualquier smartphone</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-bold text-white">Actualización Remota de Datos</td>
+                <td class="p-4 text-amber-400 font-bold">Ilimitada en la Nube (Cloud)</td>
+                <td class="p-4">Ilimitada en la Nube</td>
+                <td class="p-4 text-rose-400">Imposible (Requiere reimprimir)</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-bold text-white">Ciclos de Lectura / Retención</td>
+                <td class="p-4 text-white">&gt; 100,000 ciclos / 10 años</td>
+                <td class="p-4">&gt; 100,000 ciclos / 10 años</td>
+                <td class="p-4">Sujeto al desgaste del papel</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==============================================
+         4-STEP PRODUCTION WORKFLOW
+         ============================================== -->
+    <section class="py-16 bg-[#0a0a0e] border-t border-[#1a1a22]" data-navbar-theme="dark">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="max-w-3xl mx-auto text-center mb-12">
+          <span class="text-xs font-mono font-bold text-amber-400 uppercase tracking-wider block mb-2">✦ PROCESO ÁGIL DE ENTREGA</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+            De tu Idea a tus Manos en 4 Pasos
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+          <div class="p-5 rounded-2xl bg-[#101016] border border-[#202028]">
+            <span class="w-8 h-8 rounded-xl bg-amber-500/20 text-amber-400 font-mono font-bold text-sm flex items-center justify-center mb-3">01</span>
+            <h4 class="text-sm font-bold text-white mb-1">Brief & Logo</h4>
+            <p class="text-xs text-zinc-400 leading-relaxed">Nos compartes tu logotipo vectorizado y los datos que deseas vincular.</p>
+          </div>
+          <div class="p-5 rounded-2xl bg-[#101016] border border-[#202028]">
+            <span class="w-8 h-8 rounded-xl bg-amber-500/20 text-amber-400 font-mono font-bold text-sm flex items-center justify-center mb-3">02</span>
+            <h4 class="text-sm font-bold text-white mb-1">Render 3D</h4>
+            <p class="text-xs text-zinc-400 leading-relaxed">Generamos una maqueta virtual fotográfica para tu aprobación antes de grabar.</p>
+          </div>
+          <div class="p-5 rounded-2xl bg-[#101016] border border-[#202028]">
+            <span class="w-8 h-8 rounded-xl bg-amber-500/20 text-amber-400 font-mono font-bold text-sm flex items-center justify-center mb-3">03</span>
+            <h4 class="text-sm font-bold text-white mb-1">Personalización & Cifrado</h4>
+            <p class="text-xs text-zinc-400 leading-relaxed">Personalización gráfica de alta calidad y programación del chip con claves de seguridad.</p>
+          </div>
+          <div class="p-5 rounded-2xl bg-[#101016] border border-[#202028]">
+            <span class="w-8 h-8 rounded-xl bg-amber-500/20 text-amber-400 font-mono font-bold text-sm flex items-center justify-center mb-3">04</span>
+            <h4 class="text-sm font-bold text-white mb-1">Despacho Asegurado</h4>
+            <p class="text-xs text-zinc-400 leading-relaxed">Envío express con empaque protector y número de guía con seguimiento en vivo.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==============================================
+         NFC & QR SPECIFIC FAQ ACCORDION
+         ============================================== -->
+    <section class="py-16 bg-[#060709] border-t border-[#1a1a22]" data-navbar-theme="dark">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center mb-12">
+          <span class="text-xs font-mono font-bold text-amber-400 uppercase tracking-wider block mb-2">✦ RESOLUCIÓN DE DUDAS FRECUENTES</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+            Preguntas Frecuentes sobre Tecnología NFC & QR
+          </h2>
+        </div>
+
+        <div class="space-y-4">
+          
+          <div class="p-5 rounded-2xl bg-[#0c0c10] border border-[#22222a]">
+            <h4 class="text-sm font-bold text-white mb-1.5">¿El cliente o prospecto debe descargar alguna aplicación para leer mi tarjeta?</h4>
+            <p class="text-xs text-zinc-400 leading-relaxed">
+              No. El 100% de los teléfonos modernos (iPhone 7 en adelante y teléfonos Android con NFC activado) leen el chip de forma nativa a nivel de sistema operativo. Al acercar la tarjeta o placa, el teléfono vibra y despliega automáticamente la notificación en pantalla.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-[#0c0c10] border border-[#22222a]">
+            <h4 class="text-sm font-bold text-white mb-1.5">¿Qué ocurre si cambio de número telefónico, cargo o dirección web?</h4>
+            <p class="text-xs text-zinc-400 leading-relaxed">
+              Tu tarjeta física sigue funcionando intacta. Gracias a nuestra infraestructura cloud, puedes actualizar tus datos de contacto, enlaces de redes o catálogo desde tu panel web en cualquier momento sin necesidad de reimprimir ni volver a comprar hardware.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-[#0c0c10] border border-[#22222a]">
+            <h4 class="text-sm font-bold text-white mb-1.5">¿Las tarjetas o placas necesitan batería o recargarse?</h4>
+            <p class="text-xs text-zinc-400 leading-relaxed">
+              No requieren baterías. El chip NFC es pasivo: se energiza por inducción electromagnética durante la fracción de segundo en que el teléfono del receptor entra en su campo de lectura (1 a 4 cm). Nunca se descargarán.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-[#0c0c10] border border-[#22222a]">
+            <h4 class="text-sm font-bold text-white mb-1.5">¿Cómo les entrego mi logo e información para personalizar mi pedido?</h4>
+            <p class="text-xs text-zinc-400 leading-relaxed">
+              Una vez confirmado tu pedido, nos compartes tu logotipo en buena resolución (PNG, SVG o PDF) y los enlaces o datos que deseas vincular (redes sociales, WhatsApp, catálogo o enlace de Google Maps). Diseñamos la propuesta visual y te enviamos una maqueta previa para tu visto bueno antes de iniciar la producción.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-[#0c0c10] border border-[#22222a]">
+            <h4 class="text-sm font-bold text-white mb-1.5">¿Ustedes configuran el enlace directo a las 5 estrellas de mi Google Maps?</h4>
+            <p class="text-xs text-zinc-400 leading-relaxed">
+              Sí, nosotros nos encargamos de todo. Obtenemos el enlace oficial de calificación de tu ficha de Google Business Profile y lo programamos directamente en el chip NFC y en el código QR. El stand o tarjeta te llega listo para colocar en el mostrador y empezar a recibir opiniones de tus clientes desde el primer día.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-[#0c0c10] border border-[#22222a]">
+            <h4 class="text-sm font-bold text-white mb-1.5">¿Manejan pedidos individuales o solo al por mayor para empresas?</h4>
+            <p class="text-xs text-zinc-400 leading-relaxed">
+              Atendemos ambas necesidades: desde una tarjeta individual personalizada para profesionales independientes, hasta dotaciones corporativas de 100+ unidades con descuentos por volumen para equipos comerciales o cadenas de tiendas.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Bottom Commercial Call to Action Banner -->
+    <section class="py-16 bg-[#08080c] border-t border-[#1a1a22]" data-navbar-theme="dark">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-[#101015] via-[#16161e] to-[#101015] border border-amber-400/40 shadow-xl shadow-amber-500/5 flex flex-col lg:flex-row items-center justify-between gap-8 text-center lg:text-left">
+          <div class="max-w-2xl">
+            <span class="text-xs font-mono font-bold text-amber-400 uppercase tracking-wider block mb-1">
+              ✦ ASESORÍA PERSONALIZADA EN HARDWARE PHYGITAL
+            </span>
+            <h3 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+              ¿Listo para dotar a tu empresa con tarjetas inteligentes y placas NFC?
+            </h3>
+            <p class="text-sm text-zinc-300 mt-2 leading-relaxed">
+              Comunícate directamente con nosotros por WhatsApp para cotizar tu lote personalizado, resolver cualquier duda técnica y recibir asesoría inmediata.
+            </p>
+          </div>
+
+          <div class="flex flex-col sm:flex-row items-center gap-3 shrink-0 w-full sm:w-auto">
+            <a 
+              href={`${baseWa}${waMsgNfc}`}
+              target="_blank"
+              rel="noopener noreferrer" 
+              class="w-full sm:w-auto py-3.5 px-7 rounded-xl bg-gradient-to-r from-amber-400 via-amber-500 to-yellow-500 hover:from-amber-500 hover:to-yellow-600 text-slate-950 font-black text-xs sm:text-sm text-center shadow-lg shadow-amber-500/25 transition-all cursor-pointer hover:scale-105 flex items-center justify-center gap-2"
+            >
+              <span>💬 Cotizar por WhatsApp Directo →</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</Layout>
+
+<!-- Client-side Interactive Logic for NFC Hardware & Phone Simulator -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const pillText = document.getElementById('pill-text');
+    
+    // Hardware Stages on Left
+    const hwStageGoogle = document.getElementById('hw-stage-google');
+    const hwStageCard = document.getElementById('hw-stage-card');
+    const hwStageMenu = document.getElementById('hw-stage-menu');
+
+    // Dynamic Product Value Boxes (Descripción, Para qué sirve, Cómo impulsa el negocio)
+    const infoGoogle = document.getElementById('info-google');
+    const infoCard = document.getElementById('info-card');
+    const infoMenu = document.getElementById('info-menu');
+
+    // Screens in Phone on Right
+    const screenVcard = document.getElementById('screen-vcard');
+    const screenGoogle = document.getElementById('screen-google');
+    const screenMenu = document.getElementById('screen-menu');
+
+    // Category Buttons
+    const btnGoogle = document.getElementById('btn-simulate-google-tap');
+    const btnVcard = document.getElementById('btn-simulate-card-tap');
+    const btnMenu = document.getElementById('btn-simulate-menu-tap');
+
+    // Stand Tap Action
+    const btnStandTapAction = document.getElementById('btn-stand-tap-action');
+
+    // Card Front / Back Elements
+    const btnPageCardFront = document.getElementById('btn-page-card-front');
+    const btnPageCardBack = document.getElementById('btn-page-card-back');
+    const pageCardFaceFront = document.getElementById('page-card-face-front');
+    const pageCardFaceBack = document.getElementById('page-card-face-back');
+
+    // Helper to flash dynamic island
+    function triggerNfcPulse(label: string) {
+      if (pillText) {
+        pillText.textContent = label;
+        pillText.className = "text-[8px] text-emerald-400 font-extrabold animate-ping";
+        setTimeout(() => {
+          pillText.className = "text-[8px] text-amber-300 font-bold";
+        }, 600);
+      }
+    }
+
+    function setActiveBtn(activeBtn) {
+      [btnGoogle, btnVcard, btnMenu].forEach(b => {
+        if (!b) return;
+        b.className = "py-2.5 px-3 rounded-xl bg-[#121216] hover:bg-[#181822] text-amber-300 border border-amber-500/50 hover:border-amber-400 font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer";
+      });
+      if (activeBtn) {
+        activeBtn.className = "py-2.5 px-3 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-600 text-slate-950 font-black hover:from-amber-600 hover:to-yellow-700 transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-sm";
+      }
+    }
+
+    function resetHwStages() {
+      [hwStageGoogle, hwStageCard, hwStageMenu].forEach(st => st?.classList.add('hidden'));
+    }
+
+    function resetInfoBoxes() {
+      [infoGoogle, infoCard, infoMenu].forEach(info => info?.classList.add('hidden'));
+    }
+
+    // Tap Scenario 1: Google 5★ Review (DEFAULT)
+    function activateGoogleReview() {
+      triggerNfcPulse("⭐ GOOGLE 5★");
+      setActiveBtn(btnGoogle);
+      resetHwStages();
+      resetInfoBoxes();
+      infoGoogle?.classList.remove('hidden');
+      hwStageGoogle?.classList.remove('hidden');
+      screenGoogle?.classList.remove('hidden');
+      screenVcard?.classList.add('hidden');
+      screenMenu?.classList.add('hidden');
+    }
+
+    btnGoogle?.addEventListener('click', activateGoogleReview);
+    btnStandTapAction?.addEventListener('click', activateGoogleReview);
+
+    // Tap Scenario 2: vCard / Tarjeta PVC
+    function activateVcard() {
+      triggerNfcPulse("⚡ NFC: VCARD");
+      setActiveBtn(btnVcard);
+      resetHwStages();
+      resetInfoBoxes();
+      infoCard?.classList.remove('hidden');
+      hwStageCard?.classList.remove('hidden');
+      screenVcard?.classList.remove('hidden');
+      screenGoogle?.classList.add('hidden');
+      screenMenu?.classList.add('hidden');
+    }
+
+    btnVcard?.addEventListener('click', activateVcard);
+
+    // Tap Scenario 3: Restaurant Menu
+    function activateMenu() {
+      triggerNfcPulse("🍽️ QR: MENÚ MESA");
+      setActiveBtn(btnMenu);
+      resetHwStages();
+      resetInfoBoxes();
+      infoMenu?.classList.remove('hidden');
+      hwStageMenu?.classList.remove('hidden');
+      screenMenu?.classList.remove('hidden');
+      screenVcard?.classList.add('hidden');
+      screenGoogle?.classList.add('hidden');
+    }
+
+    btnMenu?.addEventListener('click', activateMenu);
+
+    // Card Front / Back Toggle
+    btnPageCardFront?.addEventListener('click', () => {
+      pageCardFaceFront?.classList.remove('hidden');
+      pageCardFaceBack?.classList.add('hidden');
+      btnPageCardFront?.classList.add('bg-gradient-to-r', 'from-amber-500', 'to-yellow-600', 'text-slate-950', 'font-black');
+      btnPageCardFront?.classList.remove('text-zinc-400');
+      btnPageCardBack?.classList.remove('bg-gradient-to-r', 'from-amber-500', 'to-yellow-600', 'text-slate-950', 'font-black');
+      btnPageCardBack?.classList.add('text-zinc-400');
+    });
+
+    btnPageCardBack?.addEventListener('click', () => {
+      pageCardFaceFront?.classList.add('hidden');
+      pageCardFaceBack?.classList.remove('hidden');
+      btnPageCardBack?.classList.add('bg-gradient-to-r', 'from-amber-500', 'to-yellow-600', 'text-slate-950', 'font-black');
+      btnPageCardBack?.classList.remove('text-zinc-400');
+      btnPageCardFront?.classList.remove('bg-gradient-to-r', 'from-amber-500', 'to-yellow-600', 'text-slate-950', 'font-black');
+      btnPageCardFront?.classList.add('text-zinc-400');
+    });
+
+    // Showcase Video Scroll Trigger & Audio Controls (Inicia al bajar a visualizar, pausa al salir)
+    const showcaseVideo = document.getElementById('showcase-video') as HTMLVideoElement | null;
+    const btnUnmute = document.getElementById('btn-unmute-video');
+    const soundToggleIcon = document.getElementById('sound-toggle-icon');
+    const soundToggleLabel = document.getElementById('sound-toggle-label');
+
+    let userManuallyMuted = false;
+
+    function updateAudioUI(isMuted: boolean) {
+      if (soundToggleIcon && soundToggleLabel) {
+        if (isMuted) {
+          soundToggleIcon.textContent = "🔇";
+          soundToggleLabel.textContent = "Activar Audio";
+          if (btnUnmute) {
+            btnUnmute.className = "inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-zinc-800/80 hover:bg-zinc-700/80 border border-zinc-600 text-zinc-300 font-mono text-xs font-bold transition-all cursor-pointer shadow-sm";
+          }
+        } else {
+          soundToggleIcon.textContent = "🔊";
+          soundToggleLabel.textContent = "Silenciar Audio";
+          if (btnUnmute) {
+            btnUnmute.className = "inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/50 text-amber-300 font-mono text-xs font-bold transition-all cursor-pointer shadow-sm";
+          }
+        }
+      }
+    }
+
+    if (showcaseVideo) {
+      showcaseVideo.volume = 0.5; // Volumen medio inicial (50%)
+
+      // Iniciar IntersectionObserver para auto-reproducir al bajar a la sección y pausar al salir
+      const videoObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // El usuario bajó a ver el video: iniciar con volumen medio
+            if (!userManuallyMuted) {
+              showcaseVideo.muted = false;
+              showcaseVideo.volume = 0.5;
+            }
+            showcaseVideo.play().then(() => {
+              updateAudioUI(showcaseVideo.muted);
+            }).catch(() => {
+              // Si la política de autoplay del navegador exige interacción táctil/clic previa:
+              showcaseVideo.muted = true;
+              showcaseVideo.play().catch(() => {});
+              updateAudioUI(true);
+
+              const unmuteOnInteraction = () => {
+                if (!userManuallyMuted && showcaseVideo) {
+                  showcaseVideo.muted = false;
+                  showcaseVideo.volume = 0.5;
+                  updateAudioUI(false);
+                }
+                ['click', 'touchstart', 'scroll'].forEach(ev => {
+                  window.removeEventListener(ev, unmuteOnInteraction);
+                });
+              };
+              ['click', 'touchstart', 'scroll'].forEach(ev => {
+                window.addEventListener(ev, unmuteOnInteraction, { once: true });
+              });
+            });
+          } else {
+            // El usuario se desplazó fuera de la vista: pausar video
+            if (!showcaseVideo.paused) {
+              showcaseVideo.pause();
+            }
+          }
+        });
+      }, {
+        threshold: 0.30 // Se activa cuando al menos el 30% del video está visible en pantalla
+      });
+
+      videoObserver.observe(showcaseVideo);
+    }
+
+    btnUnmute?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (!showcaseVideo) return;
+      if (showcaseVideo.muted) {
+        userManuallyMuted = false;
+        showcaseVideo.muted = false;
+        showcaseVideo.volume = 0.5;
+        updateAudioUI(false);
+        showcaseVideo.play().catch(() => {});
+      } else {
+        userManuallyMuted = true;
+        showcaseVideo.muted = true;
+        updateAudioUI(true);
+      }
+    });
+  });
+</script>

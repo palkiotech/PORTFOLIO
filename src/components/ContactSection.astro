@@ -1,0 +1,481 @@
+---
+import { companyData } from '../data/company';
+
+const phone = companyData.whatsappNumber || '573132939656';
+const baseWa = `https://api.whatsapp.com/send?phone=${phone}&text=`;
+const corporateEmail = companyData.email || 'palkiotech@gmail.com';
+const phoneDisplay = companyData.phoneDisplay || '+57 313 293 9656';
+const googleSheetsWebhookUrl = companyData.googleSheetsWebhookUrl || '';
+---
+
+<section id="contacto" class="py-16 sm:py-20 relative overflow-hidden bg-slate-50/70 border-t border-slate-200 scroll-mt-12">
+  
+  <!-- Subtle Ambient Glow -->
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[450px] bg-gradient-to-b from-amber-100/25 via-yellow-50/15 to-transparent blur-3xl pointer-events-none"></div>
+
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    
+    <!-- Section Header -->
+    <div class="max-w-2xl mx-auto text-center mb-8">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-900 text-[11px] font-mono font-bold mb-3 shadow-xs">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span>✦ COORDINACIÓN DIRECTA 1-A-1 POR WHATSAPP</span>
+      </div>
+      
+      <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight mb-2">
+        Diagnóstico de Ingeniería & <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-amber-500 to-yellow-600">Reunión Técnica</span>
+      </h2>
+      
+      <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
+        Diligencia tus datos y requerimientos a continuación. Se enviarán directamente a nuestro WhatsApp oficial para hablar con nuestro equipo y coordinar el día y hora exactos de la sesión técnica.
+      </p>
+    </div>
+
+    <!-- MAIN CONTACT & WHATSAPP SCHEDULER CARD -->
+    <div class="rounded-3xl bg-white border border-slate-200 shadow-xl overflow-hidden relative">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 min-h-[500px]">
+        
+        <!-- LEFT COLUMN: CONTEXT & VALUE PROPOSITION (~35%) -->
+        <div class="lg:col-span-4 bg-[#08080b] text-white p-6 sm:p-7 flex flex-col justify-between relative overflow-hidden border-b lg:border-b-0 lg:border-r border-[#1e1e26]">
+          
+          <!-- Decorative Glow -->
+          <div class="absolute -top-16 -left-16 w-48 h-48 bg-amber-500/15 rounded-full blur-2xl pointer-events-none"></div>
+          <div class="absolute -bottom-16 -right-16 w-48 h-48 bg-emerald-600/15 rounded-full blur-2xl pointer-events-none"></div>
+
+          <!-- Top Brand & Host Info -->
+          <div class="relative z-10 space-y-4">
+            <div class="flex items-center gap-2.5">
+              <img src="/images/palkiotech-emblem.png" alt="PalkioTech" class="w-9 h-9 object-contain drop-shadow" />
+              <div>
+                <span class="text-xs font-extrabold text-white block leading-tight">PALKIO<span class="text-amber-400">TECH</span></span>
+                <span class="text-[9px] font-mono text-amber-400/90 block">Engineering Advisory</span>
+              </div>
+            </div>
+
+            <div class="pt-2">
+              <h3 class="text-base sm:text-lg font-extrabold text-white tracking-tight leading-snug">
+                Diagnóstico de Arquitectura & Viabilidad
+              </h3>
+              <p class="text-[11px] text-slate-400 mt-1.5 leading-relaxed">
+                Sesión enfocada 1-a-1 sin rodeos comerciales. Analizamos tu stack, personalización NFC/QR, automatización y costos reales.
+              </p>
+            </div>
+
+            <!-- Key Process Highlights -->
+            <div class="space-y-3 pt-2 text-xs">
+              <div class="flex items-start gap-2.5 text-slate-300">
+                <span class="text-emerald-400 font-bold text-sm">💬</span>
+                <div>
+                  <strong class="text-white block font-bold">Coordinación por WhatsApp:</strong>
+                  <span class="text-slate-400 text-[11px]">Llenas tus datos, nos llegan al chat y acordamos contigo fecha, hora y canal sin esperas.</span>
+                </div>
+              </div>
+              <div class="flex items-start gap-2.5 text-slate-300">
+                <span class="text-amber-400 font-bold text-sm">⏱</span>
+                <div>
+                  <strong class="text-white block font-bold">20 Minutos Focalizados:</strong>
+                  <span class="text-slate-400 text-[11px]">Diagnóstico técnico real con un Lead Software Architect.</span>
+                </div>
+              </div>
+              <div class="flex items-start gap-2.5 text-slate-300">
+                <span class="text-purple-400 font-bold text-sm">🔒</span>
+                <div>
+                  <strong class="text-white block font-bold">Confidencialidad Garantizada:</strong>
+                  <span class="text-slate-400 text-[11px]">NDA tácito y 100% rigor técnico.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Contact Direct Channel Info -->
+          <div class="relative z-10 pt-6 mt-6 border-t border-[#22222c] space-y-2 text-xs">
+            <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 font-bold flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span>Canal Oficial Directo</span>
+            </div>
+
+            <div class="p-3 rounded-2xl bg-[#101014] border border-[#22222c] space-y-2 text-[11px] font-mono">
+              <div class="flex items-center justify-between text-zinc-300">
+                <span class="text-zinc-500">📱 WhatsApp:</span>
+                <span class="text-emerald-400 font-bold">{phoneDisplay}</span>
+              </div>
+              <div class="flex items-center justify-between text-zinc-300">
+                <span class="text-zinc-500">✉️ Correo:</span>
+                <span class="text-amber-400 font-bold">{corporateEmail}</span>
+              </div>
+            </div>
+
+            <p class="text-[10px] text-slate-400 text-center font-mono">
+              ✓ Respuesta rápida en horario laboral.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN: FORM -> WHATSAPP DISPATCH (~65%) -->
+        <div class="lg:col-span-8 p-6 sm:p-8 flex flex-col justify-between bg-white">
+          
+          <!-- Stepper / Indicator Bar -->
+          <div class="flex items-center justify-between pb-4 mb-4 border-b border-slate-100 text-[11px] font-mono">
+            <div class="flex items-center gap-2">
+              <span class="px-2.5 py-1 rounded-lg bg-amber-500 text-slate-950 font-black shadow-xs">
+                1. Completa tus Datos
+              </span>
+              <span class="text-slate-300">→</span>
+              <span class="px-2.5 py-1 rounded-lg bg-emerald-100 text-emerald-800 font-bold">
+                2. Enviar a WhatsApp & Fijar Reunión
+              </span>
+            </div>
+
+            <div class="hidden sm:flex items-center gap-1.5 text-[10px] text-slate-400 font-mono">
+              <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+              <span>Atención Inmediata</span>
+            </div>
+          </div>
+
+          <!-- FORM CONTAINER -->
+          <div id="contact-form-container" class="space-y-4">
+            
+            <form id="contact-engineering-form" class="space-y-3.5">
+              
+              <!-- Row 1: Nombre & Empresa -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                <div>
+                  <label class="block text-[11px] font-bold text-slate-700 mb-1">
+                    Tu Nombre Completo *
+                  </label>
+                  <input 
+                    id="form-name"
+                    type="text" 
+                    required
+                    placeholder="Ej: Carlos Valenzuela" 
+                    class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-amber-500 focus:bg-white transition-colors"
+                  />
+                </div>
+                <div>
+                  <label class="block text-[11px] font-bold text-slate-700 mb-1">
+                    Empresa / Negocio & Cargo *
+                  </label>
+                  <input 
+                    id="form-company"
+                    type="text" 
+                    required
+                    placeholder="Ej: Restaurante Andino · Propietario" 
+                    class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-amber-500 focus:bg-white transition-colors"
+                  />
+                </div>
+              </div>
+
+              <!-- Row 2: WhatsApp & Correo -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                <div>
+                  <label class="block text-[11px] font-bold text-slate-700 mb-1">
+                    Tu WhatsApp / Teléfono *
+                  </label>
+                  <input 
+                    id="form-phone"
+                    type="tel" 
+                    required
+                    placeholder="+57 313 000 0000" 
+                    class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-amber-500 focus:bg-white transition-colors"
+                  />
+                </div>
+                <div>
+                  <label class="block text-[11px] font-bold text-slate-700 mb-1">
+                    Correo Electrónico (Para envío de cotización)
+                  </label>
+                  <input 
+                    id="form-email"
+                    type="email" 
+                    placeholder="carlos@empresa.com" 
+                    class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-amber-500 focus:bg-white transition-colors"
+                  />
+                </div>
+              </div>
+
+              <!-- Row 3: Solución de Interés -->
+              <div>
+                <label class="block text-[11px] font-bold text-slate-700 mb-1">
+                  ¿En qué solución o producto estás interesado? *
+                </label>
+                <select 
+                  id="form-service"
+                  class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-amber-500 focus:bg-white transition-colors cursor-pointer"
+                >
+                  <option value="⭐ Stands NFC Google 5★ / Placas Acrílicas Mostrador">⭐ Stands NFC Google 5★ / Placas Acrílicas para Mostrador</option>
+                  <option value="🪪 Tarjetas Inteligentes NFC en PVC Doble Cara (vCard & QR)">🪪 Tarjetas Inteligentes NFC en PVC Doble Cara (vCard & QR)</option>
+                  <option value="🍽️ Placas de Mesa con Menú QR & WiFi para Restaurantes">🍽️ Placas de Mesa con Menú QR & Conexión WiFi para Restaurantes</option>
+                  <option value="⚡ Tienda Web / Catálogo Rápido con Pedidos a WhatsApp">⚡ Tienda Web / Catálogo Rápido con Pedidos a WhatsApp</option>
+                  <option value="🤖 Automatización de Procesos Operativos o Agente IA">🤖 Automatización de Procesos Operativos o Agente IA</option>
+                  <option value="💻 Desarrollo Web o Sistema a la Medida / Mini-CRM">💻 Desarrollo Web o Sistema a la Medida / Mini-CRM</option>
+                  <option value="Otro Requerimiento / Consultoría Técnica">Otro Requerimiento / Consultoría Técnica</option>
+                </select>
+              </div>
+
+              <!-- Row 4: Preferencia de Horario para la Reunión -->
+              <div>
+                <label class="block text-[11px] font-bold text-slate-700 mb-1">
+                  Preferencia de horario para que coordinemos la reunión por WhatsApp:
+                </label>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
+                  <label class="flex items-center gap-2 p-2.5 rounded-xl border border-slate-200 hover:border-amber-400 bg-slate-50 cursor-pointer">
+                    <input type="radio" name="form-pref-time" value="Mañana (9:00 AM - 12:00 PM)" checked class="text-amber-500 focus:ring-amber-400" />
+                    <span class="text-slate-800 font-medium text-[11px]">🌅 Mañana (9am - 12pm)</span>
+                  </label>
+                  <label class="flex items-center gap-2 p-2.5 rounded-xl border border-slate-200 hover:border-amber-400 bg-slate-50 cursor-pointer">
+                    <input type="radio" name="form-pref-time" value="Tarde (2:00 PM - 6:00 PM)" class="text-amber-500 focus:ring-amber-400" />
+                    <span class="text-slate-800 font-medium text-[11px]">🌆 Tarde (2pm - 6pm)</span>
+                  </label>
+                  <label class="flex items-center gap-2 p-2.5 rounded-xl border border-slate-200 hover:border-amber-400 bg-slate-50 cursor-pointer">
+                    <input type="radio" name="form-pref-time" value="A convenir por WhatsApp" class="text-amber-500 focus:ring-amber-400" />
+                    <span class="text-slate-800 font-medium text-[11px]">💬 A convenir por chat</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Row 5: Detalles o notas -->
+              <div>
+                <label class="block text-[11px] font-bold text-slate-700 mb-1">
+                  Cuéntanos brevemente sobre tu proyecto o necesidad (Opcional):
+                </label>
+                <textarea 
+                  id="form-details"
+                  rows="2" 
+                  placeholder="Ej: Necesitamos 4 stands Google 5★ para nuestros puntos de venta en Bogotá..."
+                  class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-amber-500 focus:bg-white transition-colors resize-none"
+                ></textarea>
+              </div>
+
+              <div id="form-error-msg" class="hidden text-xs font-mono text-red-600 bg-red-50 p-2.5 rounded-xl border border-red-200">
+                ⚠️ Por favor completa tu nombre, empresa, WhatsApp y solución requerida.
+              </div>
+
+              <!-- Submit Button -->
+              <div class="pt-2 border-t border-slate-100">
+                <button 
+                  type="submit" 
+                  id="btn-submit-to-whatsapp"
+                  class="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-green-600 hover:from-emerald-500 hover:to-green-500 text-white font-black text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/25 transition-all hover:scale-[1.01] cursor-pointer"
+                >
+                  <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+                  </svg>
+                  <span id="btn-submit-text">Enviar Datos y Coordinar Reunión por WhatsApp →</span>
+                </button>
+                <p class="text-[10px] text-slate-500 text-center mt-2 font-mono">
+                  Al enviar, se guardarán los datos en la hoja de cálculo y se abrirá WhatsApp para coordinar la cita.
+                </p>
+              </div>
+
+            </form>
+
+          </div>
+
+          <!-- SUCCESS / SUMMARY CONFIRMATION VIEW (Shown after dispatch) -->
+          <div id="contact-success-container" class="space-y-4 hidden flex-1 flex flex-col justify-between">
+            <div class="space-y-4">
+              <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-300 text-emerald-950 flex items-start gap-3">
+                <span class="text-2xl">✅</span>
+                <div class="space-y-1">
+                  <div class="flex flex-wrap items-center gap-2">
+                    <h4 class="font-extrabold text-sm sm:text-base text-emerald-900">
+                      ¡Datos guardados con éxito!
+                    </h4>
+                    <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-200/80 border border-emerald-300 text-emerald-900 text-[10px] font-mono font-bold">
+                      <span>📊</span> Guardado en Hoja de Cálculo
+                    </span>
+                  </div>
+                  <p class="text-xs text-emerald-800 leading-relaxed">
+                    Hemos registrado tu solicitud en el sistema y preparado el mensaje con todos los requerimientos. Envíalo en WhatsApp para acordar de inmediato la fecha y hora de la reunión 1-a-1.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Snapshot of data -->
+              <div class="p-4 rounded-2xl bg-slate-900 text-white text-xs font-mono space-y-2 border border-slate-800">
+                <div class="flex items-center justify-between pb-2 border-b border-slate-800">
+                  <span class="text-amber-400 font-bold uppercase text-[10px]">Resumen de tu Solicitud</span>
+                  <span class="text-emerald-400 text-[10px] font-bold" id="summary-folio-badge">PLK-XXXXXX</span>
+                </div>
+                <div class="space-y-1.5 text-[11px] text-slate-300" id="summary-data-preview">
+                  <!-- Injected via JS -->
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-2 pt-3 border-t border-slate-100">
+              <a 
+                id="btn-reopen-whatsapp"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full py-3.5 px-6 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-md transition-all text-center"
+              >
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+                </svg>
+                <span>👉 Abrir WhatsApp para Terminar de Coordinar la Cita</span>
+              </a>
+
+              <button 
+                type="button" 
+                id="btn-modify-form"
+                class="w-full py-2 text-center text-[11px] font-mono text-slate-500 hover:text-slate-800 underline cursor-pointer"
+              >
+                ← Modificar datos o crear otra solicitud
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- Client Side Logic: Data Capture, Google Sheets Sync & WhatsApp Dispatch -->
+<script define:vars={{ baseWa, corporateEmail, phoneDisplay, googleSheetsWebhookUrl }}>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('contact-engineering-form');
+    const formContainer = document.getElementById('contact-form-container');
+    const successContainer = document.getElementById('contact-success-container');
+    const errorMsg = document.getElementById('form-error-msg');
+    
+    const inputName = document.getElementById('form-name');
+    const inputCompany = document.getElementById('form-company');
+    const inputPhone = document.getElementById('form-phone');
+    const inputEmail = document.getElementById('form-email');
+    const selectService = document.getElementById('form-service');
+    const inputDetails = document.getElementById('form-details');
+    
+    const summaryPreview = document.getElementById('summary-data-preview');
+    const summaryFolioBadge = document.getElementById('summary-folio-badge');
+    const btnReopenWhatsApp = document.getElementById('btn-reopen-whatsapp');
+    const btnModify = document.getElementById('btn-modify-form');
+
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const name = inputName?.value.trim() || '';
+      const company = inputCompany?.value.trim() || '';
+      const phone = inputPhone?.value.trim() || '';
+      const email = inputEmail?.value.trim() || 'No especificado';
+      const service = selectService?.value || 'Solución a Medida';
+      const details = inputDetails?.value.trim() || 'Sin notas adicionales';
+
+      // Get selected radio for preferred time
+      const prefRadios = document.getElementsByName('form-pref-time');
+      let prefTime = 'A convenir por WhatsApp';
+      for (const r of prefRadios) {
+        if (r.checked) {
+          prefTime = r.value;
+          break;
+        }
+      }
+
+      if (!name || !company || !phone) {
+        if (errorMsg) errorMsg.classList.remove('hidden');
+        return;
+      }
+      if (errorMsg) errorMsg.classList.add('hidden');
+
+      const folio = `PLK-${Date.now().toString().slice(-6)}`;
+      const nowStr = new Date().toLocaleString('es-CO', { timeZone: 'America/Bogota' });
+
+      // Construct payload for Google Sheets (Compatible with both Spanish and English schemas)
+      const sheetPayload = {
+        fecha_registro: nowStr,
+        folio: folio,
+        nombre: name,
+        empresa: company,
+        telefono: phone,
+        correo: email,
+        solucion: service,
+        hora_cita: prefTime,
+        dia_cita: 'A coordinar por WhatsApp',
+        canal: 'WhatsApp Oficial',
+        enlace_reunion: 'Coordinación por WhatsApp',
+        notas: details,
+        estado: 'Pendiente WhatsApp',
+        // Alias
+        name: name,
+        company: company,
+        phone: phone,
+        email: email,
+        service: service,
+        prefTime: prefTime,
+        details: details
+      };
+
+      // Send to Google Sheets Webhook in background
+      if (googleSheetsWebhookUrl) {
+        try {
+          fetch(googleSheetsWebhookUrl, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {
+              'Content-Type': 'text/plain;charset=utf-8'
+            },
+            body: JSON.stringify(sheetPayload)
+          }).catch((err) => console.warn('Google Sheets sync warning:', err));
+        } catch (err) {
+          console.warn('Google Sheets sync error:', err);
+        }
+      }
+
+      // Construct formatted WhatsApp message
+      const message = 
+        `¡Hola equipo de PalkioTech! 👋 Acabo de diligenciar el formulario de diagnóstico en la web [Folio: ${folio}]:\n\n` +
+        `👤 *Nombre:* ${name}\n` +
+        `🏢 *Empresa / Negocio:* ${company}\n` +
+        `📱 *WhatsApp:* ${phone}\n` +
+        `✉️ *Correo:* ${email}\n` +
+        `🎯 *Solución de interés:* ${service}\n` +
+        `⏰ *Horario preferido para reunión:* ${prefTime}\n` +
+        `📝 *Detalles del proyecto:* ${details}\n\n` +
+        `¿Podemos coordinar por aquí el día y la hora para la reunión técnica?`;
+
+      const waUrl = `${baseWa}${encodeURIComponent(message)}`;
+
+      // Update Summary Preview
+      if (summaryPreview) {
+        summaryPreview.innerHTML = `
+          <div><strong class="text-white">Folio:</strong> <span class="text-amber-400 font-bold">${folio}</span></div>
+          <div><strong class="text-white">Nombre:</strong> ${name}</div>
+          <div><strong class="text-white">Empresa:</strong> ${company}</div>
+          <div><strong class="text-white">WhatsApp:</strong> ${phone}</div>
+          <div><strong class="text-white">Correo:</strong> ${email}</div>
+          <div><strong class="text-white">Solución:</strong> ${service}</div>
+          <div><strong class="text-white">Preferencia horaria:</strong> ${prefTime}</div>
+          <div class="text-[10px] text-emerald-400 pt-1 flex items-center gap-1 font-bold">
+            <span>✓</span> Datos sincronizados con la Hoja de Cálculo
+          </div>
+        `;
+      }
+
+      if (summaryFolioBadge) {
+        summaryFolioBadge.textContent = folio;
+      }
+
+      if (btnReopenWhatsApp) {
+        btnReopenWhatsApp.href = waUrl;
+      }
+
+      // Open WhatsApp in new tab
+      window.open(waUrl, '_blank');
+
+      // Switch to success view
+      formContainer?.classList.add('hidden');
+      successContainer?.classList.remove('hidden');
+    });
+
+    btnModify?.addEventListener('click', () => {
+      successContainer?.classList.add('hidden');
+      formContainer?.classList.remove('hidden');
+    });
+  });
+</script>

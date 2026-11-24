@@ -1,0 +1,95 @@
+---
+import { companyData } from '../data/company';
+---
+
+<section id="hero" class="relative pt-8 pb-16 md:pt-16 md:pb-24 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col items-center text-center max-w-4xl mx-auto">
+      
+      <!-- Top Blueprint Announcement Pill (Clickable directly to /blueprint) -->
+      <a 
+        href="/blueprint" 
+        class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-amber-50/90 hover:bg-amber-100/80 border border-amber-300 text-amber-900 text-xs font-mono font-bold mb-6 transition-all hover:shadow-xs group cursor-pointer"
+        title="Ver especificación de ingeniería y arquitectura abierta"
+      >
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-500 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-600"></span>
+        </span>
+        <span class="font-extrabold">BLUEPRINT TÉCNICO V3.2 OFICIAL</span>
+        <span class="text-amber-400">|</span>
+        <span class="font-semibold text-slate-800 group-hover:text-amber-800 flex items-center gap-1">
+          <span>Ver Metodología & Arquitectura Abierta</span>
+          <svg class="w-3.5 h-3.5 text-amber-600 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+          </svg>
+        </span>
+      </a>
+
+      <!-- Main Headline -->
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.14] mb-6">
+        Construimos la infraestructura digital que <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-yellow-600 to-amber-700">multiplica las ventas</span> de tu empresa.
+      </h1>
+
+      <!-- Subheadline -->
+      <p class="text-base sm:text-lg lg:text-xl text-slate-600 font-normal leading-relaxed mb-10 max-w-3xl">
+        Páginas web corporativas que cargan en menos de un segundo, agentes inteligentes que atienden y perfilan clientes <strong class="text-slate-900 font-semibold">24/7 en WhatsApp</strong>, y paneles de gestión a medida libres de comisiones recurrentes.
+      </p>
+
+      <!-- Primary Action Buttons (with Direct Blueprint Secondary Option) -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto mb-6">
+        <a 
+          href="#demos" 
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl bg-gradient-to-r from-amber-500 via-amber-600 to-yellow-600 hover:from-amber-600 hover:to-yellow-700 text-slate-950 font-black shadow-md shadow-amber-500/25 hover:shadow-lg hover:shadow-amber-500/35 hover:-translate-y-0.5 transition-all text-sm"
+        >
+          <span>Explorar Productos Demo en Vivo</span>
+          <svg class="w-4 h-4 text-slate-950" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+          </svg>
+        </a>
+
+        <a 
+          href="/blueprint" 
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 font-bold transition-all text-sm hover:-translate-y-0.5 shadow-2xs hover:border-amber-400"
+        >
+          <svg class="w-4 h-4 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+          <span>Blueprint Técnico & Requerimientos</span>
+          <span class="text-[10px] font-mono font-bold bg-amber-50 text-amber-800 px-1.5 py-0.5 rounded border border-amber-200">DOCS</span>
+        </a>
+
+        <a 
+          href="#palkiotag" 
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-5 py-3.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 font-bold transition-all text-sm"
+        >
+          <span>⭐ Stands Google 5★ (PalkioTag) ↓</span>
+        </a>
+      </div>
+
+      <!-- Quick Subtext -->
+      <p class="text-xs text-slate-500 font-mono mb-12">
+        ✦ Arquitectura sin dependencias lentas · 100% Propiedad del código transferido · Garantía formal SLA
+      </p>
+
+      <!-- Trust Metrics Bar -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 w-full pt-8 border-t border-slate-200">
+        {companyData.metrics.map((metric) => (
+          <div class="flex flex-col items-center p-5 rounded-2xl bg-white border border-slate-200/90 shadow-2xs hover:border-amber-300 transition-all">
+            <span class="text-3xl sm:text-4xl font-black text-amber-600 font-mono mb-1">
+              {metric.value}
+            </span>
+            <span class="text-sm font-bold text-slate-900 mb-1">
+              {metric.label}
+            </span>
+            <span class="text-xs text-slate-500 text-center leading-tight">
+              {metric.description}
+            </span>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </div>
+</section>
