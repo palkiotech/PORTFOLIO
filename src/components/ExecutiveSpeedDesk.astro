@@ -11,12 +11,12 @@ const salesMsg = encodeURIComponent("¡Hola equipo comercial de PalkioTech! 👋
 <!-- ==========================================
      EXECUTIVE SPEED DESK (FLOATING WIDGET)
      ========================================== -->
-<div id="speed-desk-widget" class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+<div id="speed-desk-widget" class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col items-end">
   
   <!-- Popover Menu Card (Hidden by default, slides up smoothly) -->
   <div 
     id="speed-desk-popover" 
-    class="hidden opacity-0 translate-y-3 transition-all duration-300 w-[360px] max-w-[calc(100vw-2rem)] rounded-3xl bg-[#0a0a0d]/98 backdrop-blur-xl border border-[#24242e] text-white shadow-2xl p-5 mb-3.5 relative overflow-hidden"
+    class="hidden opacity-0 translate-y-3 transition-all duration-300 w-[340px] max-w-[calc(100vw-2rem)] rounded-3xl bg-[#0a0a0d]/98 backdrop-blur-xl border border-[#24242e] text-white shadow-2xl p-4 sm:p-5 mb-3.5 relative overflow-hidden"
     role="dialog"
     aria-label="Mesa de Contacto Ejecutivo PalkioTech"
   >
@@ -174,8 +174,11 @@ const salesMsg = encodeURIComponent("¡Hola equipo comercial de PalkioTech! 👋
       <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
     </span>
 
-    <span class="text-xs font-bold tracking-tight group-hover:text-amber-300 transition-colors">
+    <span class="text-xs font-bold tracking-tight group-hover:text-amber-300 transition-colors hidden sm:inline">
       Mesa de Contacto 24/7
+    </span>
+    <span class="text-xs font-bold tracking-tight group-hover:text-amber-300 transition-colors sm:hidden">
+      Contacto
     </span>
 
     <!-- Message / Headset Icon -->

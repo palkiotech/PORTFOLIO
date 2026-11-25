@@ -64,12 +64,13 @@ import { companyData } from '../data/company';
     </nav>
 
     <!-- Header Actions (CTA Button) -->
-    <div class="flex items-center gap-3 shrink-0">
+    <div class="flex items-center gap-2 sm:gap-3 shrink-0">
       <a 
         href="/#contacto" 
-        class="inline-flex items-center gap-2 text-xs font-black px-4 py-2.5 rounded-xl bg-gradient-to-r from-amber-400 via-amber-500 to-yellow-500 hover:from-amber-500 hover:to-yellow-600 text-slate-950 shadow-md shadow-amber-500/25 hover:shadow-lg hover:shadow-amber-500/35 hover:scale-105 transition-all focus:outline-none focus:ring-2 focus:ring-amber-500 whitespace-nowrap"
+        class="inline-flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-black px-2.5 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-gradient-to-r from-amber-400 via-amber-500 to-yellow-500 hover:from-amber-500 hover:to-yellow-600 text-slate-950 shadow-md shadow-amber-500/25 hover:shadow-lg hover:shadow-amber-500/35 hover:scale-105 transition-all focus:outline-none focus:ring-2 focus:ring-amber-500 whitespace-nowrap"
       >
-        <span>Agendar Diagnóstico</span>
+        <span class="hidden sm:inline">Agendar Diagnóstico</span>
+        <span class="sm:hidden">Diagnóstico</span>
         <svg class="w-3.5 h-3.5 text-slate-950" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
         </svg>
@@ -90,24 +91,24 @@ import { companyData } from '../data/company';
   </div>
 
   <!-- Mobile / Tablet Dropdown Menu -->
-  <div id="mobile-menu" class="hidden xl:hidden border-b px-5 pt-3 pb-6 space-y-2.5 shadow-xl transition-all">
-    <div class="grid grid-cols-2 gap-2 pb-3 border-b border-black/10 dark:border-white/10 text-xs font-semibold">
-      <a href="/#soluciones" class="p-2 rounded-lg mobile-link mobile-nav-link">Soluciones B2B</a>
-      <a href="/PalkioTag/" class="p-2 rounded-lg flex items-center justify-between mobile-link mobile-nav-link font-bold text-amber-500">
+  <div id="mobile-menu" class="hidden xl:hidden border-b px-4 sm:px-5 pt-3 pb-6 space-y-2.5 shadow-xl transition-all">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pb-3 border-b border-black/10 dark:border-white/10 text-xs font-semibold">
+      <a href="/#soluciones" class="p-2.5 rounded-lg mobile-link mobile-nav-link">Soluciones B2B</a>
+      <a href="/PalkioTag/" class="p-2.5 rounded-lg flex items-center justify-between mobile-link mobile-nav-link font-bold text-amber-500">
         <span>PalkioTag™ (Google 5★)</span>
         <span class="text-[9px] font-mono px-1.5 py-0.5 rounded nav-badge-amber">5★ GOOGLE</span>
       </a>
-      <a href="/#demos" class="p-2 rounded-lg flex items-center justify-between mobile-link mobile-nav-link">
+      <a href="/#demos" class="p-2.5 rounded-lg flex items-center justify-between mobile-link mobile-nav-link">
         <span>Productos Demo</span>
         <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
       </a>
-      <a href="/casos" class="p-2 rounded-lg flex items-center justify-between mobile-link mobile-nav-link">
+      <a href="/casos" class="p-2.5 rounded-lg flex items-center justify-between mobile-link mobile-nav-link">
         <span>Casos de Éxito</span>
         <span class="text-[10px] font-mono px-1.5 rounded nav-badge-amber">7</span>
       </a>
-      <a href="/PalkioTag/#simulador" class="p-2 rounded-lg mobile-link mobile-nav-link">Simulador NFC & 5★</a>
-      <a href="/faq#equipo" class="p-2 rounded-lg mobile-link mobile-nav-link">Equipo & Cultura</a>
-      <a href="/faq" class="p-2 rounded-lg mobile-link mobile-nav-link">Preguntas Frecuentes</a>
+      <a href="/PalkioTag/#simulador" class="p-2.5 rounded-lg mobile-link mobile-nav-link">Simulador NFC & 5★</a>
+      <a href="/faq#equipo" class="p-2.5 rounded-lg mobile-link mobile-nav-link">Equipo & Cultura</a>
+      <a href="/faq" class="p-2.5 rounded-lg mobile-link mobile-nav-link">Preguntas Frecuentes</a>
     </div>
 
     <!-- Featured Blueprint Link in Mobile Menu -->

@@ -19,12 +19,13 @@ const waMsgNfc = encodeURIComponent("¡Hola equipo de PalkioTech! 👋 Me intere
     <div class="max-w-3xl mx-auto text-center mb-12 sm:mb-16">
       
       <!-- Top Product Badge -->
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-950/80 border border-amber-600/50 text-amber-300 text-xs font-mono font-bold mb-4 shadow-lg shadow-amber-950/40">
-        <span class="relative flex h-2 w-2">
+      <div class="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-amber-950/80 border border-amber-600/50 text-amber-300 text-[11px] sm:text-xs font-mono font-bold mb-4 shadow-lg shadow-amber-950/40 max-w-full">
+        <span class="relative flex h-2 w-2 shrink-0">
           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
           <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
         </span>
-        <span>✦ 0.3 HARDWARE PHYGITAL PALKIOTAG™ · NFC & RESEÑAS GOOGLE 5★</span>
+        <span class="hidden sm:inline">✦ 0.3 HARDWARE PHYGITAL PALKIOTAG™ · NFC & RESEÑAS GOOGLE 5★</span>
+        <span class="sm:hidden">✦ PALKIOTAG™ · NFC & GOOGLE 5★</span>
       </div>
 
       <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-[1.18] mb-4">
@@ -36,11 +37,11 @@ const waMsgNfc = encodeURIComponent("¡Hola equipo de PalkioTech! 👋 Me intere
       </p>
 
       <!-- 3 Product Family Interactive Filter Tabs -->
-      <div class="inline-flex flex-wrap items-center justify-center gap-2 p-1.5 rounded-2xl bg-[#101016] border border-[#22222e] mt-6 shadow-xl">
+      <div class="inline-flex flex-wrap items-center justify-center gap-2 p-1.5 rounded-2xl bg-[#101016] border border-[#22222e] mt-6 shadow-xl max-w-full">
         <button 
           type="button" 
           id="tab-teaser-google" 
-          class="teaser-tab-btn active px-4 py-2 rounded-xl text-xs font-mono font-bold transition-all flex items-center gap-2 bg-gradient-to-r from-amber-500 to-yellow-600 text-slate-950 shadow-md cursor-pointer"
+          class="teaser-tab-btn active px-3 sm:px-4 py-2 rounded-xl text-xs font-mono font-bold transition-all flex items-center gap-2 bg-gradient-to-r from-amber-500 to-yellow-600 text-slate-950 shadow-md cursor-pointer"
         >
           <span>⭐ Stand Google 5★</span>
           <span class="text-[9px] font-black px-1.5 py-0.2 rounded bg-slate-950/30 text-slate-950">POPULAR</span>
@@ -49,24 +50,24 @@ const waMsgNfc = encodeURIComponent("¡Hola equipo de PalkioTech! 👋 Me intere
         <button 
           type="button" 
           id="tab-teaser-card" 
-          class="teaser-tab-btn px-4 py-2 rounded-xl text-xs font-mono font-bold text-zinc-400 hover:text-white transition-all flex items-center gap-1.5 cursor-pointer"
+          class="teaser-tab-btn px-3 sm:px-4 py-2 rounded-xl text-xs font-mono font-bold text-zinc-400 hover:text-white transition-all flex items-center gap-1.5 cursor-pointer"
         >
-          <span>🪪 Tarjeta PVC (NFC + QR Doble Cara)</span>
+          <span>🪪 Tarjeta PVC</span>
         </button>
 
         <button 
           type="button" 
           id="tab-teaser-menu" 
-          class="teaser-tab-btn px-4 py-2 rounded-xl text-xs font-mono font-bold text-zinc-400 hover:text-white transition-all flex items-center gap-1.5 cursor-pointer"
+          class="teaser-tab-btn px-3 sm:px-4 py-2 rounded-xl text-xs font-mono font-bold text-zinc-400 hover:text-white transition-all flex items-center gap-1.5 cursor-pointer"
         >
-          <span>🍽️ Placa Menú / Mesa QR</span>
+          <span>🍽️ Placa Menú QR</span>
         </button>
       </div>
 
     </div>
 
     <!-- Main Showcase Stage (Interactive Acrylic Stand Visual + Features) -->
-    <div class="rounded-3xl bg-gradient-to-b from-[#0d0e14] via-[#101118] to-[#0c0d12] border border-amber-400/40 p-6 sm:p-10 lg:p-12 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9),0_0_35px_rgba(212,175,55,0.12)] relative overflow-hidden mb-12">
+    <div class="rounded-3xl bg-gradient-to-b from-[#0d0e14] via-[#101118] to-[#0c0d12] border border-amber-400/40 p-4 sm:p-10 lg:p-12 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9),0_0_35px_rgba(212,175,55,0.12)] relative overflow-hidden mb-12">
       
       <!-- Ambient corner sheen -->
       <div class="absolute top-0 right-0 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>

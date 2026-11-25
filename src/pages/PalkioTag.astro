@@ -35,9 +35,10 @@ const waMsgNfc = encodeURIComponent("¡Hola equipo de PalkioTech! 👋 Me intere
         </nav>
 
         <div class="max-w-4xl mx-auto text-center">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-950/80 border border-amber-700/60 text-amber-300 text-xs font-mono font-bold mb-6 shadow-sm">
-            <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
-            <span>✦ PALKIOTAG™ · HARDWARE PHYGITAL DE RESEÑAS GOOGLE 5★</span>
+          <div class="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-amber-950/80 border border-amber-700/60 text-amber-300 text-[11px] sm:text-xs font-mono font-bold mb-6 shadow-sm max-w-full">
+            <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping shrink-0"></span>
+            <span class="hidden sm:inline">✦ PALKIOTAG™ · HARDWARE PHYGITAL DE RESEÑAS GOOGLE 5★</span>
+            <span class="sm:hidden">✦ PALKIOTAG™ · GOOGLE 5★ & NFC</span>
           </div>
 
           <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight mb-6 leading-[1.15]">
@@ -115,7 +116,7 @@ const waMsgNfc = encodeURIComponent("¡Hola equipo de PalkioTech! 👋 Me intere
           </p>
         </div>
 
-        <div class="bg-[#0d0d12] p-6 sm:p-10 rounded-3xl border border-[#22222a] shadow-2xl backdrop-blur-xl space-y-8">
+        <div class="bg-[#0d0d12] p-4 sm:p-8 lg:p-10 rounded-3xl border border-[#22222a] shadow-2xl backdrop-blur-xl space-y-8">
           
           <!-- TOP: TITLE BAR & PRODUCT SELECTOR (FULL WIDTH) -->
           <div class="space-y-4">
@@ -162,7 +163,7 @@ const waMsgNfc = encodeURIComponent("¡Hola equipo de PalkioTech! 👋 Me intere
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center justify-items-center py-2">
             
             <!-- LEFT: CUSTOMIZABLE NFC HARDWARE PREVIEW -->
-            <div class="w-full max-w-[360px] flex flex-col items-center justify-center space-y-4">
+            <div class="w-full max-w-[340px] flex flex-col items-center justify-center space-y-4">
               <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 font-mono text-[10px] font-bold uppercase tracking-wider">
                 <span>✦</span> Diseño Físico Personalizado
               </div>
@@ -171,7 +172,7 @@ const waMsgNfc = encodeURIComponent("¡Hola equipo de PalkioTech! 👋 Me intere
               <div id="hw-stage-google" class="w-full space-y-4">
                 
                 <!-- Stand Card Body -->
-                <div class="relative w-full max-w-[330px] mx-auto rounded-3xl overflow-hidden border-2 border-amber-400/70 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.95),0_0_35px_rgba(212,175,55,0.25)] select-none bg-white">
+                <div class="relative w-full max-w-[310px] sm:max-w-[330px] mx-auto rounded-3xl overflow-hidden border-2 border-amber-400/70 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.95),0_0_35px_rgba(212,175,55,0.25)] select-none bg-white">
                   
                   <!-- TOP WHITE SECTION -->
                   <div class="p-6 pt-5 text-center relative bg-white">
@@ -408,7 +409,7 @@ const waMsgNfc = encodeURIComponent("¡Hola equipo de PalkioTech! 👋 Me intere
               </div>
 
               <!-- Phone Mockup Container -->
-              <div class="relative w-full max-w-[320px] rounded-[44px] bg-[#08080b] border-[5px] border-[#202028] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9),0_0_30px_rgba(212,175,55,0.15)] overflow-hidden">
+              <div class="relative w-full max-w-[300px] sm:max-w-[320px] rounded-[38px] sm:rounded-[44px] bg-[#08080b] border-[4px] sm:border-[5px] border-[#202028] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9),0_0_30px_rgba(212,175,55,0.15)] overflow-hidden">
                 
                 <!-- Phone Dynamic Island / Camera -->
                 <div class="pt-3 pb-2 px-6 flex items-center justify-between text-[10px] text-zinc-400 font-mono z-30 relative bg-[#08080b]">
@@ -736,7 +737,7 @@ const waMsgNfc = encodeURIComponent("¡Hola equipo de PalkioTech! 👋 Me intere
           </p>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center bg-[#0d0e14]/90 border border-amber-400/30 rounded-3xl p-6 sm:p-10 shadow-2xl backdrop-blur-xl">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center bg-[#0d0e14]/90 border border-amber-400/30 rounded-3xl p-4 sm:p-8 lg:p-10 shadow-2xl backdrop-blur-xl">
           
           <!-- LEFT: VERTICAL 9:16 VIDEO PLAYER MOCKUP (lg:col-span-5) -->
           <div class="lg:col-span-5 flex flex-col items-center justify-center">
@@ -992,8 +993,12 @@ const waMsgNfc = encodeURIComponent("¡Hola equipo de PalkioTech! 👋 Me intere
           </p>
         </div>
 
-        <div class="max-w-4xl mx-auto overflow-x-auto">
-          <table class="w-full text-xs text-left border border-[#22222a] rounded-2xl overflow-hidden bg-[#0c0c10]">
+        <div class="sm:hidden flex items-center justify-center gap-1.5 text-[11px] font-mono text-amber-400/80 mb-2">
+          <span>↔ Desliza la tabla para ver todos los datos</span>
+        </div>
+
+        <div class="max-w-4xl mx-auto overflow-x-auto pb-2 -mx-4 sm:mx-auto px-4 sm:px-0">
+          <table class="min-w-[620px] w-full text-xs text-left border border-[#22222a] rounded-2xl overflow-hidden bg-[#0c0c10]">
             <thead class="bg-[#14141a] text-zinc-300 font-mono text-[11px] border-b border-[#22222a]">
               <tr>
                 <th class="p-4">Parámetro Técnico</th>

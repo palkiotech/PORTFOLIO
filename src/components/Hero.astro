@@ -9,25 +9,25 @@ import { companyData } from '../data/company';
       <!-- Top Blueprint Announcement Pill (Clickable directly to /blueprint) -->
       <a 
         href="/blueprint" 
-        class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-amber-50/90 hover:bg-amber-100/80 border border-amber-300 text-amber-900 text-xs font-mono font-bold mb-6 transition-all hover:shadow-xs group cursor-pointer"
+        class="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-amber-50/90 hover:bg-amber-100/80 border border-amber-300 text-amber-900 text-[11px] sm:text-xs font-mono font-bold mb-6 transition-all hover:shadow-xs group cursor-pointer max-w-full"
         title="Ver especificación de ingeniería y arquitectura abierta"
       >
-        <span class="relative flex h-2 w-2">
+        <span class="relative flex h-2 w-2 shrink-0">
           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-500 opacity-75"></span>
           <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-600"></span>
         </span>
-        <span class="font-extrabold">BLUEPRINT TÉCNICO V3.2 OFICIAL</span>
-        <span class="text-amber-400">|</span>
-        <span class="font-semibold text-slate-800 group-hover:text-amber-800 flex items-center gap-1">
-          <span>Ver Metodología & Arquitectura Abierta</span>
-          <svg class="w-3.5 h-3.5 text-amber-600 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <span class="font-extrabold hidden sm:inline">BLUEPRINT TÉCNICO V3.2 OFICIAL</span>
+        <span class="text-amber-400 hidden sm:inline">|</span>
+        <span class="font-semibold text-slate-800 group-hover:text-amber-800 flex items-center gap-1 truncate sm:overflow-visible">
+          <span>Ver Metodología & Arquitectura</span>
+          <svg class="w-3.5 h-3.5 text-amber-600 group-hover:translate-x-0.5 transition-transform shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
           </svg>
         </span>
       </a>
 
       <!-- Main Headline -->
-      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.14] mb-6">
+      <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.14] mb-6">
         Construimos la infraestructura digital que <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-yellow-600 to-amber-700">multiplica las ventas</span> de tu empresa.
       </h1>
 
